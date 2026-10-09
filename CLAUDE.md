@@ -20,9 +20,13 @@ Canvas), [docs/upstream/](docs/upstream/) (issue drafts), and the deployment gui
 
 ## Status
 
-- Tapestry `0.1.1` and media library `0.1.1`, both from npm (Tapestry 0.1.0 came from the old
-  monorepo commit; deprecate it). - Verified 2026-10-09 from this repo: typecheck, lint, audit, all 23 e2e suites (199 steps),
-  production build, performance budget, Docker image (healthy, non-root, sharp works).
+- Tapestry `0.1.1` from npm (0.1.0 came from the old monorepo commit; deprecated). Media library:
+  `0.1.1` committed; locally `file:../medialibrary` for 0.2.0 (folders) until it's published, then
+  switch to `0.2.0` and commit `e2e/media-folders.e2e.mjs`, the a11y folder state and the chain entry.
+- 0.2.0 migrates the dev media directory one way (files out of `YYYY/MM`, keys rewritten): going back
+  to 0.1.x breaks file serving. A backup from before is in `backups/2026-10-09-before-folders/` (gitignored).
+- Verified 2026-10-09: typecheck, lint, audit, all 24 e2e suites (with folders), production build,
+  performance budget, Docker image (healthy, non-root, sharp works; with 0.1.1).
 
 ## Rules
 
@@ -163,6 +167,12 @@ Comments in the site and e2e code that cite `docs/decisions/…`, `docs/known-is
   must switch it back, or the canvas suite's parity check fails.
 - The settings panel is sticky and can be the tallest column: selecting another component can
   change the page height and shift everything (scroll clamps). In e2e, select before measuring.
+- The e2e harness lets Chrome pick its debugging port (`--remote-debugging-port=0` + the profile's
+  `DevToolsActivePort`). A fixed port made every run since 2026-10-07 reuse one leftover browser and
+  its cached scripts: changed code looked unchanged. If results look stale, check for leftover
+  `tapestry-e2e-` Chrome processes.
+- Vite serves dependency files (`file:` and npm packages) with `?v=<hash>` and a one-year immutable
+  cache; the hash changes only with the lockfile. Fresh browsers per run (above) avoid stale copies.
 - e2e: `page.realDrag()` resolves the target after pressing; resolve both points beforehand and
   don't scroll (not even the outer page) after the first one. `waitFor` callbacks should return
   booleans, not elements (an `<option>` never came back truthy).

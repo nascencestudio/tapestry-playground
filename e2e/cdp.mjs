@@ -5,7 +5,7 @@
 // See docs/decisions/0008-browser-e2e-via-cdp.md.
 import { spawn } from 'node:child_process';
 import { existsSync } from 'node:fs';
-import { mkdtemp, rm } from 'node:fs/promises';
+import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
@@ -19,13 +19,18 @@ const CHROME_CANDIDATES = [
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-/** Launch headless Chrome with remote debugging. Returns its browser WebSocket URL and a close function. */
-export async function launchChrome({ port = 9333, headless = true } = {}) {
+/**
+ * Launch headless Chrome with remote debugging. Returns its browser WebSocket URL and a close function.
+ * Chrome picks a free debugging port and writes it to its own profile (DevToolsActivePort), so a
+ * leftover browser from an earlier run can never be connected to by mistake (a fixed port once did
+ * exactly that: every run reused one old browser and its cached scripts).
+ */
+export async function launchChrome({ headless = true } = {}) {
 	const executable = CHROME_CANDIDATES.find((path) => existsSync(path));
 	if (!executable) throw new Error('Chrome not found. Set CHROME_PATH.');
 	const userDataDir = await mkdtemp(join(tmpdir(), 'tapestry-e2e-'));
 	const args = [
-		`--remote-debugging-port=${port}`,
+		'--remote-debugging-port=0',
 		`--user-data-dir=${userDataDir}`,
 		'--no-first-run',
 		'--no-default-browser-check',
@@ -36,17 +41,18 @@ export async function launchChrome({ port = 9333, headless = true } = {}) {
 	const child = spawn(executable, args, { stdio: 'ignore' });
 
 	let wsUrl;
-	for (let attempt = 0; attempt < 50 && !wsUrl; attempt++) {
+	for (let attempt = 0; attempt < 100 && !wsUrl; attempt++) {
 		await sleep(100);
 		try {
-			const response = await fetch(`http://127.0.0.1:${port}/json/version`);
-			wsUrl = (await response.json()).webSocketDebuggerUrl;
+			const [port, path] = (await readFile(join(userDataDir, 'DevToolsActivePort'), 'utf8')).split('\n');
+			if (port && path) wsUrl = `ws://127.0.0.1:${port.trim()}${path.trim()}`;
 		} catch {
 			// not up yet
 		}
 	}
 	if (!wsUrl) {
 		child.kill();
+		await rm(userDataDir, { recursive: true, force: true });
 		throw new Error('Chrome did not start remote debugging.');
 	}
 	return {

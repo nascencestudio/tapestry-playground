@@ -6,6 +6,38 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-09: Session 25: Media library folders (0.2.0); e2e harness reused a stale browser
+
+**Request:** folders in the media library, mirrored on the file system. Design and decision:
+[medialibrary ADR 0100](https://github.com/nascencestudio/medialibrary/blob/main/docs/decisions/0100-folders.md)
+(the user chose "mirror disk, stable URLs"). The work is in the medialibrary repo; here: tests.
+
+### Done
+- New suite `e2e/media-folders.e2e.mjs` (10 steps): folders created/renamed/moved/deleted through the
+  UI with the **disk checked** at each step, uploads into a folder, moves by the details panel and by
+  dragging a multiple selection, URLs unchanged throughout, API refusals (empty names, unknown
+  parents, cross-site, visitors), and that a drag never uploads anything. a11y: a folder selected
+  with its form open, both themes.
+- **Harness fix (cdp.mjs):** Chrome picks its own debugging port. The fixed port 9333 had a leftover
+  browser from 2026-10-07 listening, and every run since connected to it (with its cache) instead of
+  the browser it had just launched. Earlier results stand: until today's `file:` packages, the code
+  under test changed URL with each change (workspace links, new package versions).
+- Real dev data migrated on first start with 0.2.0: 6 files moved out of `2026/10`, keys rewritten,
+  old URLs still serve. Backup taken first.
+- Found and fixed with the browser runs: an unhandled rejection from the folder form, a stale-form race
+  when switching folders, and dragging a card **uploading a copy** of its thumbnail (a dragged `<img>`
+  carries a file).
+
+### Verified
+- All 24 suites pass with media library 0.2.0 (`file:`); publishing once hit the known SQLite save
+  flake (#23) in the full chain and passed on its own.
+
+### Next
+1. User: release medialibrary 0.2.0 (staged; approve). Then switch here to `0.2.0`, commit the folders
+   suite, a11y state and chain entry, and push (CI runs them on a fresh site).
+2. Tapestry: next release ships embedded source maps (dev warnings) and can move its devDependency
+   to medialibrary 0.2.0.
+
 ## 2026-10-09: Session 24: Plugin-only Tapestry repository; tapestry-playground
 
 **Request:** the `tapestry` repository should hold only the plugin (the monorepo had been pushed).

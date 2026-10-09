@@ -14,3 +14,4 @@ dist/
 coverage/
 # Uploaded media (dev site and Docker volume)
 data/
+backups/
