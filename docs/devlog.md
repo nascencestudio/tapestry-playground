@@ -44,10 +44,15 @@ the pushed history. Tapestry [ADR 0038](https://github.com/nascencestudio/tapest
   unpublish), so Tapestry is bumped to **0.1.1**; 0.1.0 gets deprecated. The old Dependabot PRs
   (against the monorepo) should be closed.
 
+- **Tapestry 0.1.1 released** through the trusted publisher (no token), approved with 2FA,
+  provenance on the plugin-only commit `8e101a6`. The release workflow no longer has a token
+  fallback. The playground uses `0.1.1` from npm: typecheck, audit, all 23 e2e suites, and the
+  Docker image (built, healthy on a read-only filesystem as uid 1000, sharp resizes) pass.
+
 ### Next
-1. The user: delete the `v0.1.0` GitHub release/tag, push, release `v0.1.1`, approve; deprecate
-   0.1.0; trusted publisher + no-bypass publishing access; create + push tapestry-playground.
-2. Then switch the playground to `@nascencestudio/tapestry@0.1.1` and let its CI run (Docker too).
+1. The user: deprecate Tapestry 0.1.0; publishing access "2FA, no bypass tokens"; delete the
+   npm token and the `NPM_TOKEN` secrets; create + push tapestry-playground (its CI can run now).
+2. File the StudioCMS issue (docs/upstream/).
 
 ## 2026-10-09: Session 23: Media library 0.1.0 released; Tapestry uses it from npm
 

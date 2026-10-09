@@ -194,8 +194,8 @@ importers:
         specifier: 0.1.1
         version: 0.1.1(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531))
       '@nascencestudio/tapestry':
-        specifier: file:../tapestry
-        version: file:../tapestry(@nascencestudio/medialibrary@0.1.1(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531))
+        specifier: 0.1.1
+        version: 0.1.1(@nascencestudio/medialibrary@0.1.1(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531))
       '@studiocms/md':
         specifier: 0.5.0
         version: 0.5.0(patch_hash=da73ec54dbd446d69bf0c1468abb7099bb572b9b48bdf9b4048e20d9f30948f9)(@astrojs/internal-helpers@0.11.0)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
@@ -1168,8 +1168,8 @@ packages:
       astro: ^7.0.0
       studiocms: ^0.6.0
 
-  '@nascencestudio/tapestry@file:../tapestry':
-    resolution: {directory: ../tapestry, type: directory}
+  '@nascencestudio/tapestry@0.1.1':
+    resolution: {integrity: sha512-16v4K/zfZYRJ5xrdWo1FCs69eqOBNAe8xxPxjqw7efQKOqiqANWHLFED1l2LNVyAGhARKYQNeVgII1zaQ0Czyw==}
     engines: {node: '>=22.12.0'}
     peerDependencies:
       '@nascencestudio/medialibrary': ^0.1.0
@@ -4250,7 +4250,7 @@ snapshots:
       - '@types/node'
       - preact-render-to-string
 
-  '@nascencestudio/tapestry@file:../tapestry(@nascencestudio/medialibrary@0.1.1(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531))':
+  '@nascencestudio/tapestry@0.1.1(@nascencestudio/medialibrary@0.1.1(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531))':
     dependencies:
       '@atlaskit/pragmatic-drag-and-drop': 4.0.0
       '@atlaskit/pragmatic-drag-and-drop-hitbox': 3.0.0
