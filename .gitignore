@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+!.env.production.example
+.dev-credentials
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+.DS_Store
+coverage/
+# Uploaded media (dev site and Docker volume)
+data/
