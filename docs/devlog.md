@@ -6,6 +6,15 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-09: Session 27: History and JSON in modals (Tapestry)
+
+- History, Compare and JSON open in modals (Tapestry commit "…open in modals"). Tests: publishing
+  waits for the History modal to close after Restore/Discard and closes Compare then History; a11y
+  audits each dialog itself (with the editor dimmed behind a modal, axe blended the backdrop into
+  backgrounds and flagged the language label in the light theme). All suites pass.
+- media-folders was flaky: its first click raced the folder list loading (rows arriving moved
+  "+ New folder"). The list now marks itself ready (media library); the suite waits for it.
+
 ## 2026-10-09: Session 26: Editor toolbars (Tapestry)
 
 **Request:** a less cluttered editor toolbar. Done in Tapestry (commit "Editor toolbars"):
