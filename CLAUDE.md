@@ -20,9 +20,11 @@ Canvas), [docs/upstream/](docs/upstream/) (issue drafts), and the deployment gui
 
 ## Status
 
-- Tapestry `0.1.1` from npm (0.1.0 came from the old monorepo commit; deprecated). Media library:
-  `0.1.1` committed; locally `file:../medialibrary` for 0.2.0 (folders) until it's published, then
-  switch to `0.2.0` and commit `e2e/media-folders.e2e.mjs`, the a11y folder state and the chain entry.
+- Committed: Tapestry `0.1.1` and media library `0.1.1` from npm. Locally (uncommitted): both as
+  `file:` checkouts, for media library 0.2.0 (folders) and Tapestry's next release (editor toolbars).
+  Once both are published: switch to those versions, commit the waiting test changes (folders suite,
+  a11y states, chain entry, media-tapestry usage/picker checks, `[data-tapestry-undo]`/`redo`
+  selectors in inline + richtext), and push.
 - 0.2.0 migrates the dev media directory one way (files out of `YYYY/MM`, keys rewritten): going back
   to 0.1.x breaks file serving. A backup from before is in `backups/2026-10-09-before-folders/` (gitignored).
 - Verified 2026-10-09: typecheck, lint, audit, all 24 e2e suites (with folders), production build,
@@ -171,6 +173,9 @@ Comments in the site and e2e code that cite `docs/decisions/…`, `docs/known-is
   `DevToolsActivePort`). A fixed port made every run since 2026-10-07 reuse one leftover browser and
   its cached scripts: changed code looked unchanged. If results look stale, check for leftover
   `tapestry-e2e-` Chrome processes.
+- After changing a `file:` dependency, `pnpm exec …` (including `astro dev stop`) can refuse to run
+  ("a linked package is out of date") and the old dev server keeps serving old code. Run
+  `pnpm install`, restart, and confirm `astro dev status` shows a fresh uptime.
 - Vite serves dependency files (`file:` and npm packages) with `?v=<hash>` and a one-year immutable
   cache; the hash changes only with the lockfile. Fresh browsers per run (above) avoid stale copies.
 - e2e: `page.realDrag()` resolves the target after pressing; resolve both points beforehand and

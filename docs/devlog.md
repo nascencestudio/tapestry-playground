@@ -6,6 +6,23 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-09: Session 26: Editor toolbars (Tapestry)
+
+**Request:** a less cluttered editor toolbar. Done in Tapestry (commit "Editor toolbars"):
+- Top row: only the status pills (unchanged position).
+- Purple bar above the canvas bar (`tp-actionbar`, same color as the Components panel): undo and
+  redo as icon buttons (new icons), a separator, then the language menu, History and JSON.
+- Canvas bar: full screen (icon) next to Desktop/Tablet/Mobile; View page next to reload (new icon).
+- Canvas bottom bar: keyboard help on the left; Save draft, Schedule…, Publish on the right.
+- The JSON view replaces the canvas, so it renders the same bars around itself.
+- Tests: inline and richtext suites click `[data-tapestry-undo]`/`[data-tapestry-redo]` (they used
+  the old toolbar). Full chain: all 24 suites pass (with `file:` Tapestry and media library).
+
+### Learned
+- `pnpm exec astro dev stop` can fail silently when pnpm thinks a `file:` package is out of date
+  (`verifyDepsBeforeRun`): the old server keeps running with old code. Run `pnpm install` first, or
+  `./node_modules/.bin/astro dev stop`, and check `astro dev status` shows a fresh uptime.
+
 ## 2026-10-09: Session 25: Media library folders (0.2.0); e2e harness reused a stale browser
 
 **Request:** folders in the media library, mirrored on the file system. Design and decision:
