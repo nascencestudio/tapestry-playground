@@ -38,9 +38,16 @@ the pushed history. Tapestry [ADR 0038](https://github.com/nascencestudio/tapest
 - playground: typecheck, lint, audit, all 23 e2e suites (199 steps), production build, budget.
 - Not verified: the Docker image (needs Tapestry on npm first).
 
+- **npm 0.1.0** turned out to be built from the old monorepo commit `1d09db4` (a release created
+  before the force push): same 291 files, but stale `repository.directory`, README links and a
+  provenance commit no longer on any ref. Version numbers can't be reused (not even after
+  unpublish), so Tapestry is bumped to **0.1.1**; 0.1.0 gets deprecated. The old Dependabot PRs
+  (against the monorepo) should be closed.
+
 ### Next
-1. The user: force-push tapestry, create + push tapestry-playground, Tapestry's first release.
-2. Then switch the playground to `@nascencestudio/tapestry@0.1.0` and let its CI run (Docker too).
+1. The user: delete the `v0.1.0` GitHub release/tag, push, release `v0.1.1`, approve; deprecate
+   0.1.0; trusted publisher + no-bypass publishing access; create + push tapestry-playground.
+2. Then switch the playground to `@nascencestudio/tapestry@0.1.1` and let its CI run (Docker too).
 
 ## 2026-10-09: Session 23: Media library 0.1.0 released; Tapestry uses it from npm
 

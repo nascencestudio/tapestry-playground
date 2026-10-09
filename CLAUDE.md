@@ -20,7 +20,7 @@ Canvas), [docs/upstream/](docs/upstream/) (issue drafts), and the deployment gui
 
 ## Status
 
-- Tapestry: `file:../tapestry` until 0.1.0 is on npm; then `0.1.0` (CI and Docker can't install
+- Tapestry: `file:../tapestry` until 0.1.1 is on npm; then `0.1.1` (0.1.0 came from the old monorepo commit; deprecated) (CI and Docker can't install
   before that: the `file:` path is outside the repo). Media library: `0.1.1` from npm.
 - Verified 2026-10-09 from this repo: typecheck, lint, audit, all 23 e2e suites (199 steps),
   production build, performance budget.
