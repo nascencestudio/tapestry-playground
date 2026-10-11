@@ -136,7 +136,10 @@ try {
 		// In dev, StudioCMS dashboard pages load every site page's global CSS
 		// (docs/known-issues.md #14); site styles must be scoped so they can't win.
 		await page.goto(`${BASE}/dashboard/content-management/edit?edit=${homeId}`);
-		await page.click('#studiocms-theme-toggle');
+		// The toggle flips light/dark; a fresh site (CI) may already be light. StudioCMS saves the theme
+		// per user, so put it back afterwards.
+		const wasLight = await page.eval(() => document.documentElement.dataset.theme === 'light');
+		if (!wasLight) await page.click('#studiocms-theme-toggle');
 		await page.waitFor(() => document.documentElement.dataset.theme === 'light');
 		const worst = await page.eval(() => {
 			const channels = (c) => (c.match(/[\d.]+/g) || []).slice(0, 3).map(Number);
@@ -163,7 +166,7 @@ try {
 			return results.sort((x, y) => x.ratio - y.ratio)[0];
 		});
 		assert.ok(worst.ratio >= 4.5, `low contrast in light mode: "${worst.text}" ${worst.ratio.toFixed(2)}:1`);
-		await page.click('#studiocms-theme-toggle');
+		if (!wasLight) await page.click('#studiocms-theme-toggle');
 	});
 
 	await step('"Log out" in the bar ends the session', async () => {
