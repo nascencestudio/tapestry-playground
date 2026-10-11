@@ -31,8 +31,9 @@ canvas that matches the public page's background (the page was dark, the canvas 
 - Vite inlines some SVGs as base64 and others URL-encoded.
 
 ### Next
-- The user releases Tapestry 0.3.1; then switch `package.json` from `file:../tapestry` to `0.3.1`,
-  `pnpm install`, run all suites, commit, and push the playground to GitHub.
+- Done: Tapestry 0.3.1 is on npm (provenance); the playground uses it, all 25 suites pass. Next: the
+  user creates `nascencestudio/tapestry-playground`, pushes, and adds the `main` ruleset after the
+  first CI run.
 - tapestry-seo: merge `trusted-publishing-only` (no npm token in the release workflow).
 
 ## 2026-10-11: Session 28: Tapestry SEO, stage 1
