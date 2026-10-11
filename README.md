@@ -2,21 +2,21 @@
 
 An [Astro](https://astro.build) + [StudioCMS](https://studiocms.dev) site for developing, testing
 and demonstrating [Tapestry](https://github.com/nascencestudio/tapestry) (drag-and-drop page
-building) and the [media library](https://github.com/nascencestudio/medialibrary), both by
-Nascence Studio.
+building), the [media library](https://github.com/nascencestudio/medialibrary) and
+[Tapestry SEO](https://github.com/nascencestudio/tapestry-seo), all by Nascence Studio.
 
 It contains:
 
 - **The demo site**: example Tapestry components (`src/components/tapestry/`, registered in
   `src/tapestry.config.mjs`), a page route using `getPage()` and the admin bar, translations
   (English and French), an interactive island, and a seeded demo page.
-- **Browser tests** (`e2e/`): 23 suites driving headless Chrome over the DevTools protocol, no
+- **Browser tests** (`e2e/`): 25 suites driving headless Chrome over the DevTools protocol, no
   test framework, plus accessibility checks with axe-core.
 - **A performance budget** (`pnpm budget`): what visitors download from a production server.
 - **Deployment**: a Docker image and Caddy (HTTPS) for a single server
   ([deployment guide](docs/guides/deployment.md)).
 - **Dependency patches** (`patches/`, reasons in `pnpm-workspace.yaml`): fixes for StudioCMS,
-  Astro and `@studiocms/md` that the site needs.
+  its SDK, Astro and `@studiocms/md` that the site needs.
 - **Working notes**: the [devlog](docs/devlog.md), [research](docs/research/) on StudioCMS
   internals and Drupal Canvas, and [upstream issue drafts](docs/upstream/).
 

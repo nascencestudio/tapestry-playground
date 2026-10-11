@@ -66,7 +66,7 @@ docs/                     ← devlog, research, upstream drafts, guides (develop
 | `pnpm migrate` | Apply StudioCMS DB migrations |
 | `CMS_SETUP=1 pnpm dev` + `node scripts/setup-site.mjs` | First-time setup of a fresh DB (writes `.dev-credentials`); restart without `CMS_SETUP` |
 | `pnpm seed` | (Re)create the demo Tapestry home page (running servers cache pages for 5 min) |
-| `pnpm e2e` | 23 browser suites in headless Chrome (dev server running; `HEADED=1`, `E2E_SCREENSHOTS=dir`) |
+| `pnpm e2e` | 25 browser suites in headless Chrome (dev server running; `HEADED=1`, `E2E_SCREENSHOTS=dir`) |
 | `pnpm build`, then `PORT=4600 node dist/server/entry.mjs` (with `.env` loaded) + `BASE_URL=http://127.0.0.1:4600 pnpm budget` | Performance budget |
 | `pnpm typecheck` / `pnpm lint` / `pnpm audit` | `astro check` / Biome / vulnerabilities |
 | `docker build --build-arg SITE_URL=… -t nascence-site .` | Production image (docs/guides/deployment.md) |
