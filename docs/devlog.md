@@ -6,7 +6,7 @@ and known issues instead of repeating them.
 
 ---
 
-## 2026-10-11: Session 29: Component icons, canvas light/dark (Tapestry 0.3.1)
+## 2026-10-11: Session 29: Component icons, canvas light/dark, content check badge (Tapestry 0.3.1)
 
 **Request:** icons for every library component (like "Two columns"), a cleaner Button icon, and a
 canvas that matches the public page's background (the page was dark, the canvas white).
@@ -17,6 +17,10 @@ canvas that matches the public page's background (the page was dark, the canvas 
   0029's rule for components with a thumbnail); the user chose to keep it that way.
 - Tapestry 0.3.1 (branch `canvas-color-scheme`): site frames (canvas, version comparison, library
   previews) get `color-scheme: normal`, so they follow the system light/dark setting like the site.
+- Tapestry 0.3.1: the "Valid" badge didn't say what was valid. It now reads **Content OK** (hover
+  explains the check) or **Content: n problems**, which opens a list (component › setting + what's
+  wrong, from `src/editor/problems.ts`); choosing one selects the component. Lists suite checks it,
+  a11y audits the open list in both themes.
 - e2e: the library suite checks that every component has an icon, and the enlarged icon on hover
   and focus (identified by the SVG's `<title>`: Vite inlines small files as data URIs).
 

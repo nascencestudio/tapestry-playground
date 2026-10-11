@@ -49,6 +49,10 @@ const editorStates = async (page, theme) => {
 	await page.fill(`#tp-field-${faq}-items__0__question`, '');
 	await page.waitFor((id) => Boolean(document.getElementById(`tp-field-${id}-items__0__question-error`)), [faq]);
 	await audit(page, '.tp-editor', `${theme}: field error`);
+	await page.click('[data-tp-info="tp-problems"]');
+	await page.waitFor(() => Boolean(document.querySelector('[data-tapestry-problems]')));
+	await audit(page, '.tp-editor', `${theme}: content problems`);
+	await page.press('Escape');
 	for (const [id, name] of [
 		['tp-layers-help', 'page structure help'],
 		['tp-canvas-help', 'canvas help'],

@@ -97,18 +97,45 @@ try {
 		assert.deepEqual(await questions(page, id), ['What is Tapestry?', 'Is it free?', 'Does it need JavaScript?']);
 	});
 
-	await step('a cleared required question is flagged in its item', async () => {
+	await step('a cleared required question is flagged in its item and in the content check', async () => {
 		const toggle = '[data-tapestry-list-item="1"] [data-tapestry-list-toggle]';
-		if ((await page.eval((sel) => document.querySelector(sel).getAttribute('aria-expanded'), toggle)) !== 'true') {
-			await page.click(toggle);
-		}
-		await page.waitFor((sel) => document.querySelector(sel), [fieldId(id, 'items', 1, 'question')]);
+		const expand = async () => {
+			if ((await page.eval((sel) => document.querySelector(sel).getAttribute('aria-expanded'), toggle)) !== 'true') {
+				await page.click(toggle);
+			}
+			await page.waitFor((sel) => Boolean(document.querySelector(sel)), [fieldId(id, 'items', 1, 'question')]);
+		};
+		const contentStatus = () =>
+			page.eval(() => document.querySelector('[data-tapestry-content-status]')?.textContent.trim());
+		assert.equal(await contentStatus(), 'Content OK');
+		await expand();
 		await page.fill(fieldId(id, 'items', 1, 'question'), '');
 		await page.waitFor(
 			(sel) => document.querySelector(`${sel}-error`)?.textContent.includes('required'),
 			[fieldId(id, 'items', 1, 'question')],
 		);
+		assert.equal(await contentStatus(), 'Content: 1 problem');
+		// The badge lists the problems by component and setting; choosing one selects that component.
+		await page.click(`[data-tp-row]:not([data-tp-row="${id}"]) .tp-row__label`);
+		await page.click('[data-tp-info="tp-problems"]');
+		await page.waitFor(() => Boolean(document.querySelector('[data-tapestry-problems]')));
+		assert.equal(
+			await page.eval((nodeId) => document.querySelector(`[data-tapestry-problem="${nodeId}"]`)?.textContent, id),
+			'FAQQuestions › item 2 › Question is required',
+		);
+		await page.click(`[data-tapestry-problem="${id}"]`);
+		await page.waitFor(
+			(nodeId) =>
+				document.querySelector(`.tp-row[aria-selected="true"]`)?.dataset.tpRow === nodeId &&
+				!document.querySelector('[data-tapestry-problems]'),
+			[id],
+			{ message: 'the FAQ selected, list closed' },
+		);
+		await expand();
 		await page.fill(fieldId(id, 'items', 1, 'question'), 'Is it free?');
+		await page.waitFor(
+			() => document.querySelector('[data-tapestry-content-status]')?.textContent.trim() === 'Content OK',
+		);
 	});
 
 	await step('fill the "More help" object (text and link)', async () => {
