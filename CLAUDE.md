@@ -62,7 +62,7 @@ docs/                     ← devlog, research, upstream drafts, guides (develop
 | Command | What it does |
 | --- | --- |
 | `pnpm install` | Install (supply-chain policies enforced) |
-| `pnpm dev` | Dev server, **background daemon** (`pnpm exec astro dev stop` / `status` / `logs`) |
+| `pnpm dev` | Dev server in the background (`astro dev --background`; `pnpm exec astro dev stop` / `status` / `logs`) |
 | `pnpm migrate` | Apply StudioCMS DB migrations |
 | `CMS_SETUP=1 pnpm dev` + `node scripts/setup-site.mjs` | First-time setup of a fresh DB (writes `.dev-credentials`); restart without `CMS_SETUP` |
 | `pnpm seed` | (Re)create the demo Tapestry home page (running servers cache pages for 5 min) |
@@ -173,6 +173,10 @@ Comments in the site and e2e code that cite `docs/decisions/…`, `docs/known-is
   `DevToolsActivePort`). A fixed port made every run since 2026-10-07 reuse one leftover browser and
   its cached scripts: changed code looked unchanged. If results look stale, check for leftover
   `tapestry-e2e-` Chrome processes.
+- Astro 7 backgrounds `astro dev` on its own only when it detects an AI agent; for people and CI it
+  stays in the foreground. Hence `--background` in the `dev` script: the first CI run hung for 30
+  minutes on `CMS_SETUP=1 pnpm dev`, which worked in every agent session. `--background` waits until
+  the server answers (up to 30 s).
 - After changing a `file:` dependency, `pnpm exec …` (including `astro dev stop`) can refuse to run
   ("a linked package is out of date") and the old dev server keeps serving old code. Run
   `pnpm install`, restart, and confirm `astro dev status` shows a fresh uptime.

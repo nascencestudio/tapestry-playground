@@ -34,6 +34,9 @@ canvas that matches the public page's background (the page was dark, the canvas 
 - Pushed to GitHub (nascencestudio/tapestry-playground). Dependabot's first npm run failed on astro
   (7.3.5 → 7.3.8): the patch is keyed to the exact version. Patched packages are now in Dependabot's
   `ignore` list and get updated by hand (astro 7.3.8 is pending: re-check or re-create the patch).
+- The first CI e2e run hung on `CMS_SETUP=1 pnpm dev` until its 30-minute limit: Astro 7 backgrounds
+  the dev server automatically only for AI agents, so it never returned on the runner (or for a
+  person following the README). The `dev` script now passes `--background`.
 - Done: Tapestry 0.3.1 is on npm (provenance); the playground uses it, all 25 suites pass. Next: the
   user creates `nascencestudio/tapestry-playground`, pushes, and adds the `main` ruleset after the
   first CI run.

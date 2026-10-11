@@ -20,7 +20,8 @@ chmod 600 .env
 # 3. Create the database schema (local SQLite file: studiocms.db).
 pnpm migrate
 
-# 4. Start the dev server (Astro 7 runs it as a background daemon).
+# 4. Start the dev server in the background (`pnpm exec astro dev stop` / `status` / `logs`;
+#    `pnpm exec astro dev` runs it in the foreground instead).
 pnpm dev
 ```
 
