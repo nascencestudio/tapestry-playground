@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 72" width="128" height="72">
+	<title>Columns</title>
+	<rect width="128" height="72" rx="6" fill="#eef0f6"/>
+	<rect x="8" y="10" width="34" height="52" rx="4" fill="#c9cfe3"/>
+	<rect x="47" y="10" width="34" height="52" rx="4" fill="#c9cfe3"/>
+	<rect x="86" y="10" width="34" height="52" rx="4" fill="#c9cfe3"/>
+	<rect x="13" y="17" width="20" height="4" rx="2" fill="#7d86a8"/>
+	<rect x="13" y="26" width="24" height="2.5" rx="1.25" fill="#9aa2bf"/>
+	<rect x="13" y="31" width="19" height="2.5" rx="1.25" fill="#9aa2bf"/>
+	<rect x="52" y="17" width="20" height="4" rx="2" fill="#7d86a8"/>
+	<rect x="52" y="26" width="24" height="2.5" rx="1.25" fill="#9aa2bf"/>
+	<rect x="52" y="31" width="21" height="2.5" rx="1.25" fill="#9aa2bf"/>
+	<rect x="91" y="17" width="20" height="4" rx="2" fill="#7d86a8"/>
+	<rect x="91" y="26" width="24" height="2.5" rx="1.25" fill="#9aa2bf"/>
+	<rect x="91" y="31" width="17" height="2.5" rx="1.25" fill="#9aa2bf"/>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 72" width="128" height="72">
+	<title>FAQ</title>
+	<rect width="128" height="72" rx="6" fill="#eef0f6"/>
+	<rect x="10" y="8" width="108" height="14" rx="3" fill="#c9cfe3"/>
+	<rect x="16" y="13.5" width="54" height="3" rx="1.5" fill="#7d86a8"/>
+	<path d="M106 13l3 3 3-3" fill="none" stroke="#7d86a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+	<rect x="16" y="26" width="90" height="2.5" rx="1.25" fill="#9aa2bf"/>
+	<rect x="16" y="31" width="70" height="2.5" rx="1.25" fill="#9aa2bf"/>
+	<rect x="10" y="38" width="108" height="12" rx="3" fill="#c9cfe3"/>
+	<rect x="16" y="42.5" width="46" height="3" rx="1.5" fill="#7d86a8"/>
+	<path d="M107 42l3 3-3 3" fill="none" stroke="#7d86a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+	<rect x="10" y="54" width="108" height="12" rx="3" fill="#c9cfe3"/>
+	<rect x="16" y="58.5" width="60" height="3" rx="1.5" fill="#7d86a8"/>
+	<path d="M107 58l3 3-3 3" fill="none" stroke="#7d86a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

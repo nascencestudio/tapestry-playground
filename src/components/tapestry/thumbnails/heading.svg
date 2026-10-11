@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 72" width="128" height="72">
+	<title>Heading</title>
+	<rect width="128" height="72" rx="6" fill="#eef0f6"/>
+	<text x="14" y="46" font-family="system-ui, sans-serif" font-size="30" font-weight="700" fill="#7d86a8">H</text>
+	<rect x="42" y="25" width="70" height="10" rx="3" fill="#7d86a8"/>
+	<rect x="42" y="41" width="46" height="4" rx="2" fill="#9aa2bf"/>
+</svg>

@@ -6,6 +6,31 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-11: Session 29: Component icons, canvas light/dark (Tapestry 0.3.1)
+
+**Request:** icons for every library component (like "Two columns"), a cleaner Button icon, and a
+canvas that matches the public page's background (the page was dark, the canvas white).
+
+### Done
+- Thumbnails for all 9 playground components (`src/components/tapestry/thumbnails/`, same palette as
+  `split.svg`). On hover/focus the library shows the enlarged icon instead of a live preview (ADR
+  0029's rule for components with a thumbnail); the user chose to keep it that way.
+- Tapestry 0.3.1 (branch `canvas-color-scheme`): site frames (canvas, version comparison, library
+  previews) get `color-scheme: normal`, so they follow the system light/dark setting like the site.
+- e2e: the library suite checks that every component has an icon, and the enlarged icon on hover
+  and focus (identified by the SVG's `<title>`: Vite inlines small files as data URIs).
+
+### Learned
+- Chrome passes an iframe element's `color-scheme` into the framed page's `prefers-color-scheme`.
+  StudioCMS sets `color-scheme` on every element from the dashboard theme, so the canvas followed
+  the dashboard, not the system. CDP media emulation hides this; `--force-dark-mode` shows it.
+- Vite inlines some SVGs as base64 and others URL-encoded.
+
+### Next
+- The user releases Tapestry 0.3.1; then switch `package.json` from `file:../tapestry` to `0.3.1`,
+  `pnpm install`, run all suites, commit, and push the playground to GitHub.
+- tapestry-seo: merge `trusted-publishing-only` (no npm token in the release workflow).
+
 ## 2026-10-11: Session 28: Tapestry SEO, stage 1
 
 **Request:** an SEO plugin with admin control over robots.txt (AI crawlers and others) and a sitemap;

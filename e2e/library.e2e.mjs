@@ -1,6 +1,6 @@
 // End-to-end tests for the component library's pictures (docs/decisions/0029-library-previews.md):
-// developer thumbnails (the playground's "Two columns" has one) and live previews on hover and
-// focus, rendered in a sandboxed frame with the site's CSS.
+// developer thumbnails in the library and, enlarged, on hover and focus. Every playground component
+// has one, so live previews (the fallback for components without a thumbnail) aren't shown here.
 //
 // Prereqs: same as editor.e2e.mjs. Doesn't change any page.
 import assert from 'node:assert/strict';
@@ -10,20 +10,20 @@ import { BASE, homePageId, login, openEditor, step, summary } from './helpers.mj
 const pageId = await homePageId();
 const item = (label) => `.tp-library__item[title^="Add ${label} "]`;
 
-const previewState = (page, type) =>
+/** The enlarged thumbnail shown for a component on hover/focus, once loaded (else null). */
+const shownThumbnail = (page, type) =>
 	page.eval((t) => {
 		const box = document.querySelector(`[data-tapestry-preview="${t}"]`);
-		const frame = box?.querySelector('iframe');
-		const doc = frame?.contentDocument;
-		return box
+		const img = box?.querySelector('img.tp-preview__thumbnail');
+		return img?.complete && img.naturalWidth > 0
 			? {
-					sandbox: frame?.getAttribute('sandbox') ?? null,
+					// Thumbnails come as data URIs (base64 or URL-encoded): identify them by the SVG's <title>.
+					title: (img.src.includes(';base64,')
+						? atob(img.src.split(',')[1])
+						: decodeURIComponent(img.src.slice(img.src.indexOf(',') + 1))
+					).match(/<title>(.*?)<\/title>/)?.[1],
 					hidden: box.getAttribute('aria-hidden'),
-					text: doc?.body?.textContent?.trim() ?? '',
-					headings: doc?.querySelectorAll('h1, h2, h3').length ?? 0,
-					sheets: doc?.querySelectorAll('link[rel~="stylesheet"], style').length ?? 0,
-					scripts: doc?.querySelectorAll('script').length ?? 0,
-					height: box.querySelector('.tp-preview__viewport')?.getBoundingClientRect().height ?? 0,
+					frames: box.querySelectorAll('iframe').length,
 				}
 			: null;
 	}, type);
@@ -51,45 +51,36 @@ try {
 		const response = await fetch(new URL(thumb.src, BASE), { headers: { Cookie: `auth_session=${cookie}` } });
 		assert.equal(response.status, 200);
 		assert.match(response.headers.get('content-type') ?? '', /image\/svg\+xml/);
-		// Components without one have no image.
-		assert.equal(await page.eval((sel) => document.querySelector(`${sel} img`), item('Heading')), null);
+		// Every playground component has one (components without a thumbnail just show their name; Tapestry's
+		// unit tests cover that).
+		const missing = await page.eval(() =>
+			[...document.querySelectorAll('.tp-library__item')]
+				.filter((el) => !el.querySelector('img'))
+				.map((el) => el.textContent.trim()),
+		);
+		assert.deepEqual(missing, []);
 	});
 
-	await step('hovering a component shows a live preview with the site’s CSS (no scripts)', async () => {
-		await page.waitFor(() => document.querySelector('.tp-canvas__status')?.dataset.state === 'ready', [], {
-			message: 'canvas ready',
-		});
+	await step('hovering a component shows its thumbnail, enlarged', async () => {
 		const { x, y } = await page.center(item('Heading'));
 		await page.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x, y });
-		await page.waitFor(
-			() => {
-				const doc = document.querySelector('[data-tapestry-preview="heading"] iframe')?.contentDocument;
-				return Boolean(doc?.querySelector('h2'));
-			},
-			[],
-			{ message: 'preview rendered' },
-		);
-		const state = await previewState(page, 'heading');
-		assert.equal(state.sandbox, 'allow-same-origin');
-		assert.equal(state.hidden, 'true');
-		assert.equal(state.text, 'Text', 'rendered with the starting values');
-		assert.ok(state.sheets > 0, 'site stylesheets copied');
-		assert.equal(state.scripts, 0);
-		assert.ok(state.height > 0);
+		await page.waitFor((t) => document.querySelector(`[data-tapestry-preview="${t}"] img`)?.complete, ['heading'], {
+			message: 'thumbnail shown',
+		});
+		const shown = await shownThumbnail(page, 'heading');
+		assert.equal(shown?.title, 'Heading');
+		assert.equal(shown?.hidden, 'true', 'decorative: the button already names the component');
+		assert.equal(shown?.frames, 0, 'no live preview when there is a thumbnail');
 	});
 
 	await step('moving away hides it; keyboard focus shows it too', async () => {
 		await page.send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: 5, y: 5 });
 		await page.waitFor(() => !document.querySelector('[data-tapestry-preview]'), [], { message: 'preview hidden' });
 		await page.eval((sel) => document.querySelector(sel).focus(), item('FAQ'));
-		await page.waitFor(
-			() =>
-				(
-					document.querySelector('[data-tapestry-preview="faq"] iframe')?.contentDocument?.body?.textContent ?? ''
-				).includes('Question'),
-			[],
-			{ message: 'FAQ preview rendered' },
-		);
+		await page.waitFor((t) => document.querySelector(`[data-tapestry-preview="${t}"] img`)?.complete, ['faq'], {
+			message: 'FAQ thumbnail shown',
+		});
+		assert.equal((await shownThumbnail(page, 'faq'))?.title, 'FAQ');
 		await page.eval(() => document.activeElement.blur());
 		await page.waitFor(() => !document.querySelector('[data-tapestry-preview]'), [], {
 			message: 'preview hidden on blur',

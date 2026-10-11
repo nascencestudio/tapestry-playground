@@ -19,6 +19,7 @@ export const components = [
 		label: 'Section',
 		description: 'A full-width band that holds other components.',
 		category: 'Layout',
+		thumbnail: './src/components/tapestry/thumbnails/section.svg',
 		component: './src/components/tapestry/Section.astro',
 		acceptsChildren: true,
 		props: {
@@ -50,6 +51,7 @@ export const components = [
 		label: 'Hero',
 		description: 'Large heading with optional subheading and call to action.',
 		category: 'Content',
+		thumbnail: './src/components/tapestry/thumbnails/hero.svg',
 		component: './src/components/tapestry/Hero.astro',
 		props: {
 			heading: { type: 'text', label: 'Heading', required: true, maxLength: 120 },
@@ -69,6 +71,7 @@ export const components = [
 		type: 'heading',
 		label: 'Heading',
 		category: 'Content',
+		thumbnail: './src/components/tapestry/thumbnails/heading.svg',
 		component: './src/components/tapestry/Heading.astro',
 		props: {
 			text: { type: 'text', label: 'Text', required: true },
@@ -90,6 +93,7 @@ export const components = [
 		label: 'Text',
 		description: 'Formatted text: headings, bold, italic, links, lists, quotes, alignment and more.',
 		category: 'Content',
+		thumbnail: './src/components/tapestry/thumbnails/text.svg',
 		component: './src/components/tapestry/Text.astro',
 		props: {
 			body: {
@@ -127,6 +131,7 @@ export const components = [
 		type: 'button',
 		label: 'Button',
 		category: 'Content',
+		thumbnail: './src/components/tapestry/thumbnails/button.svg',
 		component: './src/components/tapestry/Button.astro',
 		props: {
 			label: { type: 'text', label: 'Label', required: true, maxLength: 40 },
@@ -149,6 +154,7 @@ export const components = [
 		label: 'FAQ',
 		description: 'Questions and answers that open on click (no JavaScript).',
 		category: 'Content',
+		thumbnail: './src/components/tapestry/thumbnails/faq.svg',
 		component: './src/components/tapestry/Faq.astro',
 		props: {
 			heading: { type: 'text', label: 'Heading', maxLength: 120, default: 'Frequently asked questions' },
@@ -208,6 +214,7 @@ export const components = [
 		label: 'Counter',
 		description: 'An interactive counter: a Preact island that loads its JavaScript when it scrolls into view.',
 		category: 'Interactive',
+		thumbnail: './src/components/tapestry/thumbnails/counter.svg',
 		component: './src/components/tapestry/Counter.tsx',
 		// Without `client`, it would render as plain HTML with no JavaScript.
 		client: 'visible',
@@ -224,6 +231,7 @@ export const components = [
 		label: 'Columns',
 		description: 'Lays out its children side by side.',
 		category: 'Layout',
+		thumbnail: './src/components/tapestry/thumbnails/columns.svg',
 		component: './src/components/tapestry/Columns.astro',
 		acceptsChildren: true,
 		props: {

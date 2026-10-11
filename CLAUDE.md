@@ -162,9 +162,11 @@ Comments in the site and e2e code that cite `docs/decisions/…`, `docs/known-is
 - Accessibility: new editor UI states belong in `e2e/a11y.e2e.mjs`. StudioCMS's success/warning/
   danger colors are background colors: don't use them as text (status pills use a border + dot;
   `--tp-danger` is Tapestry's own text-safe red per theme).
-- StudioCMS stores the dashboard theme per user on the server when `data-theme` changes, and the
-  canvas iframe follows the dashboard's `color-scheme`. Scripts that switch the theme (screenshots)
-  must switch it back, or the canvas suite's parity check fails.
+- StudioCMS stores the dashboard theme per user on the server when `data-theme` changes; scripts that
+  switch it (screenshots) must switch it back. The canvas follows the system light/dark setting
+  (Tapestry ≥ 0.3.1 sets `color-scheme: normal` on site frames; before, it followed the dashboard's
+  theme). CDP `Emulation.setEmulatedMedia` overrides every frame: test real behaviour with Chrome's
+  `--force-dark-mode`.
 - The settings panel is sticky and can be the tallest column: selecting another component can
   change the page height and shift everything (scroll clamps). In e2e, select before measuring.
 - The e2e harness lets Chrome pick its debugging port (`--remote-debugging-port=0` + the profile's
