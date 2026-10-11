@@ -5,9 +5,9 @@
 // See docs/decisions/0008-browser-e2e-via-cdp.md.
 import { spawn } from 'node:child_process';
 import { existsSync } from 'node:fs';
-import { mkdtemp, readFile, rm } from 'node:fs/promises';
+import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { dirname, join } from 'node:path';
 
 const CHROME_CANDIDATES = [
 	process.env.CHROME_PATH,
@@ -380,7 +380,8 @@ export class Page {
 
 	async screenshot(path) {
 		const { data } = await this.send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
-		const { writeFile } = await import('node:fs/promises');
+		// The directory may not exist yet (CI passes a fresh E2E_SCREENSHOTS path).
+		await mkdir(dirname(path), { recursive: true });
 		await writeFile(path, Buffer.from(data, 'base64'));
 	}
 }
