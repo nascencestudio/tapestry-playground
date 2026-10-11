@@ -28,9 +28,13 @@ button in Tapestry's editor (stage 2), saved immediately. tapestry-seo ADR 0001,
 - e2e: after a form save, remove the old "Saved" notice before waiting for the new one (the old one
   made the test move on early).
 
+- Releases (2026-10-11): Tapestry 0.3.0 and tapestry-seo 0.1.0 (first release with a token). The
+  playground now installs all three packages from npm (tapestry-seo added to
+  `minimumReleaseAgeExclude`); all 25 suites pass. The waiting test changes are committed.
+
 ### Next
-1. User: release Tapestry 0.3.0; create the `nascencestudio/tapestry-seo` repo (push, first release with
-   a token, then trusted publisher). Then stage 2.
+1. User: tapestry-seo trusted publisher + no-bypass publishing access, delete the token; create the
+   playground repo on GitHub. Then stage 2 (SEO button in Tapestry's editor).
 
 ## 2026-10-09: Session 27: History and JSON in modals (Tapestry)
 

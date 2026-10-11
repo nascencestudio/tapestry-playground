@@ -11,6 +11,7 @@ minimumReleaseAge: 4320
 minimumReleaseAgeExclude:
   - '@nascencestudio/tapestry'
   - '@nascencestudio/medialibrary'
+  - '@nascencestudio/tapestry-seo'
 
 # Fail if a package's trust evidence (provenance / trusted publisher) is weaker
 # than in earlier versions — a common sign of a hijacked maintainer account.

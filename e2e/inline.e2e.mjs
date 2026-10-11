@@ -254,7 +254,7 @@ try {
 	});
 
 	await step('other changes re-render the canvas and editing continues', async () => {
-		await page.click('.tp-toolbar [title^="Undo"]');
+		await page.click('[data-tapestry-undo]');
 		await page.waitFor(
 			(sel) => {
 				const frame = document.querySelector('[data-tapestry-canvas]');
@@ -268,7 +268,7 @@ try {
 			[TEXT],
 			{ message: 'undo re-rendered, still editing' },
 		);
-		await page.click('.tp-toolbar [title^="Redo"]');
+		await page.click('[data-tapestry-redo]');
 		await page.waitFor(
 			(sel) =>
 				document.querySelector('[data-tapestry-canvas]').contentDocument.querySelector(sel)?.textContent ===

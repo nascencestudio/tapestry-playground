@@ -151,6 +151,9 @@ try {
 		await page.waitFor(() => document.querySelector('[data-tapestry-history]'));
 		if (SHOTS) await page.screenshot(`${SHOTS}/history-panel.png`);
 		await page.click('[data-tapestry-restore="0"]');
+		await page.waitFor(() => !document.querySelector('[data-tapestry-history-modal]'), [], {
+			message: 'History closes after a restore',
+		});
 		assert.equal((await working(page)).root[0].props.heading, live);
 		assert.equal(await status(page), 'changed');
 		assert.equal(await heading('/'), 'Draft heading', 'restore must not go live by itself');
@@ -163,10 +166,9 @@ try {
 		await setHeading(page, 'Throwaway edit');
 		assert.equal(await status(page), 'changed');
 		await page.click('[data-tapestry-history-toggle]');
-		if (!(await page.eval(() => Boolean(document.querySelector('[data-tapestry-history]'))))) {
-			await page.click('[data-tapestry-history-toggle]');
-		}
+		await page.waitFor(() => document.querySelector('[data-tapestry-history-modal]')?.open === true);
 		await page.click('[data-tapestry-discard]');
+		await page.waitFor(() => !document.querySelector('[data-tapestry-history-modal]'));
 		assert.equal((await working(page)).root[0].props.heading, live);
 		assert.equal(await status(page), 'published');
 		await saveAndWait(page, pageId, '[data-tapestry-save]');
@@ -238,7 +240,11 @@ try {
 		assert.equal(await heading('/?tapestry-version=history-0'), after);
 		const editorResponse = await get('/?tapestry-version=history-0', cookie);
 		assert.equal(editorResponse.headers.get('x-robots-tag'), 'noindex, nofollow');
-		await page.click('[data-tapestry-compare-close]');
+		// Closing the comparison returns to History (a modal too); Escape closes that.
+		await page.click('[data-tapestry-compare-modal] [data-tapestry-modal-close]');
+		await page.waitFor(() => document.querySelector('[data-tapestry-history-modal]')?.open === true);
+		await page.press('Escape');
+		await page.waitFor(() => !document.querySelector('[data-tapestry-history-modal]'));
 	});
 
 	await step('scheduled publishing: nothing changes for visitors until the time, then it goes live', async () => {

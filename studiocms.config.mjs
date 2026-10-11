@@ -2,6 +2,7 @@
 
 import mediaLibrary from '@nascencestudio/medialibrary';
 import tapestry, { tapestryComponentRegistry } from '@nascencestudio/tapestry';
+import tapestrySeo from '@nascencestudio/tapestry-seo';
 import md from '@studiocms/md';
 import { defineStudioCMSConfig } from 'studiocms/config';
 import { components } from './src/tapestry.config.mjs';
@@ -11,6 +12,10 @@ export default defineStudioCMSConfig({
 	// (CI and scripts/setup-site.mjs). Otherwise the setup routes don't exist.
 	dbStartPage: process.env.CMS_SETUP === '1',
 	features: {
+		// Tapestry SEO serves robots.txt from its settings (Plugins → Tapestry SEO). StudioCMS's own is a
+		// static file written at build time, which would replace it in production. (Under `features`:
+		// a top-level robotsTXT is silently ignored.)
+		robotsTXT: false,
 		// Tapestry's server-rendered admin bar replaces StudioCMS's client-side
 		// corner menu, which ships an ~18 KB script to every visitor.
 		// Note: this must be under `features`; a top-level key is silently ignored.
@@ -38,5 +43,7 @@ export default defineStudioCMSConfig({
 			// Pages can be translated into French: each translation is its own page (slug fr/…).
 			languages: ['en', 'fr'],
 		}),
+		// robots.txt with an admin-controlled crawler list, and the page sitemap.
+		tapestrySeo(),
 	],
 });

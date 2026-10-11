@@ -101,6 +101,16 @@ try {
 	});
 
 	await step('the picker opens, limited to images; choosing sets the prop and shows a preview', async () => {
+		// A folder with no images, to check it's greyed out in an image field's picker.
+		const empty = (
+			await (
+				await api('/folders', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({ name: `E2E no images ${Date.now()}` }),
+				})
+			).json()
+		).folder;
 		await page.click('#tp-field-hero-1-backgroundImage [data-tapestry-media-choose]');
 		await page.waitFor(() => Boolean(document.querySelector('[data-media-picker] [data-media-library="pick"]')));
 		await page.waitFor(
@@ -111,6 +121,34 @@ try {
 			[...document.querySelectorAll('[data-media-picker] [data-media-item]')].map((el) => el.title),
 		);
 		assert.ok(!shown.includes('sample.pdf'), 'documents are not offered for an image field');
+		// The picker says why, and its folder counts cover only what the field can use (images).
+		assert.equal(
+			await page.eval(() => document.querySelector('[data-media-picker] [data-media-accept-note]')?.textContent),
+			'Only images can be used here.',
+		);
+		const counts = await page.eval(() =>
+			Object.fromEntries(
+				['all', 'top'].map((key) => [
+					key,
+					Number(
+						document.querySelector(`[data-media-picker] [data-media-folder="${key}"] .ml-folder__count`)?.textContent,
+					),
+				]),
+			),
+		);
+		const images = (await db.execute("select folderId from NascenceMediaItems where kind = 'image'")).rows;
+		assert.deepEqual(counts, { all: images.length, top: images.filter((r) => r.folderId === null).length });
+		assert.ok(
+			await page.eval(
+				(id) =>
+					document
+						.querySelector(`[data-media-picker] [data-media-folder="${id}"]`)
+						?.hasAttribute('data-media-folder-empty'),
+				empty.id,
+			),
+			'a folder without images is greyed out',
+		);
+		await api(`/folders/${empty.id}`, { method: 'DELETE' });
 		if (SHOTS) await page.screenshot(`${SHOTS}/media-picker.png`);
 		await pick(page, image.id);
 		assert.equal(findIn((await working(page)).root, 'hero-1').props.backgroundImage, image.id);
@@ -189,6 +227,32 @@ try {
 		const refused = await api(`/items/${image.id}`, { method: 'DELETE' });
 		assert.equal(refused.status, 409);
 		assert.equal((await refused.json()).usage[0].title, 'Home');
+		// The grid shows it too: a badge with the page count that opens the page list.
+		assert.equal((await (await api('/items?limit=200')).json()).usage[image.id], 1);
+		const library = await cdp.page();
+		await library.goto(`${BASE}/dashboard/nascencestudio_medialibrary/media`);
+		await library.waitFor(
+			(id) =>
+				document.querySelector(`[data-media-item="${id}"] + .ml-usage-anchor [data-media-usage-badge]`)?.textContent ===
+				'1',
+			[image.id],
+			{ timeout: 20_000, message: 'usage badge on the card' },
+		);
+		await library.click(`[data-media-item="${image.id}"] + .ml-usage-anchor [data-media-usage-badge]`);
+		await library.waitFor(() =>
+			[...document.querySelectorAll('[data-media-usage-list] a')].some((a) => a.textContent === 'Home'),
+		);
+		const href = await library.eval(() => document.querySelector('[data-media-usage-list] a').getAttribute('href'));
+		assert.equal(href, `/dashboard/content-management/edit?edit=${pageId}`);
+		assert.equal(
+			await library.eval(
+				(id) => Boolean(document.querySelector(`[data-media-item="${id}"] + .ml-usage-anchor`)),
+				pdf.id,
+			),
+			true,
+			'the document used in rich text has a badge too',
+		);
+		assert.deepEqual(library.errors, []);
 	});
 
 	await step('Remove clears a media field', async () => {

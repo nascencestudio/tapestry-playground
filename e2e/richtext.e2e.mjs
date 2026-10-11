@@ -239,12 +239,12 @@ try {
 
 	await step("Tapestry's Undo updates the field (values changed from outside sync in)", async () => {
 		const before = JSON.stringify(await body(page));
-		await page.click('.tp-toolbar [title^="Undo"]');
+		await page.click('[data-tapestry-undo]');
 		const after = JSON.stringify(await body(page));
 		assert.notEqual(after, before);
 		const fieldText = await page.eval((sel) => document.querySelector(sel).textContent, FIELD);
 		assert.equal(fieldText.includes('cell'), after.includes('"cell"'), 'field content follows the document');
-		await page.click('.tp-toolbar [title^="Redo"]');
+		await page.click('[data-tapestry-redo]');
 		assert.equal(JSON.stringify(await body(page)), before);
 	});
 

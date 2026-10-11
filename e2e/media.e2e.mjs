@@ -95,6 +95,11 @@ try {
 		assert.equal((await rows()).find((r) => r.id === png.id).alt, 'A purple rectangle');
 		const usage = await page.eval(() => document.querySelector('[data-media-usage]').textContent);
 		assert.match(usage, /no pages/);
+		// It stays in the details panel (a shared class name once made it float over the toolbar).
+		assert.equal(
+			await page.eval(() => getComputedStyle(document.querySelector('[data-media-usage]')).position),
+			'static',
+		);
 	});
 
 	await step('files are served publicly with safe headers', async () => {

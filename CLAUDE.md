@@ -20,15 +20,13 @@ Canvas), [docs/upstream/](docs/upstream/) (issue drafts), and the deployment gui
 
 ## Status
 
-- Committed: Tapestry `0.1.1` and media library `0.1.1` from npm. Locally (uncommitted, waiting for
-  releases): media library `0.2.0` (npm), Tapestry and **tapestry-seo** as `file:` checkouts
-  (Tapestry 0.3.0 with `listPublicPages()`; tapestry-seo stage 1), `features.robotsTXT: false` and
-  `tapestrySeo()` in studiocms.config, and the waiting tests (folders, seo, a11y states, chain,
-  media-tapestry checks, undo/redo selectors). Once Tapestry 0.3.0 and tapestry-seo are on npm:
-  switch to those versions, commit on a branch, push.
+- All from npm: Tapestry `0.3.0`, media library `0.2.0`, tapestry-seo `0.1.0`
+  (`features.robotsTXT: false` + `tapestrySeo()` in studiocms.config). Our three packages are in
+  `minimumReleaseAgeExclude`.
 - 0.2.0 of the media library migrated the dev media directory one way (backup in
   `backups/2026-10-09-before-folders/`, gitignored).
-- Verified 2026-10-11: all 25 e2e suites (with tapestry-seo).
+- Verified 2026-10-11: all 25 e2e suites, every package from npm.
+- Not on GitHub yet: create `nascencestudio/tapestry-playground`, push, then add the rulesets.
 
 ## Rules
 

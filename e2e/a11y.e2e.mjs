@@ -2,7 +2,8 @@
 // WCAG 2.2 A/AA plus axe's best practices, on the public page (as a visitor) and on Tapestry's
 // own UI in the editor in many states (settings, link and list fields, rich text, popovers,
 // translations, history, compare, schedule, JSON view, save as pattern) and on the media
-// library's page, in the dashboard's dark and light themes. StudioCMS's own dashboard chrome is
+// library's page (incl. a folder's menu, its new-subfolder field and the delete dialog) and the
+// Tapestry SEO settings page (every crawler list open), in the dashboard's dark and light themes. StudioCMS's own dashboard chrome is
 // out of scope (it's StudioCMS's).
 //
 // Prereqs: same as editor.e2e.mjs. Resets the demo home page before and after, and switches the
@@ -60,20 +61,59 @@ const editorStates = async (page, theme) => {
 		await audit(page, '.tp-editor', `${theme}: ${name}`);
 		await page.press('Escape');
 	}
+	// Modals: audit the dialog (the page behind it is inert and dimmed by the backdrop).
 	await page.click('[data-tapestry-history-toggle]');
-	await audit(page, '.tp-editor', `${theme}: history`);
+	await page.waitFor(() => document.querySelector('[data-tapestry-history-modal]')?.open === true);
+	await audit(page, '[data-tapestry-history-modal]', `${theme}: history`);
 	if (await page.eval(() => Boolean(document.querySelector('[data-tapestry-compare="0"]')))) {
 		await page.click('[data-tapestry-compare="0"]');
-		await audit(page, '.tp-editor', `${theme}: compare`);
+		await page.waitFor(() => document.querySelector('[data-tapestry-compare-modal]')?.open === true);
+		await audit(page, '[data-tapestry-compare-modal]', `${theme}: compare`);
 	}
 	await openEditor(page, pageId);
 	await page.click('[data-tapestry-schedule-toggle]');
 	await audit(page, '.tp-editor', `${theme}: schedule`);
+	await page.click('[data-tapestry-schedule-toggle]'); // close it
 	await page.click('[data-tapestry-json-toggle]');
-	await audit(page, '.tp-editor', `${theme}: JSON view`);
+	await page.waitFor(() => document.querySelector('[data-tapestry-json-modal]')?.open === true);
+	await audit(page, '[data-tapestry-json-modal]', `${theme}: JSON view`);
+	await page.goto(`${BASE}/dashboard/plugins@nascencestudio/tapestry-seo`);
+	await page.waitFor(() => Boolean(document.querySelector('[data-seo-settings]')));
+	await page.eval(() => {
+		for (const details of document.querySelectorAll('[data-seo-settings] details')) details.open = true;
+	});
+	await audit(page, '[data-seo-settings]', `${theme}: SEO settings`);
 	await page.goto(`${BASE}${MEDIA_PAGE}`);
 	await page.waitFor(() => Boolean(document.querySelector('[data-media-library]')));
 	await audit(page, '[data-media-library]', `${theme}: media library`);
+	// A selected folder with its "new subfolder" form open (media library folders, ADR 0100).
+	const folderId = await page.eval(async () => {
+		const response = await fetch('/_media/api/folders', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ name: `A11y ${Date.now()}` }),
+		});
+		return (await response.json()).folder.id;
+	});
+	try {
+		await page.goto(`${BASE}${MEDIA_PAGE}`);
+		await page.waitFor((id) => Boolean(document.querySelector(`[data-media-folder="${id}"]`)), [folderId]);
+		await page.click(`[data-media-folder="${folderId}"]`);
+		await page.click(`[data-media-folder-menu="${folderId}"]`);
+		await page.waitFor(() => Boolean(document.querySelector('[role="menu"]')));
+		await audit(page, '[data-media-library]', `${theme}: media library folder menu`);
+		await page.click('[role="menu"] [data-media-folder-action="subfolder"]');
+		await page.waitFor(() => Boolean(document.querySelector('[data-media-folder-name="subfolder"]')));
+		await audit(page, '[data-media-library]', `${theme}: media library folder`);
+		await page.click('[data-media-folder-cancel="subfolder"]');
+		await page.click(`[data-media-folder-menu="${folderId}"]`);
+		await page.click('[role="menu"] [data-media-folder-action="delete"]');
+		await page.waitFor(() => document.querySelector('[data-media-delete-folder]')?.open === true);
+		await audit(page, '[data-media-delete-folder]', `${theme}: delete folder dialog`);
+		await page.click('[data-media-delete-folder-cancel]');
+	} finally {
+		await page.eval((id) => fetch(`/_media/api/folders/${id}`, { method: 'DELETE' }).then(() => {}), folderId);
+	}
 };
 
 const setTheme = (page, theme) =>
