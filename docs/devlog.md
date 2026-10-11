@@ -6,6 +6,32 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-11: Session 28: Tapestry SEO, stage 1
+
+**Request:** an SEO plugin with admin control over robots.txt (AI crawlers and others) and a sitemap;
+later per-page SEO. Decisions (the user): one plugin named **tapestry-seo**, tied to Tapestry; robots.txt
+only (no enforcement); crawler list bundled and updated through releases; per-page SEO via an SEO
+button in Tapestry's editor (stage 2), saved immediately. tapestry-seo ADR 0001, Tapestry ADR 0039.
+
+### Done
+- Tapestry (branch `public-pages`, 0.3.0): `listPublicPages()`.
+- New repo `../tapestry-seo` (stage 1): crawler data (ai.robots.txt + curated), settings page,
+  robots.txt, page sitemap via StudioCMS's sitemap hook, build stop when StudioCMS's robots.txt is on.
+- Playground: plugin added, `features.robotsTXT: false`, new `seo` suite (8 steps), SEO settings page
+  in the a11y audit. All 25 suites pass.
+
+### Learned
+- StudioCMS's robots.txt is under `features` (top-level ignored) and is a static file written at build
+  time: invisible in dev, wins in production. The plugin's build check caught the misplaced setting.
+- StudioCMS's middleware fetches npm for its version check; while the network dropped, **every page
+  returned 500** (logins too). Restart the dev server once the connection is back.
+- e2e: after a form save, remove the old "Saved" notice before waiting for the new one (the old one
+  made the test move on early).
+
+### Next
+1. User: release Tapestry 0.3.0; create the `nascencestudio/tapestry-seo` repo (push, first release with
+   a token, then trusted publisher). Then stage 2.
+
 ## 2026-10-09: Session 27: History and JSON in modals (Tapestry)
 
 - History, Compare and JSON open in modals (Tapestry commit "…open in modals"). Tests: publishing
