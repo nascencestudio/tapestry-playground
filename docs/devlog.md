@@ -63,6 +63,9 @@ canvas that matches the public page's background (the page was dark, the canvas 
   too). Checked: on a scratch file, a held read makes a write fail with SQLITE_BUSY in rollback mode
   and succeed in WAL; in the editor, a save succeeds while a read is held. Worth reporting upstream
   (auth-kit's session check doesn't release its transaction on errors), only when the user asks.
+- After rebasing PR #2, the publishing suite's compare step failed on the runner: the wait accepted
+  a preview frame whose heading was there while it was still loading, and the next check (which
+  requires a fully loaded frame) got null. The wait now uses the same condition.
 - Done: Tapestry 0.3.1 is on npm (provenance); the playground uses it, all 25 suites pass. Next: the
   user creates `nascencestudio/tapestry-playground`, pushes, and adds the `main` ruleset after the
   first CI run.

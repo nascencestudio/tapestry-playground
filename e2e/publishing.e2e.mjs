@@ -216,11 +216,14 @@ try {
 				[which],
 			);
 		await page.eval(() => document.querySelector('[data-tapestry-compare]').scrollIntoView());
+		// Wait for fully loaded frames, the same condition frameHeading() checks below (on a slow runner the
+		// heading was there while the frame was still loading, and the check right after got null).
 		await page.waitFor(
 			(b, a) => {
-				const h = (w) =>
-					document.querySelector(`[data-tapestry-compare-frame="${w}"]`)?.contentDocument?.querySelector('h1')
-						?.textContent;
+				const h = (w) => {
+					const d = document.querySelector(`[data-tapestry-compare-frame="${w}"]`)?.contentDocument;
+					return d?.readyState === 'complete' ? d.querySelector('h1')?.textContent : undefined;
+				};
 				return h('before') === b && h('after') === a;
 			},
 			[before, after],
