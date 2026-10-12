@@ -40,6 +40,10 @@ canvas that matches the public page's background (the page was dark, the canvas 
 - The next CI run failed on the first screenshot: `E2E_SCREENSHOTS` pointed to a directory that didn't
   exist (screenshots had never been on locally). `page.screenshot()` creates it now; all 25 suites
   pass with screenshots on.
+- Then the site suite's light-mode check failed: the theme toggle flips, and a fresh account starts
+  light. It now switches only when needed. A full rehearsal of the CI job on a fresh checkout (git
+  worktree, new database, port 4500: setup, seed, 25 suites with screenshots, performance budget)
+  passed end to end before pushing again.
 - Done: Tapestry 0.3.1 is on npm (provenance); the playground uses it, all 25 suites pass. Next: the
   user creates `nascencestudio/tapestry-playground`, pushes, and adds the `main` ruleset after the
   first CI run.
