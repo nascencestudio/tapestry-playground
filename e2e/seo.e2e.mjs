@@ -22,6 +22,9 @@ async function save(page, selector = '[data-seo-save]') {
 		timeout: 15_000,
 		message: 'saved',
 	});
+	// The reloaded page's script (it enables a category's checkboxes) runs before the load completes;
+	// on a slow runner the next click could otherwise land before it.
+	await page.waitFor(() => document.readyState === 'complete', [], { message: 'settings page loaded' });
 }
 
 const chrome = await launchChrome({ headless: !process.env.HEADED });
@@ -41,7 +44,13 @@ try {
 		const visitor = await get(SETTINGS_PAGE);
 		assert.notEqual(visitor.status, 200);
 		await page.goto(`${BASE}${SETTINGS_PAGE}`);
-		await page.waitFor(() => Boolean(document.querySelector('[data-seo-settings]')), [], { timeout: 20_000 });
+		await page.waitFor(
+			() => Boolean(document.querySelector('[data-seo-settings]')) && document.readyState === 'complete',
+			[],
+			{
+				timeout: 20_000,
+			},
+		);
 		const categories = await page.eval(() =>
 			[...document.querySelectorAll('[data-seo-category]')].map((el) => el.getAttribute('data-seo-category')),
 		);

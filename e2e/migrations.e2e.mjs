@@ -79,7 +79,29 @@ try {
 
 	await step('the editor shows the upgraded props', async () => {
 		await openEditor(page, pageId);
-		await page.click('[data-tp-row="counter-old"] .tp-row__label');
+		// On a slow runner the canvas can still be loading and move the layout between measuring the row
+		// and clicking it: wait for the canvas, then click until the row is selected.
+		await page.waitFor(() => document.querySelector('.tp-canvas__status')?.dataset.state === 'ready', [], {
+			timeout: 30_000,
+			message: 'canvas ready',
+		});
+		for (let attempt = 1; ; attempt++) {
+			await page.click('[data-tp-row="counter-old"] .tp-row__label');
+			const selected = await page
+				.waitFor(
+					() => document.querySelector('[data-tp-row="counter-old"]')?.getAttribute('aria-selected') === 'true',
+					[],
+					{
+						timeout: 3000,
+					},
+				)
+				.then(
+					() => true,
+					() => false,
+				);
+			if (selected) break;
+			if (attempt >= 3) throw new Error('the Counter row did not get selected');
+		}
 		const value = await page.waitFor(
 			() => document.querySelector('#tp-field-counter-old-initial')?.value || false,
 			[],

@@ -156,6 +156,9 @@ export class CDP {
 		const { sessionId } = await this.send('Target.attachToTarget', { targetId, flatten: true });
 		const page = new Page(this, sessionId);
 		await Promise.all(['Page.enable', 'Runtime.enable', 'Network.enable'].map((m) => page.send(m)));
+		// E2E_CPU_THROTTLE=4 runs the page 4× slower, like a CI runner, to find timing assumptions locally.
+		const throttle = Number(process.env.E2E_CPU_THROTTLE);
+		if (throttle > 1) await page.send('Emulation.setCPUThrottlingRate', { rate: throttle });
 		return page;
 	}
 }
