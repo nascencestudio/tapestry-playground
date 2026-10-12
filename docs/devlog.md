@@ -44,6 +44,10 @@ canvas that matches the public page's background (the page was dark, the canvas 
   light. It now switches only when needed. A full rehearsal of the CI job on a fresh checkout (git
   worktree, new database, port 4500: setup, seed, 25 suites with screenshots, performance budget)
   passed end to end before pushing again.
+- Dependabot's npm PR (#2) failed the a11y suite: axe-core 4.14 flags the rich text subscript and
+  superscript buttons (visible "X₂"/"X²" not in their names "Subscript"/"Superscript",
+  `label-content-name-mismatch`). Tapestry 0.3.2 draws them as icons; the playground uses 0.3.2, and
+  PR #2 passes once rebased on it.
 - Done: Tapestry 0.3.1 is on npm (provenance); the playground uses it, all 25 suites pass. Next: the
   user creates `nascencestudio/tapestry-playground`, pushes, and adds the `main` ruleset after the
   first CI run.

@@ -20,7 +20,7 @@ Canvas), [docs/upstream/](docs/upstream/) (issue drafts), and the deployment gui
 
 ## Status
 
-- All from npm: Tapestry `0.3.1`, media library `0.2.0`, tapestry-seo `0.1.0`
+- All from npm: Tapestry `0.3.2`, media library `0.2.0`, tapestry-seo `0.1.0`
   (`features.robotsTXT: false` + `tapestrySeo()` in studiocms.config). Our three packages are in
   `minimumReleaseAgeExclude`.
 - 0.2.0 of the media library migrated the dev media directory one way (backup in
