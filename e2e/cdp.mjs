@@ -38,10 +38,20 @@ export async function launchChrome({ headless = true } = {}) {
 		...(headless ? ['--headless=new'] : []),
 		'about:blank',
 	];
-	const child = spawn(executable, args, { stdio: 'ignore' });
+	const child = spawn(executable, args, { stdio: ['ignore', 'ignore', 'pipe'] });
+	// Chrome's own messages, for the error below (the last few KB are enough).
+	let stderr = '';
+	child.stderr.on('data', (chunk) => {
+		stderr = (stderr + chunk).slice(-4000);
+	});
+	let exited = null;
+	child.on('exit', (code, signal) => {
+		exited = signal ?? `exit code ${code}`;
+	});
 
+	// Up to 30 s: a cold CI runner's first start can take well over 10 s.
 	let wsUrl;
-	for (let attempt = 0; attempt < 100 && !wsUrl; attempt++) {
+	for (let attempt = 0; attempt < 300 && !wsUrl && !exited; attempt++) {
 		await sleep(100);
 		try {
 			const [port, path] = (await readFile(join(userDataDir, 'DevToolsActivePort'), 'utf8')).split('\n');
@@ -53,8 +63,12 @@ export async function launchChrome({ headless = true } = {}) {
 	if (!wsUrl) {
 		child.kill();
 		await rm(userDataDir, { recursive: true, force: true });
-		throw new Error('Chrome did not start remote debugging.');
+		const why = exited ? `Chrome exited (${exited})` : 'Chrome did not start remote debugging within 30 s';
+		throw new Error(`${why}.${stderr.trim() ? `\nChrome said:\n${stderr.trim()}` : ''}`);
 	}
+	// Keep draining Chrome's messages (a full pipe would block it) but stop collecting them.
+	child.stderr.removeAllListeners('data');
+	child.stderr.resume();
 	return {
 		wsUrl,
 		async close() {

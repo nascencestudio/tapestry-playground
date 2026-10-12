@@ -48,6 +48,10 @@ canvas that matches the public page's background (the page was dark, the canvas 
   superscript buttons (visible "X₂"/"X²" not in their names "Subscript"/"Superscript",
   `label-content-name-mismatch`). Tapestry 0.3.2 draws them as icons; the playground uses 0.3.2, and
   PR #2 passes once rebased on it.
+- `main`'s run after merging 0.3.2 failed before any test: "Chrome did not start remote debugging"
+  (the same code had just passed on the PR). The harness waited only 10 s and discarded Chrome's
+  output. It now waits up to 30 s, stops at once if Chrome exits, and puts Chrome's messages in the
+  error.
 - Done: Tapestry 0.3.1 is on npm (provenance); the playground uses it, all 25 suites pass. Next: the
   user creates `nascencestudio/tapestry-playground`, pushes, and adds the `main` ruleset after the
   first CI run.
