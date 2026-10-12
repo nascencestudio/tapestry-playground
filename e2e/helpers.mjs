@@ -149,8 +149,16 @@ export async function saveAndWait(page, pageId, saveSelector = '#edit-button') {
 	);
 	await page.click(saveSelector);
 	const expected = await field(page);
-	const { response } = await saved;
-	assert.equal(response.status, 200, `StudioCMS save answered HTTP ${response.status}`);
+	const { response, requestId } = await saved;
+	if (response.status !== 200) {
+		// StudioCMS's reason (e.g. a locked database, known issue #23), so a failure explains itself.
+		await new Promise((r) => setTimeout(r, 300)); // the body arrives after the headers
+		const body = await page
+			.send('Network.getResponseBody', { requestId })
+			.then((r) => r.body.slice(0, 500))
+			.catch(() => '(no body)');
+		assert.fail(`StudioCMS save answered HTTP ${response.status}: ${body}`);
+	}
 	const stored = await storedContent(pageId);
 	if (stored !== expected) {
 		const summary = (json) => {

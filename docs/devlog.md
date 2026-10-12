@@ -52,6 +52,10 @@ canvas that matches the public page's background (the page was dark, the canvas 
   (the same code had just passed on the PR). The harness waited only 10 s and discarded Chrome's
   output. It now waits up to 30 s, stops at once if Chrome exits, and puts Chrome's messages in the
   error.
+- The PR's next run failed in the publishing suite: every save answered 400 (reset, retry and the
+  final cleanup minutes later), i.e. the database stayed locked (known issue #23; reproduced locally
+  by holding a write transaction: `{"error":"Database query failed"}`). `saveAndWait()` now includes
+  StudioCMS's response body. Cause on the runner still open: needs the CI dev server log.
 - Done: Tapestry 0.3.1 is on npm (provenance); the playground uses it, all 25 suites pass. Next: the
   user creates `nascencestudio/tapestry-playground`, pushes, and adds the `main` ruleset after the
   first CI run.
