@@ -133,8 +133,11 @@ Comments in the site and e2e code that cite `docs/decisions/…`, `docs/known-is
   port, `curl` the page logged out and list `<link>`/`<style>`/`<script>` tags (dev output is
   not representative). To trace why a module is in a page's graph, a temporary Vite plugin
   replaying Astro's walk (`getModuleInfo` importers, page boundaries) works well (devlog session 14).
-- Don't poll the SQLite DB while StudioCMS is saving (rollback journal → save fails with
-  400). e2e `saveAndWait()` waits for the save response instead.
+- The SQLite database runs in **WAL mode** (`scripts/sqlite-wal.mjs`, run by `pnpm migrate` and the
+  Docker entrypoint). With the default rollback journal any open read blocks every write: CI froze
+  when StudioCMS's session check failed mid-transaction and kept its lock (every save 400 until a
+  restart, known issue #23). A database created another way must run the script once (server stopped).
+  e2e `saveAndWait()` still waits for the save response rather than polling the database.
 - StudioCMS toasts cover the editor toolbar briefly; e2e `page.click()` waits until
   the target isn't covered.
 - Toolbar menus (text style, alignment) are menu buttons, not `<select>`s; in e2e open

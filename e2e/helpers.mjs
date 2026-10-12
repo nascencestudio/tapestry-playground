@@ -137,9 +137,10 @@ export async function openEditor(page, pageId) {
  * what the editor has *after* the click (Publish rewrites the content as part
  * of the click).
  *
- * We wait on the HTTP response rather than polling the database: the playground
- * SQLite file uses a rollback journal, so a test read that overlaps the
- * server's write makes StudioCMS's update fail (it answers 400).
+ * We wait on the HTTP response rather than polling the database: with SQLite's
+ * rollback journal, a test read that overlaps the server's write makes
+ * StudioCMS's update fail (it answers 400). The playground now uses WAL
+ * (scripts/sqlite-wal.mjs), where reads don't block writes, but don't rely on it.
  */
 export async function saveAndWait(page, pageId, saveSelector = '#edit-button') {
 	const saved = page.cdp.waitForEvent(
@@ -149,8 +150,16 @@ export async function saveAndWait(page, pageId, saveSelector = '#edit-button') {
 	);
 	await page.click(saveSelector);
 	const expected = await field(page);
-	const { response } = await saved;
-	assert.equal(response.status, 200, `StudioCMS save answered HTTP ${response.status}`);
+	const { response, requestId } = await saved;
+	if (response.status !== 200) {
+		// StudioCMS's reason (e.g. a locked database, known issue #23), so a failure explains itself.
+		await new Promise((r) => setTimeout(r, 300)); // the body arrives after the headers
+		const body = await page
+			.send('Network.getResponseBody', { requestId })
+			.then((r) => r.body.slice(0, 500))
+			.catch(() => '(no body)');
+		assert.fail(`StudioCMS save answered HTTP ${response.status}: ${body}`);
+	}
 	const stored = await storedContent(pageId);
 	if (stored !== expected) {
 		const summary = (json) => {
