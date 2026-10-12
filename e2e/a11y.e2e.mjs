@@ -66,6 +66,15 @@ const editorStates = async (page, theme) => {
 		await page.press('Escape');
 	}
 	// Modals: audit the dialog (the page behind it is inert and dimmed by the backdrop).
+	await page.click('[data-tapestry-seo-toggle]');
+	await page.waitFor(() => Boolean(document.querySelector('[data-seo-dialog] [data-seo-save]')), [], { timeout: 15_000 });
+	await page.eval(() => {
+		document.querySelector('#seo-title').value = '';
+		document.querySelector('[data-seo-dialog] .seo-advanced').open = true;
+	});
+	await audit(page, '[data-seo-dialog]', `${theme}: SEO dialog`);
+	await page.press('Escape');
+	await page.waitFor(() => !document.querySelector('[data-seo-dialog]'));
 	await page.click('[data-tapestry-history-toggle]');
 	await page.waitFor(() => document.querySelector('[data-tapestry-history-modal]')?.open === true);
 	await audit(page, '[data-tapestry-history-modal]', `${theme}: history`);

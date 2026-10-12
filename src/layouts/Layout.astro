@@ -4,11 +4,16 @@
 import markdownCss from 'studiocms:md/styles-inline';
 import type { Viewer } from '@nascencestudio/tapestry';
 import AdminBar from '@nascencestudio/tapestry/AdminBar.astro';
-import type { Language, PageTranslation, PublishingInfo } from '@nascencestudio/tapestry/page';
+import type { Language, PageResult, PageTranslation, PublishingInfo } from '@nascencestudio/tapestry/page';
+import Seo from '@nascencestudio/tapestry-seo/Seo.astro';
 
 interface Props {
-	title: string;
-	description?: string | null;
+	/** getPage()'s result: <Seo> writes the page's title, description and link-preview tags from it. */
+	result?: PageResult;
+	/** For routes without a StudioCMS page (the 404 page). */
+	title?: string;
+	/** Keep search engines away from this route (the 404 page). */
+	noindex?: boolean;
 	/** From getPage(); enables the admin bar for logged-in editors. */
 	viewer?: Viewer;
 	page?: { id: string; title: string; draft?: boolean | null; package?: string };
@@ -18,8 +23,8 @@ interface Props {
 	language?: Language;
 	translations?: PageTranslation[];
 }
-const { title, description, viewer, page, publishing, language, translations = [] } = Astro.props;
-// Other language versions: a switcher and hreflang links (only when there's more than this one).
+const { result, title, noindex, viewer, page, publishing, language, translations = [] } = Astro.props;
+// Other language versions: a switcher (only when there is more than this one; <Seo> writes the hreflang links).
 const versions = translations.length > 1 ? translations : [];
 ---
 
@@ -29,9 +34,7 @@ const versions = translations.length > 1 ? translations : [];
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-		<title>{title}</title>
-		{description && <meta name="description" content={description} />}
-		{versions.map((t) => <link rel="alternate" hreflang={t.lang} href={new URL(t.path, Astro.url).href} />)}
+		<Seo page={result} title={title} noindex={noindex} />
 		{page?.package === 'studiocms/markdown' && <style is:inline set:html={markdownCss} />}
 	</head>
 	<body class="site">
