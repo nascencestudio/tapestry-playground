@@ -66,6 +66,12 @@ canvas that matches the public page's background (the page was dark, the canvas 
 - After rebasing PR #2, the publishing suite's compare step failed on the runner: the wait accepted
   a preview frame whose heading was there while it was still loading, and the next check (which
   requires a fully loaded frame) got null. The wait now uses the same condition.
+- Then the migrations suite: a row click right after opening the editor missed (the canvas was still
+  loading and moved the layout). `openEditor()` now waits for the canvas (up to 30 s), and the step
+  confirms the selection. New `E2E_CPU_THROTTLE=4` (CDP CPU throttling) runs the suites like a slow
+  runner: all passed except the SEO suite, where a click right after a save landed before the page's
+  script attached its handler (checkboxes stayed disabled). The suite waits for the full load now;
+  tapestry-seo 0.1.1 syncs the checkboxes when its script starts (a real, if rare, bug for people too).
 - Done: Tapestry 0.3.1 is on npm (provenance); the playground uses it, all 25 suites pass. Next: the
   user creates `nascencestudio/tapestry-playground`, pushes, and adds the `main` ruleset after the
   first CI run.

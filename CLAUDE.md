@@ -66,7 +66,7 @@ docs/                     ← devlog, research, upstream drafts, guides (develop
 | `pnpm migrate` | Apply StudioCMS DB migrations |
 | `CMS_SETUP=1 pnpm dev` + `node scripts/setup-site.mjs` | First-time setup of a fresh DB (writes `.dev-credentials`); restart without `CMS_SETUP` |
 | `pnpm seed` | (Re)create the demo Tapestry home page (running servers cache pages for 5 min) |
-| `pnpm e2e` | 25 browser suites in headless Chrome (dev server running; `HEADED=1`, `E2E_SCREENSHOTS=dir`) |
+| `pnpm e2e` | 25 browser suites in headless Chrome (dev server running; `HEADED=1`, `E2E_SCREENSHOTS=dir`, `E2E_CPU_THROTTLE=4` to run like a slow CI runner) |
 | `pnpm build`, then `PORT=4600 node dist/server/entry.mjs` (with `.env` loaded) + `BASE_URL=http://127.0.0.1:4600 pnpm budget` | Performance budget |
 | `pnpm typecheck` / `pnpm lint` / `pnpm audit` | `astro check` / Biome / vulnerabilities |
 | `docker build --build-arg SITE_URL=… -t nascence-site .` | Production image (docs/guides/deployment.md) |
@@ -180,6 +180,9 @@ Comments in the site and e2e code that cite `docs/decisions/…`, `docs/known-is
   stays in the foreground. Hence `--background` in the `dev` script: the first CI run hung for 30
   minutes on `CMS_SETUP=1 pnpm dev`, which worked in every agent session. `--background` waits until
   the server answers (up to 30 s).
+- CI runners are much slower than a dev Mac: timing assumptions pass locally and fail there. Before
+  pushing e2e changes, run `E2E_CPU_THROTTLE=4 pnpm e2e`. `openEditor()` waits for the canvas to finish
+  loading (it moves the layout); click-then-check steps should confirm the result (e.g. `aria-selected`).
 - After changing a `file:` dependency, `pnpm exec …` (including `astro dev stop`) can refuse to run
   ("a linked package is out of date") and the old dev server keeps serving old code. Run
   `pnpm install`, restart, and confirm `astro dev status` shows a fresh uptime.

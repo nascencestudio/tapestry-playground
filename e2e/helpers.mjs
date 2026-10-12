@@ -124,11 +124,16 @@ export async function openEditor(page, pageId) {
 			await page.waitFor(() => document.querySelector('.tp-editor')?.getBoundingClientRect().width > 0, [], {
 				timeout: attempt < 3 ? 3000 : 10_000,
 			});
-			return;
+			break;
 		} catch (error) {
 			if (attempt >= 3) throw error;
 		}
 	}
+	// Let the canvas finish loading first: on a slow runner it moves the layout while it loads, so a
+	// click measured before that lands somewhere else. No canvas (or still loading after 30 s): go on.
+	await page
+		.waitFor(() => document.querySelector('.tp-canvas__status')?.dataset.state !== 'loading', [], { timeout: 30_000 })
+		.catch(() => {});
 }
 
 /**
