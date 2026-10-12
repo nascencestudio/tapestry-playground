@@ -55,7 +55,14 @@ canvas that matches the public page's background (the page was dark, the canvas 
 - The PR's next run failed in the publishing suite: every save answered 400 (reset, retry and the
   final cleanup minutes later), i.e. the database stayed locked (known issue #23; reproduced locally
   by holding a write transaction: `{"error":"Database query failed"}`). `saveAndWait()` now includes
-  StudioCMS's response body. Cause on the runner still open: needs the CI dev server log.
+  StudioCMS's response body.
+- The CI dev server log showed the cause: a page creation and a session check wrote at the same time,
+  StudioCMS's session check failed (`SessionError`) and kept its read lock, and with SQLite's rollback
+  journal one open read blocks all writes, so every later save answered 400. Fix: the database runs
+  in WAL mode (`scripts/sqlite-wal.mjs`, from `pnpm migrate` and the Docker entrypoint, so production
+  too). Checked: on a scratch file, a held read makes a write fail with SQLITE_BUSY in rollback mode
+  and succeed in WAL; in the editor, a save succeeds while a read is held. Worth reporting upstream
+  (auth-kit's session check doesn't release its transaction on errors), only when the user asks.
 - Done: Tapestry 0.3.1 is on npm (provenance); the playground uses it, all 25 suites pass. Next: the
   user creates `nascencestudio/tapestry-playground`, pushes, and adds the `main` ruleset after the
   first CI run.

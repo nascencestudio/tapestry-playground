@@ -12,6 +12,7 @@ mkdir -p "${MEDIA_DIR:-/data/media}"
 
 if [ "${SKIP_MIGRATIONS:-}" != "1" ]; then
 	node node_modules/studiocms/studiocms-cli.mjs migrate --latest
+	node scripts/sqlite-wal.mjs # readers never block writers (known issue #23)
 fi
 
 exec "$@"

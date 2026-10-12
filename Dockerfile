@@ -36,7 +36,9 @@ RUN --mount=type=cache,id=pnpm-store,target=/pnpm/store \
     rm -rf node_modules \
  && pnpm install --frozen-lockfile --prod \
  && mkdir /app \
- && cp -R package.json node_modules dist /app/
+ && mkdir /app/scripts \
+ && cp -R package.json node_modules dist /app/ \
+ && cp scripts/sqlite-wal.mjs /app/scripts/
 
 # ---------------------------------------------------------------------------
 FROM node:${NODE_VERSION}-bookworm-slim AS runtime
