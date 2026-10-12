@@ -8,8 +8,10 @@
 # - Cooldown matches pnpm-workspace.yaml's minimumReleaseAge (3 days): brand-new releases
 #   are where hijacked packages show up. CI then installs with the frozen lockfile, so
 #   pnpm's trust and build-script policies apply to every Dependabot PR as well.
-# - Patched dependencies (patches/) fail the install when they stop applying, so an update
-#   to one of them can't merge without the patch being re-checked.
+# - Patched dependencies (patches/) are ignored: their patch is keyed to the exact version in
+#   pnpm-workspace.yaml, so Dependabot's update fails (it did for astro 7.3.5 → 7.3.8). Update
+#   them by hand: re-create the patch for the new version (or drop it if the fix landed upstream),
+#   change the patchedDependencies key, and remove the package from `ignore` here if unpatched.
 version: 2
 updates:
   - package-ecosystem: github-actions
@@ -32,6 +34,11 @@ updates:
       semver-major-days: 14
     versioning-strategy: increase
     open-pull-requests-limit: 5
+    ignore: # patched (see above and pnpm-workspace.yaml)
+      - dependency-name: astro
+      - dependency-name: studiocms
+      - dependency-name: '@studiocms/md'
+      - dependency-name: '@withstudiocms/sdk'
     groups:
       minor-and-patch:
         update-types: [minor, patch]

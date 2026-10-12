@@ -31,6 +31,19 @@ canvas that matches the public page's background (the page was dark, the canvas 
 - Vite inlines some SVGs as base64 and others URL-encoded.
 
 ### Next
+- Pushed to GitHub (nascencestudio/tapestry-playground). Dependabot's first npm run failed on astro
+  (7.3.5 → 7.3.8): the patch is keyed to the exact version. Patched packages are now in Dependabot's
+  `ignore` list and get updated by hand (astro 7.3.8 is pending: re-check or re-create the patch).
+- The first CI e2e run hung on `CMS_SETUP=1 pnpm dev` until its 30-minute limit: Astro 7 backgrounds
+  the dev server automatically only for AI agents, so it never returned on the runner (or for a
+  person following the README). The `dev` script now passes `--background`.
+- The next CI run failed on the first screenshot: `E2E_SCREENSHOTS` pointed to a directory that didn't
+  exist (screenshots had never been on locally). `page.screenshot()` creates it now; all 25 suites
+  pass with screenshots on.
+- Then the site suite's light-mode check failed: the theme toggle flips, and a fresh account starts
+  light. It now switches only when needed. A full rehearsal of the CI job on a fresh checkout (git
+  worktree, new database, port 4500: setup, seed, 25 suites with screenshots, performance budget)
+  passed end to end before pushing again.
 - Done: Tapestry 0.3.1 is on npm (provenance); the playground uses it, all 25 suites pass. Next: the
   user creates `nascencestudio/tapestry-playground`, pushes, and adds the `main` ruleset after the
   first CI run.
