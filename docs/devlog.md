@@ -28,8 +28,8 @@ Tapestry ADR 0040, tapestry-seo ADR 0002.
 - `noindex` routes shouldn't carry a self-canonical (the 404 page had one pointing at itself).
 
 ### Next
-- Releases in order: Tapestry 0.4.0 → tapestry-seo 0.2.0 (dev dependency and peer to 0.4.0) → the
-  playground switches both from `file:` to npm, runs all suites, and the branch is pushed.
+- Released: Tapestry 0.4.0 and tapestry-seo 0.2.0 (2026-10-13). The playground uses both from npm;
+  all 26 suites pass. Push the `page-seo` branch.
 
 ## 2026-10-11: Session 29: Component icons, canvas light/dark, content check badge (Tapestry 0.3.1)
 
