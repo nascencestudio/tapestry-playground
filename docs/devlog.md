@@ -6,6 +6,31 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-12: Session 30: Per-page SEO (tapestry-seo 0.2.0, Tapestry 0.4.0)
+
+**Request:** the SEO button in Tapestry's editor for each page's SEO tags. Decisions (the user): the
+essential fields (search title, description, social image, hide from search engines, canonical under
+Advanced), site defaults on the settings page, search and link previews, editors may change SEO.
+Tapestry ADR 0040, tapestry-seo ADR 0002.
+
+### Done
+- Tapestry 0.4.0 (branch `seo-button`): `seo` option, `virtual:tapestry/seo-client`, SEO button in
+  the purple bar (only with tapestry-seo installed); known issue #23 updated with the WAL fix.
+- tapestry-seo 0.2.0 (branch `page-seo`): the SEO dialog (Preact, saves at once via `/_seo/page`),
+  `<Seo>` for `<head>`, Site defaults section, sitemap leaves out noindex pages and pages with a
+  canonical elsewhere.
+- Playground (branch `page-seo`): `Layout.astro` uses `<Seo page={result}>` (the 404 page passes a
+  title and `noindex`); new `seo-page` suite (9 steps); a11y audits the SEO dialog in both themes.
+
+### Learned
+- tapestry-seo reaches the media library through Tapestry's virtual modules (both plugins share the
+  Vite build), so it needs no dependency on the media library.
+- `noindex` routes shouldn't carry a self-canonical (the 404 page had one pointing at itself).
+
+### Next
+- Released: Tapestry 0.4.0 and tapestry-seo 0.2.0 (2026-10-13). The playground uses both from npm;
+  all 26 suites pass. Push the `page-seo` branch.
+
 ## 2026-10-11: Session 29: Component icons, canvas light/dark, content check badge (Tapestry 0.3.1)
 
 **Request:** icons for every library component (like "Two columns"), a cleaner Button icon, and a

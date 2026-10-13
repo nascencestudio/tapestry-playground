@@ -194,11 +194,11 @@ importers:
         specifier: 0.2.0
         version: 0.2.0(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531))
       '@nascencestudio/tapestry':
-        specifier: 0.3.2
-        version: 0.3.2(@nascencestudio/medialibrary@0.2.0(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531))
+        specifier: 0.4.0
+        version: 0.4.0(@nascencestudio/medialibrary@0.2.0(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531))
       '@nascencestudio/tapestry-seo':
-        specifier: 0.1.0
-        version: 0.1.0(@nascencestudio/tapestry@0.3.2(@nascencestudio/medialibrary@0.2.0(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531))
+        specifier: 0.2.0
+        version: 0.2.0(@nascencestudio/tapestry@0.4.0(@nascencestudio/medialibrary@0.2.0(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531))
       '@studiocms/md':
         specifier: 0.5.0
         version: 0.5.0(patch_hash=da73ec54dbd446d69bf0c1468abb7099bb572b9b48bdf9b4048e20d9f30948f9)(@astrojs/internal-helpers@0.11.0)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
@@ -1174,16 +1174,16 @@ packages:
       astro: ^7.0.0
       studiocms: ^0.6.0
 
-  '@nascencestudio/tapestry-seo@0.1.0':
-    resolution: {integrity: sha512-Sxszh6FUI153mCePc6awZhnI3VmzMqGxRZ36U4YaksbhG3qxwwMXP7dpBR3NVBj/kc83PVSOrJ+wW/PdYBAfjw==}
+  '@nascencestudio/tapestry-seo@0.2.0':
+    resolution: {integrity: sha512-ztUZhLDtKdHNCjexurBDxhWj1o+U4V8TMGv8Q8PtooQrW8siUIZmXgsWXvXGR16ytGs22R4TF3Lpp5ikhcvEig==}
     engines: {node: '>=22.12.0'}
     peerDependencies:
-      '@nascencestudio/tapestry': ^0.3.0
+      '@nascencestudio/tapestry': ^0.4.0
       astro: ^7.0.0
       studiocms: ^0.6.0
 
-  '@nascencestudio/tapestry@0.3.2':
-    resolution: {integrity: sha512-7Gg+wXEsMW/IX3tMnlYcV2u0SicGNWata7LE4YMTG5lij8SvdulBtZAXH4lkPUNn7SirsLEfGvhym2P2G8dzGw==}
+  '@nascencestudio/tapestry@0.4.0':
+    resolution: {integrity: sha512-2+WBipb10NIz9JpLfdFebQmio1hKY28rrRzsR44fcGdD+Z9a6clbtWmB1bJr44Porg5Mljx03zHMTZgF3gqN+g==}
     engines: {node: '>=22.12.0'}
     peerDependencies:
       '@nascencestudio/medialibrary': ^0.1.0 || ^0.2.0
@@ -4275,13 +4275,16 @@ snapshots:
       - '@types/node'
       - preact-render-to-string
 
-  '@nascencestudio/tapestry-seo@0.1.0(@nascencestudio/tapestry@0.3.2(@nascencestudio/medialibrary@0.2.0(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531))':
+  '@nascencestudio/tapestry-seo@0.2.0(@nascencestudio/tapestry@0.4.0(@nascencestudio/medialibrary@0.2.0(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531))':
     dependencies:
-      '@nascencestudio/tapestry': 0.3.2(@nascencestudio/medialibrary@0.2.0(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531))
+      '@nascencestudio/tapestry': 0.4.0(@nascencestudio/medialibrary@0.2.0(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531))
       astro: 7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1)
+      preact: 10.29.8(preact-render-to-string@6.8.0)
       studiocms: 0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)
+    transitivePeerDependencies:
+      - preact-render-to-string
 
-  '@nascencestudio/tapestry@0.3.2(@nascencestudio/medialibrary@0.2.0(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531))':
+  '@nascencestudio/tapestry@0.4.0(@nascencestudio/medialibrary@0.2.0(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531))':
     dependencies:
       '@atlaskit/pragmatic-drag-and-drop': 4.0.0
       '@atlaskit/pragmatic-drag-and-drop-hitbox': 3.0.0
