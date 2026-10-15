@@ -10,7 +10,7 @@ It contains:
 - **The demo site**: example Tapestry components (`src/components/tapestry/`, registered in
   `src/tapestry.config.mjs`), a page route using `getPage()` and the admin bar, translations
   (English and French), an interactive island, and a seeded demo page.
-- **Browser tests** (`e2e/`): 26 suites driving headless Chrome over the DevTools protocol, no
+- **Browser tests** (`e2e/`): 27 suites driving headless Chrome over the DevTools protocol, no
   test framework, plus accessibility checks with axe-core.
 - **A performance budget** (`pnpm budget`): what visitors download from a production server.
 - **Deployment**: a Docker image and Caddy (HTTPS) for a single server

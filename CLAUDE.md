@@ -47,7 +47,7 @@ Canvas), [docs/upstream/](docs/upstream/) (issue drafts), and the deployment gui
 ```
 astro.config.mjs, studiocms.config.mjs ← the site; registers Tapestry (+ languages) and the media library
 src/tapestry.config.mjs   ← example component definitions; src/components/tapestry/ the components
-src/pages/[...slug].astro ← pages via getPage() + AdminBar; src/pages/404.astro; src/layouts/ (Layout: <Seo> from tapestry-seo)
+src/pages/[...slug].astro ← pages via getPage() + AdminBar; src/pages/404.astro; src/layouts/ (Layout: <Seo> from tapestry-seo, <Region> header/footer)
 scripts/                  ← setup-site.mjs (fresh DB), seed-demo-page.mjs + demo-document.mjs, check-budget.mjs
 e2e/                      ← CDP harness (cdp.mjs), helpers, one *.e2e.mjs per suite (chain in package.json), fixtures/
 perf-budget.json          ← budget for `pnpm budget`
@@ -66,7 +66,7 @@ docs/                     ← devlog, research, upstream drafts, guides (develop
 | `pnpm migrate` | Apply StudioCMS DB migrations |
 | `CMS_SETUP=1 pnpm dev` + `node scripts/setup-site.mjs` | First-time setup of a fresh DB (writes `.dev-credentials`); restart without `CMS_SETUP` |
 | `pnpm seed` | (Re)create the demo Tapestry home page (running servers cache pages for 5 min) |
-| `pnpm e2e` | 26 browser suites in headless Chrome (dev server running; `HEADED=1`, `E2E_SCREENSHOTS=dir`, `E2E_CPU_THROTTLE=4` to run like a slow CI runner) |
+| `pnpm e2e` | 27 browser suites in headless Chrome (dev server running; `HEADED=1`, `E2E_SCREENSHOTS=dir`, `E2E_CPU_THROTTLE=4` to run like a slow CI runner) |
 | `pnpm build`, then `PORT=4600 node dist/server/entry.mjs` (with `.env` loaded) + `BASE_URL=http://127.0.0.1:4600 pnpm budget` | Performance budget |
 | `pnpm typecheck` / `pnpm lint` / `pnpm audit` | `astro check` / Biome / vulnerabilities |
 | `docker build --build-arg SITE_URL=… -t nascence-site .` | Production image (docs/guides/deployment.md) |
@@ -183,6 +183,11 @@ Comments in the site and e2e code that cite `docs/decisions/…`, `docs/known-is
 - CI runners are much slower than a dev Mac: timing assumptions pass locally and fail there. Before
   pushing e2e changes, run `E2E_CPU_THROTTLE=4 pnpm e2e`. `openEditor()` waits for the canvas to finish
   loading (it moves the layout); click-then-check steps should confirm the result (e.g. `aria-selected`).
+- Headless Chrome 156 (2026-10-15) stops producing frames on StudioCMS dashboard pages after a modal
+  `<dialog>` closes: `requestAnimationFrame` never fires and every CDP mouse move waits 5 s for its
+  ack. Not Tapestry (the dashboard home page shows it too; a plain page doesn't; Chrome 155 didn't).
+  Tests still pass, slower (the a11y suite went from ~10 s to ~90 s per theme). Flags
+  (`E2E_CHROME_ARGS`), bringToFront and viewport changes didn't help.
 - After changing a `file:` dependency, `pnpm exec …` (including `astro dev stop`) can refuse to run
   ("a linked package is out of date") and the old dev server keeps serving old code. Run
   `pnpm install`, restart, and confirm `astro dev status` shows a fresh uptime.

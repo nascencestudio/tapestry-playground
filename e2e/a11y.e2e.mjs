@@ -2,8 +2,9 @@
 // WCAG 2.2 A/AA plus axe's best practices, on the public page (as a visitor) and on Tapestry's
 // own UI in the editor in many states (settings, link and list fields, rich text, popovers,
 // translations, history, compare, schedule, JSON view, save as pattern) and on the media
-// library's page (incl. a folder's menu, its new-subfolder field and the delete dialog) and the
-// Tapestry SEO settings page (every crawler list open), in the dashboard's dark and light themes. StudioCMS's own dashboard chrome is
+// library's page (incl. a folder's menu, its new-subfolder field and the delete dialog), the
+// Tapestry SEO settings page (every crawler list open) and templates (the Templates section, the part
+// editor, the Template menu), in the dashboard's dark and light themes. StudioCMS's own dashboard chrome is
 // out of scope (it's StudioCMS's).
 //
 // Prereqs: same as editor.e2e.mjs. Resets the demo home page before and after, and switches the
@@ -28,6 +29,42 @@ async function audit(page, context, label) {
 				nodes: v.nodes.slice(0, 5).map((n) => n.target.join(' ')) })))`,
 	);
 	assert.deepEqual(violations, [], `${label}: ${JSON.stringify(violations, null, 2)}`);
+}
+
+/** Templates (Tapestry ADR 0041): the Templates section, the part editor and the page's Template menu. */
+async function templateStates(page, theme) {
+	const section = `${BASE}/dashboard/plugins/@nascencestudio/tapestry?section=templates`;
+	await page.goto(section);
+	await page.waitFor(() => document.readyState === 'complete' && Boolean(document.querySelector('[data-tapestry-templates-settings]')));
+	const post = (fields) =>
+		page.eval(
+			(f) => fetch('/_tapestry/templates', { method: 'POST', body: new URLSearchParams({ return: '/', ...f }) }).then(() => {}),
+			fields,
+		);
+	const list = () => page.eval(() => fetch('/_tapestry/templates').then((r) => r.json()));
+	const before = await list();
+	const name = `A11y ${Date.now()}`;
+	await post({ action: 'create-part', region: 'header', name });
+	const part = (await list()).parts.find((p) => p.name === name);
+	await post({ action: 'create-template', name, header: part.id, footer: '' });
+	const template = (await list()).templates.find((t) => t.name === name);
+	try {
+		await page.goto(section);
+		await page.waitFor(() => document.readyState === 'complete' && Boolean(document.querySelector('[data-tapestry-templates-settings]')));
+		await audit(page, '[data-tapestry-templates-settings]', `${theme}: templates`);
+		await page.goto(`${section.split('?')[0]}?part=${part.id}`);
+		await page.waitFor(() => document.querySelector('.tp-canvas__status')?.dataset.state === 'ready', [], { timeout: 30_000 });
+		await audit(page, '.tp-editor', `${theme}: part editor`);
+		await openEditor(page, pageId);
+		await page.click('[data-tp-info="tp-template"]');
+		await page.waitFor(() => Boolean(document.querySelector('[data-tapestry-templates]')));
+		await audit(page, '.tp-editor', `${theme}: template menu`);
+		await page.press('Escape');
+	} finally {
+		await post({ action: 'delete-template', id: template.id });
+		await post({ action: 'delete-part', id: part.id });
+		if (before.defaultTemplate) await post({ action: 'set-default', id: before.defaultTemplate });
+	}
 }
 
 const editorStates = async (page, theme) => {
@@ -98,6 +135,7 @@ const editorStates = async (page, theme) => {
 		for (const details of document.querySelectorAll('[data-seo-settings] details')) details.open = true;
 	});
 	await audit(page, '[data-seo-settings]', `${theme}: SEO settings`);
+	await templateStates(page, theme);
 	await page.goto(`${BASE}${MEDIA_PAGE}`);
 	await page.waitFor(() => Boolean(document.querySelector('[data-media-library]')));
 	await audit(page, '[data-media-library]', `${theme}: media library`);

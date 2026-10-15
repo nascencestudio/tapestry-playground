@@ -5,6 +5,7 @@ import markdownCss from 'studiocms:md/styles-inline';
 import type { Viewer } from '@nascencestudio/tapestry';
 import AdminBar from '@nascencestudio/tapestry/AdminBar.astro';
 import type { Language, PageResult, PageTranslation, PublishingInfo } from '@nascencestudio/tapestry/page';
+import Region from '@nascencestudio/tapestry/Region.astro';
 import Seo from '@nascencestudio/tapestry-seo/Seo.astro';
 
 interface Props {
@@ -56,7 +57,10 @@ const versions = translations.length > 1 ? translations : [];
 				</nav>
 			)
 		}
+		{/* The page's template header and footer (Dashboard → Plugins → Tapestry → Templates). */}
+		<Region name="header" page={result} />
 		<slot />
+		<Region name="footer" page={result} />
 	</body>
 </html>
 

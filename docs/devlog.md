@@ -6,6 +6,32 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-15: Session 31: Templates (Tapestry 0.5.0)
+
+**Request:** menus (no StudioCMS plugin does them: checked all 33 StudioCMS packages on npm and its
+roadmap). The user's design: templates built like pages, with header/body/footer regions (body a
+placeholder), shown read-only on the page canvas, chosen per page from a menu in the editor bar;
+menus as components inside them. Decisions: shared header/footer parts, draft/publish for parts,
+admins edit them, menus in their own plugin (next). Tapestry ADR 0041.
+
+### Done
+- Tapestry 0.5.0 (branch `templates`): parts and templates (plugin-data rows), `/_tapestry/templates`
+  (admin forms, error codes) and `/_tapestry/parts` (part editor saves through the same save rules as
+  pages, now `save-rules.ts`), `getPage().regions`, `<Region>`, the page editor's Template menu, the
+  part editor (`?part=`), Plugins → Tapestry → Templates.
+- Playground (branch `templates`): `<Region>` header/footer in the layout; `templates` suite (8 steps);
+  the a11y audit covers the Templates section, the part editor and the Template menu.
+
+### Learned
+- The canvas used the first root marker in the page; with a header region first it would have edited
+  the header. `editableRoot()` picks the page body's root (or the part being edited).
+- `display: contents` wrappers ignore opacity: the region fade goes on the components.
+- Chrome 156 (updated itself today) + StudioCMS dashboard: frames stop after a dialog closes (see
+  CLAUDE.md gotchas); the suites pass, slower.
+
+### Next
+- Release Tapestry 0.5.0; the playground switches to it. Then `@nascencestudio/tapestry-menus`.
+
 ## 2026-10-12: Session 30: Per-page SEO (tapestry-seo 0.2.0, Tapestry 0.4.0)
 
 **Request:** the SEO button in Tapestry's editor for each page's SEO tags. Decisions (the user): the
