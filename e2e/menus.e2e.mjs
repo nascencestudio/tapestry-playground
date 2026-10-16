@@ -11,6 +11,7 @@ import { CDP, launchChrome } from './cdp.mjs';
 import {
 	BASE,
 	db,
+	editUrl,
 	get,
 	homePageId,
 	login,
@@ -73,10 +74,14 @@ async function setSelect(page, selector, value) {
 
 async function saveMenu(page) {
 	await page.click('[data-tm-save]');
-	await page.waitFor(() => /^(Saved|Not saved)/.test(document.querySelector('[data-tm-status]')?.textContent ?? ''), [], {
-		timeout: 15_000,
-		message: 'menu saved',
-	});
+	await page.waitFor(
+		() => /^(Saved|Not saved)/.test(document.querySelector('[data-tm-status]')?.textContent ?? ''),
+		[],
+		{
+			timeout: 15_000,
+			message: 'menu saved',
+		},
+	);
 	return status(page);
 }
 
@@ -105,6 +110,15 @@ try {
 		}
 	});
 	for (const { menu } of (await menusApi()).menus) before.add(menu.id);
+	// A fresh site (CI): no menus and no marker yet, so the Menus page creates "Main navigation" once.
+	const freshSite =
+		before.size === 0 &&
+		(
+			await db.execute({
+				sql: 'select id from StudioCMSPluginData where id = ?',
+				args: ['@nascencestudio/tapestry-menus-state'],
+			})
+		).rows.length === 0;
 
 	await step('visitors can’t use the menus endpoints; other sites can’t post', async () => {
 		assert.equal((await get('/_menus/menus')).status, 403);
@@ -120,10 +134,14 @@ try {
 
 	await step('Menus sits after Template Management; a new menu opens in the editor', async () => {
 		await page.goto(MENUS);
-		await page.waitFor(() => document.readyState === 'complete' && Boolean(document.querySelector('[data-tm-create]')), [], {
-			timeout: 20_000,
-			message: 'Menus page',
-		});
+		await page.waitFor(
+			() => document.readyState === 'complete' && Boolean(document.querySelector('[data-tm-create]')),
+			[],
+			{
+				timeout: 20_000,
+				message: 'Menus page',
+			},
+		);
 		const lines = await page.eval(() =>
 			document.body.innerText
 				.split('\n')
@@ -131,6 +149,10 @@ try {
 				.filter(Boolean),
 		);
 		assert.equal(lines[lines.indexOf('Template Management') + 1], 'Menus', 'right after Template Management');
+		if (freshSite) {
+			const names = (await menusApi()).menus.map(({ menu }) => menu.name);
+			assert.deepEqual(names, ['Main navigation'], 'a default menu on a site without menus');
+		}
 		await page.fill('#tm-new-name', NAME);
 		await page.click('[data-tm-create] button[type="submit"]');
 		await page.waitFor(() => Boolean(document.querySelector('[data-tm-menu-editor] [data-tm-add-top]')), [], {
@@ -149,9 +171,13 @@ try {
 	await step('items get labels, links and options; the keyboard buttons move them', async () => {
 		const home = await addItem(page, 'Home');
 		await page.click('[data-tm-link-kind="page"]');
-		await page.waitFor((id) => Boolean(document.querySelector(`[data-tm-field="page"] option[value="${id}"]`)), [pageId], {
-			message: 'pages loaded',
-		});
+		await page.waitFor(
+			(id) => Boolean(document.querySelector(`[data-tm-field="page"] option[value="${id}"]`)),
+			[pageId],
+			{
+				message: 'pages loaded',
+			},
+		);
 		await setSelect(page, '[data-tm-field="page"]', pageId);
 		const docs = await addItem(page, 'Docs');
 		await page.click('[data-tm-link-kind="url"]');
@@ -180,11 +206,9 @@ try {
 
 		// Drag and drop: Home above Docs (the top quarter of Docs' row).
 		await page.drag(`[data-tm-item="${home}"] .tm-row`, `[data-tm-item="${docs}"] .tm-row`, { yFraction: 0.1 });
-		await page.waitFor(
-			(id) => document.querySelector('[data-tm-item]')?.dataset.tmItem === id,
-			[home],
-			{ message: 'Home dragged to the top' },
-		);
+		await page.waitFor((id) => document.querySelector('[data-tm-item]')?.dataset.tmItem === id, [home], {
+			message: 'Home dragged to the top',
+		});
 		assert.deepEqual(await labels(page), ['1:Home', '1:Docs', '1:Members', '2:Team']);
 		if (SHOTS) await page.screenshot(`${SHOTS}/menus-editor.png`);
 		assert.match(await saveMenu(page), /^Saved/);
@@ -244,7 +268,10 @@ try {
 		assert.ok(editorCookie, 'editor logged in');
 		const asEditor = { Origin: BASE, Cookie: `auth_session=${editorCookie}` };
 		const options = await (await fetch(`${BASE}/_menus/options`, { headers: asEditor })).json();
-		assert.ok(options.options.some((o) => o.value === menuId && o.label === NAME), 'editors get the choices');
+		assert.ok(
+			options.options.some((o) => o.value === menuId && o.label === NAME),
+			'editors get the choices',
+		);
 		const html = await (await fetch(`${MENUS}?menu=${menuId}`, { headers: asEditor })).text();
 		assert.match(html, /data-tm-mount/);
 		assert.match(html, /&quot;canEdit&quot;:false/);
@@ -283,9 +310,7 @@ try {
 		await page.waitFor(
 			(name) =>
 				Boolean(
-					document
-						.querySelector('[data-tapestry-canvas]')
-						?.contentDocument?.querySelector(`nav[aria-label="${name}"]`),
+					document.querySelector('[data-tapestry-canvas]')?.contentDocument?.querySelector(`nav[aria-label="${name}"]`),
 				),
 			[NAME],
 			{ timeout: 30_000, message: 'the menu on the canvas' },
@@ -295,10 +320,19 @@ try {
 		const visitor = clean(await (await fetch(`${BASE}/`)).text());
 		const nav = /<nav class="menu menu--e2e-main-[0-9a-f]{4}"[^>]*>[\s\S]*?<\/nav>/.exec(visitor)?.[0];
 		assert.ok(nav, 'the menu with its class from the name');
-		assert.match(nav, /<li class="menu__item menu__item--home menu__item--current"><a class="menu__link" href="\/" aria-current="page">Home<\/a>/);
-		assert.match(nav, /menu__item--docs external"><a class="menu__link" href="https:\/\/example.com\/docs" target="_blank" rel="noopener noreferrer">Docs/);
+		assert.match(
+			nav,
+			/<li class="menu__item menu__item--home menu__item--current"><a class="menu__link" href="\/" aria-current="page">Home<\/a>/,
+		);
+		assert.match(
+			nav,
+			/menu__item--docs external"><a class="menu__link" href="https:\/\/example.com\/docs" target="_blank" rel="noopener noreferrer">Docs/,
+		);
 		assert.doesNotMatch(nav, /Members|Team/, 'login-only items are hidden from visitors');
-		assert.match(visitor, /<nav class="breadcrumbs" aria-label="Breadcrumb">[\s\S]*?<span class="breadcrumbs__current" aria-current="page">Home<\/span>/);
+		assert.match(
+			visitor,
+			/<nav class="breadcrumbs" aria-label="Breadcrumb">[\s\S]*?<span class="breadcrumbs__current" aria-current="page">Home<\/span>/,
+		);
 		assert.doesNotMatch(visitor, /breadcrumbs__item--home/, 'no second home link when the menu starts with it');
 
 		const member = clean(await (await fetch(`${BASE}/`, { headers: { Cookie: `auth_session=${cookie}` } })).text());
@@ -342,6 +376,40 @@ try {
 		// Nothing of this reached the page's own form (it isn't part of the page's draft).
 		assert.doesNotMatch(await page.eval(() => document.querySelector('textarea[data-tapestry-field]').value), /Start/);
 	});
+
+	await step(
+		'the page forms hide StudioCMS’s “Show in navigation” and say Tapestry Menus manages navigation',
+		async () => {
+			for (const url of [editUrl(pageId), `${BASE}/dashboard/content-management/create`]) {
+				await page.goto(url);
+				await page.waitFor(
+					() => document.readyState === 'complete' && Boolean(document.querySelector('[data-tapestry-menus-notice]')),
+					[],
+					{
+						timeout: 20_000,
+						message: `notice on ${url}`,
+					},
+				);
+				const state = await page.eval(() => {
+					const notice = document.querySelector('[data-tapestry-menus-notice]');
+					return {
+						fieldShown:
+							getComputedStyle(document.querySelector('#show-in-nav').closest('.form-row-item')).display !== 'none',
+						inBasicInfo: Boolean(notice.closest('#tab-label-basic-info')),
+						visible: notice.getBoundingClientRect().height > 0,
+						link: notice.querySelector('a')?.getAttribute('href'),
+					};
+				});
+				assert.deepEqual(state, {
+					fieldShown: false,
+					inBasicInfo: true,
+					visible: true,
+					link: '/dashboard/nascencestudio_tapestry_menus/menus',
+				});
+			}
+			if (SHOTS) await page.screenshot(`${SHOTS}/menus-nav-notice.png`);
+		},
+	);
 
 	await step('no uncaught errors in the browser', async () => {
 		assert.deepEqual(page.errors, []);

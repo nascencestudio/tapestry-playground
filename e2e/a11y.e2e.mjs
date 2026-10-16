@@ -123,7 +123,19 @@ async function menuStates(page, theme) {
 		await page.waitFor(() => Boolean(document.querySelector('[data-tapestry-panel="menu"] [data-tm-link-title]')), [], {
 			timeout: 15_000,
 		});
-		await audit(page, '[data-tapestry-panel="menu"]', `${theme}: menu settings`);
+		await audit(page, '[data-tapestry-panel="menu"]', `${theme}: navigation settings`);
+		// The notice that replaces StudioCMS's "Show in navigation" (Basic Information tab).
+		await page.eval(() => {
+			const tab = [...document.querySelectorAll('[role="tab"]')].find((t) =>
+				t.textContent.includes('Basic Information'),
+			);
+			tab.dataset.e2e = 'basic-info-tab';
+		});
+		await page.click('[data-e2e="basic-info-tab"]');
+		await page.waitFor(
+			() => (document.querySelector('[data-tapestry-menus-notice]')?.getBoundingClientRect().height ?? 0) > 0,
+		);
+		await audit(page, '[data-tapestry-menus-notice]', `${theme}: navigation notice`);
 	} finally {
 		await post({ action: 'delete', id: created.menu.id });
 	}

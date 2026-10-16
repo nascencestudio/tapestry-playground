@@ -328,3 +328,17 @@ if (!page) return new Response(null, { status: 404 });
   includes), which also crosses the manifest.
 - `@studiocms/md` injects `studiocms:md/styles` with `injectScript('page-ssr')`;
   `@studiocms/ui` adds `astro-transition-event-polyfill` with `injectScript('page')`.
+
+## "Show in navigation" (`showOnNav`) and `frontendNavigation()` (verified 2026-10-16, studiocms 0.6.1)
+
+- The page create and edit forms (`frontend/components/dashboard/content-mgmt/CreatePage.astro`,
+  `EditPage.astro`) have a "Show in Navigation" select (`name="show-in-nav"`, hidden
+  `<select id="show-in-nav">` inside `<sui-select>`, in a `.form-row-item`), labelled "Requires Supported
+  Frontend". It's stored as the page's `showOnNav` flag.
+- Its only reader is `frontendNavigation(basePackage)` (`dist/virtuals/plugins/frontend-navigation.js`,
+  exported from `studiocms:plugins`): pages with `showOnNav === true` **of one page type** (default
+  `studiocms/markdown`), sorted by `publishedAt` newest first, the index page first as "Home", plus
+  plugins' `frontendNavigationLinks`. A flat list (no nesting, labels or languages) for StudioCMS's
+  ready-made themes. Nothing in StudioCMS's dashboard or our sites calls it.
+- tapestry-menus hides the field on both forms (CSS on the HTML StudioCMS sends, via its middleware) and
+  adds a notice to the Basic Information tab (tapestry-menus ADR 0002). The stored flag is untouched.

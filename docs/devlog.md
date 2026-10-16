@@ -6,6 +6,30 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-16: Session 34: "Show in navigation" hidden; a default Main navigation
+
+**Request:** StudioCMS's "Show in navigation" field confuses users next to Tapestry Menus. Source check:
+its flag is read only by `frontendNavigation()`, a flat list of Markdown pages by date for StudioCMS's
+ready-made themes (docs/research/studiocms-internals.md); nothing on our sites. The user chose a hybrid:
+hide it on the create and edit forms (all page types) and end Basic Information with a notice ("Site
+navigation is managed by Tapestry Menus", icon, link to Dashboard → Menus); and create **Main
+navigation** once on a site without menus. tapestry-menus ADR 0002.
+
+### Done
+- tapestry-menus: middleware rewriting only those two dashboard pages (one CSS rule + the notice; no
+  StudioCMS patch, a no-op on unknown markup), `ensureDefaultMenu()` (marker row, so it happens once).
+- `menus` suite step for both forms, plus a fresh-site check of the default menu; a11y audits the notice.
+- Verified the fresh-site path on a scratch site (second dev server on port 4500 with its own database
+  and credentials file, removed afterwards). On this machine's database, which already has a "Main
+  Navigation" menu, only the marker row was added.
+
+### Learned
+- `#tab-label-basic-info` is the tab's panel (`<sui-tab-item>`), not its button: click `[role="tab"]`.
+- A scratch site started with `CMS_SETUP=1` must be restarted without it after setup-site.mjs (else
+  every route 500s on `studiocms:plugins/augments`).
+
+---
+
 ## 2026-10-16: Session 33: Template button without templates
 
 **Request:** on a site without templates, the purple bar showed the separator but no Template button.
