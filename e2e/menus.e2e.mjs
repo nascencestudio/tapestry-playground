@@ -1,7 +1,7 @@
 // End-to-end tests for menus (tapestry-menus ADR 0001, Tapestry ADR 0042): Dashboard → Menus (create a
 // menu, build its tree with the item form, the keyboard buttons and drag and drop, save), saves from an
 // outdated copy refused, the Menu and Breadcrumbs components on a page (links, current page, new tab,
-// visibility by login), the page editor's Menu dialog, and editors' read-only view.
+// visibility by login), the page editor's Menu settings panel, and editors' read-only view.
 //
 // Prereqs: same as editor.e2e.mjs. Resets the demo home page; removes the menus and the editor account
 // it creates (menus that existed before are left alone).
@@ -306,27 +306,41 @@ try {
 		assert.match(member, /href="\/team">Team</);
 	});
 
-	await step('the page editor’s Menu button shows where the page is linked; admins rename it there', async () => {
+	await step('Menu settings under the settings panel show the page’s link; admins rename it there', async () => {
 		await openEditor(page, pageId);
-		await page.click('[data-tapestry-extension="menu"]');
-		const section = `[data-tm-dialog-menu="${menuId}"]`;
-		await page.waitFor((sel) => Boolean(document.querySelector(`${sel} [data-tm-placement]`)), [section], {
+		assert.equal(
+			await page.eval(() => Boolean(document.querySelector('[data-tapestry-extension="menu"]'))),
+			false,
+			'no Menu button in the editor bar',
+		);
+		const panel = '[data-tapestry-panel="menu"]';
+		await page.click(`${panel} > summary`);
+		await page.waitFor((sel) => Boolean(document.querySelector(`${sel} [data-tm-provide]`)), [panel], {
 			timeout: 15_000,
-			message: 'Menu dialog loaded',
+			message: 'Menu settings loaded',
 		});
-		assert.equal(await page.eval(() => document.querySelector('[data-tm-dialog]')?.open), true, 'a modal dialog');
-		if (SHOTS) await page.screenshot(`${SHOTS}/menus-dialog.png`);
-		await page.fill(`${section} [data-tm-placement] input`, 'Start');
-		await page.click(`${section} [data-tm-save-menu]`);
+		const state = await page.eval((sel) => {
+			const root = document.querySelector(sel);
+			const parent = root.querySelector('[data-tm-link-parent]');
+			return {
+				provide: root.querySelector('[data-tm-provide]').checked,
+				title: root.querySelector('[data-tm-link-title]').value,
+				parent: parent.selectedOptions[0]?.textContent,
+			};
+		}, panel);
+		assert.deepEqual(state, { provide: true, title: 'Home', parent: `<${NAME}>` });
+		if (SHOTS) await page.screenshot(`${SHOTS}/menus-settings.png`);
+		await page.fill(`${panel} [data-tm-link-title]`, 'Start');
+		await page.click(`${panel} [data-tm-save-link]`);
 		await page.waitFor(
-			(sel) => /^Saved/.test(document.querySelector(`${sel} .tm-status`)?.textContent ?? ''),
-			[section],
-			{ timeout: 15_000, message: 'saved from the dialog' },
+			(sel) => /^Saved/.test(document.querySelector(`${sel} [data-tm-settings-status]`)?.textContent ?? ''),
+			[panel],
+			{ timeout: 15_000, message: 'saved from the panel' },
 		);
 		assert.equal((await menusApi(`?id=${menuId}`)).menu.items[0].label, 'Start');
 		assert.match(clean(await (await fetch(`${BASE}/`)).text()), /aria-current="page">Start<\/a>/, 'live at once');
-		await page.click('[data-tm-close]');
-		await page.waitFor(() => !document.querySelector('[data-tm-dialog]'));
+		// Nothing of this reached the page's own form (it isn't part of the page's draft).
+		assert.doesNotMatch(await page.eval(() => document.querySelector('textarea[data-tapestry-field]').value), /Start/);
 	});
 
 	await step('no uncaught errors in the browser', async () => {

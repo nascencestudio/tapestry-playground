@@ -4,7 +4,7 @@
 // translations, history, compare, schedule, JSON view, save as pattern) and on the media
 // library's page (incl. a folder's menu, its new-subfolder field and the delete dialog), the
 // Tapestry SEO settings page (every crawler list open), templates (the Templates section, the part
-// editor, the Template menu) and menus (the Menus page, the tree editor, the page's Menu dialog), in the dashboard's dark and light themes. StudioCMS's own dashboard chrome is
+// editor, the Template menu) and menus (the Menus page, the tree editor, the page's Menu settings), in the dashboard's dark and light themes. StudioCMS's own dashboard chrome is
 // out of scope (it's StudioCMS's).
 //
 // Prereqs: same as editor.e2e.mjs. Resets the demo home page before and after, and switches the
@@ -82,7 +82,7 @@ async function templateStates(page, theme) {
 	}
 }
 
-/** Menus (tapestry-menus ADR 0001): the Menus page, the tree editor with an item selected, the page dialog. */
+/** Menus (tapestry-menus ADR 0001): the Menus page, the tree editor with an item selected, Menu settings. */
 async function menuStates(page, theme) {
 	const menusPage = `${BASE}/dashboard/nascencestudio_tapestry_menus/menus`;
 	await page.goto(menusPage);
@@ -119,13 +119,11 @@ async function menuStates(page, theme) {
 		await page.waitFor(() => Boolean(document.querySelector('[data-tm-tool="remove"]')));
 		await audit(page, '[data-tm-page]', `${theme}: menu editor`);
 		await openEditor(page, pageId);
-		await page.click('[data-tapestry-extension="menu"]');
-		await page.waitFor(() => Boolean(document.querySelector('[data-tm-dialog] [data-tm-placement]')), [], {
+		await page.click('[data-tapestry-panel="menu"] > summary');
+		await page.waitFor(() => Boolean(document.querySelector('[data-tapestry-panel="menu"] [data-tm-link-title]')), [], {
 			timeout: 15_000,
 		});
-		await audit(page, '[data-tm-dialog]', `${theme}: menu dialog`);
-		await page.press('Escape');
-		await page.waitFor(() => !document.querySelector('[data-tm-dialog]'));
+		await audit(page, '[data-tapestry-panel="menu"]', `${theme}: menu settings`);
 	} finally {
 		await post({ action: 'delete', id: created.menu.id });
 	}

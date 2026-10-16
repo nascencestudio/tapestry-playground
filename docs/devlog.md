@@ -34,6 +34,13 @@ tapestry-menus ADR 0001, Tapestry ADR 0042.
 - Library icons for Menu and Breadcrumbs ship with `menuComponents()` (the library suite expects one
   per component). All 28 suites pass (2026-10-16) with the local Tapestry 0.6.0 and Tapestry Menus builds.
 
+- Then, at the user's request, menu settings moved from a **Menu** button (purple bar) with a dialog
+  to a Drupal-style **Menu settings** section under the settings panel: "Provide a menu link", title,
+  parent item (any menu's top level or item), description, Save menu link (live at once). Tapestry's
+  companions now come in two kinds (ADR 0042): bar buttons (SEO) and sidebar panels (`CompanionPanels`,
+  loaded on first open, pages only). The `menus` suite checks there's no Menu button, the panel's
+  values, a rename that's live at once and absent from the page's draft; the a11y suite audits the panel.
+
 ### Learned
 - StudioCMS turns a plugin identifier into the dashboard URL with `_` for both `/` and `-`:
   `/dashboard/nascencestudio_tapestry_menus/menus`.
