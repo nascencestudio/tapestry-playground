@@ -2,6 +2,8 @@
 
 import mediaLibrary from '@nascencestudio/medialibrary';
 import tapestry, { tapestryComponentRegistry } from '@nascencestudio/tapestry';
+import tapestryMenus from '@nascencestudio/tapestry-menus';
+import { menuComponents } from '@nascencestudio/tapestry-menus/components';
 import tapestrySeo from '@nascencestudio/tapestry-seo';
 import md from '@studiocms/md';
 import { defineStudioCMSConfig } from 'studiocms/config';
@@ -37,7 +39,8 @@ export default defineStudioCMSConfig({
 		md(),
 		mediaLibrary(),
 		tapestry({
-			components,
+			// The site's components plus Menu and Breadcrumbs (Tapestry Menus).
+			components: [...components, ...menuComponents()],
 			// Editors can edit and save drafts; publishing (and scheduling) needs an admin or the owner.
 			publishPermission: 'admin',
 			// Pages can be translated into French: each translation is its own page (slug fr/…).
@@ -45,5 +48,7 @@ export default defineStudioCMSConfig({
 		}),
 		// robots.txt with an admin-controlled crawler list, and the page sitemap.
 		tapestrySeo(),
+		// Menus (Dashboard → Menus, after Template Management: plugins are listed in this order).
+		tapestryMenus(),
 	],
 });

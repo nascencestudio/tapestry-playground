@@ -20,13 +20,15 @@ Canvas), [docs/upstream/](docs/upstream/) (issue drafts), and the deployment gui
 
 ## Status
 
-- All from npm: Tapestry `0.4.0`, media library `0.2.0`, tapestry-seo `0.2.0`
-  (`features.robotsTXT: false` + `tapestrySeo()` in studiocms.config). Our three packages are in
-  `minimumReleaseAgeExclude`.
+- `main`: all from npm (Tapestry `0.4.0`, media library `0.2.0`, tapestry-seo `0.2.0`); on GitHub with
+  rulesets. Our packages are in `minimumReleaseAgeExclude`.
+- Local branches waiting for releases: `templates` (Tapestry 0.5.0, templates suite) and `menus` (on top:
+  Tapestry 0.6.0 hooks + `@nascencestudio/tapestry-menus` 0.1.0, `menus` suite, menu states in a11y).
+  Both use `file:../tapestry` / `file:../tapestry-menus`, **uncommitted** in package.json and the lockfile
+  (studiocms.config already imports tapestry-menus): switch to the npm versions once released, run every
+  suite, then commit.
 - 0.2.0 of the media library migrated the dev media directory one way (backup in
   `backups/2026-10-09-before-folders/`, gitignored).
-- Verified 2026-10-13: all 26 e2e suites, every package from npm.
-- Not on GitHub yet: create `nascencestudio/tapestry-playground`, push, then add the rulesets.
 
 ## Rules
 
@@ -45,9 +47,9 @@ Canvas), [docs/upstream/](docs/upstream/) (issue drafts), and the deployment gui
 ## Layout
 
 ```
-astro.config.mjs, studiocms.config.mjs ← the site; registers Tapestry (+ languages) and the media library
+astro.config.mjs, studiocms.config.mjs ← the site; registers Tapestry (+ languages, menu components), the media library, SEO, Menus
 src/tapestry.config.mjs   ← example component definitions; src/components/tapestry/ the components
-src/pages/[...slug].astro ← pages via getPage() + AdminBar; src/pages/404.astro; src/layouts/ (Layout: <Seo> from tapestry-seo, <Region> header/footer)
+src/pages/[...slug].astro ← pages via getPage() + AdminBar; src/pages/404.astro; src/layouts/ (Layout: <Seo> from tapestry-seo, <Region> header/footer, styles for menus)
 scripts/                  ← setup-site.mjs (fresh DB), seed-demo-page.mjs + demo-document.mjs, check-budget.mjs
 e2e/                      ← CDP harness (cdp.mjs), helpers, one *.e2e.mjs per suite (chain in package.json), fixtures/
 perf-budget.json          ← budget for `pnpm budget`
@@ -66,7 +68,7 @@ docs/                     ← devlog, research, upstream drafts, guides (develop
 | `pnpm migrate` | Apply StudioCMS DB migrations |
 | `CMS_SETUP=1 pnpm dev` + `node scripts/setup-site.mjs` | First-time setup of a fresh DB (writes `.dev-credentials`); restart without `CMS_SETUP` |
 | `pnpm seed` | (Re)create the demo Tapestry home page (running servers cache pages for 5 min) |
-| `pnpm e2e` | 27 browser suites in headless Chrome (dev server running; `HEADED=1`, `E2E_SCREENSHOTS=dir`, `E2E_CPU_THROTTLE=4` to run like a slow CI runner) |
+| `pnpm e2e` | 28 browser suites in headless Chrome (dev server running; `HEADED=1`, `E2E_SCREENSHOTS=dir`, `E2E_CPU_THROTTLE=4` to run like a slow CI runner) |
 | `pnpm build`, then `PORT=4600 node dist/server/entry.mjs` (with `.env` loaded) + `BASE_URL=http://127.0.0.1:4600 pnpm budget` | Performance budget |
 | `pnpm typecheck` / `pnpm lint` / `pnpm audit` | `astro check` / Biome / vulnerabilities |
 | `docker build --build-arg SITE_URL=… -t nascence-site .` | Production image (docs/guides/deployment.md) |

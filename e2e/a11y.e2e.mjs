@@ -3,8 +3,8 @@
 // own UI in the editor in many states (settings, link and list fields, rich text, popovers,
 // translations, history, compare, schedule, JSON view, save as pattern) and on the media
 // library's page (incl. a folder's menu, its new-subfolder field and the delete dialog), the
-// Tapestry SEO settings page (every crawler list open) and templates (the Templates section, the part
-// editor, the Template menu), in the dashboard's dark and light themes. StudioCMS's own dashboard chrome is
+// Tapestry SEO settings page (every crawler list open), templates (the Templates section, the part
+// editor, the Template menu) and menus (the Menus page, the tree editor, the page's Menu dialog), in the dashboard's dark and light themes. StudioCMS's own dashboard chrome is
 // out of scope (it's StudioCMS's).
 //
 // Prereqs: same as editor.e2e.mjs. Resets the demo home page before and after, and switches the
@@ -82,6 +82,55 @@ async function templateStates(page, theme) {
 	}
 }
 
+/** Menus (tapestry-menus ADR 0001): the Menus page, the tree editor with an item selected, the page dialog. */
+async function menuStates(page, theme) {
+	const menusPage = `${BASE}/dashboard/nascencestudio_tapestry_menus/menus`;
+	await page.goto(menusPage);
+	await page.waitFor(() => document.readyState === 'complete' && Boolean(document.querySelector('[data-tm-page]')));
+	const post = (body) =>
+		page.eval(
+			(b) =>
+				fetch('/_menus/menus', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify(b),
+				}).then((r) => r.json()),
+			body,
+		);
+	const created = await post({ action: 'create', name: `A11y ${Date.now()}` });
+	const items = [
+		{ id: 'mi_a11yhome0001', label: 'Home', link: { type: 'page', page: pageId } },
+		{
+			id: 'mi_a11ydocs0001',
+			label: 'Docs',
+			link: { type: 'url', url: 'https://example.com', newTab: true },
+			visibility: 'logged-in',
+			children: [{ id: 'mi_a11yhide0001', label: 'Hidden', link: null, enabled: false }],
+		},
+	];
+	await post({ action: 'save', rev: created.rev, menu: { ...created.menu, items } });
+	try {
+		await page.goto(menusPage);
+		await page.waitFor(() => document.readyState === 'complete' && Boolean(document.querySelector('[data-tm-list]')));
+		await audit(page, '[data-tm-page]', `${theme}: menus`);
+		await page.goto(`${menusPage}?menu=${created.menu.id}`);
+		await page.waitFor(() => document.querySelectorAll('[data-tm-item]').length === 3);
+		await page.click('[data-tm-item="mi_a11ydocs0001"] [data-tm-select]');
+		await page.waitFor(() => Boolean(document.querySelector('[data-tm-tool="remove"]')));
+		await audit(page, '[data-tm-page]', `${theme}: menu editor`);
+		await openEditor(page, pageId);
+		await page.click('[data-tapestry-extension="menu"]');
+		await page.waitFor(() => Boolean(document.querySelector('[data-tm-dialog] [data-tm-placement]')), [], {
+			timeout: 15_000,
+		});
+		await audit(page, '[data-tm-dialog]', `${theme}: menu dialog`);
+		await page.press('Escape');
+		await page.waitFor(() => !document.querySelector('[data-tm-dialog]'));
+	} finally {
+		await post({ action: 'delete', id: created.menu.id });
+	}
+}
+
 const editorStates = async (page, theme) => {
 	await openEditor(page, pageId);
 	await page.waitFor(() => document.querySelector('.tp-canvas__status')?.dataset.state === 'ready');
@@ -151,6 +200,7 @@ const editorStates = async (page, theme) => {
 	});
 	await audit(page, '[data-seo-settings]', `${theme}: SEO settings`);
 	await templateStates(page, theme);
+	await menuStates(page, theme);
 	await page.goto(`${BASE}${MEDIA_PAGE}`);
 	await page.waitFor(() => Boolean(document.querySelector('[data-media-library]')));
 	await audit(page, '[data-media-library]', `${theme}: media library`);

@@ -6,6 +6,58 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-16: Session 32: Tapestry Menus 0.1.0 (and Tapestry 0.6.0's companion hooks)
+
+**Request:** back to menus. Decisions (2026-10-13/15): tied to Tapestry; data plus an unstyled
+default; one menu whose links follow the language; breadcrumbs, per-link options, visibility by
+login, menu blocks with depth; menus as components (pages, templates); CSS-safe classes from the
+labels; a target per item; its own **Menus** sidebar item after Template Management; admins edit,
+editors view; no drafts (saving makes it live); menu settings in the page editor in the first version.
+tapestry-menus ADR 0001, Tapestry ADR 0042.
+
+### Done
+- Tapestry 0.6.0 (branch `companion-hooks`): `select` `optionsUrl`, `resolveSiteLinks()`,
+  `pageLanguage()`, `inEditorCanvas()` (from `/page`), `@nascencestudio/tapestry/links` (browser-safe
+  `cleanLinkValue()`/`isSafeUrl()`), companion buttons from `virtual:tapestry/extensions` (replaces
+  `seo-client`), option `menus`. Docs in the README, the components guide and the site guide.
+- `@nascencestudio/tapestry-menus` 0.1.0 (`../tapestry-menus`, local commit, not on GitHub): model with
+  28 unit tests; plugin data rows with revisions (a save from an outdated copy gets 409); endpoints
+  `/_menus/menus|options|page`; `getMenu()`/`getBreadcrumbs()`; `<Menu>`, `<Breadcrumbs>`;
+  `menuComponents()`; Dashboard → Menus (tree editor: drag and drop, keyboard buttons, item settings);
+  the editor's Menu dialog. Bundles: Menus page ~22 KB gzipped, dialog ~11 KB; public pages none.
+- Playground (branch `menus`, on `templates`): Tapestry Menus in studiocms.config (+ `menuComponents()`),
+  menu styles in the layout, `menus` suite (7 steps: endpoints refused to visitors and other origins,
+  the sidebar position, building a tree with the form, the keyboard buttons and a real drag, saving,
+  an outdated save refused, editors read-only, Menu + Breadcrumbs on the home page as visitor and
+  logged in, the page dialog renaming an entry live), the a11y suite audits the Menus page, the tree
+  editor and the dialog in both themes. `file:` dependencies stay uncommitted.
+- Library icons for Menu and Breadcrumbs ship with `menuComponents()` (the library suite expects one
+  per component). All 28 suites pass (2026-10-16) with the local Tapestry 0.6.0 and Tapestry Menus builds.
+
+### Learned
+- StudioCMS turns a plugin identifier into the dashboard URL with `_` for both `/` and `-`:
+  `/dashboard/nascencestudio_tapestry_menus/menus`.
+- Pragmatic DnD with `dragHandle` ignores a drag whose pointer has left a small handle by the time
+  the browser fires `dragstart` (the CDP drag moves 20 px first): no data, no drop. Rows are dragged
+  whole, like the layer tree. The tree-item hitbox measures indent from the drop target's left edge,
+  so the target is the full-width `<li>` with the indent as padding.
+- A `beforeunload` guard (unsaved changes) silently blocks navigation in headless Chrome; the suite
+  accepts `Page.javascriptDialogOpening`.
+- Dev HTML carries `data-astro-source-*` on every element; strip it before matching markup.
+- axe `label-content-name-mismatch` again: no `aria-label` on buttons with visible text; the row's level
+  is visually hidden text inside the button.
+- A Python `replace` matched inside a longer CSS selector and broke two rules (every label struck
+  through). The first match isn't always the one meant.
+- An early failed run left a test menu behind (cleanup hung on the beforeunload prompt). I deleted
+  only that menu. "Main Navigation" was there before the tests and was left alone.
+
+### Next
+- The user releases Tapestry 0.5.0, then 0.6.0. Then: create nascencestudio/tapestry-menus, switch its
+  dev dependency to 0.6.0, push, and make the first release (one-time token). The playground switches
+  to npm versions, runs every suite and commits.
+
+---
+
 ## 2026-10-15: Session 31: Templates and Template Management (Tapestry 0.5.0)
 
 **Request:** menus (no StudioCMS plugin does them: checked all 33 StudioCMS packages on npm and its
