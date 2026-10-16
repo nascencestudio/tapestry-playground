@@ -31,39 +31,54 @@ async function audit(page, context, label) {
 	assert.deepEqual(violations, [], `${label}: ${JSON.stringify(violations, null, 2)}`);
 }
 
-/** Templates (Tapestry ADR 0041): the Templates section, the part editor and the page's Template menu. */
+/** Templates (Tapestry ADR 0041): Template Management, the part and template editors, the Template menu. */
 async function templateStates(page, theme) {
-	const section = `${BASE}/dashboard/plugins/@nascencestudio/tapestry?section=templates`;
-	await page.goto(section);
-	await page.waitFor(() => document.readyState === 'complete' && Boolean(document.querySelector('[data-tapestry-templates-settings]')));
+	const tm = `${BASE}/dashboard/nascencestudio_tapestry/templates`;
+	const loaded = () =>
+		page.waitFor(
+			() => document.readyState === 'complete' && Boolean(document.querySelector('[data-tapestry-templates-settings]')),
+		);
+	await page.goto(tm);
+	await loaded();
 	const post = (fields) =>
 		page.eval(
-			(f) => fetch('/_tapestry/templates', { method: 'POST', body: new URLSearchParams({ return: '/', ...f }) }).then(() => {}),
+			(f) =>
+				fetch('/_tapestry/templates', { method: 'POST', body: new URLSearchParams({ return: '/', ...f }) }).then(
+					() => {},
+				),
 			fields,
 		);
 	const list = () => page.eval(() => fetch('/_tapestry/templates').then((r) => r.json()));
-	const before = await list();
 	const name = `A11y ${Date.now()}`;
 	await post({ action: 'create-part', region: 'header', name });
 	const part = (await list()).parts.find((p) => p.name === name);
 	await post({ action: 'create-template', name, header: part.id, footer: '' });
 	const template = (await list()).templates.find((t) => t.name === name);
+	const canvasReady = () =>
+		page.waitFor(() => document.querySelector('.tp-canvas__status')?.dataset.state === 'ready', [], {
+			timeout: 30_000,
+		});
 	try {
-		await page.goto(section);
-		await page.waitFor(() => document.readyState === 'complete' && Boolean(document.querySelector('[data-tapestry-templates-settings]')));
+		await page.goto(tm);
+		await loaded();
+		await audit(page, '[data-tapestry-templates-settings]', `${theme}: headers and footers`);
+		await page.goto(`${tm}?view=templates`);
+		await loaded();
 		await audit(page, '[data-tapestry-templates-settings]', `${theme}: templates`);
-		await page.goto(`${section.split('?')[0]}?part=${part.id}`);
-		await page.waitFor(() => document.querySelector('.tp-canvas__status')?.dataset.state === 'ready', [], { timeout: 30_000 });
+		await page.goto(`${tm}?edit=${part.id}`);
+		await canvasReady();
 		await audit(page, '.tp-editor', `${theme}: part editor`);
+		await page.goto(`${tm}?edit=${template.id}`);
+		await canvasReady();
+		await audit(page, '.tp-editor', `${theme}: template editor`);
 		await openEditor(page, pageId);
 		await page.click('[data-tp-info="tp-template"]');
-		await page.waitFor(() => Boolean(document.querySelector('[data-tapestry-templates]')));
+		await page.waitFor(() => Boolean(document.querySelector('[data-tapestry-own-parts]')));
 		await audit(page, '.tp-editor', `${theme}: template menu`);
 		await page.press('Escape');
 	} finally {
 		await post({ action: 'delete-template', id: template.id });
 		await post({ action: 'delete-part', id: part.id });
-		if (before.defaultTemplate) await post({ action: 'set-default', id: before.defaultTemplate });
 	}
 }
 

@@ -6,26 +6,40 @@ and known issues instead of repeating them.
 
 ---
 
-## 2026-10-15: Session 31: Templates (Tapestry 0.5.0)
+## 2026-10-15: Session 31: Templates and Template Management (Tapestry 0.5.0)
 
 **Request:** menus (no StudioCMS plugin does them: checked all 33 StudioCMS packages on npm and its
-roadmap). The user's design: templates built like pages, with header/body/footer regions (body a
-placeholder), shown read-only on the page canvas, chosen per page from a menu in the editor bar;
-menus as components inside them. Decisions: shared header/footer parts, draft/publish for parts,
-admins edit them, menus in their own plugin (next). Tapestry ADR 0041.
+roadmap). The user designed templates built like pages; after trying a first version (headers and
+footers only) they revised it: **Template Management** under Media with **Headers and Footers** and
+**Templates**; templates are page layouts with a body of their own (layout and content components)
+that pages inherit, with named **content areas** pages fill. Decisions: inherit (not copy), several
+named areas, fixed template content locked, one-off pages start with no header/footer but can pick
+existing ones, admins edit; then (StudioCMS lists only editor-level plugin pages under Media) editors
+see Template Management read-only. Tapestry ADR 0041 (revised the same day).
 
 ### Done
-- Tapestry 0.5.0 (branch `templates`): parts and templates (plugin-data rows), `/_tapestry/templates`
-  (admin forms, error codes) and `/_tapestry/parts` (part editor saves through the same save rules as
-  pages, now `save-rules.ts`), `getPage().regions`, `<Region>`, the page editor's Template menu, the
-  part editor (`?part=`), Plugins → Tapestry → Templates.
-- Playground (branch `templates`): `<Region>` header/footer in the layout; `templates` suite (8 steps);
-  the a11y audit covers the Templates section, the part editor and the Template menu.
+- Tapestry 0.5.0 (branch `templates`): parts and templates (bodies with the built-in content area,
+  `tapestry-area`), `mergeTemplate()` (the page poured into its template's areas, template ids
+  `tpl_`), `assignAreas()` (template switches), `loadLayout()` in `getPage()` and the render endpoint,
+  `<Region>`, a page's own header/footer, the Template menu, root areas in the editor (`#root` manifest
+  entry: layer groups, drops into areas, Alt+arrows into empty areas), the template editor, Template
+  Management (dashboard page with an inner sidebar), shared save rules (`save-rules.ts`).
+- StudioCMS patch (playground and the one Tapestry ships): plugin dashboard pages named by slug.
+  Without it two plugins with dashboard pages (Media + Template Management) 404 the whole dashboard
+  (Tapestry known issue #38).
+- Playground (branch `templates`): `<Region>` header/footer in the layout; `templates` suite (9 steps:
+  Template Management under Media, a header, a template with two areas, a page inheriting it, moving
+  content between areas, draft vs publish, a one-off page with its own header, editors read-only); the
+  a11y audit covers both sub-pages, the part and template editors and the Template menu.
 
 ### Learned
+- StudioCMS's generated dashboard-pages module names components `item.title + key`, but titles are
+  translation objects: every page is `[object Object]pageBodyComponent`.
+- StudioCMS puts admin-only plugin pages in the Admin section; only editor-level ones appear under Media.
 - The canvas used the first root marker in the page; with a header region first it would have edited
   the header. `editableRoot()` picks the page body's root (or the part being edited).
-- `display: contents` wrappers ignore opacity: the region fade goes on the components.
+- `display: contents` wrappers ignore opacity: fades go on the components.
+- Keyboard moves (Alt+↓/↑) couldn't reach an empty slot or area; they can now.
 - Chrome 156 (updated itself today) + StudioCMS dashboard: frames stop after a dialog closes (see
   CLAUDE.md gotchas); the suites pass, slower.
 
