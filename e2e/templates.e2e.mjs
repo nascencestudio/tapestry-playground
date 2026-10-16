@@ -107,6 +107,57 @@ try {
 		assert.equal(forged.status, 403);
 	});
 
+	await step('with no templates, headers or footers yet, the Template button is there, disabled', async () => {
+		await resetToDemo(page, pageId);
+		// The site's templates are shared data: instead of removing them, the editor page reaches the
+		// browser with an empty template list (rewritten in flight; nothing is stored). In a tab of its
+		// own: Vite's dev client can't open its live-reload socket on a rewritten page and logs errors that
+		// aren't the editor's, so they stay out of the main tab's error check.
+		const tab = await cdp.page();
+		await tab.send('Network.setCookie', { name: 'auth_session', value: cookie, url: BASE });
+		await tab.send('Fetch.enable', {
+			patterns: [
+				{ urlPattern: '*/dashboard/content-management/edit*', resourceType: 'Document', requestStage: 'Response' },
+			],
+		});
+		const off = cdp.on(async (message) => {
+			if (message.sessionId !== tab.sessionId || message.method !== 'Fetch.requestPaused') return;
+			const { requestId } = message.params;
+			const { body, base64Encoded } = await tab.send('Fetch.getResponseBody', { requestId });
+			const html = (base64Encoded ? Buffer.from(body, 'base64').toString('utf8') : body).replace(
+				/data-template-catalog="[^"]*"/,
+				'data-template-catalog="{&quot;templates&quot;:[],&quot;parts&quot;:[]}"',
+			);
+			await tab.send('Fetch.fulfillRequest', {
+				requestId,
+				responseCode: message.params.responseStatusCode ?? 200,
+				responseHeaders: message.params.responseHeaders,
+				body: Buffer.from(html).toString('base64'),
+			});
+		});
+		try {
+			await openEditor(tab, pageId);
+			const button = await tab.eval(() => {
+				const b = document.querySelector('[data-tp-info="tp-template"]');
+				return (
+					b && {
+						disabled: b.disabled,
+						text: b.textContent.trim(),
+						separator: Boolean(b.closest('.tp-actionbar')?.querySelector('.tp-actionbar__separator')),
+					}
+				);
+			});
+			assert.deepEqual(button, { disabled: true, text: 'No available templates', separator: true });
+			if (SHOTS) await tab.screenshot(`${SHOTS}/templates-none.png`);
+		} finally {
+			off();
+			await tab.send('Fetch.disable').catch(() => {});
+			await cdp
+				.send('Target.closeTarget', { targetId: (await tab.send('Target.getTargetInfo')).targetInfo.targetId })
+				.catch(() => {});
+		}
+	});
+
 	await step('Template Management sits under Media; a header is created and published', async () => {
 		await resetToDemo(page, pageId);
 		await page.goto(TM);

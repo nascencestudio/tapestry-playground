@@ -6,6 +6,18 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-16: Session 33: Template button without templates
+
+**Request:** on a site without templates, the purple bar showed the separator but no Template button.
+Now the button is always there; with no templates, headers or footers it's disabled and reads "No
+available templates" (with headers or footers but no templates it stays usable: it picks the page's
+own header and footer). Tapestry `templates` branch (0.5.0), merged into `companion-hooks`; ADR 0041.
+The `templates` suite checks it in its own tab, with the editor page's template list emptied in flight
+(CDP `Fetch`), so the site's real templates stay. Learned: a page whose HTML is rewritten that way
+can't open Vite's live-reload socket (errors from `@vite/client`), hence the separate tab.
+
+---
+
 ## 2026-10-16: Session 32: Tapestry Menus 0.1.0 (and Tapestry 0.6.0's companion hooks)
 
 **Request:** back to menus. Decisions (2026-10-13/15): tied to Tapestry; data plus an unstyled
