@@ -44,6 +44,9 @@ tapestry-menus ADR 0001, Tapestry ADR 0042.
   settings). The user's browser showed "this version of the plugin has no panel": it still had the old
   editor module (Vite's `?v=` cache doesn't change for `file:` updates; a hard reload fixes it). The
   message now says to reload without the cache.
+- A hard reload didn't help (Chrome doesn't revalidate modules loaded with `import()`; Firefox, never
+  used before, was fine). astro.config.mjs now sets `vite.optimizeDeps.force`: each dev start gets a new
+  `?v=` hash (checked: 3f781a15 → b2feacf7), so restarting after a `file:` install reaches every browser.
 
 ### Learned
 - StudioCMS turns a plugin identifier into the dashboard URL with `_` for both `/` and `-`:

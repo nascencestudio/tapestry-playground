@@ -194,7 +194,10 @@ Comments in the site and e2e code that cite `docs/decisions/…`, `docs/known-is
   ("a linked package is out of date") and the old dev server keeps serving old code. Run
   `pnpm install`, restart, and confirm `astro dev status` shows a fresh uptime.
 - Vite serves dependency files (`file:` and npm packages) with `?v=<hash>` and a one-year immutable
-  cache; the hash changes only with the lockfile. Fresh browsers per run (above) avoid stale copies.
+  cache; the hash changes only with the lockfile, which `file:` rebuilds don't touch. Chrome then kept
+  old plugin code even after a hard reload (modules loaded with `import()` aren't revalidated). Hence
+  `vite.optimizeDeps.force: true` in astro.config.mjs: every dev start gets a new hash, so restart after
+  each install. e2e uses fresh browsers anyway.
 - e2e: `page.realDrag()` resolves the target after pressing; resolve both points beforehand and
   don't scroll (not even the outer page) after the first one. `waitFor` callbacks should return
   booleans, not elements (an `<option>` never came back truthy).
