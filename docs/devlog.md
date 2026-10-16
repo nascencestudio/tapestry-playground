@@ -43,6 +43,13 @@ see Template Management read-only. Tapestry ADR 0041 (revised the same day).
 - Chrome 156 (updated itself today) + StudioCMS dashboard: frames stop after a dialog closes (see
   CLAUDE.md gotchas); the suites pass, slower.
 
+- After the user's review: one active sub-page link (StudioCMS's `SidebarLink` matches paths only;
+  now plain `inner-sidebar-link`s marked on the server) and StudioCMS's spacing; red delete buttons and
+  a bottom bar per template (areas, Edit layout, Delete); the part editor's page-content placeholder
+  says it's edited on each page and doesn't look droppable; Template menu items are buttons, the
+  current one purple. A probe's cleanup deleted the user's test templates (it removed everything,
+  not only its own records); probes now must clean up only what they create.
+
 ### Next
 - Release Tapestry 0.5.0; the playground switches to it. Then `@nascencestudio/tapestry-menus`.
 
