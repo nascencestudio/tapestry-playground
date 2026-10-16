@@ -40,6 +40,10 @@ tapestry-menus ADR 0001, Tapestry ADR 0042.
   companions now come in two kinds (ADR 0042): bar buttons (SEO) and sidebar panels (`CompanionPanels`,
   loaded on first open, pages only). The `menus` suite checks there's no Menu button, the panel's
   values, a rename that's live at once and absent from the page's draft; the a11y suite audits the panel.
+- Renamed **Navigation settings** (the user: so it isn't confused with a selected Menu component's
+  settings). The user's browser showed "this version of the plugin has no panel": it still had the old
+  editor module (Vite's `?v=` cache doesn't change for `file:` updates; a hard reload fixes it). The
+  message now says to reload without the cache.
 
 ### Learned
 - StudioCMS turns a plugin identifier into the dashboard URL with `_` for both `/` and `-`:

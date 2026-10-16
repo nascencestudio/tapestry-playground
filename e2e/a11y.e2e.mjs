@@ -4,7 +4,7 @@
 // translations, history, compare, schedule, JSON view, save as pattern) and on the media
 // library's page (incl. a folder's menu, its new-subfolder field and the delete dialog), the
 // Tapestry SEO settings page (every crawler list open), templates (the Templates section, the part
-// editor, the Template menu) and menus (the Menus page, the tree editor, the page's Menu settings), in the dashboard's dark and light themes. StudioCMS's own dashboard chrome is
+// editor, the Template menu) and menus (the Menus page, the tree editor, the page's Navigation settings), in the dashboard's dark and light themes. StudioCMS's own dashboard chrome is
 // out of scope (it's StudioCMS's).
 //
 // Prereqs: same as editor.e2e.mjs. Resets the demo home page before and after, and switches the
@@ -82,7 +82,7 @@ async function templateStates(page, theme) {
 	}
 }
 
-/** Menus (tapestry-menus ADR 0001): the Menus page, the tree editor with an item selected, Menu settings. */
+/** Menus (tapestry-menus ADR 0001): the Menus page, the tree editor with an item selected, Navigation settings. */
 async function menuStates(page, theme) {
 	const menusPage = `${BASE}/dashboard/nascencestudio_tapestry_menus/menus`;
 	await page.goto(menusPage);

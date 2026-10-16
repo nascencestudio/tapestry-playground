@@ -1,7 +1,7 @@
 // End-to-end tests for menus (tapestry-menus ADR 0001, Tapestry ADR 0042): Dashboard → Menus (create a
 // menu, build its tree with the item form, the keyboard buttons and drag and drop, save), saves from an
 // outdated copy refused, the Menu and Breadcrumbs components on a page (links, current page, new tab,
-// visibility by login), the page editor's Menu settings panel, and editors' read-only view.
+// visibility by login), the page editor's Navigation settings panel, and editors' read-only view.
 //
 // Prereqs: same as editor.e2e.mjs. Resets the demo home page; removes the menus and the editor account
 // it creates (menus that existed before are left alone).
@@ -306,7 +306,7 @@ try {
 		assert.match(member, /href="\/team">Team</);
 	});
 
-	await step('Menu settings under the settings panel show the page’s link; admins rename it there', async () => {
+	await step('Navigation settings under the settings panel show the page’s link; admins rename it there', async () => {
 		await openEditor(page, pageId);
 		assert.equal(
 			await page.eval(() => Boolean(document.querySelector('[data-tapestry-extension="menu"]'))),
@@ -317,7 +317,7 @@ try {
 		await page.click(`${panel} > summary`);
 		await page.waitFor((sel) => Boolean(document.querySelector(`${sel} [data-tm-provide]`)), [panel], {
 			timeout: 15_000,
-			message: 'Menu settings loaded',
+			message: 'Navigation settings loaded',
 		});
 		const state = await page.eval((sel) => {
 			const root = document.querySelector(sel);
