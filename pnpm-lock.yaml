@@ -176,11 +176,11 @@ importers:
   .:
     dependencies:
       '@astrojs/node':
-        specifier: 11.1.7
-        version: 11.1.7(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))
+        specifier: 11.1.8
+        version: 11.1.8(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))
       '@astrojs/preact':
-        specifier: 6.0.6
-        version: 6.0.6(@babel/core@7.29.7)(@types/node@26.6.4)(esbuild@0.28.2)(preact@10.29.8)(yaml@2.9.1)
+        specifier: 6.1.0
+        version: 6.1.0(@babel/core@7.29.7)(@types/node@26.6.4)(esbuild@0.28.2)(preact@10.29.8)(yaml@2.9.1)
       '@effect/platform':
         specifier: 0.97.2
         version: 0.97.2(effect@3.22.2)
@@ -192,16 +192,16 @@ importers:
         version: 0.18.0
       '@nascencestudio/medialibrary':
         specifier: 0.2.0
-        version: 0.2.0(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531))
+        version: 0.2.0(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(c66110153f8fb2ac51dfaf3b02506f20))
       '@nascencestudio/tapestry':
         specifier: 0.4.0
-        version: 0.4.0(@nascencestudio/medialibrary@0.2.0(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531))
+        version: 0.4.0(@nascencestudio/medialibrary@0.2.0(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(c66110153f8fb2ac51dfaf3b02506f20)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(c66110153f8fb2ac51dfaf3b02506f20))
       '@nascencestudio/tapestry-seo':
         specifier: 0.2.0
-        version: 0.2.0(@nascencestudio/tapestry@0.4.0(@nascencestudio/medialibrary@0.2.0(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531))
+        version: 0.2.0(@nascencestudio/tapestry@0.4.0(@nascencestudio/medialibrary@0.2.0(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(c66110153f8fb2ac51dfaf3b02506f20)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(c66110153f8fb2ac51dfaf3b02506f20)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(c66110153f8fb2ac51dfaf3b02506f20))
       '@studiocms/md':
         specifier: 0.5.0
-        version: 0.5.0(patch_hash=da73ec54dbd446d69bf0c1468abb7099bb572b9b48bdf9b4048e20d9f30948f9)(@astrojs/internal-helpers@0.11.0)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+        version: 0.5.0(patch_hash=da73ec54dbd446d69bf0c1468abb7099bb572b9b48bdf9b4048e20d9f30948f9)(@astrojs/internal-helpers@0.11.0)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       astro:
         specifier: 7.3.5
         version: 7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1)
@@ -213,7 +213,7 @@ importers:
         version: 10.29.8(preact-render-to-string@6.8.0)
       studiocms:
         specifier: 0.6.1
-        version: 0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)
+        version: 0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(c66110153f8fb2ac51dfaf3b02506f20)
     devDependencies:
       '@astrojs/check':
         specifier: 0.9.10
@@ -314,8 +314,8 @@ packages:
   '@astrojs/internal-helpers@0.11.0':
     resolution: {integrity: sha512-3rzxJ+xbo0+8YyqOzLziIN32wmsHdCjEVz2sGOpRxJ+Ben/KiLph4ItxBy1abEL+E8fkRzqjg0rfXmaHJGw9JA==}
 
-  '@astrojs/internal-helpers@0.12.0':
-    resolution: {integrity: sha512-pKPuwCDtO0L7zgmt1JGd9X4Aes1+0SX3IEBSqBNPHsScYdPMlfmed3Y7DTbXyF7E+8ylnb563o/0OzGQPOFehw==}
+  '@astrojs/internal-helpers@0.13.0':
+    resolution: {integrity: sha512-20jxQqnSmpskcGyad7N5l6Xf1gz0UCa6lNde44bEBdaXGpncEYfAZJ142r2ZgzBaG4dUyzGmhqZWv1INU2eiHQ==}
 
   '@astrojs/language-server@2.17.1':
     resolution: {integrity: sha512-gG7bvMVNIXgoSe1pM9dI1HsSDLU1EIc/dSAYQ0DuReLyLkOBjsiqvaRYgQltWaldLxh0bNEqjgreLfjd9OnUxQ==}
@@ -332,16 +332,16 @@ packages:
   '@astrojs/markdown-satteri@0.4.2':
     resolution: {integrity: sha512-g4QehXnB/MzxQWnSf17NciFInMqEJy9948p8cc7zGg/r7995m0Ln5PMr3Xlnj24iey1LchaoZ3SzTOa3D4P/3w==}
 
-  '@astrojs/node@11.1.7':
-    resolution: {integrity: sha512-IXmBthgAMuYSTcOeIM20CpHrUkYxYhI3uJW0b9jOiaZtCXquFinstQ0WWZnYaA1kzCfgSkjmISKkEH6fwDPmbg==}
+  '@astrojs/node@11.1.8':
+    resolution: {integrity: sha512-aXrrx5dwCI8XUH5MO4FVKW1y0bEKueUYsSrFo0wlwlL2fBBP7j3Pl/5zOkJ755D1UsQMQ8Laj4kXeXmAlKceow==}
     peerDependencies:
       astro: ^7.2.1
 
-  '@astrojs/preact@6.0.6':
-    resolution: {integrity: sha512-Z8GGzW0DAUdy+EtQ+otGtzDLMuYXUueRN5MM8UF4yB8OUaxnVIHF5er1dNCGKoxlnM/8Y2B8+ub+YadofKSSJA==}
-    engines: {node: '>=22.12.0'}
+  '@astrojs/preact@6.1.0':
+    resolution: {integrity: sha512-9OMi7GgwA13sTTV0n7K+DXkmaG4dCXrtTrHakX87XdFbZMSyaaJkCBlgzxAsKGH6VVJBGWcSsRmaUmS1pwqTNw==}
+    engines: {node: '>=22.22.0'}
     peerDependencies:
-      preact: ^10.6.5
+      preact: ^10.6.5 || ^11.0.0
 
   '@astrojs/prism@4.0.2':
     resolution: {integrity: sha512-KTivpmnz6lDsC6o9H4+DNm2SrE/GHzw8cNAvEJwAvUT+eoaEnn/4NtbDNfRRaxaJHdp15gf+tfHAWiXR4wB3BA==}
@@ -1933,6 +1933,10 @@ packages:
   devalue@5.9.4:
     resolution: {integrity: sha512-sPAT4pztbu6586/hrhOnMKS17IJrvg12mXiSPSS3W5qDeN2RGgvZ0diZCm31dBbnevfVmujNO3IM2wrS4Y2Rhg==}
 
+  devalue@6.0.3:
+    resolution: {integrity: sha512-3woMEITftG1wKeO/4d/QXH1DVKctTSZg3jNGPpjp9hNr5Hos8MCFF5McTML5ZtgKDObm2R591B0spRp2IVernA==}
+    engines: {node: '>=18'}
+
   devlop@1.1.0:
     resolution: {integrity: sha512-RWmIqhcFf1lRYBvNmr7qTNuyCt/7/ns2jbpp1+PalgE/rDQcBT0fioSMUpJ93irlUhC5hrg4cYqe6U+0ImW0rA==}
 
@@ -2892,6 +2896,10 @@ packages:
     resolution: {integrity: sha512-hpd+HLON7HdZXqYchMM/+LaTTbdK0AU3NngIJ4KVyWbY9bfQqdL9cD+4yf6dUoU2Ap4VsU0JkQi6FxAI1B2mXQ==}
     engines: {node: '>= 18'}
 
+  smol-toml@1.9.1:
+    resolution: {integrity: sha512-j7WyPdf0CJoutMzMoPLF/bVXHtKZIT9Rb4eGeEbWw8X2t5oirjPgpL+OpaENZrILYaXqYwnVH+qgUwVbl+pUJQ==}
+    engines: {node: '>= 18'}
+
   socks@2.8.10:
     resolution: {integrity: sha512-e0VyvkVTwVYViNovRkZ9aodhxVlyoMn7eJhVUPxZ+eK9P/7CBkxvvsBOHqFPEH416726W8tLXXXjKwqgTErrCQ==}
     engines: {node: '>= 10.0.0', npm: '>= 3.0.0'}
@@ -3154,6 +3162,49 @@ packages:
 
   vite@8.3.3:
     resolution: {integrity: sha512-cTAldKPImjg6c+gk48U19POPn3GCBzZwpdsN8ZMEEcbpes+6/wvfqUd0C2y3qYY4wsj8PwgFwrZ/1jBPVttMSg==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    hasBin: true
+    peerDependencies:
+      '@types/node': ^20.19.0 || >=22.12.0
+      '@vitejs/devtools': ^0.7.1
+      esbuild: ^0.27.0 || ^0.28.0
+      jiti: '>=1.21.0'
+      less: ^4.0.0
+      sass: ^1.70.0
+      sass-embedded: ^1.70.0
+      stylus: '>=0.54.8'
+      sugarss: ^5.0.0
+      terser: ^5.16.0
+      tsx: ^4.8.1
+      yaml: ^2.4.2
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      '@vitejs/devtools':
+        optional: true
+      esbuild:
+        optional: true
+      jiti:
+        optional: true
+      less:
+        optional: true
+      sass:
+        optional: true
+      sass-embedded:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
+      tsx:
+        optional: true
+      yaml:
+        optional: true
+
+  vite@8.3.4:
+    resolution: {integrity: sha512-IftLE8phJhdNRIGNEV4JCCvfNScoZQVfcXaN8TQropWGJtOHcu+iAB9pHcuGvmEb/kddw0LBe/jS8ztdC6xdiQ==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
@@ -3469,17 +3520,17 @@ snapshots:
       picomatch: 4.0.7
       retext-smartypants: 6.2.0
       shiki: 4.5.0
-      smol-toml: 1.9.0
+      smol-toml: 1.9.1
       unified: 11.0.5
 
-  '@astrojs/internal-helpers@0.12.0':
+  '@astrojs/internal-helpers@0.13.0':
     dependencies:
       '@types/hast': 3.0.5
       '@types/mdast': 4.0.4
       picomatch: 4.0.7
       retext-smartypants: 6.2.0
       shiki: 4.5.0
-      smol-toml: 1.9.0
+      smol-toml: 1.9.1
       unified: 11.0.5
       yaml: 2.9.1
 
@@ -3515,24 +3566,24 @@ snapshots:
       github-slugger: 2.0.0
       satteri: 0.10.5
 
-  '@astrojs/node@11.1.7(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))':
+  '@astrojs/node@11.1.8(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))':
     dependencies:
-      '@astrojs/internal-helpers': 0.12.0
+      '@astrojs/internal-helpers': 0.13.0
       astro: 7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1)
       send: 1.2.1
       server-destroy: 1.0.1
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/preact@6.0.6(@babel/core@7.29.7)(@types/node@26.6.4)(esbuild@0.28.2)(preact@10.29.8)(yaml@2.9.1)':
+  '@astrojs/preact@6.1.0(@babel/core@7.29.7)(@types/node@26.6.4)(esbuild@0.28.2)(preact@10.29.8)(yaml@2.9.1)':
     dependencies:
-      '@astrojs/internal-helpers': 0.12.0
-      '@preact/preset-vite': 2.10.6(@babel/core@7.29.7)(preact@10.29.8)(vite@8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      '@astrojs/internal-helpers': 0.13.0
+      '@preact/preset-vite': 2.10.6(@babel/core@7.29.7)(preact@10.29.8)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       '@preact/signals': 2.11.3(preact@10.29.8)
-      devalue: 5.9.4
+      devalue: 6.0.3
       preact: 10.29.8(preact-render-to-string@6.8.0)
       preact-render-to-string: 6.8.0(preact@10.29.8)
-      vite: 8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
+      vite: 8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
     transitivePeerDependencies:
       - '@babel/core'
       - '@types/node'
@@ -4262,29 +4313,29 @@ snapshots:
       '@tybys/wasm-util': 0.10.4
     optional: true
 
-  '@nascencestudio/medialibrary@0.2.0(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531))':
+  '@nascencestudio/medialibrary@0.2.0(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(c66110153f8fb2ac51dfaf3b02506f20))':
     dependencies:
       '@preact/signals': 2.11.2(preact@10.29.8)
       astro: 7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1)
       kysely: 0.29.6
       preact: 10.29.8(preact-render-to-string@6.8.0)
       sharp: 0.35.5(@types/node@26.6.4)
-      studiocms: 0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)
+      studiocms: 0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(c66110153f8fb2ac51dfaf3b02506f20)
       ultrahtml: 1.7.0
     transitivePeerDependencies:
       - '@types/node'
       - preact-render-to-string
 
-  '@nascencestudio/tapestry-seo@0.2.0(@nascencestudio/tapestry@0.4.0(@nascencestudio/medialibrary@0.2.0(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531))':
+  '@nascencestudio/tapestry-seo@0.2.0(@nascencestudio/tapestry@0.4.0(@nascencestudio/medialibrary@0.2.0(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(c66110153f8fb2ac51dfaf3b02506f20)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(c66110153f8fb2ac51dfaf3b02506f20)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(c66110153f8fb2ac51dfaf3b02506f20))':
     dependencies:
-      '@nascencestudio/tapestry': 0.4.0(@nascencestudio/medialibrary@0.2.0(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531))
+      '@nascencestudio/tapestry': 0.4.0(@nascencestudio/medialibrary@0.2.0(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(c66110153f8fb2ac51dfaf3b02506f20)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(c66110153f8fb2ac51dfaf3b02506f20))
       astro: 7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1)
       preact: 10.29.8(preact-render-to-string@6.8.0)
-      studiocms: 0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)
+      studiocms: 0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(c66110153f8fb2ac51dfaf3b02506f20)
     transitivePeerDependencies:
       - preact-render-to-string
 
-  '@nascencestudio/tapestry@0.4.0(@nascencestudio/medialibrary@0.2.0(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531))':
+  '@nascencestudio/tapestry@0.4.0(@nascencestudio/medialibrary@0.2.0(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(c66110153f8fb2ac51dfaf3b02506f20)))(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(c66110153f8fb2ac51dfaf3b02506f20))':
     dependencies:
       '@atlaskit/pragmatic-drag-and-drop': 4.0.0
       '@atlaskit/pragmatic-drag-and-drop-hitbox': 3.0.0
@@ -4299,9 +4350,9 @@ snapshots:
       prosemirror-state: 1.4.4
       prosemirror-transform: 1.12.2
       prosemirror-view: 1.42.6
-      studiocms: 0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531)
+      studiocms: 0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(c66110153f8fb2ac51dfaf3b02506f20)
     optionalDependencies:
-      '@nascencestudio/medialibrary': 0.2.0(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531))
+      '@nascencestudio/medialibrary': 0.2.0(@types/node@26.6.4)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(c66110153f8fb2ac51dfaf3b02506f20))
     transitivePeerDependencies:
       - preact-render-to-string
 
@@ -4369,19 +4420,19 @@ snapshots:
       '@parcel/watcher-win32-arm64': 2.6.0
       '@parcel/watcher-win32-x64': 2.6.0
 
-  '@preact/preset-vite@2.10.6(@babel/core@7.29.7)(preact@10.29.8)(vite@8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
+  '@preact/preset-vite@2.10.6(@babel/core@7.29.7)(preact@10.29.8)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
     dependencies:
       '@babel/core': 7.29.7
       '@babel/plugin-transform-react-jsx': 7.29.7(@babel/core@7.29.7)
       '@babel/plugin-transform-react-jsx-development': 7.29.7(@babel/core@7.29.7)
-      '@prefresh/vite': 2.4.12(preact@10.29.8)(vite@8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      '@prefresh/vite': 2.4.12(preact@10.29.8)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       '@rollup/pluginutils': 5.4.0
       babel-plugin-transform-hook-names: 1.0.2(@babel/core@7.29.7)
       debug: 4.4.3
       magic-string: 0.30.21
       picocolors: 1.1.1
-      vite: 8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
-      vite-prerender-plugin: 0.5.14(vite@8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      vite: 8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
+      vite-prerender-plugin: 0.5.14(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       zimmerframe: 1.1.5
     transitivePeerDependencies:
       - preact
@@ -4410,7 +4461,7 @@ snapshots:
 
   '@prefresh/utils@1.2.1': {}
 
-  '@prefresh/vite@2.4.12(preact@10.29.8)(vite@8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
+  '@prefresh/vite@2.4.12(preact@10.29.8)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
     dependencies:
       '@babel/core': 7.29.7
       '@prefresh/babel-plugin': 0.5.4(@babel/core@7.29.7)
@@ -4418,7 +4469,7 @@ snapshots:
       '@prefresh/utils': 1.2.1
       '@rollup/pluginutils': 4.2.1
       preact: 10.29.8(preact-render-to-string@6.8.0)
-      vite: 8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
+      vite: 8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -4526,10 +4577,10 @@ snapshots:
 
   '@standard-schema/spec@1.1.0': {}
 
-  '@studiocms/markdown-remark@1.6.0(@astrojs/internal-helpers@0.11.0)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
+  '@studiocms/markdown-remark@1.6.0(@astrojs/internal-helpers@0.11.0)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
     dependencies:
       '@astrojs/internal-helpers': 0.11.0
-      '@withstudiocms/internal_helpers': 0.4.0(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      '@withstudiocms/internal_helpers': 0.4.0(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       astro: 7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1)
       hast-util-from-html: 2.0.3
       hast-util-is-element: 3.0.0
@@ -4551,15 +4602,15 @@ snapshots:
       unified: 11.0.5
       unist-util-visit: 5.1.0
       vfile: 6.0.3
-      vite: 8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
+      vite: 8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
     transitivePeerDependencies:
       - effect
       - supports-color
 
-  '@studiocms/md@0.5.0(patch_hash=da73ec54dbd446d69bf0c1468abb7099bb572b9b48bdf9b4048e20d9f30948f9)(@astrojs/internal-helpers@0.11.0)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
+  '@studiocms/md@0.5.0(patch_hash=da73ec54dbd446d69bf0c1468abb7099bb572b9b48bdf9b4048e20d9f30948f9)(@astrojs/internal-helpers@0.11.0)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
     dependencies:
-      '@studiocms/markdown-remark': 1.6.0(@astrojs/internal-helpers@0.11.0)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
-      '@withstudiocms/internal_helpers': 0.4.0(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      '@studiocms/markdown-remark': 1.6.0(@astrojs/internal-helpers@0.11.0)(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      '@withstudiocms/internal_helpers': 0.4.0(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       effect: 3.22.2
     transitivePeerDependencies:
       - '@astrojs/internal-helpers'
@@ -4567,13 +4618,13 @@ snapshots:
       - supports-color
       - vite
 
-  '@studiocms/ui@1.2.2(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(vite@8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
+  '@studiocms/ui@1.2.2(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
     dependencies:
       '@iconify-json/heroicons': 1.2.3
       '@iconify/types': 2.0.0
       astro: 7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1)
       astro-transition-event-polyfill: 1.2.2(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))
-      vite: 8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
+      vite: 8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
 
   '@traversable/json@0.0.52(@traversable/registry@0.0.49)(fast-check@3.23.2)':
     dependencies:
@@ -4715,11 +4766,11 @@ snapshots:
       - fast-check
       - zod
 
-  '@withstudiocms/auth-kit@0.2.1(a205d4749e95bab6056e08fc61c796d5)':
+  '@withstudiocms/auth-kit@0.2.1(2cf176eddbdfff32e3212ea14d4dde91)':
     dependencies:
       '@effect/platform': 0.97.2(effect@3.22.2)
       '@withstudiocms/effect': 0.5.2(6e3909e944415b68d59f044a514eba7e)
-      '@withstudiocms/internal_helpers': 0.4.0(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      '@withstudiocms/internal_helpers': 0.4.0(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       astro: 7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1)
       effect: 3.22.2
       effectify: 0.3.2(3fac06aa40a440353636930f2e66d108)
@@ -4742,10 +4793,10 @@ snapshots:
       tinyexec: 1.3.1
       wrap-ansi: 10.0.2
 
-  '@withstudiocms/component-registry@0.2.1(a9b00166e2c66755c8051253bb70d8b4)':
+  '@withstudiocms/component-registry@0.2.1(d84d97a35a4d0db17c2b80bec922892c)':
     dependencies:
       '@withstudiocms/effect': 0.5.2(6e3909e944415b68d59f044a514eba7e)
-      '@withstudiocms/internal_helpers': 0.4.0(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      '@withstudiocms/internal_helpers': 0.4.0(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       astro: 7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1)
       effect: 3.22.2
       ts-morph: 28.0.0
@@ -4759,11 +4810,11 @@ snapshots:
       - vite
       - zod
 
-  '@withstudiocms/config-utils@0.3.1(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
+  '@withstudiocms/config-utils@0.3.1(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
     dependencies:
       astro: 7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1)
       effect: 3.22.2
-      vite: 8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
+      vite: 8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
 
   '@withstudiocms/effect@0.5.2(6e3909e944415b68d59f044a514eba7e)':
     dependencies:
@@ -4782,7 +4833,7 @@ snapshots:
       - fast-check
       - zod
 
-  '@withstudiocms/internal_helpers@0.4.0(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
+  '@withstudiocms/internal_helpers@0.4.0(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
     dependencies:
       astro: 7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1)
       effect: 3.22.2
@@ -4790,7 +4841,7 @@ snapshots:
       mdast-util-to-string: 4.0.0
       tinyexec: 1.3.1
       unist-util-visit: 5.1.0
-      vite: 8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
+      vite: 8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -5105,6 +5156,8 @@ snapshots:
   detect-libc@2.1.2: {}
 
   devalue@5.9.4: {}
+
+  devalue@6.0.3: {}
 
   devlop@1.1.0:
     dependencies:
@@ -6337,6 +6390,8 @@ snapshots:
 
   smol-toml@1.9.0: {}
 
+  smol-toml@1.9.1: {}
+
   socks@2.8.10:
     dependencies:
       ip-address: 10.7.3
@@ -6372,7 +6427,7 @@ snapshots:
     dependencies:
       ansi-regex: 6.4.0
 
-  studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(443ed0f1720573b50c8a8b2b362c9531):
+  studiocms@0.6.1(patch_hash=830a7068b71956c94c75863d767087531c92239844ec0bd26f8f28224ccafa08)(c66110153f8fb2ac51dfaf3b02506f20):
     dependencies:
       '@effect/platform': 0.97.2(effect@3.22.2)
       '@effect/platform-node': 0.108.2(@effect/cluster@0.60.2(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/workflow@0.19.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(effect@3.22.2)
@@ -6382,14 +6437,14 @@ snapshots:
       '@nanostores/i18n': 1.3.3(nanostores@1.5.4)
       '@nanostores/persistent': 1.3.5(nanostores@1.5.4)
       '@outerbase/sdk-transform': 1.0.8
-      '@studiocms/ui': 1.2.2(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(vite@8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      '@studiocms/ui': 1.2.2(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       '@withstudiocms/api-spec': 0.4.1(47f7d6ec7a1427bd7b68a98dbe9139de)
-      '@withstudiocms/auth-kit': 0.2.1(a205d4749e95bab6056e08fc61c796d5)
+      '@withstudiocms/auth-kit': 0.2.1(2cf176eddbdfff32e3212ea14d4dde91)
       '@withstudiocms/cli-kit': 0.3.2
-      '@withstudiocms/component-registry': 0.2.1(a9b00166e2c66755c8051253bb70d8b4)
-      '@withstudiocms/config-utils': 0.3.1(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      '@withstudiocms/component-registry': 0.2.1(d84d97a35a4d0db17c2b80bec922892c)
+      '@withstudiocms/config-utils': 0.3.1(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       '@withstudiocms/effect': 0.5.2(6e3909e944415b68d59f044a514eba7e)
-      '@withstudiocms/internal_helpers': 0.4.0(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      '@withstudiocms/internal_helpers': 0.4.0(astro@7.3.5(patch_hash=dbea94c1e90c07868ee599681d34c73cad10c73482a6b4cbd55a20a34a2526ac)(@types/node@26.6.4)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       '@withstudiocms/kysely': 0.3.1(@libsql/client@0.18.0)(effect@3.22.2)
       '@withstudiocms/sdk': 0.4.2(patch_hash=40eeb12b0e0a9f27b87350c7ce30be90b808b2d39ee0302ac5f39a339811fc95)(@withstudiocms/effect@0.5.2(6e3909e944415b68d59f044a514eba7e))(@withstudiocms/kysely@0.3.1(@libsql/client@0.18.0)(effect@3.22.2))(effect@3.22.2)(effectify@0.3.2(3fac06aa40a440353636930f2e66d108))(kysely@0.29.6)(zod@4.6.5)
       '@withstudiocms/template-lang': 0.2.1
@@ -6577,7 +6632,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite-prerender-plugin@0.5.14(vite@8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)):
+  vite-prerender-plugin@0.5.14(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)):
     dependencies:
       kolorist: 1.8.0
       magic-string: 0.30.21
@@ -6585,9 +6640,22 @@ snapshots:
       simple-code-frame: 1.3.0
       source-map: 0.7.6
       stack-trace: 1.0.0
-      vite: 8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
+      vite: 8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
 
   vite@8.3.3(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1):
+    dependencies:
+      lightningcss: 1.33.0
+      picomatch: 4.0.7
+      postcss: 8.5.29
+      rolldown: 1.2.12
+      tinyglobby: 0.2.17
+    optionalDependencies:
+      '@types/node': 26.6.4
+      esbuild: 0.28.2
+      fsevents: 2.3.3
+      yaml: 2.9.1
+
+  vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1):
     dependencies:
       lightningcss: 1.33.0
       picomatch: 4.0.7
