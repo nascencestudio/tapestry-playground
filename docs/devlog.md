@@ -6,6 +6,28 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-19: Session 37: Template usage and safe deleting
+
+**Request:** a "Used on N pages" badge beside a template's status, opening a list of those pages as
+links; deleting a template that pages use warns and asks for its name first (like StudioCMS's page
+delete). Tapestry `templates` (merged into `companion-hooks`), ADR 0041: `pagesUsingTemplates()` (pure,
+published version or draft, 3 tests), `loadTemplateUsage()`/`templateUsage()`, the badge and dialogs
+(native `<dialog>`), the endpoint refusing an unconfirmed delete (`confirm-name`).
+
+### Done
+- `templates` suite step: the count, the list's link to the page editor, the Delete button waiting for the
+  exact name (a partial name keeps it disabled), a reopened dialog starting empty, the server refusing a
+  delete without the name. The a11y suite audits both dialogs (its template is used by the home page's
+  draft, then the page is reset before the next theme).
+
+### Learned
+- In headless Chrome 156 on dashboard pages, a `<dialog>`'s `close` event never fired (likely the
+  frame stall after a dialog closes, noted in CLAUDE.md): the typed name is cleared when a dialog opens.
+- An a11y step that changes the home page must reset it in its own cleanup: the suite runs every state
+  once per theme, and the second pass saw the first pass's template.
+
+---
+
 ## 2026-10-19: Session 36: Menus page layout
 
 **Request:** a narrower menu name field with a sensible limit and Add menu below it; on a menu's page,
