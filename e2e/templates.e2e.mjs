@@ -232,6 +232,29 @@ try {
 		);
 		await page.click('[data-tp-info="tp-template"]');
 		await page.waitFor(() => Boolean(document.querySelector('[data-tapestry-templates]')));
+		// The menu: right-aligned with its button; "No template" grouped with the header and footer pickers,
+		// then "Available templates"; the help behind an "i" button.
+		const menu = await page.eval(() => {
+			const button = document.querySelector('[data-tp-info="tp-template"]').getBoundingClientRect();
+			const panel = document.querySelector('#tp-template').getBoundingClientRect();
+			const group = document.querySelector('[data-tapestry-own-group]');
+			return {
+				rightAligned: Math.abs(panel.right - button.right) < 2,
+				grouped: Boolean(
+					group?.querySelector('[data-tapestry-template=""]') && group.querySelector('[data-tapestry-own-parts]'),
+				),
+				heading: document.querySelector('.tp-templates__heading')?.textContent.trim(),
+				helpShown: Boolean(document.querySelector('[data-tapestry-template-help]')),
+			};
+		});
+		assert.deepEqual(menu, { rightAligned: true, grouped: true, heading: 'Available templates', helpShown: false });
+		await page.click('[data-tp-info="tp-template-help"]');
+		await page.waitFor(() => Boolean(document.querySelector('[data-tapestry-template-help]')));
+		if (SHOTS) await page.screenshot(`${SHOTS}/templates-menu.png`);
+		// Escape closes the help first, then the menu stays open.
+		await page.press('Escape');
+		await page.waitFor(() => !document.querySelector('[data-tapestry-template-help]'));
+		assert.ok(await page.eval(() => Boolean(document.querySelector('[data-tapestry-templates]'))), 'menu still open');
 		await page.click(`[data-tapestry-template="${template.id}"]`);
 		const doc = await working(page);
 		assert.equal(doc.template, template.id);

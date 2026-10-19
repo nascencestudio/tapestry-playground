@@ -6,6 +6,18 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-19: Session 35: Template menu layout
+
+**Request:** the Template menu was cut off in a narrow editor, the header/footer pickers looked out of
+place, and the help text sat in the menu. Now (Tapestry `templates`, merged into `companion-hooks`;
+ADR 0041): the menu is right-aligned with its button (`Popover` `align="end"`); "No template" and the
+header/footer pickers form one grey, bordered group; then "Available templates" and the list (or "None
+yet"); the help is behind an "i" button in the menu's header (`Popover` `headerExtra`). Nested popovers:
+Escape closes the help first. The `templates` suite checks the alignment, the grouping, the heading and
+the nested Escape; templates and a11y suites pass.
+
+---
+
 ## 2026-10-16: Session 34: "Show in navigation" hidden; a default Main navigation
 
 **Request:** StudioCMS's "Show in navigation" field confuses users next to Tapestry Menus. Source check:
