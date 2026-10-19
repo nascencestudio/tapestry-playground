@@ -6,6 +6,18 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-19: Session 36: Menus page layout
+
+**Request:** a narrower menu name field with a sensible limit and Add menu below it; on a menu's page,
+the name and the Add item / Save / Delete menu buttons grouped like a template's card (darker bar, no
+line above it), and no line above Template Management's bars either. Done: names 50 characters at most
+(they show in the sidebar, the picker and Navigation settings), a 24rem field with a hint; the menu
+card with a bar holding the status and actions; Tapestry `templates` (merged into `companion-hooks`):
+no top border on template bars. `menus` suite checks the field, the button below it and the bar's
+contents; menus and a11y suites pass.
+
+---
+
 ## 2026-10-19: Session 35: Template menu layout
 
 **Request:** the Template menu was cut off in a narrow editor, the header/footer pickers looked out of

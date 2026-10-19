@@ -153,6 +153,18 @@ try {
 			const names = (await menusApi()).menus.map(({ menu }) => menu.name);
 			assert.deepEqual(names, ['Main navigation'], 'a default menu on a site without menus');
 		}
+		// A name field sized for short names (50 characters at most), with Add menu below it.
+		const form = await page.eval(() => {
+			const input = document.querySelector('#tm-new-name').getBoundingClientRect();
+			const button = document.querySelector('[data-tm-create] button[type="submit"]').getBoundingClientRect();
+			return {
+				maxLength: document.querySelector('#tm-new-name').maxLength,
+				narrow: input.width <= 24 * 16 + 1,
+				buttonBelow: button.top >= input.bottom,
+			};
+		});
+		assert.deepEqual(form, { maxLength: 50, narrow: true, buttonBelow: true });
+		if (SHOTS) await page.screenshot(`${SHOTS}/menus-list.png`);
 		await page.fill('#tm-new-name', NAME);
 		await page.click('[data-tm-create] button[type="submit"]');
 		await page.waitFor(() => Boolean(document.querySelector('[data-tm-menu-editor] [data-tm-add-top]')), [], {
@@ -161,6 +173,15 @@ try {
 		});
 		menuId = await page.eval(() => document.querySelector('[data-tm-menu-editor]')?.dataset.tmMenuEditor);
 		assert.match(menuId, /^mn_[a-z0-9]{16}$/);
+		// The menu's card: the name, then a bar with the status and its actions.
+		assert.deepEqual(
+			await page.eval(() =>
+				[...document.querySelectorAll('.tm-group__bar [data-tm-status], .tm-group__bar button')].map((el) =>
+					el.dataset.tmStatus !== undefined ? 'status' : el.textContent.trim(),
+				),
+			),
+			['status', 'Add item', 'Save', 'Delete menu'],
+		);
 		assert.equal(
 			await page.eval(() => document.querySelector('[data-tm-nav-link][aria-current="page"]')?.textContent.trim()),
 			NAME,
