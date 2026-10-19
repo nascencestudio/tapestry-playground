@@ -13,7 +13,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { CDP, launchChrome } from './cdp.mjs';
-import { BASE, homePageId, login, openEditor, resetToDemo, step, summary } from './helpers.mjs';
+import { BASE, homePageId, login, openEditor, resetToDemo, saveAndWait, step, summary } from './helpers.mjs';
 
 const AXE = readFileSync(createRequire(import.meta.url).resolve('axe-core/axe.min.js'), 'utf8');
 const TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'];
@@ -75,9 +75,26 @@ async function templateStates(page, theme) {
 		await page.click('[data-tp-info="tp-template"]');
 		await page.waitFor(() => Boolean(document.querySelector('[data-tapestry-own-parts]')));
 		await audit(page, '.tp-editor', `${theme}: template menu`);
+		// The page uses the template in its draft (the suite resets the page afterwards): the list of
+		// pages using it and the delete confirmation in Template Management.
+		await page.click(`[data-tapestry-template="${template.id}"]`);
+		await saveAndWait(page, pageId);
+		await page.goto(`${tm}?view=templates`);
+		await loaded();
+		const row = `[data-tapestry-template-row="${template.id}"]`;
+		await page.click(`${row} [data-tapestry-template-usage]`);
+		await page.waitFor((r) => document.querySelector(`${r} [data-tapestry-usage-dialog]`)?.open === true, [row]);
+		await audit(page, `${row} [data-tapestry-usage-dialog]`, `${theme}: pages using a template`);
+		await page.press('Escape');
+		await page.click(`${row} [data-tapestry-template-delete]`);
+		await page.waitFor((r) => document.querySelector(`${r} [data-tapestry-delete-dialog]`)?.open === true, [row]);
+		await audit(page, `${row} [data-tapestry-delete-dialog]`, `${theme}: delete a template in use`);
 		await page.press('Escape');
 	} finally {
-		await post({ action: 'delete-template', id: template.id });
+		// The page back to the demo (no template) first, so the next theme starts clean; then the template
+		// (the name is passed as Template Management's confirmation would be, in case it's still in use).
+		await resetToDemo(page, pageId);
+		await post({ action: 'delete-template', id: template.id, confirm: name });
 		await post({ action: 'delete-part', id: part.id });
 	}
 }

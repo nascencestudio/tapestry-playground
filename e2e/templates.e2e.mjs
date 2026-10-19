@@ -305,6 +305,69 @@ try {
 		assert.match(html, /class="tapestry-area tapestry-area--sidebar"/);
 	});
 
+	await step('a template shows the pages using it; deleting one in use asks for its name', async () => {
+		await page.goto(`${TM}?view=templates`);
+		await page.waitFor(
+			() => document.readyState === 'complete' && Boolean(document.querySelector('[data-tapestry-templates-settings]')),
+		);
+		const row = `[data-tapestry-template-row="${template.id}"]`;
+		assert.equal(
+			await page.eval((r) => document.querySelector(`${r} [data-tapestry-template-usage]`)?.textContent.trim(), row),
+			'Used on 1 page',
+		);
+		await page.click(`${row} [data-tapestry-template-usage]`);
+		await page.waitFor((r) => document.querySelector(`${r} [data-tapestry-usage-dialog]`)?.open === true, [row]);
+		const listed = await page.eval(
+			(r) =>
+				[...document.querySelectorAll(`${r} [data-tapestry-usage-page]`)].map((a) => ({
+					id: a.dataset.tapestryUsagePage,
+					href: a.getAttribute('href'),
+				})),
+			row,
+		);
+		assert.deepEqual(listed, [{ id: pageId, href: `/dashboard/content-management/edit?edit=${pageId}` }]);
+		if (SHOTS) await page.screenshot(`${SHOTS}/templates-usage.png`);
+		await page.press('Escape');
+		await page.waitFor((r) => document.querySelector(`${r} [data-tapestry-usage-dialog]`)?.open === false, [row]);
+
+		// Delete: a dialog; its Delete button waits for the exact name.
+		await page.click(`${row} [data-tapestry-template-delete]`);
+		const dialog = `${row} [data-tapestry-delete-dialog]`;
+		await page.waitFor((d) => document.querySelector(d)?.open === true, [dialog]);
+		const disabled = () =>
+			page.eval((d) => document.querySelector(`${d} [data-tapestry-confirm-submit]`).disabled, dialog);
+		assert.equal(await disabled(), true);
+		await page.fill(`${dialog} [data-tapestry-confirm-name]`, 'E2E artic');
+		assert.equal(await disabled(), true, 'not the full name');
+		await page.fill(`${dialog} [data-tapestry-confirm-name]`, 'E2E article');
+		assert.equal(await disabled(), false);
+		if (SHOTS) await page.screenshot(`${SHOTS}/templates-delete-confirm.png`);
+		await page.click(`${dialog} [data-tapestry-close-dialog]`);
+		await page.waitFor((d) => document.querySelector(d)?.open === false, [dialog]);
+		// Opening it again starts empty.
+		await page.click(`${row} [data-tapestry-template-delete]`);
+		await page.waitFor((d) => document.querySelector(d)?.open === true, [dialog]);
+		assert.equal(await page.eval((d) => document.querySelector(`${d} [data-tapestry-confirm-name]`).value, dialog), '');
+		assert.equal(await disabled(), true);
+		await page.press('Escape');
+		await page.waitFor((d) => document.querySelector(d)?.open === false, [dialog]);
+
+		// The server checks it too: without the name, the template stays.
+		const refused = await fetch(`${BASE}/_tapestry/templates`, {
+			method: 'POST',
+			redirect: 'manual',
+			headers: { ...api(), 'Content-Type': 'application/x-www-form-urlencoded' },
+			body: new URLSearchParams({ return: '/x', action: 'delete-template', id: template.id }),
+		});
+		assert.match(refused.headers.get('location') ?? '', /error=confirm-name/);
+		assert.ok(
+			(await list()).templates.some((t) => t.id === template.id),
+			'still there',
+		);
+		// Back to the page editor for the next step.
+		await openEditor(page, pageId);
+	});
+
 	await step('a one-off page has no header until one is chosen', async () => {
 		await page.click('[data-tp-info="tp-template"]');
 		await page.waitFor(() => Boolean(document.querySelector('[data-tapestry-templates]')));
