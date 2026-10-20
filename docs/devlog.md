@@ -6,6 +6,29 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-20: Session 40: IP Guard 0.1.0
+
+**Request:** build the accepted design, IP Guard first (webforms builds on it); the user confirmed the
+webforms defaults and chose our own proof of work. Both ADRs Accepted.
+
+### Done
+- `@nascencestudio/ipguard` 0.1.0 (`../ipguard`, local commit): see its devlog. No runtime dependencies.
+- Playground: `ipguard()` in studiocms.config (with an uncommitted `file:` dependency); dev-only
+  `/e2e/ipguard-check` (404 in production builds) to drive the guard before forms exist; `ipguard` suite
+  (9 steps: endpoint refusals, lockout guards, a ban, flag → dismiss → flag → blacklist → ban, rejected
+  attempts counting, IPv6 /64, Check an address, settings validation), all passing first time; IP Guard
+  views in the a11y audit (both themes, entries on every list). Cleanup removes only the suite's entries
+  and restores settings.
+
+### Learned
+- Astro itself refuses cross-site form POSTs (no `Origin`) before plugin code runs.
+- Admin-only plugin pages appear in StudioCMS's Admin section (fine for IP Guard).
+
+### Next
+- `@nascencestudio/webforms` (its ADR 0001).
+
+---
+
 ## 2026-10-19: Session 39: Mail, webforms and IP protection (design)
 
 **Request:** contact/web forms like Drupal's Webform, mail without running a mail server, strong spam

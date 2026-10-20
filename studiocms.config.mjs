@@ -1,5 +1,6 @@
 // @ts-check
 
+import ipguard from '@nascencestudio/ipguard';
 import mediaLibrary from '@nascencestudio/medialibrary';
 import tapestry, { tapestryComponentRegistry } from '@nascencestudio/tapestry';
 import tapestryMenus from '@nascencestudio/tapestry-menus';
@@ -50,5 +51,7 @@ export default defineStudioCMSConfig({
 		tapestrySeo(),
 		// Menus (Dashboard → Menus, after Template Management: plugins are listed in this order).
 		tapestryMenus(),
+		// IP protection: review lists, rate limiting, AbuseIPDB, site-wide bans (Admin → IP Guard).
+		ipguard(),
 	],
 });

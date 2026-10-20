@@ -13,7 +13,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { CDP, launchChrome } from './cdp.mjs';
-import { BASE, homePageId, login, openEditor, resetToDemo, saveAndWait, step, summary } from './helpers.mjs';
+import { BASE, db, homePageId, login, openEditor, resetToDemo, saveAndWait, step, summary } from './helpers.mjs';
 
 const AXE = readFileSync(createRequire(import.meta.url).resolve('axe-core/axe.min.js'), 'utf8');
 const TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'];
@@ -100,6 +100,58 @@ async function templateStates(page, theme) {
 }
 
 /** Menus (tapestry-menus ADR 0001): the Menus page, the tree editor with an item selected, Navigation settings. */
+/** IP Guard (@nascencestudio/ipguard ADR 0001): every view, with an entry on each list. */
+async function ipguardStates(page, theme) {
+	const ipguard = `${BASE}/dashboard/nascencestudio_ipguard/ipguard`;
+	const ENTRY = '@nascencestudio/ipguard-entry:';
+	const entryIds = async () =>
+		(
+			await db.execute({
+				sql: 'select id from StudioCMSPluginData where id >= ? and id < ?',
+				args: [ENTRY, `${ENTRY}\uffff`],
+			})
+		).rows.map((r) => r.id);
+	const before = new Set(await entryIds());
+	const post = (fields) =>
+		page.eval(
+			(f) =>
+				fetch('/_ipguard/admin', { method: 'POST', body: new URLSearchParams({ return: '/', ...f }) }).then(() => {}),
+			fields,
+		);
+	await page.goto(ipguard);
+	await page.waitFor(() => Boolean(document.querySelector('[data-ipguard]')));
+	await post({ action: 'add', list: 'whitelist', range: '198.51.100.20', reason: 'A11y office' });
+	await post({ action: 'add', list: 'blacklist', range: '203.0.113.80', reason: 'A11y', expires: '2099-01-01' });
+	await post({ action: 'add', list: 'banned', range: '203.0.113.81', reason: 'A11y' });
+	// A flagged address: over the default rate limit (5 an hour) through the dev-only check endpoint.
+	for (let i = 0; i < 6; i++) {
+		await fetch(`${BASE}/e2e/ipguard-check`, {
+			method: 'POST',
+			headers: { Origin: BASE, 'X-Forwarded-For': '203.0.113.82' },
+		});
+	}
+	try {
+		for (const view of ['', 'blacklist', 'banned', 'whitelist', 'settings', 'check&ip=203.0.113.80']) {
+			await page.goto(view ? `${ipguard}?view=${view}` : ipguard);
+			await page.waitFor(() => document.readyState === 'complete' && Boolean(document.querySelector('[data-ipguard]')));
+			await audit(page, '[data-ipguard]', `${theme}: IP Guard ${view.split('&')[0] || 'flagged'}`);
+		}
+	} finally {
+		const added = (await entryIds()).filter((id) => !before.has(id)).map((id) => id.slice(ENTRY.length));
+		const body = new URLSearchParams({ action: 'remove', return: '/' });
+		for (const id of added) body.append('ids', id);
+		if (added.length)
+			await page.eval(
+				(b) => fetch('/_ipguard/admin', { method: 'POST', body: new URLSearchParams(b) }).then(() => {}),
+				body.toString(),
+			);
+		await db.execute({
+			sql: 'delete from StudioCMSPluginData where id = ?',
+			args: ['@nascencestudio/ipguard-attempts:203.0.113.82'],
+		});
+	}
+}
+
 async function menuStates(page, theme) {
 	const menusPage = `${BASE}/dashboard/nascencestudio_tapestry_menus/menus`;
 	await page.goto(menusPage);
@@ -228,6 +280,7 @@ const editorStates = async (page, theme) => {
 	await audit(page, '[data-seo-settings]', `${theme}: SEO settings`);
 	await templateStates(page, theme);
 	await menuStates(page, theme);
+	await ipguardStates(page, theme);
 	await page.goto(`${BASE}${MEDIA_PAGE}`);
 	await page.waitFor(() => Boolean(document.querySelector('[data-media-library]')));
 	await audit(page, '[data-media-library]', `${theme}: media library`);
@@ -311,4 +364,5 @@ try {
 	}
 	cdp.close();
 	await chrome.close();
+	db.close();
 }
