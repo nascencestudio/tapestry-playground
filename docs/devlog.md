@@ -6,6 +6,36 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-19: Session 39: Mail, webforms and IP protection (design)
+
+**Request:** contact/web forms like Drupal's Webform, mail without running a mail server, strong spam
+protection without Google. Findings: StudioCMS's mailer (`studiocms:mailer`, SMTP Configuration) is
+usable by plugins but has no Reply-To; no StudioCMS form plugin exists; Hetzner blocks outgoing 25/465
+(587 is open), and Drupal only "just works" where the host runs mail. The user chose **Brevo** (one
+agency account, each client's domain verified; free 300/day shared).
+
+The user's Drupal module `nh_form_submission_blocker` (in `tapestry/temp/`, not to be committed) was
+read in full: whitelist / flagged / blacklist / banned lists, rate limit + AbuseIPDB with a careful
+client (header key, timeouts, 24 h cache, fail open, 401/429 circuit breaker), a site-wide ban before
+routing. Its code differs from the description in two places (rate limit only flagged without
+blocking; a high score alone blacklisted rather than banned); the user decided: flag **and block** until
+reviewed; high score → blacklist, ban only with the rate limit; whitelist protects against bans; no
+self-bans; a separate plugin.
+
+### Done
+- Two new local repos with a proposed ADR each, for the user's review before any building:
+  `../webforms` (`@nascencestudio/webforms`: forms built in the dashboard, `<Webform>`, optional Tapestry
+  component, submissions stored then emailed, honeypot + timing token + our own proof of work, CSV export)
+  and `../ipguard` (`@nascencestudio/ipguard`, working name: the four lists with CIDR and IPv6 /64,
+  the decision table, the AbuseIPDB client, site-wide bans as middleware, self-lockout guard,
+  `IPGUARD_DISABLE` for recovery).
+
+### Next
+- The user reviews both ADRs (open defaults: first-version fields, editors seeing submissions, 90-day
+  retention, our own proof of work vs ALTCHA's library). Then build IP Guard first (webforms uses it).
+
+---
+
 ## 2026-10-19: Session 38: StudioCMS 0.7.0, reviewed; upgrade after the release-age gate
 
 **Request:** upgrade to StudioCMS 0.7.0 and make sure the plugins, dependencies and patches work.
