@@ -5,8 +5,9 @@
 // (filters, marking, a submission, CSV export with formulas neutralised) and deleting a form.
 //
 // Email: with E2E_MAIL_SINK=1 (a scratch or CI site only: it sets the site's SMTP Configuration), the
-// suite runs a tiny SMTP server and checks the email; otherwise it checks that submissions are kept with
-// "Email is off". Prereqs: same as editor.e2e.mjs. Resets the home page; deletes the forms, submissions
+// suite runs a tiny SMTP server and checks the email, and the StudioCMS patch's mail fixes (SMTP settings
+// saved twice, a dashboard change with SMTP unreachable: Tapestry known issues #39, #40); otherwise it
+// checks that submissions are kept with "Email is off". Prereqs: same as editor.e2e.mjs. Resets the home page; deletes the forms, submissions
 // and IP Guard entries it creates.
 import assert from 'node:assert/strict';
 import { createHash, randomBytes } from 'node:crypto';
@@ -289,16 +290,15 @@ try {
 	});
 
 	if (MAIL_SINK) {
-		await step('(E2E_MAIL_SINK) email goes through SMTP Configuration', async () => {
+		await step('(E2E_MAIL_SINK) SMTP Configuration saves twice; an SMTP failure doesn’t fail saves', async () => {
 			sink = await startSink();
-			const port = sink.address().port;
-			const api = (path, body) =>
+			const api = (path, body, method = 'POST') =>
 				fetch(`${BASE}/studiocms_api/dashboard${path}`, {
-					method: 'POST',
+					method,
 					headers: { Origin: BASE, Cookie: `auth_session=${cookie}`, 'Content-Type': 'application/json' },
 					body: JSON.stringify(body),
 				});
-			const smtp = {
+			const smtp = (port) => ({
 				host: '127.0.0.1',
 				port,
 				secure: false,
@@ -308,16 +308,23 @@ try {
 				tls_rejectUnauthorized: false,
 				tls_servername: null,
 				default_sender: 'site@example.com',
-			};
-			// StudioCMS can't update an existing SMTP configuration (its update inserts again: Tapestry known
-			// issue #39), so this scratch-only step removes the old one first.
-			await db.execute({
-				sql: 'delete from StudioCMSDynamicConfigSettings where id = ?',
+			});
+			// A port nothing listens on: a server opened and closed again.
+			const closed = await new Promise((resolve) => {
+				const server = createServer();
+				server.listen(0, '127.0.0.1', () => {
+					const { port } = server.address();
+					server.close(() => resolve(port));
+				});
+			});
+			// Like the SMTP Configuration page: set up the first time, update afterwards. Without the StudioCMS
+			// patch the update inserted the row again and failed (Tapestry known issue #39).
+			const saved = await db.execute({
+				sql: 'select id from StudioCMSDynamicConfigSettings where id = ?',
 				args: ['SCMS_MAILER_CONFIG_1'],
 			});
-			const setup = await api('/mailer/config', smtp);
-
-			assert.ok(setup.ok, await setup.text());
+			const first = await api('/mailer/config', smtp(closed), saved.rows.length ? 'PATCH' : 'POST');
+			assert.ok(first.ok, await first.text());
 			// StudioCMS's config update takes the whole site configuration: the current one, mail turned on.
 			const current = JSON.parse(
 				(
@@ -329,9 +336,27 @@ try {
 			);
 			const config = await api('/config', { ...current, enableMailer: true });
 			assert.ok(config.ok, await config.text());
-			// With mail on, StudioCMS emails admins about saves and refuses the save when that fails, so the
-			// mailer is turned back off before the sink closes (finally).
+			// Mail goes back off at the end (finally), so a later run or suite never meets a dead SMTP server.
 			restoreMail = () => api('/config', { ...current, enableMailer: false });
+
+			// SMTP unreachable: a dashboard change still succeeds; the admins' notification email is only logged
+			// (without the patch: HTTP 400 "Failed to send notification", known issue #40).
+			const folderName = `E2E mail ${randomBytes(3).toString('hex')}`;
+			const created = await api('/content/folder', { folderName, parentFolder: null });
+			const folder = await db.execute({
+				sql: 'select id from StudioCMSPageFolderStructure where name = ?',
+				args: [folderName],
+			});
+			if (folder.rows[0]) await api('/content/folder', { id: folder.rows[0].id }, 'DELETE');
+			assert.ok(created.ok, await created.text());
+
+			const second = await api('/mailer/config', smtp(sink.address().port), 'PATCH');
+			assert.ok(second.ok, await second.text());
+			const stored = await db.execute({
+				sql: 'select data from StudioCMSDynamicConfigSettings where id = ?',
+				args: ['SCMS_MAILER_CONFIG_1'],
+			});
+			assert.equal(JSON.parse(stored.rows[0].data).port, sink.address().port);
 		});
 	}
 

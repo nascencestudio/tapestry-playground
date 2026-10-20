@@ -6,6 +6,30 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-20: Session 42: StudioCMS mail patch (#39, #40)
+
+**Request:** patches for known issues #39 and #40, shipped with the plugins for sites to apply.
+
+### Done
+- The fix (identical code in StudioCMS 0.6.1 and 0.7.0): the `Notifications` service's three send functions
+  log any failure (`Notification "…" was not sent`) instead of failing the dashboard action; the mailer
+  handler updates saved SMTP settings (`SDKCoreJs.CONFIG.mailerConfig.update`) and creates them only the
+  first time, for both the setup (`POST`) and update (`PATCH`) endpoints.
+- Shipped in Tapestry's StudioCMS patch (`templates` → 0.5.0, merged into `companion-hooks` and
+  `studiocms-0.7`, which has the 0.7.0 file), README and known issues (#39, #40 Patched); a mail-only patch
+  for both versions in `@nascencestudio/webforms` for sites without Tapestry (pnpm takes one patch per
+  package version, so Tapestry sites use Tapestry's). Both checked with `git apply --check` against the
+  0.6.1 and 0.7.0 tarballs.
+- Playground: its own StudioCMS patch gained the hunks (reason in pnpm-workspace.yaml). The webforms mail
+  step (`E2E_MAIL_SINK=1`) no longer deletes the SMTP row: it saves settings like the dashboard (setup, then
+  update; the new port is stored) and creates a folder while SMTP points at a closed port (succeeds; the
+  failure is logged). Passing on a fresh scratch site; webforms and publishing suites pass on this machine.
+
+### Next
+- Unchanged: releases (user), StudioCMS 0.7.0 install after 2026-10-22 19:47 UTC.
+
+---
+
 ## 2026-10-20: Session 41: Webforms 0.1.0
 
 **Request:** build webforms on the accepted design (ADR 0001 in `../webforms`), with IP Guard.

@@ -80,6 +80,10 @@ patchedDependencies:
   # hydrated). Page-type renderers that set `componentScripts: true` (Tapestry, whose content
   # can't contain HTML) skip the sanitizer in those post-render passes; others are unchanged.
   # Remove when StudioCMS stops re-sanitizing component output.
+  # Also mail (Tapestry known issues #39, #40, the same fix Tapestry ships): saving SMTP settings a
+  # second time inserted the row again and failed (now updated), and a notification email that
+  # couldn't be sent failed the dashboard save that triggered it (now logged). Remove when StudioCMS
+  # fixes both.
   studiocms@0.6.1: patches/studiocms@0.6.1.patch
   # @studiocms/md injects its heading/callout CSS into every page of the site
   # (injectScript 'page-ssr'), even pages with no Markdown. The patch drops the global

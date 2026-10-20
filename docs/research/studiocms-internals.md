@@ -351,8 +351,12 @@ if (!page) return new Response(null, { status: 404 });
 - Settings: `POST /studiocms_api/dashboard/mailer/config` (owner only) with `host, port, secure, proxy,
   auth_user, auth_pass, tls_rejectUnauthorized, tls_servername, default_sender`, stored as row
   `SCMS_MAILER_CONFIG_1` in `StudioCMSDynamicConfigSettings`. Both create and update call
-  `createMailerConfigTable()` (an insert), so a second save fails (Tapestry known issue #39).
+  `createMailerConfigTable()` (an insert), so a second save fails (Tapestry known issue #39). The SMTP page
+  sends the setup (`POST`) without saved settings and the update (`PATCH`) with them. The transport is
+  built from the stored settings on each use (`Mailer.Provide`), so changes apply without a restart.
 - Mail is on when the site configuration's `enableMailer` is true (row `SCMS_SITE_CONFIG_1`).
   `POST /studiocms_api/dashboard/config` replaces the whole site configuration: send every field.
 - With mail on, dashboard handlers email admins about changes and fail the request with HTTP 400 "Failed
-  to send notification" when that email fails (Tapestry known issue #40).
+  to send notification" when that email fails (Tapestry known issue #40). All of them go through the
+  `Notifications` service (`dist/virtuals/notifier/index.js`), so one wrapper there fixes every caller.
+  Both #39 and #40 are patched (Tapestry's shipped patch, the playground's, webforms' mail-only patch).
