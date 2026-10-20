@@ -4,8 +4,10 @@
 // translations, history, compare, schedule, JSON view, save as pattern) and on the media
 // library's page (incl. a folder's menu, its new-subfolder field and the delete dialog), the
 // Tapestry SEO settings page (every crawler list open), templates (the Templates section, the part
-// editor, the Template menu) and menus (the Menus page, the tree editor, the page's Navigation settings), in the dashboard's dark and light themes. StudioCMS's own dashboard chrome is
-// out of scope (it's StudioCMS's).
+// editor, the Template menu), menus (the Menus page, the tree editor, the page's Navigation settings),
+// IP Guard (every view) and Webforms (the dashboard's views; the public form empty, with errors and
+// sent), in the dashboard's dark and light themes. StudioCMS's own dashboard chrome is out of scope
+// (it's StudioCMS's).
 //
 // Prereqs: same as editor.e2e.mjs. Resets the demo home page before and after, and switches the
 // dashboard theme back to dark at the end (StudioCMS saves it per user).
@@ -99,7 +101,6 @@ async function templateStates(page, theme) {
 	}
 }
 
-/** Menus (tapestry-menus ADR 0001): the Menus page, the tree editor with an item selected, Navigation settings. */
 /** IP Guard (@nascencestudio/ipguard ADR 0001): every view, with an entry on each list. */
 async function ipguardStates(page, theme) {
 	const ipguard = `${BASE}/dashboard/nascencestudio_ipguard/ipguard`;
@@ -152,6 +153,97 @@ async function ipguardStates(page, theme) {
 	}
 }
 
+/**
+ * Webforms (@nascencestudio/webforms ADR 0001): the forms list, a form with every field type (its fields,
+ * every edit form open, settings), its submissions and one submission; the public form empty, with
+ * errors and sent (on the dev-only e2e/webform page).
+ */
+async function webformStates(page, theme) {
+	const dash = `${BASE}/dashboard/nascencestudio_webforms/webforms`;
+	const loaded = () =>
+		page.waitFor(() => document.readyState === 'complete' && Boolean(document.querySelector('[data-webforms]')));
+	const post = (fields) =>
+		page.eval(
+			(f) =>
+				fetch('/_webforms/admin', { method: 'POST', body: new URLSearchParams({ return: '/', ...f }) }).then(
+					(r) => r.url,
+				),
+			fields,
+		);
+	await page.goto(dash);
+	await loaded();
+	const name = `A11y ${Date.now()}`;
+	const created = await post({ action: 'create', name });
+	const formId = new URL(created).searchParams.get('form');
+	try {
+		for (const field of [
+			{ type: 'markup', help: 'We reply within a day.' },
+			{ type: 'text', label: 'Name', required: 'on' },
+			{ type: 'email', label: 'Email', required: 'on' },
+			{ type: 'phone', label: 'Phone', help: 'Optional' },
+			{ type: 'textarea', label: 'Message' },
+			{ type: 'select', label: 'Topic', options: 'Sales\nSupport' },
+			{ type: 'radio', label: 'Contact by', options: 'Email\nPhone' },
+			{ type: 'checkboxes', label: 'Interests', options: 'Design\nHosting' },
+			{ type: 'checkbox', label: 'I agree to be contacted', required: 'on' },
+		])
+			await post({ action: 'add-field', form: formId, ...field });
+		await post({ action: 'settings', form: formId, recipients: 'owner@example.com', keep: 'on', retentionDays: '30' });
+		// A submission without a proof of work: kept, as spam.
+		await fetch(`${BASE}/_webforms/submit`, {
+			method: 'POST',
+			headers: { Origin: BASE, Accept: 'application/json', 'Content-Type': 'application/x-www-form-urlencoded' },
+			body: new URLSearchParams({ _form: formId, _page: '/' }),
+		});
+		await page.goto(dash);
+		await loaded();
+		await audit(page, '[data-webforms]', `${theme}: webforms`);
+		await page.goto(`${dash}?form=${formId}`);
+		await loaded();
+		await page.eval(() => {
+			for (const details of document.querySelectorAll('[data-webforms] details')) details.open = true;
+		});
+		await audit(page, '[data-webforms]', `${theme}: webform fields`);
+		await page.goto(`${dash}?form=${formId}&tab=settings`);
+		await loaded();
+		await audit(page, '[data-webforms]', `${theme}: webform settings`);
+		await page.goto(`${dash}?form=${formId}&tab=submissions&show=all`);
+		await loaded();
+		await audit(page, '[data-webforms]', `${theme}: webform submissions`);
+		const submission = await page.eval(
+			() => document.querySelector('[data-webforms-submission]')?.dataset.webformsSubmission,
+		);
+		assert.ok(submission, 'a submission is listed');
+		await page.goto(`${dash}?form=${formId}&tab=submissions&submission=${encodeURIComponent(submission)}`);
+		await loaded();
+		await audit(page, '[data-webforms]', `${theme}: webform submission`);
+
+		const visitor = await cdp.page({ isolated: true });
+		try {
+			const sel = `form[data-webform="${formId}"]`;
+			await visitor.goto(`${BASE}/e2e/webform?form=${formId}`);
+			await visitor.waitFor((s) => Boolean(document.querySelector(s)), [sel]);
+			await audit(visitor, 'html', `${theme}: public webform`);
+			// Errors come from the server, which treats submissions sent within 3 s as automated.
+			await new Promise((r) => setTimeout(r, 3200));
+			await visitor.click(`${sel} [data-webform-submit]`);
+			await visitor.waitFor((s) => Boolean(document.querySelector(`${s} [aria-invalid="true"]`)), [sel], {
+				timeout: 30_000,
+			});
+			await audit(visitor, 'html', `${theme}: public webform with errors`);
+			await visitor.goto(`${BASE}/e2e/webform?form=${formId}&webform=${formId}&webform-status=sent`);
+			await visitor.waitFor(() => Boolean(document.querySelector('[data-webform-thanks]')));
+			await audit(visitor, 'html', `${theme}: public webform sent`);
+		} finally {
+			await cdp
+				.send('Target.closeTarget', { targetId: (await visitor.send('Target.getTargetInfo')).targetInfo.targetId })
+				.catch(() => {});
+		}
+	} finally {
+		await post({ action: 'delete-form', form: formId, confirm: name });
+	}
+}
+
 async function menuStates(page, theme) {
 	const menusPage = `${BASE}/dashboard/nascencestudio_tapestry_menus/menus`;
 	await page.goto(menusPage);
@@ -166,7 +258,8 @@ async function menuStates(page, theme) {
 				}).then((r) => r.json()),
 			body,
 		);
-	const created = await post({ action: 'create', name: `A11y ${Date.now()}` });
+	const name = `A11y ${Date.now()}`;
+	const created = await post({ action: 'create', name });
 	const items = [
 		{ id: 'mi_a11yhome0001', label: 'Home', link: { type: 'page', page: pageId } },
 		{
@@ -281,6 +374,7 @@ const editorStates = async (page, theme) => {
 	await templateStates(page, theme);
 	await menuStates(page, theme);
 	await ipguardStates(page, theme);
+	await webformStates(page, theme);
 	await page.goto(`${BASE}${MEDIA_PAGE}`);
 	await page.waitFor(() => Boolean(document.querySelector('[data-media-library]')));
 	await audit(page, '[data-media-library]', `${theme}: media library`);

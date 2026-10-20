@@ -23,10 +23,11 @@ Canvas), [docs/upstream/](docs/upstream/) (issue drafts), and the deployment gui
 - `main`: all from npm (Tapestry `0.4.0`, media library `0.2.0`, tapestry-seo `0.2.0`); on GitHub with
   rulesets. Our packages are in `minimumReleaseAgeExclude`.
 - Local branches waiting for releases: `templates` (Tapestry 0.5.0, templates suite) and `menus` (on top:
-  Tapestry 0.6.0 hooks + `@nascencestudio/tapestry-menus` 0.1.0, `menus` suite, menu states in a11y).
-  Both use `file:../tapestry` / `file:../tapestry-menus`, **uncommitted** in package.json and the lockfile
-  (studiocms.config already imports tapestry-menus): switch to the npm versions once released, run every
-  suite, then commit.
+  Tapestry 0.6.0 hooks + `@nascencestudio/tapestry-menus` 0.1.0, `menus` suite, menu states in a11y; then
+  `@nascencestudio/ipguard` and `@nascencestudio/webforms` 0.1.0 with their suites and a11y states).
+  They use `file:../tapestry`, `../tapestry-menus`, `../ipguard` and `../webforms`, **uncommitted** in
+  package.json and the lockfile (with the e2e chain's new suites; studiocms.config already imports them):
+  switch to the npm versions once released, run every suite, then commit.
 - 0.2.0 of the media library migrated the dev media directory one way (backup in
   `backups/2026-10-09-before-folders/`, gitignored).
 
@@ -68,7 +69,7 @@ docs/                     ← devlog, research, upstream drafts, guides (develop
 | `pnpm migrate` | Apply StudioCMS DB migrations |
 | `CMS_SETUP=1 pnpm dev` + `node scripts/setup-site.mjs` | First-time setup of a fresh DB (writes `.dev-credentials`); restart without `CMS_SETUP` |
 | `pnpm seed` | (Re)create the demo Tapestry home page (running servers cache pages for 5 min) |
-| `pnpm e2e` | 28 browser suites in headless Chrome (dev server running; `HEADED=1`, `E2E_SCREENSHOTS=dir`, `E2E_CPU_THROTTLE=4` to run like a slow CI runner) |
+| `pnpm e2e` | 30 browser suites in headless Chrome (dev server running; `HEADED=1`, `E2E_SCREENSHOTS=dir`, `E2E_CPU_THROTTLE=4` to run like a slow CI runner) |
 | `pnpm build`, then `PORT=4600 node dist/server/entry.mjs` (with `.env` loaded) + `BASE_URL=http://127.0.0.1:4600 pnpm budget` | Performance budget |
 | `pnpm typecheck` / `pnpm lint` / `pnpm audit` | `astro check` / Biome / vulnerabilities |
 | `docker build --build-arg SITE_URL=… -t nascence-site .` | Production image (docs/guides/deployment.md) |
@@ -192,7 +193,7 @@ Comments in the site and e2e code that cite `docs/decisions/…`, `docs/known-is
   (`E2E_CHROME_ARGS`), bringToFront and viewport changes didn't help.
 - After changing a `file:` dependency, `pnpm exec …` (including `astro dev stop`) can refuse to run
   ("a linked package is out of date") and the old dev server keeps serving old code. Run
-  `pnpm install`, restart, and confirm `astro dev status` shows a fresh uptime.
+  `pnpm install` (a second time if a `file:` package depends on another one, e.g. webforms on ipguard), restart, and confirm `astro dev status` shows a fresh uptime.
 - Vite serves dependency files (`file:` and npm packages) with `?v=<hash>` and a one-year immutable
   cache; the hash changes only with the lockfile, which `file:` rebuilds don't touch. Chrome then kept
   old plugin code even after a hard reload (modules loaded with `import()` aren't revalidated). Hence
@@ -201,3 +202,8 @@ Comments in the site and e2e code that cite `docs/decisions/…`, `docs/known-is
 - e2e: `page.realDrag()` resolves the target after pressing; resolve both points beforehand and
   don't scroll (not even the outer page) after the first one. `waitFor` callbacks should return
   booleans, not elements (an `<option>` never came back truthy).
+- Email in e2e: only with `E2E_MAIL_SINK=1` on a scratch or CI site (it rewrites SMTP Configuration). The suite
+  turns mail off when done: with mail on and the SMTP server gone, StudioCMS fails every dashboard save
+  (Tapestry known issue #40). Mail bodies are quoted-printable.
+- Dev-only test pages live in `src/pages/e2e/` and return 404 in production builds (`ipguard-check.ts`,
+  `webform.astro`).

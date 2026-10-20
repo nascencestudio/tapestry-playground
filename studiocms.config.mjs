@@ -6,6 +6,8 @@ import tapestry, { tapestryComponentRegistry } from '@nascencestudio/tapestry';
 import tapestryMenus from '@nascencestudio/tapestry-menus';
 import { menuComponents } from '@nascencestudio/tapestry-menus/components';
 import tapestrySeo from '@nascencestudio/tapestry-seo';
+import webforms from '@nascencestudio/webforms';
+import { webformComponents } from '@nascencestudio/webforms/tapestry';
 import md from '@studiocms/md';
 import { defineStudioCMSConfig } from 'studiocms/config';
 import { components } from './src/tapestry.config.mjs';
@@ -40,8 +42,8 @@ export default defineStudioCMSConfig({
 		md(),
 		mediaLibrary(),
 		tapestry({
-			// The site's components plus Menu and Breadcrumbs (Tapestry Menus).
-			components: [...components, ...menuComponents()],
+			// The site's components plus Menu and Breadcrumbs (Tapestry Menus) and Webform (Webforms).
+			components: [...components, ...menuComponents(), ...webformComponents()],
 			// Editors can edit and save drafts; publishing (and scheduling) needs an admin or the owner.
 			publishPermission: 'admin',
 			// Pages can be translated into French: each translation is its own page (slug fr/…).
@@ -53,5 +55,7 @@ export default defineStudioCMSConfig({
 		tapestryMenus(),
 		// IP protection: review lists, rate limiting, AbuseIPDB, site-wide bans (Admin → IP Guard).
 		ipguard(),
+		// Forms built in the dashboard (Dashboard → Webforms); checked by IP Guard, emailed via SMTP Configuration.
+		webforms(),
 	],
 });

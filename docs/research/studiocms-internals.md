@@ -342,3 +342,17 @@ if (!page) return new Response(null, { status: 404 });
   ready-made themes. Nothing in StudioCMS's dashboard or our sites calls it.
 - tapestry-menus hides the field on both forms (CSS on the HTML StudioCMS sends, via its middleware) and
   adds a notice to the Basic Information tab (tapestry-menus ADR 0002). The stored flag is untouched.
+
+## The mailer (verified 2026-10-20, studiocms 0.6.1 and 0.7.0)
+
+- Plugins send mail through `studiocms:mailer`, an Effect service: `Mailer` (with `Mailer.Provide`),
+  `isEnabled`, `sendMail({ to, subject, text | html })`; run it with `runEffect` from `studiocms/effect`.
+  No Reply-To or custom headers. Plain text goes out **quoted-printable** (nodemailer).
+- Settings: `POST /studiocms_api/dashboard/mailer/config` (owner only) with `host, port, secure, proxy,
+  auth_user, auth_pass, tls_rejectUnauthorized, tls_servername, default_sender`, stored as row
+  `SCMS_MAILER_CONFIG_1` in `StudioCMSDynamicConfigSettings`. Both create and update call
+  `createMailerConfigTable()` (an insert), so a second save fails (Tapestry known issue #39).
+- Mail is on when the site configuration's `enableMailer` is true (row `SCMS_SITE_CONFIG_1`).
+  `POST /studiocms_api/dashboard/config` replaces the whole site configuration: send every field.
+- With mail on, dashboard handlers email admins about changes and fail the request with HTTP 400 "Failed
+  to send notification" when that email fails (Tapestry known issue #40).

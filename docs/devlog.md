@@ -6,6 +6,40 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-20: Session 41: Webforms 0.1.0
+
+**Request:** build webforms on the accepted design (ADR 0001 in `../webforms`), with IP Guard.
+
+### Done
+- `@nascencestudio/webforms` 0.1.0 (`../webforms`, local commit): see its devlog and README (Brevo setup
+  checklist). No runtime dependencies; 21 unit tests.
+- IP Guard: trusted proxies' own addresses are never judged (dev loopback had been counted as one visitor,
+  a `::/64` row); local commit.
+- Playground: `webforms()` + `webformComponents()` in studiocms.config (`file:` dependency uncommitted, like
+  the others; the suite is added to the uncommitted e2e chain, now 30 suites). `webforms` suite: 8 steps (the
+  dashboard builder, the Tapestry block, a visitor in the browser with the proof of work, every spam layer
+  answered like success, IP Guard refusing a blacklisted visitor, the Submissions page and CSV export,
+  deleting by name); with `E2E_MAIL_SINK=1` (scratch/CI only) a 9th step sends a real email through
+  StudioCMS's mailer to a tiny SMTP server, then turns mail off again. a11y: every Webforms dashboard view and
+  the public form (empty, errors, sent) through the dev-only `/e2e/webform` page, both themes. All passing on
+  a fresh scratch site and on this machine's database (webforms, ipguard, a11y).
+
+### Learned
+- StudioCMS's mailer sends quoted-printable; decode before matching.
+- SMTP settings save only once (Tapestry known issue #39); with mail on, a failed notification email makes
+  every dashboard save answer 400 (#40, found when a previous run left mail on with the sink gone). Both in
+  0.7.0 too; research notes updated.
+- axe's `target-size` caught default-size radios/checkboxes on the public form (now 20px, rows ≥ 28px).
+- Server-side field errors only appear after the 3 s minimum fill time (quicker = quiet spam), so browser
+  tests wait first.
+
+### Next
+- Releases (user): Tapestry 0.5.0/0.6.0, tapestry-menus, IP Guard, webforms (each needs its GitHub repo; first
+  releases a one-time npm token). Then the playground switches to npm versions and commits package.json.
+- StudioCMS 0.7.0 install after 2026-10-22 19:47 UTC (checklist in session 38).
+
+---
+
 ## 2026-10-20: Session 40: IP Guard 0.1.0
 
 **Request:** build the accepted design, IP Guard first (webforms builds on it); the user confirmed the
