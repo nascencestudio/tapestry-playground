@@ -6,6 +6,35 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-19: Session 38: StudioCMS 0.7.0, reviewed; upgrade after the release-age gate
+
+**Request:** upgrade to StudioCMS 0.7.0 and make sure the plugins, dependencies and patches work.
+0.7.0, `@studiocms/md` 0.5.1 and four `@withstudiocms/*` packages were published the same day (19:44
+UTC), so `minimumReleaseAge` blocks them until 2026-10-22 19:47 UTC. The user chose to prepare now and
+install then (no exception), and to support StudioCMS 0.6 and 0.7. Tapestry ADR 0043.
+
+### Done
+- Reviewed both tarballs (integrity-checked) without installing: 8 files differ; markdown parsing moves
+  to `satteri` (reviewed: MIT, provenance, prebuilt binaries per platform, no install scripts), a Windows
+  path fix, and a security fix (the dashboard search API listed all pages and folders, drafts included,
+  to anyone; now editors only). Nothing we patch or depend on changed.
+- All three patches (Tapestry's StudioCMS patch, the playground's StudioCMS and `@studiocms/md` patches)
+  apply to the new versions unchanged; the SDK and Astro patches are unaffected.
+- Branches `studiocms-0.7` (Tapestry: from `templates`; media library and tapestry-seo: from `main`;
+  tapestry-menus: from `main`): peer range `^0.6.0 || ^0.7.0`; Tapestry also ships
+  `patches/studiocms@0.7.0.patch` (README: copy the file for your version), known issues note the bugs
+  are still in 0.7.0.
+
+### Next (from 2026-10-22 19:47 UTC)
+1. Playground: `studiocms` 0.7.0, `@studiocms/md` 0.5.1; rename `patches/studiocms@0.6.1.patch` →
+   `@0.7.0` and `@studiocms__md@0.5.0.patch` → `@0.5.1` (and `patchedDependencies`); `pnpm audit`.
+2. Tapestry, media library, tapestry-seo, tapestry-menus: dev dependency `studiocms` 0.7.0 on their
+   `studiocms-0.7` branches; unit tests, typecheck, build.
+3. All 28 e2e suites, `pnpm budget` (production build), the Docker image, and a fresh-site run.
+4. Releases (the user): media library 0.2.1, tapestry-seo 0.2.1; Tapestry's range in its next release.
+
+---
+
 ## 2026-10-19: Session 37: Template usage and safe deleting
 
 **Request:** a "Used on N pages" badge beside a template's status, opening a list of those pages as
