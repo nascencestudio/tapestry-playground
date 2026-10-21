@@ -6,6 +6,26 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-21: Session 43: Content types and lists (design)
+
+**Request:** Drupal-like content types, a "view" component (type, sort, limit) and display modes, much lighter
+than Views. Verified in StudioCMS 0.6.1: page types allow only simple, code-defined, non-sortable `fields`;
+categories (hierarchy) and tags exist on every page with a Taxonomy section; Astro content collections are
+build-time files, not editor content. The user chose: types defined by admins in the dashboard; items are
+Tapestry pages with fields; display modes in the dashboard with a code override; StudioCMS categories and tags.
+
+### Done
+- `../tapestry-content` (local): ADR 0001 (proposed) for `@nascencestudio/tapestry-content`: content types,
+  fields in the page document, schema-change rules, display modes (plain HTML + classes for CSS), the Content
+  list component (filter, sort, limit, pager, published only, page language), default templates, limits;
+  and three Tapestry 0.7 changes it needs (companion data in documents, panels that edit the document,
+  dependent select options).
+
+### Next
+- The user reviews the ADR; then Tapestry 0.7's ADR and changes, then the plugin.
+
+---
+
 ## 2026-10-20: Session 42: StudioCMS mail patch (#39, #40)
 
 **Request:** patches for known issues #39 and #40, shipped with the plugins for sites to apply.
