@@ -15,12 +15,11 @@ too confusing and asked to remove it all; another approach later.
 
 ### Done
 - Removed: Tapestry's `fabric-hooks` branch (0.7.0: ADRs 0044, 0045 and all their code) and the playground's
-  `fabric` branch (Fabric suite, a11y states, dev-only list page, config). Both kept only as the tag
-  `archive/content-types` in each repo. Tapestry is back on `companion-hooks` (0.6.0, 450 unit tests); the
+  `fabric` branch (Fabric suite, a11y states, dev-only list page, config); then, at the user's request, the
+  `../tapestry-fabric` folder and the backup tags too. Tapestry is back on `companion-hooks` (0.6.0, 450 unit tests); the
   playground on `menus` without the Fabric dependency (30 suites; editor, templates, menus and webforms re-run
-  and passing). `../tapestry-fabric` (local only) is no longer used anywhere.
-- Left for the user: in the dev database, the "News Article" type row, one content template row and the pages
-  "me" and "news-2" (made items while trying it out).
+  and passing).
+- The dev database: the user cleared the old pages and templates themselves (starting fresh).
 
 ### Learned (kept)
 - StudioCMS names plugin pages with `_` for every non-alphanumeric character of the identifier and route
