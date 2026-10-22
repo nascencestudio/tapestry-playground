@@ -70,7 +70,7 @@ docs/                     ← devlog, research, upstream drafts, guides (develop
 | `CMS_SETUP=1 pnpm dev` + `node scripts/setup-site.mjs` | First-time setup of a fresh DB (writes `.dev-credentials`); restart without `CMS_SETUP` |
 | `pnpm seed` | (Re)create the demo Tapestry home page (running servers cache pages for 5 min) |
 | `pnpm e2e` | 30 browser suites in headless Chrome (dev server running; `HEADED=1`, `E2E_SCREENSHOTS=dir`, `E2E_CPU_THROTTLE=4` to run like a slow CI runner) |
-| `pnpm build`, then `PORT=4600 node dist/server/entry.mjs` (with `.env` loaded) + `BASE_URL=http://127.0.0.1:4600 pnpm budget` | Performance budget |
+| `pnpm build`, then `PORT=4600 node dist/server/entry.mjs` (with `.env` loaded) + `BASE_URL=http://localhost:4600 pnpm budget` | Performance budget |
 | `pnpm typecheck` / `pnpm lint` / `pnpm audit` | `astro check` / Biome / vulnerabilities |
 | `docker build --build-arg SITE_URL=… -t nascence-site .` | Production image (docs/guides/deployment.md) |
 
@@ -80,18 +80,19 @@ the dev server. Don't commit a `file:` dependency once the package is on npm.
 
 Login details: `.dev-credentials` (gitignored). Secrets: `.env` (gitignored, `chmod 600`).
 
-## Site dependencies (2026-10-09)
+## Site dependencies (2026-10-22)
 
 | Package | Version | Note |
 | --- | --- | --- |
 | Node | ≥ 22.12 (dev and Docker: 22.23.3) | `.nvmrc` |
 | Caddy (Docker) | 2.11.4 | HTTPS proxy in `compose.yaml` |
-| astro / studiocms | 7.3.5 / 0.6.1 | both patched |
-| @astrojs/node | 11.1.6 | SSR adapter (StudioCMS requires on-demand rendering) |
-| @libsql/client | 0.18.0 | matches StudioCMS 0.6.1 |
-| @astrojs/preact + preact | 6.0.5 + 10.29.8 | islands demo (Tapestry ADR 0030) |
-| @studiocms/md | 0.5.0 | Markdown page type; also StudioCMS's hard-coded create-form default |
-| axe-core | 4.13.0 | accessibility checks in e2e (Tapestry ADR 0034) |
+| astro / studiocms | 7.4.1 / 0.7.0 | StudioCMS patched (Astro 7.4 fixed the dev CSS leak itself) |
+| @astrojs/node | 11.1.9 | SSR adapter (StudioCMS requires on-demand rendering) |
+| @libsql/client | 0.18.0 | matches StudioCMS 0.7.0 |
+| @astrojs/preact + preact | 6.1.0 + 10.29.8 | islands demo (Tapestry ADR 0030) |
+| @studiocms/md | 0.5.1 | Markdown page type; also StudioCMS's hard-coded create-form default |
+| satteri | 0.10.5 | StudioCMS 0.7's Markdown parser, direct + external so production finds its binary (#41) |
+| axe-core | 4.14.0 | accessibility checks in e2e (Tapestry ADR 0034) |
 | typescript | 6.0.3 | not 7 (`@astrojs/check` supports ≤ 6) |
 
 ## Gotchas
@@ -101,6 +102,12 @@ Comments in the site and e2e code that cite `docs/decisions/…`, `docs/known-is
 
 - Production builds need `vite.build.cssMinify: 'esbuild'` because of a StudioCMS
   CSS bug (Tapestry's known issues #1).
+- StudioCMS 0.7's Markdown parser `satteri` is a direct dependency and external in the server build
+  (`vite.ssr.external`), or production can't find its native binary (Tapestry known issue #41). Keep its
+  version equal to StudioCMS's. Only a production build shows this.
+- The budget's `BASE_URL` is `http://localhost:4600` (the `SITE_URL` host): since Astro 7.4 a `Host` not in
+  `security.allowedDomains` makes the request URL `localhost:<port>`, so a login sent from `127.0.0.1`
+  fails the same-origin check (403). Use the `SITE_URL` host for anything that POSTs to a production server.
 - StudioCMS rejects common usernames like `admin` during setup.
 - StudioCMS caches pages for 5 minutes, so direct DB writes may not show on a
   running server. Reset content through the editor (the e2e suite does).
@@ -117,11 +124,11 @@ Comments in the site and e2e code that cite `docs/decisions/…`, `docs/known-is
 - Editor checks in e2e must wait for the *real* editor element; "something rendered"
   passed while the HTML editor was broken.
 - Keep site CSS scoped (`.site` on `<body>`, `--site-*` variables). The dev leak that made
-  this necessary (#14) is fixed by the Astro patch, but scoping is still good practice.
-- **Four dependencies are patched** (`patches/`, reasons in `pnpm-workspace.yaml`, Tapestry ADR 0021):
+  this necessary (#14) is fixed in Astro 7.4 (our patch for it is gone), but scoping is still good practice.
+- **Three dependencies are patched** (`patches/`, reasons in `pnpm-workspace.yaml`, Tapestry ADR 0021):
   StudioCMS (middleware no longer imports a dashboard component, which put ~67 KB of dashboard
   CSS on every public page; no dev DB viewer; component scripts kept for `componentScripts`
-  renderers, #37, the same fix Tapestry ships), Astro (dev CSS collector stops at the manifest),
+  renderers, #37, and the mail fixes #39/#40, the same fixes Tapestry ships),
   @studiocms/md (no global CSS; layouts inline `studiocms:md/styles-inline` on Markdown pages),
   @withstudiocms/sdk (user deletion, #35). After
   editing a patch run `pnpm install`; the Dockerfile copies `patches/` before installing.

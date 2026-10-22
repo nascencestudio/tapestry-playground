@@ -26,6 +26,12 @@ export default defineConfig({
 		// hard reload. A fresh optimize gets a new hash, so a restart (needed after each install anyway)
 		// reaches every browser. Costs a few seconds per start.
 		optimizeDeps: { force: true },
+		ssr: {
+			// StudioCMS 0.7 parses Markdown with satteri, which loads a prebuilt native binary next to its
+			// package. Bundled into a server chunk it can't find it ("Cannot find native binding") and every
+			// page that loads the Markdown module fails in production. Loaded from node_modules, it works.
+			external: ['satteri'],
+		},
 		build: {
 			// Workaround: StudioCMS's ComponentRegistryUI.astro (0.6.0 and 0.6.1)
 			// nests @keyframes inside a rule, which Vite 8's default lightningcss

@@ -6,6 +6,59 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-22: Session 47: StudioCMS 0.7.0, Astro 7.4.1, current dependencies
+
+**Request:** now that the release-age gate allows it, upgrade to the latest versions (session 38's checklist).
+
+### Done
+- Every repo: `studiocms` 0.7.0 (dev; plugins keep peers `^0.6.0 || ^0.7.0`), `astro` 7.4.1, biome 2.5.15,
+  vitest 5.0.5; media library kysely 0.29.7; Tapestry's docs
+  site astro 7.4.1 + starlight 0.42.6; playground `@studiocms/md` 0.5.1, `@astrojs/node` 11.1.9,
+  `@astrojs/preact` 6.1.0, `@astrojs/check` 0.9.11. Branches: Tapestry `studiocms-0.7` → merged into `templates`
+  → `companion-hooks`; media library, tapestry-seo, tapestry-menus on `studiocms-0.7`; IP Guard, webforms `main`.
+- Node 22.23.3 installed with nvm (checksums verified) and made the default: astro 7.4.1 needs ≥ 22.22 (this
+  machine had 22.21.1; `.nvmrc`, Docker and CI already said 22.23.3).
+- New advisories found by the audit, all in StudioCMS's tree: dompurify ≤3.4.16 (one critical), toml ≤5.0.0 via
+  `@effect/cli` (three high), ip-address ≤10.7.3 (moderate). dompurify 3.4.17 and ip-address 10.7.4 fit the
+  existing ranges (lockfiles refreshed); toml has no fixed 4.x, so `'@effect/cli>toml': 5.0.1` (parse() checked,
+  no dependencies or scripts, integrity verified; reason and exit condition in each `pnpm-workspace.yaml`).
+- The `source-map-js` override is gone everywhere: its dependents' ranges resolve the fixed 1.2.2 themselves.
+- Playground patches: StudioCMS and `@studiocms/md` renamed for 0.7.0 / 0.5.1 (they apply unchanged); the
+  Astro patch is removed: Astro 7.4 stops the dev CSS walk at page boundaries itself (#18060). Checked: a
+  public page in dev has 10 `<style>` tags and no dashboard CSS (was ~100 before our patch).
+- Not upgraded, on purpose: TypeScript 7 (`@astrojs/check` supports ≤ 6), effect 4 (StudioCMS needs 3),
+  `@types/node` 26 (we run Node 22), Preact 11 (`@astrojs/preact` 6.1.0 now allows it, but it's a major
+  change under every editor: a separate step).
+- **Two `@preact/signals` copies** broke the media picker ("Cycle detected"; media-tapestry and seo-page
+  suites): `@astrojs/preact` 6.1.0 wants `^2.11.3`, the media library 0.2.0 on npm pins 2.11.2, and two
+  copies hooking one Preact fight. Tapestry ADR 0044: `preact` and `@preact/signals` are ranges in the
+  packages that share the editor runtime (Tapestry, media library, seo, menus); the playground overrides
+  `@preact/signals` to 2.11.3 until media library 0.2.1 is installed. Then all four editor suites pass.
+- **Production build: "Cannot find native binding"** (Tapestry known issue #41). StudioCMS 0.7's Markdown
+  parser `satteri` loads a prebuilt binary relative to its package; bundled into `dist/server/chunks`, it
+  can't, and logins answered 403/500. `vite.ssr.external: ['satteri']` alone then failed with "Cannot find
+  package 'satteri'" (pnpm doesn't hoist StudioCMS's dependencies), so `satteri` 0.10.5 is a direct
+  dependency too (the version reviewed in ADR 0043). Tapestry's README tells sites the same. Checked the
+  binary on the Docker base: `node:22.23.3-bookworm-slim`, linux/amd64, installs `linux-x64-gnu` and loads.
+- `pnpm budget` (production build): within budget (home 1.5 KB HTML, 1.9 KB CSS, 0.2 KB JS; island 8.1 KB
+  JS). `BASE_URL` must now be `http://localhost:4600`: Astro 7.4's node request builder
+  (`createRequestFromNodeRequest`) uses the `Host` header only when it matches `security.allowedDomains`
+  and otherwise builds the URL as `localhost:<port>` (7.3.5 used the raw Host). A login from
+  `127.0.0.1` then fails the origin check ("Cross-site POST form submissions are forbidden"). CI's budget
+  step used `127.0.0.1`: changed to `localhost`.
+- The full Docker image build can't run while package.json has `file:` dependencies (outside the build
+  context); it runs once the released plugins are installed (CI does it too).
+
+### Next
+- Releases (user): media library 0.2.1 and tapestry-seo 0.2.1 (peer range + Preact ranges), Tapestry 0.5.0 /
+  0.6.0, then menus, IP Guard, webforms. Until media library 0.2.1 is out, Tapestry's dev install warns that
+  its npm 0.2.0 wants StudioCMS 0.6.
+- After the releases: npm versions here (keep the `satteri` dependency), remove the `@preact/signals`
+  override, run every suite, the budget and `docker build`, then commit package.json and the lockfile.
+- Preact 11, when wanted.
+
+---
+
 ## 2026-10-22: Sessions 44–46: content types (built, then removed)
 
 **Request:** content types and lists (sessions 43–44: `@nascencestudio/tapestry-fabric` with fields, on Tapestry

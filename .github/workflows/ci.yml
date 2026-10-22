@@ -81,7 +81,9 @@ jobs:
           pnpm exec astro build
           PORT=4600 HOST=127.0.0.1 node dist/server/entry.mjs > "$RUNNER_TEMP/production.log" 2>&1 &
           for _ in $(seq 1 60); do curl -sf -o /dev/null http://127.0.0.1:4600/ && break; sleep 1; done
-          BASE_URL=http://127.0.0.1:4600 pnpm budget
+          # localhost, the SITE_URL host: Astro 7.4 builds request URLs only from allowed hosts (else
+          # localhost), so a login posted with Origin http://127.0.0.1 fails the same-origin check.
+          BASE_URL=http://localhost:4600 pnpm budget
       - name: Dev server log (on failure)
         if: failure()
         run: pnpm exec astro dev logs | tail -200

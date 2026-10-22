@@ -58,10 +58,15 @@ verifyDepsBeforeRun: error
 
 # Forced versions of transitive dependencies. Every entry needs a reason and an exit condition.
 overrides:
-  # GHSA-68fv-2mgg-jv7q (high, event-loop DoS via crafted source maps; build-time only
-  # here, via postcss/css-tree). 1.2.2 is the fix, same maintainer, published 2026-09-30.
-  # Remove once vite/postcss/css-tree resolve >=1.2.2 on their own.
-  source-map-js: 1.2.2
+  # GHSA-4qx8-w7c3-pj3p, GHSA-9j65-hcg3-gc64, GHSA-9qmh-m7c6-f92p (high, CPU DoS in toml <=5.0.0; every
+  # 4.x is affected). Via StudioCMS → @withstudiocms/effect → @effect/cli, which parses config files with
+  # Toml.parse() and asks for ^4.3.0. 5.0.1 (2026-10-12) keeps parse() the same (checked: same exports, no
+  # dependencies, no install scripts, integrity verified). Remove when @effect/cli moves to toml >=5.0.1.
+  '@effect/cli>toml': 5.0.1
+  # One @preact/signals for the dashboard (Tapestry ADR 0044): @astrojs/preact 6.1.0 wants ^2.11.3 while the
+  # media library 0.2.0 on npm pins 2.11.2 exactly; two copies hook the same Preact and the media picker fails
+  # to open ("Cycle detected"). Remove when the media library release with the range (0.2.1) is installed here.
+  '@preact/signals': 2.11.3
 # Patches (pnpm patch). Every entry needs a reason and an exit condition; the install
 # fails if a patch stops applying (e.g. after an upgrade), so they can't go stale silently.
 patchedDependencies:
@@ -84,19 +89,12 @@ patchedDependencies:
   # second time inserted the row again and failed (now updated), and a notification email that
   # couldn't be sent failed the dashboard save that triggered it (now logged). Remove when StudioCMS
   # fixes both.
-  studiocms@0.6.1: patches/studiocms@0.6.1.patch
+  studiocms@0.7.0: patches/studiocms@0.7.0.patch
   # @studiocms/md injects its heading/callout CSS into every page of the site
   # (injectScript 'page-ssr'), even pages with no Markdown. The patch drops the global
   # injection and adds `studiocms:md/styles-inline` so the site layout inlines the CSS
   # on Markdown pages only. Known issue #33. Remove when the plugin makes this optional.
-  '@studiocms/md@0.5.0': patches/@studiocms__md@0.5.0.patch
-  # Dev server only: Astro 7's dev CSS collector walks a page's whole module graph, through
-  # `virtual:astro:manifest` (which links to every page and the middleware), so each page
-  # in `astro dev` got the CSS of every other page (~100 <style> tags on public pages; the
-  # site's global CSS on the dashboard, known issue #14). The patch stops the walk at the
-  # manifest, matching production, where pages are boundaries. Known issue #32. Remove when
-  # Astro fixes the dev collector (report upstream when the user asks).
-  astro@7.3.5: patches/astro@7.3.5.patch
+  '@studiocms/md@0.5.1': patches/@studiocms__md@0.5.1.patch
   # StudioCMS can't delete users: the ghost-user check is inverted (`!==`), so every real
   # user is refused ("is an internal user and cannot be deleted") and only the internal ghost
   # user would be deletable. The patch flips the comparison. Known issue #35. Remove when fixed upstream.

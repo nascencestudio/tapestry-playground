@@ -361,6 +361,19 @@ if (!page) return new Response(null, { status: 404 });
   `Notifications` service (`dist/virtuals/notifier/index.js`), so one wrapper there fixes every caller.
   Both #39 and #40 are patched (Tapestry's shipped patch, the playground's, webforms' mail-only patch).
 
+## Markdown parsing and production builds (verified 2026-10-22, studiocms 0.7.0, astro 7.4.1)
+
+- StudioCMS 0.7.0 parses Markdown (dashboard changelog, SDK) with `satteri` 0.10.5 (`^0.10.5`);
+  `@astrojs/markdown-satteri` 0.4.x uses it too. It loads `@bruits/satteri-<platform>` (an optional
+  dependency) relative to its own package.
+- The SSR build bundles it into `dist/server/chunks/` (`markdown_*.mjs` and a shared chunk), where the
+  binary lookup fails: "Cannot find native binding" when the module loads (it took logins down). Externalized
+  without a direct dependency it fails as "Cannot find package 'satteri'" (pnpm keeps it under StudioCMS).
+  Fix: direct dependency + `vite.ssr.external: ['satteri']` (Tapestry known issue #41).
+- Astro 7.4's `createRequestFromNodeRequest` builds the request URL from `Host` only when it matches
+  `security.allowedDomains`, else from `localhost:<port>`. Same-origin checks (StudioCMS login, Astro's
+  form check) then compare `Origin` with that: clients must use the `SITE_URL` host.
+
 ## Plugin dashboard page addresses (verified 2026-10-21, studiocms 0.6.1)
 
 `pluginHandler.js` names each `dashboardPages` entry `${convertToSafeString(identifier)}/${convertToSafeString(route)}`,
