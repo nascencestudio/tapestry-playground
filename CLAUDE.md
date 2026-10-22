@@ -199,6 +199,8 @@ Comments in the site and e2e code that cite `docs/decisions/…`, `docs/known-is
   old plugin code even after a hard reload (modules loaded with `import()` aren't revalidated). Hence
   `vite.optimizeDeps.force: true` in astro.config.mjs: every dev start gets a new hash, so restart after
   each install. e2e uses fresh browsers anyway.
+- Astro's dev toolbar (`astro-dev-toolbar`) covers the bottom of the window: hide it before clicking things that end
+  up there on short pages (`page.click` waits forever for them to be "uncovered").
 - e2e: `page.realDrag()` resolves the target after pressing; resolve both points beforehand and
   don't scroll (not even the outer page) after the first one. `waitFor` callbacks should return
   booleans, not elements (an `<option>` never came back truthy).

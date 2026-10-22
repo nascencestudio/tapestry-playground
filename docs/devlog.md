@@ -6,6 +6,29 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-22: Sessions 44–46: content types (built, then removed)
+
+**Request:** content types and lists (sessions 43–44: `@nascencestudio/tapestry-fabric` with fields, on Tapestry
+0.7 hooks: companion `data`, fields panels, dependent options, a `date` prop; session 45: rebuilt on **content
+templates** with display modes, Tapestry ADR 0045). After seeing it, the user found templates inside templates
+too confusing and asked to remove it all; another approach later.
+
+### Done
+- Removed: Tapestry's `fabric-hooks` branch (0.7.0: ADRs 0044, 0045 and all their code) and the playground's
+  `fabric` branch (Fabric suite, a11y states, dev-only list page, config). Both kept only as the tag
+  `archive/content-types` in each repo. Tapestry is back on `companion-hooks` (0.6.0, 450 unit tests); the
+  playground on `menus` without the Fabric dependency (30 suites; editor, templates, menus and webforms re-run
+  and passing). `../tapestry-fabric` (local only) is no longer used anywhere.
+- Left for the user: in the dev database, the "News Article" type row, one content template row and the pages
+  "me" and "news-2" (made items while trying it out).
+
+### Learned (kept)
+- StudioCMS names plugin pages with `_` for every non-alphanumeric character of the identifier and route
+  (research notes).
+- Astro's dev toolbar covers the bottom of short pages in e2e (CLAUDE.md).
+
+---
+
 ## 2026-10-21: Session 43: Content types and lists (design)
 
 **Request:** Drupal-like content types, a "view" component (type, sort, limit) and display modes, much lighter

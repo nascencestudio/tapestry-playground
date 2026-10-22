@@ -360,3 +360,11 @@ if (!page) return new Response(null, { status: 404 });
   to send notification" when that email fails (Tapestry known issue #40). All of them go through the
   `Notifications` service (`dist/virtuals/notifier/index.js`), so one wrapper there fixes every caller.
   Both #39 and #40 are patched (Tapestry's shipped patch, the playground's, webforms' mail-only patch).
+
+## Plugin dashboard page addresses (verified 2026-10-21, studiocms 0.6.1)
+
+`pluginHandler.js` names each `dashboardPages` entry `${convertToSafeString(identifier)}/${convertToSafeString(route)}`,
+and `convertToSafeString` (`@withstudiocms/internal_helpers/utils`) replaces every non-alphanumeric character
+with `_`, trims leading/trailing `_` and lowercases: `@nascencestudio/tapestry-menus` + `menus` →
+`/dashboard/nascencestudio_tapestry_menus/menus`; a route `content-types` would be `content_types`.
+
