@@ -3,6 +3,8 @@
 import ipguard from '@nascencestudio/ipguard';
 import mediaLibrary from '@nascencestudio/medialibrary';
 import tapestry, { tapestryComponentRegistry } from '@nascencestudio/tapestry';
+import tapestryFabric from '@nascencestudio/tapestry-fabric';
+import { fabricComponents } from '@nascencestudio/tapestry-fabric/components';
 import tapestryMenus from '@nascencestudio/tapestry-menus';
 import { menuComponents } from '@nascencestudio/tapestry-menus/components';
 import tapestrySeo from '@nascencestudio/tapestry-seo';
@@ -42,8 +44,9 @@ export default defineStudioCMSConfig({
 		md(),
 		mediaLibrary(),
 		tapestry({
-			// The site's components plus Menu and Breadcrumbs (Tapestry Menus) and Webform (Webforms).
-			components: [...components, ...menuComponents(), ...webformComponents()],
+			// The site's components plus Menu and Breadcrumbs (Tapestry Menus), Webform (Webforms) and Page list
+			// (Tapestry Fabric, which also turns on display modes).
+			components: [...components, ...menuComponents(), ...webformComponents(), ...fabricComponents()],
 			// Editors can edit and save drafts; publishing (and scheduling) needs an admin or the owner.
 			publishPermission: 'admin',
 			// Pages can be translated into French: each translation is its own page (slug fr/…).
@@ -53,6 +56,8 @@ export default defineStudioCMSConfig({
 		tapestrySeo(),
 		// Menus (Dashboard → Menus, after Template Management: plugins are listed in this order).
 		tapestryMenus(),
+		// Display modes (Dashboard → Display Modes) and the Page list component.
+		tapestryFabric(),
 		// IP protection: review lists, rate limiting, AbuseIPDB, site-wide bans (Admin → IP Guard).
 		ipguard(),
 		// Forms built in the dashboard (Dashboard → Webforms); checked by IP Guard, emailed via SMTP Configuration.

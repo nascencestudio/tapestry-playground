@@ -5,6 +5,7 @@
 // library's page (incl. a folder's menu, its new-subfolder field and the delete dialog), the
 // Tapestry SEO settings page (every crawler list open), templates (the Templates section, the part
 // editor, the Template menu), menus (the Menus page, the tree editor, the page's Navigation settings),
+// Fabric (the Display Modes page, "Shown in", the Page list's settings),
 // IP Guard (every view) and Webforms (the dashboard's views; the public form empty, with errors and
 // sent), in the dashboard's dark and light themes. StudioCMS's own dashboard chrome is out of scope
 // (it's StudioCMS's).
@@ -303,6 +304,67 @@ async function menuStates(page, theme) {
 	}
 }
 
+/**
+ * Tapestry Fabric (Fabric ADR 0001, Tapestry ADR 0046): the Display Modes page (with an added mode, its delete
+ * button), "Shown in" on a template component, and the Page list's settings (multiple-choice chips), in a
+ * throwaway template's editor (the home page isn't touched).
+ */
+async function fabricStates(page, theme) {
+	const dm = `${BASE}/dashboard/nascencestudio_tapestry_fabric/display_modes`;
+	const tm = `${BASE}/dashboard/nascencestudio_tapestry/templates`;
+	const row = '@nascencestudio/tapestry-display-modes';
+	const before =
+		(await db.execute({ sql: 'select data from StudioCMSPluginData where id = ?', args: [row] })).rows[0]?.data ?? null;
+	const post = (url, fields) =>
+		page.eval(
+			(u, f) => fetch(u, { method: 'POST', body: new URLSearchParams({ return: '/', ...f }) }).then(() => {}),
+			url,
+			fields,
+		);
+	const name = `A11y ${Date.now()}`;
+	await page.goto(dm);
+	await page.waitFor(
+		() => document.readyState === 'complete' && Boolean(document.querySelector('[data-fabric-modes]')),
+	);
+	await post('/_fabric/modes', { action: 'add', name: `${name} card` });
+	await post('/_tapestry/templates', { action: 'create-template', name, header: '', footer: '' });
+	const template = (await page.eval(() => fetch('/_tapestry/templates').then((r) => r.json()))).templates.find(
+		(t) => t.name === name,
+	);
+	const canvasReady = () =>
+		page.waitFor(() => document.querySelector('.tp-canvas__status')?.dataset.state === 'ready', [], {
+			timeout: 30_000,
+		});
+	const add = async (label) => {
+		await page.click(`.tp-library__item[title^="Add ${label}"]`);
+		await page.waitFor(() => Boolean(document.querySelector('.tp-row[aria-selected="true"]')));
+		return page.eval(() => document.querySelector('.tp-row[aria-selected="true"]')?.dataset.tpRow);
+	};
+	try {
+		await page.goto(dm);
+		await page.waitFor(
+			() => document.readyState === 'complete' && document.querySelectorAll('[data-fabric-mode]').length >= 3,
+		);
+		await audit(page, '[data-fabric-modes]', `${theme}: display modes`);
+		await page.goto(`${tm}?edit=${template.id}`);
+		await canvasReady();
+		const area = await add('Content area');
+		await page.waitFor((id) => Boolean(document.getElementById(`tp-node-modes-${id}`)), [area]);
+		await audit(page, '.tp-editor', `${theme}: shown in`);
+		await page.eval(() => document.activeElement?.blur());
+		await page.press('Escape');
+		const list = await add('Page list');
+		await page.waitFor((id) => Boolean(document.getElementById(`tp-field-${id}-categories`)), [list], {
+			timeout: 15_000,
+		});
+		await audit(page, '.tp-editor', `${theme}: page list settings`);
+	} finally {
+		await post('/_tapestry/templates', { action: 'delete-template', id: template.id, confirm: name });
+		if (before === null) await db.execute({ sql: 'delete from StudioCMSPluginData where id = ?', args: [row] });
+		else await db.execute({ sql: 'update StudioCMSPluginData set data = ? where id = ?', args: [before, row] });
+	}
+}
+
 const editorStates = async (page, theme) => {
 	await openEditor(page, pageId);
 	await page.waitFor(() => document.querySelector('.tp-canvas__status')?.dataset.state === 'ready');
@@ -373,6 +435,7 @@ const editorStates = async (page, theme) => {
 	await audit(page, '[data-seo-settings]', `${theme}: SEO settings`);
 	await templateStates(page, theme);
 	await menuStates(page, theme);
+	await fabricStates(page, theme);
 	await ipguardStates(page, theme);
 	await webformStates(page, theme);
 	await page.goto(`${BASE}${MEDIA_PAGE}`);

@@ -24,8 +24,10 @@ Canvas), [docs/upstream/](docs/upstream/) (issue drafts), and the deployment gui
   rulesets. Our packages are in `minimumReleaseAgeExclude`.
 - Local branches waiting for releases: `templates` (Tapestry 0.5.0, templates suite) and `menus` (on top:
   Tapestry 0.6.0 hooks + `@nascencestudio/tapestry-menus` 0.1.0, `menus` suite, menu states in a11y; then
-  `@nascencestudio/ipguard` and `@nascencestudio/webforms` 0.1.0 with their suites and a11y states).
-  They use `file:../tapestry`, `../tapestry-menus`, `../ipguard` and `../webforms`, **uncommitted** in
+  `@nascencestudio/ipguard` and `@nascencestudio/webforms` 0.1.0 with their suites and a11y states), and
+  `fabric` (on `menus`: Tapestry 0.7.0 display modes + `@nascencestudio/tapestry-fabric` 0.1.0, `fabric`
+  suite, Fabric states in a11y).
+  They use `file:../tapestry`, `../tapestry-menus`, `../tapestry-fabric`, `../ipguard` and `../webforms`, **uncommitted** in
   package.json and the lockfile (with the e2e chain's new suites; studiocms.config already imports them):
   switch to the npm versions once released, run every suite, then commit.
 - 0.2.0 of the media library migrated the dev media directory one way (backup in
@@ -48,7 +50,7 @@ Canvas), [docs/upstream/](docs/upstream/) (issue drafts), and the deployment gui
 ## Layout
 
 ```
-astro.config.mjs, studiocms.config.mjs ← the site; registers Tapestry (+ languages, menu components), the media library, SEO, Menus
+astro.config.mjs, studiocms.config.mjs ← the site; registers Tapestry (+ languages, menu, webform and Page list components), the media library, SEO, Menus, Fabric
 src/tapestry.config.mjs   ← example component definitions; src/components/tapestry/ the components
 src/pages/[...slug].astro ← pages via getPage() + AdminBar; src/pages/404.astro; src/layouts/ (Layout: <Seo> from tapestry-seo, <Region> header/footer, styles for menus)
 scripts/                  ← setup-site.mjs (fresh DB), seed-demo-page.mjs + demo-document.mjs, check-budget.mjs
@@ -69,7 +71,7 @@ docs/                     ← devlog, research, upstream drafts, guides (develop
 | `pnpm migrate` | Apply StudioCMS DB migrations |
 | `CMS_SETUP=1 pnpm dev` + `node scripts/setup-site.mjs` | First-time setup of a fresh DB (writes `.dev-credentials`); restart without `CMS_SETUP` |
 | `pnpm seed` | (Re)create the demo Tapestry home page (running servers cache pages for 5 min) |
-| `pnpm e2e` | 31 browser suites in headless Chrome (dev server running; `HEADED=1`, `E2E_SCREENSHOTS=dir`, `E2E_CPU_THROTTLE=4` to run like a slow CI runner) |
+| `pnpm e2e` | 32 browser suites in headless Chrome (dev server running; `HEADED=1`, `E2E_SCREENSHOTS=dir`, `E2E_CPU_THROTTLE=4` to run like a slow CI runner) |
 | `pnpm build`, then `PORT=4600 node dist/server/entry.mjs` (with `.env` loaded) + `BASE_URL=http://localhost:4600 pnpm budget` | Performance budget |
 | `pnpm typecheck` / `pnpm lint` / `pnpm audit` | `astro check` / Biome / vulnerabilities |
 | `docker build --build-arg SITE_URL=… -t nascence-site .` | Production image (docs/guides/deployment.md) |
@@ -217,5 +219,9 @@ Comments in the site and e2e code that cite `docs/decisions/…`, `docs/known-is
   (Tapestry known issue #40). Mail bodies are quoted-printable.
 - Taxonomy e2e: the tag/category pages also have `<meta name="description">`, so select `input[name="description"]`;
   wait for `customElements.get('dynamic-key-value-pair')` before filling (the first dev visit reloads the page).
+- Pages created through StudioCMS's API need a **description**: its edit form requires one, and an empty one
+  silently blocks every save from the editor (Publish then changes the field but nothing is sent).
+- Fabric e2e: Astro's dev output puts `data-astro-source-*` attributes between yours, so match markup per
+  attribute (`href="…"[^>]*aria-label=…`), or slice from the element's `<article`.
 - Dev-only test pages live in `src/pages/e2e/` and return 404 in production builds (`ipguard-check.ts`,
   `webform.astro`).

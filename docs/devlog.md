@@ -6,6 +6,46 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-23: Session 50: Tapestry 0.7.0 (display modes) and Tapestry Fabric 0.1.0
+
+**Request:** build the accepted design (session 49; Tapestry ADR 0046, Fabric ADR 0001).
+
+### Done
+- **Tapestry 0.7.0** (branch `display-modes` on `companion-hooks`): `modes.ts` (keys, Full/Teaser built in,
+  16 max, node `modes`, mode slots `main.teaser`, the canvas `tapestry-tabs` param, usage, `withoutMode()`);
+  `withRootAreas()` makes a root slot per mode, so the layer tree ("Main · Full", "Main · Teaser"), validator and
+  moves treat each tab as an area; `mergeTemplate(…, { mode, tabs })`; modes stored in Tapestry's plugin data
+  (`@nascencestudio/tapestry/modes`), on only with Fabric installed (`config.displayModes`). Editor: "Shown in"
+  chips in the template editor (at least one mode), tabs drawn on the canvas's area labels (selecting a
+  component shows its tab; switching clears a selection in the other tab; click-to-add goes into the tab
+  shown), `select` `multiple` as chips (`ChipsField`, native `<datalist>`), drawn duplicate/trash icons on the
+  chip and the page structure rows. For companions: `listPagesForLists()`, `pageInMode()`, `pageText()`,
+  `currentPageId()` (the editor sends `tapestry-page` with renders), `<Document>` (items marked foreign; the
+  canvas strips their markers), `nodesText()`. 479 unit tests (29 new).
+- **@nascencestudio/tapestry-fabric 0.1.0** (`../tapestry-fabric`, local repo): Display Modes page (like
+  Templates; add, rename, delete; usage counts; built-ins fixed), Page list (categories with subcategories,
+  tags, template, mode, number, sort, link, plain-text trim; never its own page or its translations; nested
+  lists stripped; simple card when a page has nothing in the mode; classes on everything; an editor note with
+  what matched). No runtime dependencies; audit clean; 11 unit tests.
+- **Playground** (branch `fabric` on `menus`): Fabric registered; `fabric` suite (7 steps: the endpoint's
+  checks, Display Modes, the News item template with "Shown in", a page filled through tabs, the News page's
+  Page list as a visitor sees it, deleting modes); Fabric a11y states (Display Modes, "Shown in", the Page
+  list's settings), both themes.
+
+### Learned
+- A canvas render key that includes the tabs must be used by `scheduleRender()` too: with the old key a rename
+  went through the full render path and the chip kept the old name (the layers suite caught it).
+- Pages created through StudioCMS's API with an empty description can't be saved from the editor (the form
+  requires one; the browser blocks the submit silently).
+- The Write tool turned `\u2028`/`\u2029` escapes into real characters, which end a regex literal.
+
+### Next
+- Releases (user): Tapestry 0.5.0 → 0.6.0 → 0.7.0, then menus and Fabric (new GitHub repos, first release with
+  a one-time token), then the playground switches to npm versions, runs every suite, commits.
+- Later, if wanted: "Preview as" in the template editor; pagination in Page lists.
+
+---
+
 ## 2026-10-23: Session 49: Tapestry Fabric, display modes (design)
 
 **Request:** a new companion, `@nascencestudio/tapestry-fabric`: a Display Modes dashboard page (Full and Teaser
