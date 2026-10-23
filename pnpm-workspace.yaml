@@ -89,6 +89,9 @@ patchedDependencies:
   # second time inserted the row again and failed (now updated), and a notification email that
   # couldn't be sent failed the dashboard save that triggered it (now logged). Remove when StudioCMS
   # fixes both.
+  # Also taxonomy (Tapestry known issue #42, playground only): new tags and categories couldn't be created.
+  # The form left out `id` (and `meta` without meta entries), which the payload schema requires; it now sends
+  # id 0 (the handler gives it a new id) and meta {}. e2e/taxonomy.e2e.mjs. Remove when StudioCMS fixes it.
   studiocms@0.7.0: patches/studiocms@0.7.0.patch
   # @studiocms/md injects its heading/callout CSS into every page of the site
   # (injectScript 'page-ssr'), even pages with no Markdown. The patch drops the global

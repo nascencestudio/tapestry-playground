@@ -113,37 +113,8 @@ index 528e1349bb35191171ae0c9312a1549b22e517b9..a396444c8c4725aec8842b44836adb84
    if (args.postProcessorAugments && args.postProcessorAugments.length > 0) {
      for (const postProcessorAugment of args.postProcessorAugments) {
        try {
-diff --git a/frontend/middleware/index.ts b/frontend/middleware/index.ts
-index e329fec9728c99cd353c414d55343849eb04ed4e..8e9aaf318a2b76413d213c38f0f9018455ef772b 100644
---- a/frontend/middleware/index.ts
-+++ b/frontend/middleware/index.ts
-@@ -13,7 +13,9 @@
- import crypto from 'node:crypto';
- import { User, VerifyEmail } from 'studiocms:auth/lib';
- import config, { dashboardConfig } from 'studiocms:config';
--import { defaultLang } from 'studiocms:i18n';
-+// patched (Tapestry, docs/known-issues.md #32): `studiocms:i18n` also exports the dashboard's LanguageSelector
-+// component; importing it here put dashboard CSS (~67 KB) on every page, since every page's graph reaches the middleware.
-+import { defaultLang } from '../../dist/virtuals/i18n/config.js';
- import { StudioCMSRoutes } from 'studiocms:lib';
- import { SDKCore } from 'studiocms:sdk';
- import SCMSUiVersion from 'studiocms:ui/version';
-diff --git a/frontend/pages/studiocms_api/_handlers/integration/dbStudio.ts b/frontend/pages/studiocms_api/_handlers/integration/dbStudio.ts
-index 2abc3bb0f039319d9b0996f4be7d605a8dd6682e..6ec111580ef069d8601a5dd974e9ad7a49b0aedf 100644
---- a/frontend/pages/studiocms_api/_handlers/integration/dbStudio.ts
-+++ b/frontend/pages/studiocms_api/_handlers/integration/dbStudio.ts
-@@ -49,7 +49,8 @@ export const DbStudioAPIHandler = HttpApiBuilder.group(
- 				// Security check: only allow access in the following cases
- 				// 1. In development mode
- 				// 2. In production, only if the user is an owner
--				if (!isDev && currentUser.permissionLevel !== 'owner') {
-+				// patched (Tapestry, docs/known-issues.md #12): owners only, in dev too (was: anyone in dev).
-+				if (currentUser.permissionLevel !== 'owner') {
- 					return yield* new Unauthorized();
- 				}
- 
 diff --git a/dist/virtuals/notifier/index.js b/dist/virtuals/notifier/index.js
-index ad9dfbe..74aae46 100644
+index ad9dfbe93abfa311a68679d1fa30bd95869fae8f..74aae4668460746ff53b1bd8a708124a5b7e005a 100644
 --- a/dist/virtuals/notifier/index.js
 +++ b/dist/virtuals/notifier/index.js
 @@ -159,10 +159,16 @@ class Notifications extends Effect.Service()(
@@ -166,8 +137,48 @@ index ad9dfbe..74aae46 100644
        };
      }),
      dependencies: [Mailer.Default]
+diff --git a/frontend/middleware/index.ts b/frontend/middleware/index.ts
+index e329fec9728c99cd353c414d55343849eb04ed4e..8e9aaf318a2b76413d213c38f0f9018455ef772b 100644
+--- a/frontend/middleware/index.ts
++++ b/frontend/middleware/index.ts
+@@ -13,7 +13,9 @@
+ import crypto from 'node:crypto';
+ import { User, VerifyEmail } from 'studiocms:auth/lib';
+ import config, { dashboardConfig } from 'studiocms:config';
+-import { defaultLang } from 'studiocms:i18n';
++// patched (Tapestry, docs/known-issues.md #32): `studiocms:i18n` also exports the dashboard's LanguageSelector
++// component; importing it here put dashboard CSS (~67 KB) on every page, since every page's graph reaches the middleware.
++import { defaultLang } from '../../dist/virtuals/i18n/config.js';
+ import { StudioCMSRoutes } from 'studiocms:lib';
+ import { SDKCore } from 'studiocms:sdk';
+ import SCMSUiVersion from 'studiocms:ui/version';
+diff --git a/frontend/pages/[dashboard]/taxonomy/shared-client.ts b/frontend/pages/[dashboard]/taxonomy/shared-client.ts
+index ccab9aeee0aad1e01327f01d6d413e3d38598e07..e7e5ac43c089075f1f0f89e24105e91444694e12 100644
+--- a/frontend/pages/[dashboard]/taxonomy/shared-client.ts
++++ b/frontend/pages/[dashboard]/taxonomy/shared-client.ts
+@@ -113,10 +113,16 @@ export const parseFormDataToJson = <
+ 	// Add the type to the entry
+ 	entry.type = type;
+ 
+-	if ('id' in entry) {
+-		if (entry.id === 0) {
+-			entry.id = undefined;
+-		}
++	// A new entry has an empty id field (0 here). Keep 0: the payload schema requires a number, so
++	// undefined failed to encode ("Expected number, actual undefined") and nothing could be created.
++	// The taxonomy handler gives an id of 0 or less a new random id.
++	if (!('id' in entry) || entry.id === null) {
++		entry.id = 0;
++	}
++	// The meta field (MetaContainer) only reaches the form after an entry changes, and the schema requires
++	// it: without meta entries the form failed with `["meta"] is missing`.
++	if (!('meta' in entry) || entry.meta === null) {
++		entry.meta = {};
+ 	}
+ 
+ 	// Type assertion to the expected return type
 diff --git a/frontend/pages/studiocms_api/_handlers/dashboard/mailer.ts b/frontend/pages/studiocms_api/_handlers/dashboard/mailer.ts
-index 37e173b..646209a 100644
+index 37e173b27734a6ea619622ab129f48462f2b6ebe..646209a350141c63c862591ab9c001e3fadf6d08 100644
 --- a/frontend/pages/studiocms_api/_handlers/dashboard/mailer.ts
 +++ b/frontend/pages/studiocms_api/_handlers/dashboard/mailer.ts
 @@ -1,5 +1,6 @@
@@ -191,3 +202,17 @@ index 37e173b..646209a 100644
  
  			if (!config) {
  				return yield* new DashboardAPIError({
+diff --git a/frontend/pages/studiocms_api/_handlers/integration/dbStudio.ts b/frontend/pages/studiocms_api/_handlers/integration/dbStudio.ts
+index 2abc3bb0f039319d9b0996f4be7d605a8dd6682e..6ec111580ef069d8601a5dd974e9ad7a49b0aedf 100644
+--- a/frontend/pages/studiocms_api/_handlers/integration/dbStudio.ts
++++ b/frontend/pages/studiocms_api/_handlers/integration/dbStudio.ts
+@@ -49,7 +49,8 @@ export const DbStudioAPIHandler = HttpApiBuilder.group(
+ 				// Security check: only allow access in the following cases
+ 				// 1. In development mode
+ 				// 2. In production, only if the user is an owner
+-				if (!isDev && currentUser.permissionLevel !== 'owner') {
++				// patched (Tapestry, docs/known-issues.md #12): owners only, in dev too (was: anyone in dev).
++				if (currentUser.permissionLevel !== 'owner') {
+ 					return yield* new Unauthorized();
+ 				}
+ 

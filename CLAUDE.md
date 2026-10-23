@@ -69,7 +69,7 @@ docs/                     ← devlog, research, upstream drafts, guides (develop
 | `pnpm migrate` | Apply StudioCMS DB migrations |
 | `CMS_SETUP=1 pnpm dev` + `node scripts/setup-site.mjs` | First-time setup of a fresh DB (writes `.dev-credentials`); restart without `CMS_SETUP` |
 | `pnpm seed` | (Re)create the demo Tapestry home page (running servers cache pages for 5 min) |
-| `pnpm e2e` | 30 browser suites in headless Chrome (dev server running; `HEADED=1`, `E2E_SCREENSHOTS=dir`, `E2E_CPU_THROTTLE=4` to run like a slow CI runner) |
+| `pnpm e2e` | 31 browser suites in headless Chrome (dev server running; `HEADED=1`, `E2E_SCREENSHOTS=dir`, `E2E_CPU_THROTTLE=4` to run like a slow CI runner) |
 | `pnpm build`, then `PORT=4600 node dist/server/entry.mjs` (with `.env` loaded) + `BASE_URL=http://localhost:4600 pnpm budget` | Performance budget |
 | `pnpm typecheck` / `pnpm lint` / `pnpm audit` | `astro check` / Biome / vulnerabilities |
 | `docker build --build-arg SITE_URL=… -t nascence-site .` | Production image (docs/guides/deployment.md) |
@@ -128,7 +128,8 @@ Comments in the site and e2e code that cite `docs/decisions/…`, `docs/known-is
 - **Three dependencies are patched** (`patches/`, reasons in `pnpm-workspace.yaml`, Tapestry ADR 0021):
   StudioCMS (middleware no longer imports a dashboard component, which put ~67 KB of dashboard
   CSS on every public page; no dev DB viewer; component scripts kept for `componentScripts`
-  renderers, #37, and the mail fixes #39/#40, the same fixes Tapestry ships),
+  renderers, #37, and the mail fixes #39/#40, the same fixes Tapestry ships; plus, here only, taxonomy
+  create, #42),
   @studiocms/md (no global CSS; layouts inline `studiocms:md/styles-inline` on Markdown pages),
   @withstudiocms/sdk (user deletion, #35). After
   editing a patch run `pnpm install`; the Dockerfile copies `patches/` before installing.
@@ -214,5 +215,7 @@ Comments in the site and e2e code that cite `docs/decisions/…`, `docs/known-is
 - Email in e2e: only with `E2E_MAIL_SINK=1` on a scratch or CI site (it rewrites SMTP Configuration). The suite
   turns mail off when done: with mail on and the SMTP server gone, StudioCMS fails every dashboard save
   (Tapestry known issue #40). Mail bodies are quoted-printable.
+- Taxonomy e2e: the tag/category pages also have `<meta name="description">`, so select `input[name="description"]`;
+  wait for `customElements.get('dynamic-key-value-pair')` before filling (the first dev visit reloads the page).
 - Dev-only test pages live in `src/pages/e2e/` and return 404 in production builds (`ipguard-check.ts`,
   `webform.astro`).

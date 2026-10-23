@@ -6,6 +6,28 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-22: Session 48: StudioCMS taxonomy couldn't create tags or categories
+
+**Request:** creating a tag or category failed with "Taxonomy Tag Data └─ ["id"] └─ Expected number, actual
+undefined" (also before 0.7.0).
+
+### Done
+- Cause (Tapestry known issue #42): the create payload schema (`@withstudiocms/api-spec`) spreads the tables'
+  `Select` fields, so `id` and `meta` are required; the form drops the empty id (`parseFormDataToJson()` turns 0
+  into `undefined`) and the typed client refuses to encode it. The handler already gives id ≤ 0 a new random id,
+  but never got the request. Fixing that showed a second bug: `MetaContainer` sets its form value only after an
+  entry changes, so `meta` was missing too.
+- Fix in the playground's StudioCMS patch (`shared-client.ts`): send `id: 0` and `meta: {}` when empty. Checked
+  with an API probe (without id → 400, id 0 → created) and in the browser.
+- New suite `e2e/taxonomy.e2e.mjs` (3 steps: create a tag, a category, edit the tag), cold and warm dev server;
+  deletes only its own entries. Added to the chain (package.json, uncommitted with the `file:` dependencies).
+- Not in the patch Tapestry ships: unrelated to Tapestry (offered to the user).
+
+### Next
+- Report upstream when the user asks (with #41).
+
+---
+
 ## 2026-10-22: Session 47: StudioCMS 0.7.0, Astro 7.4.1, current dependencies
 
 **Request:** now that the release-age gate allows it, upgrade to the latest versions (session 38's checklist).

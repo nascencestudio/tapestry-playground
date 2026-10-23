@@ -374,6 +374,17 @@ if (!page) return new Response(null, { status: 404 });
   `security.allowedDomains`, else from `localhost:<port>`. Same-origin checks (StudioCMS login, Astro's
   form check) then compare `Origin` with that: clients must use the `SITE_URL` host.
 
+## Taxonomy (tags and categories) (verified 2026-10-22, studiocms 0.7.0; same in 0.6.1)
+
+- Pages: `/dashboard/taxonomy/tags|categories?mode=create` (or `?mode=edit&edit=<id>`, categories also
+  `&parent=<id>`). Forms `#tag-form` / `#category-form`, submitted by `#create-taxonomy-entry-btn` /
+  `#save-taxonomy-entry-btn` in the page header through the typed Effect client (encoded in the browser).
+- API: `POST /studiocms_api/dashboard/taxonomy` `{ mode, type: 'tags'|'categories', id, name, slug, description,
+  meta (JSON string on the wire), parent? }`; `DELETE` same path `{ type, id }`; `GET …/taxonomy-search` returns
+  nodes with `type: 'tag'|'category'` (singular, unlike the payloads). Editors and up.
+- Tables `StudioCMSPageDataTags`, `StudioCMSPageDataCategories`; ids are random 9-digit numbers
+  (`generateRandomIDNumber(9)`) when the payload's id is ≤ 0. Create was broken by the form (known issue #42).
+
 ## Plugin dashboard page addresses (verified 2026-10-21, studiocms 0.6.1)
 
 `pluginHandler.js` names each `dashboardPages` entry `${convertToSafeString(identifier)}/${convertToSafeString(route)}`,
