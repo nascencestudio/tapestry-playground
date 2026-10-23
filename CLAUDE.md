@@ -131,7 +131,7 @@ Comments in the site and e2e code that cite `docs/decisions/…`, `docs/known-is
   renderers, #37, and the mail fixes #39/#40, the same fixes Tapestry ships; plus, here only, taxonomy
   create, #42),
   @studiocms/md (no global CSS; layouts inline `studiocms:md/styles-inline` on Markdown pages),
-  @withstudiocms/sdk (user deletion, #35). After
+  @withstudiocms/sdk (user deletion, #35; page tags/categories saved as strings, #43). After
   editing a patch run `pnpm install`; the Dockerfile copies `patches/` before installing.
 - Sites need their own `src/pages/404.astro` **and** `features.dashboardConfig.inject404Route: false`;
   StudioCMS's 404 renders the whole dashboard layout for visitors (#34).

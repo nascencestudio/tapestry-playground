@@ -22,9 +22,19 @@ undefined" (also before 0.7.0).
 - New suite `e2e/taxonomy.e2e.mjs` (3 steps: create a tag, a category, edit the tag), cold and warm dev server;
   deletes only its own entries. Added to the chain (package.json, uncommitted with the `file:` dependencies).
 - Not in the patch Tapestry ships: unrelated to Tapestry (offered to the user).
+- **Then: saving a page with a tag failed** ("Failed to parse data during page update", Tapestry known issue #43).
+  The save went through (the page form's payload schema has tags/categories as `string[]`, stored
+  `["475320160"]`), but the SDK reads them with `parseIdNumberArray` (numbers only), so the page itself failed to
+  load: public 500, editor 500, and with the old SDK even logins (anything that lists pages). The handler's
+  catch-all turns the `ParseError` into that message. Fixed in our `@withstudiocms/sdk` patch: integers or
+  numeric strings. That also repaired the user's tagged page "Test1" without touching data.
+- The suite gained a step: a scratch Markdown page saved with a tag and a category through the edit form; the row,
+  the public page (200) and the reloaded form's selections are checked. Without the SDK fix the suite fails
+  (login 500 with the tagged page in the database); with it, 4 steps pass.
 
 ### Next
-- Report upstream when the user asks (with #41).
+- Report upstream when the user asks (with #41, #43).
+- The patch Tapestry ships has no SDK part: sites using tags or categories need #43's fix (offered to the user).
 
 ---
 

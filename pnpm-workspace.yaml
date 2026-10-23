@@ -101,4 +101,8 @@ patchedDependencies:
   # StudioCMS can't delete users: the ghost-user check is inverted (`!==`), so every real
   # user is refused ("is an internal user and cannot be deleted") and only the internal ghost
   # user would be deletable. The patch flips the comparison. Known issue #35. Remove when fixed upstream.
+  # Also page tags and categories (known issue #43): the dashboard saves them as id strings (its payload schema
+  # is string[]) but the SDK read them as numbers only, so a page with a tag or category failed to load (500),
+  # and so did every request that lists pages, logins included. Numeric strings are accepted now.
+  # e2e/taxonomy.e2e.mjs. Remove when fixed upstream.
   '@withstudiocms/sdk@0.4.2': patches/@withstudiocms__sdk@0.4.2.patch

@@ -384,6 +384,11 @@ if (!page) return new Response(null, { status: 404 });
   nodes with `type: 'tag'|'category'` (singular, unlike the payloads). Editors and up.
 - Tables `StudioCMSPageDataTags`, `StudioCMSPageDataCategories`; ids are random 9-digit numbers
   (`generateRandomIDNumber(9)`) when the payload's id is ≤ 0. Create was broken by the form (known issue #42).
+- Pages store `tags` / `categories` as JSON arrays (`StringArrayFromString` columns). The page form and the
+  update payload use `string[]`, so the dashboard writes `["475320160"]`; the SDK's page collector
+  (`collectPageData` → `parseIdNumberArray` → `collectTags`/`collectCategories`) wanted numbers (known issue #43).
+  `content.ts` maps every `ParseError` in a page update to "Failed to parse data during page update", even
+  after the write succeeded.
 
 ## Plugin dashboard page addresses (verified 2026-10-21, studiocms 0.6.1)
 
