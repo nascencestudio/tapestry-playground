@@ -6,6 +6,34 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-23: Session 49: Tapestry Fabric, display modes (design)
+
+**Request:** a new companion, `@nascencestudio/tapestry-fabric`: a Display Modes dashboard page (Full and Teaser
+built in, up to 16), display modes on template components, and a list component that shows other pages filtered
+by categories, tags and template, in a display mode ("content types by proxy").
+
+### Decided with the user
+- Each page's own content comes from **content areas**: an area shown in several modes gets a **tab per mode** on
+  the page's canvas (`Content area: Main | Full | Teaser`); the area's "Shown in" is set in the template editor.
+- Lists: link each item to its page; **trim** the Full text when a teaser is empty, plain text only (like Drupal),
+  classes on everything; any selected category (subcategories included) AND any selected tag AND the template;
+  a Sort setting (newest first); a simple card for pages with nothing to show; Full and Teaser can't be renamed
+  or deleted; number of pages to show.
+- Loops: a list never shows the page it's on (or its translations), and lists inside listed pages don't render.
+
+### Done
+- Tapestry ADR 0046 (proposed, branch `display-modes` from `companion-hooks`): modes in core, inert without a
+  companion; `modes` on template nodes; per-mode area content as `key.mode` slots; `mergeTemplate(…, mode)`;
+  `pageInMode()`; foreign content on the canvas; `select` `multiple`; drawn Duplicate/Delete icons.
+- `../tapestry-fabric/docs/decisions/0001-fabric.md` (proposed): the page, the list settings, matching, rendering.
+- Checked first: template components have fixed props (hence areas for per-page content); rendering another page
+  works like `<Region>` (`StudioCMSRenderer` with a document); `select` has no multiple choice yet.
+
+### Next
+- The user reviews both ADRs; then Tapestry 0.7.0, then Fabric 0.1.0, the playground suite and a11y states.
+
+---
+
 ## 2026-10-22: Session 48: StudioCMS taxonomy couldn't create tags or categories
 
 **Request:** creating a tag or category failed with "Taxonomy Tag Data └─ ["id"] └─ Expected number, actual
