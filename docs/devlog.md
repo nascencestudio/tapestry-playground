@@ -32,9 +32,19 @@ undefined" (also before 0.7.0).
   the public page (200) and the reloaded form's selections are checked. Without the SDK fix the suite fails
   (login 500 with the tagged page in the database); with it, 4 steps pass.
 
+- Upstream check (GitHub search API, read-only; `gh` isn't installed): no issue or PR for either bug; 5 open
+  issues (old chores), 1 open PR (release bot); `main` (2026-10-23 06:13 UTC) still drops the id and reads
+  numbers only.
+- **Shipped with Tapestry** (the user's decision, Tapestry ADR 0045): the taxonomy hunk in
+  `studiocms@0.6.1.patch` / `@0.7.0.patch` (the form script is identical in both), and
+  `@withstudiocms__sdk@0.4.2.patch` (#43 + #35; both StudioCMS versions use SDK 0.4.2). The SDK file is this
+  repo's, kept identical. Checked: `git apply --check` against the integrity-verified npm tarballs, and pnpm
+  installs of studiocms 0.6.1 and 0.7.0 with the README's `patchedDependencies` (both fixes applied).
+  README section rewritten; known issues #35, #42, #43 say shipped.
+
 ### Next
-- Report upstream when the user asks (with #41, #43).
-- The patch Tapestry ships has no SDK part: sites using tags or categories need #43's fix (offered to the user).
+- Report upstream when the user asks (#41, #42, #43; #35 too).
+- Tapestry's next release carries the patches (0.5.0 branch `templates` has them).
 
 ---
 

@@ -105,4 +105,5 @@ patchedDependencies:
   # is string[]) but the SDK read them as numbers only, so a page with a tag or category failed to load (500),
   # and so did every request that lists pages, logins included. Numeric strings are accepted now.
   # e2e/taxonomy.e2e.mjs. Remove when fixed upstream.
+  # Tapestry ships this same file (its ADR 0045): keep the two identical.
   '@withstudiocms/sdk@0.4.2': patches/@withstudiocms__sdk@0.4.2.patch
