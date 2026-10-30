@@ -6,6 +6,22 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-30: Session 52: display mode classes follow names; one "Display mode" button
+
+**Request:** (1) bug: renaming a display mode didn't change its CSS classes; (2) the template editor's mode
+switch doesn't scale to many modes: one button "Display mode: <current>" opening a list.
+
+### Done
+- Classes now come from the mode's **name** (Tapestry `modeClassName()`, `Big card` → `fabric-list--big-card`);
+  the key stays internal (stored in templates and pages). Add/rename refuse a name whose class another mode has.
+  The Display Modes page shows the classes (not the key); the Page list uses them.
+- The template editor's switch is one button, "Display mode: All", opening a list (Tapestry's `Popover`, like
+  the page's Template menu): All, then the site's modes.
+- `fabric` suite: the renamed mode's classes, a clashing name refused, the menu (button text, choices, closing);
+  passes. 482 Tapestry unit tests.
+
+---
+
 ## 2026-10-30: Session 51: "Preview as" for templates, page links for Page lists
 
 **Request:** finish the roadmap's display-mode items.

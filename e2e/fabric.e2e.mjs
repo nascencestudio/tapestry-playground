@@ -134,6 +134,9 @@ const modeRows = (page) =>
 			name: li.querySelector('.fabric-modes__name')?.textContent.trim(),
 			usage: li.querySelector('[data-fabric-mode-usage]')?.textContent.trim(),
 			renamable: Boolean(li.querySelector('input[name="name"]')),
+			classes: [...(li.querySelector('.fabric-modes__bar-status')?.querySelectorAll('code') ?? [])].map((c) =>
+				c.textContent.trim(),
+			),
 		})),
 	);
 
@@ -228,6 +231,11 @@ try {
 		assert.equal(await submitModes(page, '[data-fabric-mode="e2e-card"] form'), null);
 		const card = (await modeRows(page)).find((r) => r.key === 'e2e-card');
 		assert.deepEqual([card.name, card.usage], ['E2E Big card', 'Not used in a template yet'], 'renamed, same key');
+		// Its CSS classes follow the name.
+		assert.deepEqual(card.classes, ['fabric-list--e2e-big-card', 'fabric-item--e2e-big-card']);
+		// A name whose classes another mode already has is refused.
+		await page.fill('[data-fabric-mode-create] input[name="name"]', 'e2e-big-card');
+		assert.match(await submitModes(page, '[data-fabric-mode-create]'), /already exists/);
 		if (SHOTS) await page.screenshot(`${SHOTS}/fabric-display-modes.png`);
 	});
 
@@ -311,29 +319,40 @@ try {
 		const modesOf = (id) => doc.root.find((n) => n.id === id)?.modes;
 		assert.deepEqual([modesOf(banner), modesOf(badge), modesOf(area)], [undefined, ['teaser'], ['full', 'teaser']]);
 
-		// "Preview as": All shows everything; a mode shows only its components (the selected one stays, faded).
-		// Buttons for up to four modes, a dropdown for more (this site may have its own modes).
-		const previewChoices = await page.eval(() => {
-			const buttons = [...document.querySelectorAll('[data-tapestry-preview-mode]')];
-			const options = [...document.querySelectorAll('[data-tapestry-preview-modes] option')];
-			return buttons.length
-				? buttons.map((b) => [b.dataset.tapestryPreviewMode, b.textContent])
-				: options.map((o) => [o.value, o.textContent]);
-		});
+		// "Display mode" (one button naming the current mode, opening the list): All shows everything; a mode
+		// shows only its components (the selected one stays, faded).
+		assert.equal(
+			await page.eval(() => document.querySelector('[data-tapestry-current-preview-mode]')?.textContent),
+			'Display mode: All',
+		);
+		await page.click('[data-tp-info="tp-preview-mode"]');
+		await page.waitFor(() => Boolean(document.querySelector('[data-tapestry-preview-modes]')));
+		const previewChoices = await page.eval(() =>
+			[...document.querySelectorAll('[data-tapestry-preview-mode]')].map((b) => [
+				b.dataset.tapestryPreviewMode,
+				b.querySelector('.tp-templates__name')?.textContent,
+				b.getAttribute('aria-pressed'),
+			]),
+		);
 		assert.deepEqual(previewChoices.slice(0, 3), [
-			['', 'All'],
-			['full', 'Full'],
-			['teaser', 'Teaser'],
+			['', 'All', 'true'],
+			['full', 'Full', 'false'],
+			['teaser', 'Teaser', 'false'],
 		]);
-		const previewAs = async (key) => {
-			const buttons = await page.eval(() => document.querySelectorAll('[data-tapestry-preview-mode]').length);
-			if (buttons) await page.click(`[data-tapestry-preview-mode="${key}"]`);
-			else
-				await page.eval((k) => {
-					const select = document.querySelector('[data-tapestry-preview-modes] select');
-					select.value = k;
-					select.dispatchEvent(new Event('change', { bubbles: true }));
-				}, key);
+		if (SHOTS) await page.screenshot(`${SHOTS}/fabric-display-mode-menu.png`);
+		await page.press('Escape');
+		const previewAs = async (key, name) => {
+			await page.click('[data-tp-info="tp-preview-mode"]');
+			await page.click(`[data-tapestry-preview-mode="${key}"]`);
+			await page.waitFor(
+				(n) => document.querySelector('[data-tapestry-current-preview-mode]')?.textContent === `Display mode: ${n}`,
+				[name],
+			);
+			assert.equal(
+				await page.eval(() => Boolean(document.querySelector('[data-tapestry-preview-modes]'))),
+				false,
+				'closed',
+			);
 		};
 		await page.press('Escape'); // nothing selected: hidden really means hidden
 		await page.eval(() => document.activeElement?.blur());
@@ -351,12 +370,12 @@ try {
 			);
 		await canvasReady(page);
 		assert.deepEqual(await shownOnCanvas(), [true, true, true], 'All');
-		await previewAs('teaser');
+		await previewAs('teaser', 'Teaser');
 		assert.deepEqual(await shownOnCanvas(), [false, true, true], 'Teaser: the banner is hidden');
 		if (SHOTS) await page.screenshot(`${SHOTS}/fabric-preview-teaser.png`);
-		await previewAs('full');
+		await previewAs('full', 'Full');
 		assert.deepEqual(await shownOnCanvas(), [true, false, true], 'Full: the badge is hidden');
-		await previewAs('');
+		await previewAs('', 'All');
 		assert.deepEqual(await shownOnCanvas(), [true, true, true], 'All again');
 
 		await page.click('[data-tapestry-publish]');
