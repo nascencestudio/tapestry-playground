@@ -232,6 +232,13 @@ try {
 	});
 
 	await step('the News item template: a banner in Full, a badge in Teaser, a content area in both', async () => {
+		// Teaser's use before (the site's own templates may use it): this template adds 2 components.
+		await openModes(page);
+		const counts = (text) => {
+			const m = /Used by (\d+) components? in (\d+) templates?/.exec(text ?? '');
+			return m ? [Number(m[1]), Number(m[2])] : [0, 0];
+		};
+		const teaserBefore = counts((await modeRows(page)).find((r) => r.key === 'teaser')?.usage);
 		const category = await api('POST', '/studiocms_api/dashboard/taxonomy', {
 			mode: 'create',
 			type: 'categories',
@@ -303,6 +310,55 @@ try {
 		const doc = await working(page);
 		const modesOf = (id) => doc.root.find((n) => n.id === id)?.modes;
 		assert.deepEqual([modesOf(banner), modesOf(badge), modesOf(area)], [undefined, ['teaser'], ['full', 'teaser']]);
+
+		// "Preview as": All shows everything; a mode shows only its components (the selected one stays, faded).
+		// Buttons for up to four modes, a dropdown for more (this site may have its own modes).
+		const previewChoices = await page.eval(() => {
+			const buttons = [...document.querySelectorAll('[data-tapestry-preview-mode]')];
+			const options = [...document.querySelectorAll('[data-tapestry-preview-modes] option')];
+			return buttons.length
+				? buttons.map((b) => [b.dataset.tapestryPreviewMode, b.textContent])
+				: options.map((o) => [o.value, o.textContent]);
+		});
+		assert.deepEqual(previewChoices.slice(0, 3), [
+			['', 'All'],
+			['full', 'Full'],
+			['teaser', 'Teaser'],
+		]);
+		const previewAs = async (key) => {
+			const buttons = await page.eval(() => document.querySelectorAll('[data-tapestry-preview-mode]').length);
+			if (buttons) await page.click(`[data-tapestry-preview-mode="${key}"]`);
+			else
+				await page.eval((k) => {
+					const select = document.querySelector('[data-tapestry-preview-modes] select');
+					select.value = k;
+					select.dispatchEvent(new Event('change', { bubbles: true }));
+				}, key);
+		};
+		await page.press('Escape'); // nothing selected: hidden really means hidden
+		await page.eval(() => document.activeElement?.blur());
+		const shownOnCanvas = () =>
+			inCanvas(
+				page,
+				(d, ids) => {
+					const visible = (id) => {
+						const el = d.querySelector(`[data-tapestry-node="${id}"] > *`);
+						return Boolean(el && el.getBoundingClientRect().height > 0);
+					};
+					return ids.map(visible);
+				},
+				[banner, badge, area],
+			);
+		await canvasReady(page);
+		assert.deepEqual(await shownOnCanvas(), [true, true, true], 'All');
+		await previewAs('teaser');
+		assert.deepEqual(await shownOnCanvas(), [false, true, true], 'Teaser: the banner is hidden');
+		if (SHOTS) await page.screenshot(`${SHOTS}/fabric-preview-teaser.png`);
+		await previewAs('full');
+		assert.deepEqual(await shownOnCanvas(), [true, false, true], 'Full: the badge is hidden');
+		await previewAs('');
+		assert.deepEqual(await shownOnCanvas(), [true, true, true], 'All again');
+
 		await page.click('[data-tapestry-publish]');
 		await page.waitFor(
 			() => /^Published/.test(document.querySelector('[data-tapestry-save-status]')?.textContent ?? ''),
@@ -314,7 +370,7 @@ try {
 		);
 		await openModes(page);
 		const usage = Object.fromEntries((await modeRows(page)).map((r) => [r.key, r.usage]));
-		assert.equal(usage.teaser, 'Used by 2 components in 1 template');
+		assert.deepEqual(counts(usage.teaser), [teaserBefore[0] + 2, teaserBefore[1] + 1]);
 		assert.match(usage.full, /in \d+ templates?/);
 	});
 
@@ -511,6 +567,34 @@ try {
 		assert.match(item(three.id), /E2E summary three/);
 		assert.equal((html.match(/data-fabric-list/g) ?? []).length, 1, 'the list inside a listed teaser doesn’t render');
 		assert.doesNotMatch(html, /data-fabric-note|data-tapestry-node/, 'nothing editor-only for visitors');
+
+		// Page links: 2 per list page; the list's own parameter (`?<its node id>=2`) picks the page.
+		await page.fill(`#tp-field-${list}-count`, '2');
+		await page.click(`#tp-field-${list}-pager`);
+		const settings = (await working(page)).root.find((n) => n.id === list).props;
+		assert.deepEqual([settings.count, settings.pager], [2, true]);
+		await saveAndWait(page, news.id, '[data-tapestry-publish]');
+		const first = await visitorHtml(`/${news.slug}`);
+		assert.deepEqual(
+			[...first.matchAll(/data-fabric-item="([^"]+)"/g)].map((m) => m[1]),
+			[one.id, three.id],
+		);
+		assert.match(first, /class="fabric-pager__status"[^>]*>Page 1 of 2</);
+		assert.doesNotMatch(first, /fabric-pager__previous/);
+		const next = new RegExp(`class="fabric-pager__next" href="(/${news.slug}\\?${list}=2)"[^>]*rel="next"`).exec(
+			first,
+		)?.[1];
+		assert.ok(next, 'a Next link with the list’s parameter');
+		const second = await visitorHtml(next);
+		assert.deepEqual(
+			[...second.matchAll(/data-fabric-item="([^"]+)"/g)].map((m) => m[1]),
+			[two.id],
+		);
+		assert.match(second, /class="fabric-pager__status"[^>]*>Page 2 of 2</);
+		assert.match(second, new RegExp(`class="fabric-pager__previous" href="/${news.slug}"[^>]*rel="prev"`));
+		assert.doesNotMatch(second, /fabric-pager__next/);
+		// Nonsense page numbers show the first page.
+		assert.match(await visitorHtml(`/${news.slug}?${list}=99`), /Page 1 of 2/);
 	});
 
 	await step('an unused mode is deleted; Full and Teaser can’t be', async () => {

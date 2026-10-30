@@ -6,6 +6,29 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-30: Session 51: "Preview as" for templates, page links for Page lists
+
+**Request:** finish the roadmap's display-mode items.
+
+### Done
+- **Tapestry 0.7.0** (branch `display-modes`): the template editor's canvas bar has **Preview as: All | Full |
+  Teaser | …** (buttons up to four modes, a dropdown beyond). All is the default (everything, as before); a mode
+  hides the components it doesn't show, without a re-render (the canvas script marks them); the selected one
+  stays faded, so a component just added can still be edited. **`withNodeId`** on component definitions passes
+  a `nodeId` prop (ADR 0046 updated; component guide). 481 unit tests.
+- **Fabric**: **Show page links** on the Page list: Number of pages becomes the page size; Previous / "Page n of
+  m" / Next (`fabric-pager…`), the list's own parameter `?<node id>=2` (other parameters kept; nonsense → page
+  1; inert in the canvas). 15 unit tests; ADR 0001 and README updated.
+- `fabric` suite: Preview as (All, Teaser hides the Full banner, Full hides the Teaser badge) and the pager as a
+  visitor (2 per page, Next/Previous, a bad page number). Usage counts compared before/after, and the preview
+  control read as buttons or dropdown: the dev site now has the user's own modes (DS1, DS2) and templates.
+
+### Next
+- Unchanged: the releases (Tapestry 0.5.0 → 0.6.0 → 0.7.0; menus and tapestry-seo peer ranges to include 0.7;
+  Fabric and menus first releases), then the playground on npm versions.
+
+---
+
 ## 2026-10-23: Session 50: Tapestry 0.7.0 (display modes) and Tapestry Fabric 0.1.0
 
 **Request:** build the accepted design (session 49; Tapestry ADR 0046, Fabric ADR 0001).
