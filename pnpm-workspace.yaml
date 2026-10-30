@@ -12,6 +12,10 @@ minimumReleaseAgeExclude:
   - '@nascencestudio/tapestry'
   - '@nascencestudio/medialibrary'
   - '@nascencestudio/tapestry-seo'
+  - '@nascencestudio/tapestry-menus'
+  - '@nascencestudio/tapestry-fabric'
+  - '@nascencestudio/ipguard'
+  - '@nascencestudio/webforms'
 
 # Fail if a package's trust evidence (provenance / trusted publisher) is weaker
 # than in earlier versions — a common sign of a hijacked maintainer account.
