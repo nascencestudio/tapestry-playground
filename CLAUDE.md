@@ -20,16 +20,11 @@ Canvas), [docs/upstream/](docs/upstream/) (issue drafts), and the deployment gui
 
 ## Status
 
-- `main`: all from npm (Tapestry `0.4.0`, media library `0.2.0`, tapestry-seo `0.2.0`); on GitHub with
-  rulesets. Our packages are in `minimumReleaseAgeExclude`.
-- Local branches waiting for releases: `templates` (Tapestry 0.5.0, templates suite) and `menus` (on top:
-  Tapestry 0.6.0 hooks + `@nascencestudio/tapestry-menus` 0.1.0, `menus` suite, menu states in a11y; then
-  `@nascencestudio/ipguard` and `@nascencestudio/webforms` 0.1.0 with their suites and a11y states), and
-  `fabric` (on `menus`: Tapestry 0.7.0 display modes + `@nascencestudio/tapestry-fabric` 0.1.0, `fabric`
-  suite, Fabric states in a11y).
-  They use `file:../tapestry`, `../tapestry-menus`, `../tapestry-fabric`, `../ipguard` and `../webforms`, **uncommitted** in
-  package.json and the lockfile (with the e2e chain's new suites; studiocms.config already imports them):
-  switch to the npm versions once released, run every suite, then commit.
+- Everything from npm (2026-10-31): Tapestry `0.7.0`, media library `0.2.1`, tapestry-seo `0.2.1`,
+  tapestry-menus `0.1.0`, tapestry-fabric `0.1.0`, IP Guard `0.1.0`, webforms `0.1.0` (all in
+  `minimumReleaseAgeExclude`). Branch `fabric` (on `templates` → `menus`) carries their suites and a11y states;
+  merged into `main` by PR. All 32 suites, the budget and the Docker image pass on npm versions.
+  To test unreleased plugin code, switch one dependency to `file:../<repo>` temporarily (never commit it).
 - 0.2.0 of the media library migrated the dev media directory one way (backup in
   `backups/2026-10-09-before-folders/`, gitignored).
 

@@ -52,6 +52,13 @@ auditConfig:
     # glob patterns; StudioCMS's middleware only expands developer-defined route
     # patterns and tests the request path against them. Re-check 2026-11-01.
     - GHSA-vfj7-8cjw-p6xm
+    # minimatch <11.0.1 (moderate, GHSA-g3hv-75wg-m249, published 2026-10-30): denial of service through glob
+    # pattern amplification. Via StudioCMS → @withstudiocms/component-registry → ts-morph → @ts-morph/common,
+    # which asks for ^10.0.1 and matches the project's own file globs at build time: no attacker-controlled
+    # patterns. The only fix is minimatch 11, a new major that adds @isaacs/nonrecursive-glob-match (first
+    # published 2026-10-26): not worth a brand-new package for this. Re-check 2026-11-15 (a 10.x fix, or
+    # ts-morph moving to 11).
+    - GHSA-g3hv-75wg-m249
 
 # Respect "engines" fields and pin exact versions when adding dependencies.
 engineStrict: true
@@ -67,10 +74,6 @@ overrides:
   # Toml.parse() and asks for ^4.3.0. 5.0.1 (2026-10-12) keeps parse() the same (checked: same exports, no
   # dependencies, no install scripts, integrity verified). Remove when @effect/cli moves to toml >=5.0.1.
   '@effect/cli>toml': 5.0.1
-  # One @preact/signals for the dashboard (Tapestry ADR 0044): @astrojs/preact 6.1.0 wants ^2.11.3 while the
-  # media library 0.2.0 on npm pins 2.11.2 exactly; two copies hook the same Preact and the media picker fails
-  # to open ("Cycle detected"). Remove when the media library release with the range (0.2.1) is installed here.
-  '@preact/signals': 2.11.3
 # Patches (pnpm patch). Every entry needs a reason and an exit condition; the install
 # fails if a patch stops applying (e.g. after an upgrade), so they can't go stale silently.
 patchedDependencies:

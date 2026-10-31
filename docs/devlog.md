@@ -6,6 +6,34 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-31: Session 53: Releases; the playground on npm versions
+
+**Request:** push everything and publish (the user releases; order agreed in session 53's plan).
+
+### Done
+- Released by the user from GitHub (staged, approved with 2FA): **Tapestry 0.7.0** (one release from
+  `display-modes`; 0.5.0 and 0.6.0 never published), **media library 0.2.1**, **tapestry-seo 0.2.1** (Tapestry
+  `^0.4.0 || ^0.7.0`), and the first releases of **IP Guard 0.1.0**, **tapestry-menus 0.1.0**, **tapestry-fabric
+  0.1.0** and **webforms 0.1.0** (new repos; a temporary `NPM_TOKEN` in each repo's `npm` environment, read by a
+  first-release fallback in release.yml; trusted publishers next).
+- Prep: version bumps (media library and seo were still 0.2.0), Tapestry ranges (menus and webforms `^0.7.0`),
+  `file:` dev dependencies replaced with npm versions, our new packages in every `minimumReleaseAgeExclude`.
+- Audit: new advisories this week, all fixed by lockfile refreshes within existing ranges (undici, nodemailer,
+  zod, fast-uri), except **minimatch GHSA-g3hv-75wg-m249** (2026-10-30): reviewed exception in every repo
+  (ts-morph matches the project's own globs; the fix is a new major with a package first published 2026-10-26),
+  re-check 2026-11-15 (Tapestry known issue #8).
+- Playground: all from npm, the `@preact/signals` override removed (one copy without it), all 32 suites pass,
+  budget within limits, the Docker image builds; package.json and the lockfile committed at last.
+
+### Next
+- The user: trusted publishers for the four new packages, then delete the token and the secrets; I remove the
+  token fallback from their release.yml. Merge the playground's `fabric` PR and the `audit-minimatch` PRs.
+- Delete merged branches (Tapestry `templates`, `companion-hooks`, `studiocms-0.7`, `display-modes`; the
+  playground's `templates`, `menus`).
+- Re-check the minimatch exception on 2026-11-15 and the braces one on 2026-11-01.
+
+---
+
 ## 2026-10-30: Session 52: display mode classes follow names; one "Display mode" button
 
 **Request:** (1) bug: renaming a display mode didn't change its CSS classes; (2) the template editor's mode
