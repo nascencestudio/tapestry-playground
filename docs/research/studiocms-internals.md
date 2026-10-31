@@ -328,3 +328,72 @@ if (!page) return new Response(null, { status: 404 });
   includes), which also crosses the manifest.
 - `@studiocms/md` injects `studiocms:md/styles` with `injectScript('page-ssr')`;
   `@studiocms/ui` adds `astro-transition-event-polyfill` with `injectScript('page')`.
+
+## "Show in navigation" (`showOnNav`) and `frontendNavigation()` (verified 2026-10-16, studiocms 0.6.1)
+
+- The page create and edit forms (`frontend/components/dashboard/content-mgmt/CreatePage.astro`,
+  `EditPage.astro`) have a "Show in Navigation" select (`name="show-in-nav"`, hidden
+  `<select id="show-in-nav">` inside `<sui-select>`, in a `.form-row-item`), labelled "Requires Supported
+  Frontend". It's stored as the page's `showOnNav` flag.
+- Its only reader is `frontendNavigation(basePackage)` (`dist/virtuals/plugins/frontend-navigation.js`,
+  exported from `studiocms:plugins`): pages with `showOnNav === true` **of one page type** (default
+  `studiocms/markdown`), sorted by `publishedAt` newest first, the index page first as "Home", plus
+  plugins' `frontendNavigationLinks`. A flat list (no nesting, labels or languages) for StudioCMS's
+  ready-made themes. Nothing in StudioCMS's dashboard or our sites calls it.
+- tapestry-menus hides the field on both forms (CSS on the HTML StudioCMS sends, via its middleware) and
+  adds a notice to the Basic Information tab (tapestry-menus ADR 0002). The stored flag is untouched.
+
+## The mailer (verified 2026-10-20, studiocms 0.6.1 and 0.7.0)
+
+- Plugins send mail through `studiocms:mailer`, an Effect service: `Mailer` (with `Mailer.Provide`),
+  `isEnabled`, `sendMail({ to, subject, text | html })`; run it with `runEffect` from `studiocms/effect`.
+  No Reply-To or custom headers. Plain text goes out **quoted-printable** (nodemailer).
+- Settings: `POST /studiocms_api/dashboard/mailer/config` (owner only) with `host, port, secure, proxy,
+  auth_user, auth_pass, tls_rejectUnauthorized, tls_servername, default_sender`, stored as row
+  `SCMS_MAILER_CONFIG_1` in `StudioCMSDynamicConfigSettings`. Both create and update call
+  `createMailerConfigTable()` (an insert), so a second save fails (Tapestry known issue #39). The SMTP page
+  sends the setup (`POST`) without saved settings and the update (`PATCH`) with them. The transport is
+  built from the stored settings on each use (`Mailer.Provide`), so changes apply without a restart.
+- Mail is on when the site configuration's `enableMailer` is true (row `SCMS_SITE_CONFIG_1`).
+  `POST /studiocms_api/dashboard/config` replaces the whole site configuration: send every field.
+- With mail on, dashboard handlers email admins about changes and fail the request with HTTP 400 "Failed
+  to send notification" when that email fails (Tapestry known issue #40). All of them go through the
+  `Notifications` service (`dist/virtuals/notifier/index.js`), so one wrapper there fixes every caller.
+  Both #39 and #40 are patched (Tapestry's shipped patch, the playground's, webforms' mail-only patch).
+
+## Markdown parsing and production builds (verified 2026-10-22, studiocms 0.7.0, astro 7.4.1)
+
+- StudioCMS 0.7.0 parses Markdown (dashboard changelog, SDK) with `satteri` 0.10.5 (`^0.10.5`);
+  `@astrojs/markdown-satteri` 0.4.x uses it too. It loads `@bruits/satteri-<platform>` (an optional
+  dependency) relative to its own package.
+- The SSR build bundles it into `dist/server/chunks/` (`markdown_*.mjs` and a shared chunk), where the
+  binary lookup fails: "Cannot find native binding" when the module loads (it took logins down). Externalized
+  without a direct dependency it fails as "Cannot find package 'satteri'" (pnpm keeps it under StudioCMS).
+  Fix: direct dependency + `vite.ssr.external: ['satteri']` (Tapestry known issue #41).
+- Astro 7.4's `createRequestFromNodeRequest` builds the request URL from `Host` only when it matches
+  `security.allowedDomains`, else from `localhost:<port>`. Same-origin checks (StudioCMS login, Astro's
+  form check) then compare `Origin` with that: clients must use the `SITE_URL` host.
+
+## Taxonomy (tags and categories) (verified 2026-10-22, studiocms 0.7.0; same in 0.6.1)
+
+- Pages: `/dashboard/taxonomy/tags|categories?mode=create` (or `?mode=edit&edit=<id>`, categories also
+  `&parent=<id>`). Forms `#tag-form` / `#category-form`, submitted by `#create-taxonomy-entry-btn` /
+  `#save-taxonomy-entry-btn` in the page header through the typed Effect client (encoded in the browser).
+- API: `POST /studiocms_api/dashboard/taxonomy` `{ mode, type: 'tags'|'categories', id, name, slug, description,
+  meta (JSON string on the wire), parent? }`; `DELETE` same path `{ type, id }`; `GET …/taxonomy-search` returns
+  nodes with `type: 'tag'|'category'` (singular, unlike the payloads). Editors and up.
+- Tables `StudioCMSPageDataTags`, `StudioCMSPageDataCategories`; ids are random 9-digit numbers
+  (`generateRandomIDNumber(9)`) when the payload's id is ≤ 0. Create was broken by the form (known issue #42).
+- Pages store `tags` / `categories` as JSON arrays (`StringArrayFromString` columns). The page form and the
+  update payload use `string[]`, so the dashboard writes `["475320160"]`; the SDK's page collector
+  (`collectPageData` → `parseIdNumberArray` → `collectTags`/`collectCategories`) wanted numbers (known issue #43).
+  `content.ts` maps every `ParseError` in a page update to "Failed to parse data during page update", even
+  after the write succeeded.
+
+## Plugin dashboard page addresses (verified 2026-10-21, studiocms 0.6.1)
+
+`pluginHandler.js` names each `dashboardPages` entry `${convertToSafeString(identifier)}/${convertToSafeString(route)}`,
+and `convertToSafeString` (`@withstudiocms/internal_helpers/utils`) replaces every non-alphanumeric character
+with `_`, trims leading/trailing `_` and lowercases: `@nascencestudio/tapestry-menus` + `menus` →
+`/dashboard/nascencestudio_tapestry_menus/menus`; a route `content-types` would be `content_types`.
+

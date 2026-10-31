@@ -1,0 +1,20 @@
+---
+/**
+ * Dev only (404 in production builds): one webform (`?form=wf_…`) on a page in the site's layout, so the
+ * a11y suite can check the public form (empty, with errors, sent) without publishing it on a real page.
+ */
+import Webform from '@nascencestudio/webforms/Webform.astro';
+import Layout from '../../layouts/Layout.astro';
+
+export const prerender = false;
+
+if (!import.meta.env.DEV) return new Response('Not found', { status: 404 });
+const form = Astro.url.searchParams.get('form') ?? '';
+---
+
+<Layout title="Webform" noindex>
+	<main style="max-width: 40rem; margin: 0 auto; padding: 3rem 1.5rem">
+		<h1>Webform</h1>
+		<Webform form={form} />
+	</main>
+</Layout>

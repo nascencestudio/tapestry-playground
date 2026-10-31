@@ -36,6 +36,8 @@ export async function launchChrome({ headless = true } = {}) {
 		'--no-default-browser-check',
 		'--window-size=1440,1000',
 		...(headless ? ['--headless=new'] : []),
+		// Extra flags for experiments, e.g. E2E_CHROME_ARGS="--disable-renderer-backgrounding".
+		...(process.env.E2E_CHROME_ARGS?.split(/\s+/).filter(Boolean) ?? []),
 		'about:blank',
 	];
 	const child = spawn(executable, args, { stdio: ['ignore', 'ignore', 'pipe'] });

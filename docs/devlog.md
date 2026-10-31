@@ -6,6 +6,613 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-31: Session 53: Releases; the playground on npm versions
+
+**Request:** push everything and publish (the user releases; order agreed in session 53's plan).
+
+### Done
+- Released by the user from GitHub (staged, approved with 2FA): **Tapestry 0.7.0** (one release from
+  `display-modes`; 0.5.0 and 0.6.0 never published), **media library 0.2.1**, **tapestry-seo 0.2.1** (Tapestry
+  `^0.4.0 || ^0.7.0`), and the first releases of **IP Guard 0.1.0**, **tapestry-menus 0.1.0**, **tapestry-fabric
+  0.1.0** and **webforms 0.1.0** (new repos; a temporary `NPM_TOKEN` in each repo's `npm` environment, read by a
+  first-release fallback in release.yml; trusted publishers next).
+- Prep: version bumps (media library and seo were still 0.2.0), Tapestry ranges (menus and webforms `^0.7.0`),
+  `file:` dev dependencies replaced with npm versions, our new packages in every `minimumReleaseAgeExclude`.
+- Audit: new advisories this week, all fixed by lockfile refreshes within existing ranges (undici, nodemailer,
+  zod, fast-uri), except **minimatch GHSA-g3hv-75wg-m249** (2026-10-30): reviewed exception in every repo
+  (ts-morph matches the project's own globs; the fix is a new major with a package first published 2026-10-26),
+  re-check 2026-11-15 (Tapestry known issue #8).
+- Playground: all from npm, the `@preact/signals` override removed (one copy without it), all 32 suites pass,
+  budget within limits, the Docker image builds; package.json and the lockfile committed at last.
+
+### Next
+- The user: trusted publishers for the four new packages, then delete the token and the secrets; I remove the
+  token fallback from their release.yml. Merge the playground's `fabric` PR and the `audit-minimatch` PRs.
+- Delete merged branches (Tapestry `templates`, `companion-hooks`, `studiocms-0.7`, `display-modes`; the
+  playground's `templates`, `menus`).
+- Re-check the minimatch exception on 2026-11-15 and the braces one on 2026-11-01.
+
+---
+
+## 2026-10-30: Session 52: display mode classes follow names; one "Display mode" button
+
+**Request:** (1) bug: renaming a display mode didn't change its CSS classes; (2) the template editor's mode
+switch doesn't scale to many modes: one button "Display mode: <current>" opening a list.
+
+### Done
+- Classes now come from the mode's **name** (Tapestry `modeClassName()`, `Big card` → `fabric-list--big-card`);
+  the key stays internal (stored in templates and pages). Add/rename refuse a name whose class another mode has.
+  The Display Modes page shows the classes (not the key); the Page list uses them.
+- The template editor's switch is one button, "Display mode: All", opening a list (Tapestry's `Popover`, like
+  the page's Template menu): All, then the site's modes.
+- `fabric` suite: the renamed mode's classes, a clashing name refused, the menu (button text, choices, closing);
+  passes. 482 Tapestry unit tests.
+
+---
+
+## 2026-10-30: Session 51: "Preview as" for templates, page links for Page lists
+
+**Request:** finish the roadmap's display-mode items.
+
+### Done
+- **Tapestry 0.7.0** (branch `display-modes`): the template editor's canvas bar has **Preview as: All | Full |
+  Teaser | …** (buttons up to four modes, a dropdown beyond). All is the default (everything, as before); a mode
+  hides the components it doesn't show, without a re-render (the canvas script marks them); the selected one
+  stays faded, so a component just added can still be edited. **`withNodeId`** on component definitions passes
+  a `nodeId` prop (ADR 0046 updated; component guide). 481 unit tests.
+- **Fabric**: **Show page links** on the Page list: Number of pages becomes the page size; Previous / "Page n of
+  m" / Next (`fabric-pager…`), the list's own parameter `?<node id>=2` (other parameters kept; nonsense → page
+  1; inert in the canvas). 15 unit tests; ADR 0001 and README updated.
+- `fabric` suite: Preview as (All, Teaser hides the Full banner, Full hides the Teaser badge) and the pager as a
+  visitor (2 per page, Next/Previous, a bad page number). Usage counts compared before/after, and the preview
+  control read as buttons or dropdown: the dev site now has the user's own modes (DS1, DS2) and templates.
+
+### Next
+- Unchanged: the releases (Tapestry 0.5.0 → 0.6.0 → 0.7.0; menus and tapestry-seo peer ranges to include 0.7;
+  Fabric and menus first releases), then the playground on npm versions.
+
+---
+
+## 2026-10-23: Session 50: Tapestry 0.7.0 (display modes) and Tapestry Fabric 0.1.0
+
+**Request:** build the accepted design (session 49; Tapestry ADR 0046, Fabric ADR 0001).
+
+### Done
+- **Tapestry 0.7.0** (branch `display-modes` on `companion-hooks`): `modes.ts` (keys, Full/Teaser built in,
+  16 max, node `modes`, mode slots `main.teaser`, the canvas `tapestry-tabs` param, usage, `withoutMode()`);
+  `withRootAreas()` makes a root slot per mode, so the layer tree ("Main · Full", "Main · Teaser"), validator and
+  moves treat each tab as an area; `mergeTemplate(…, { mode, tabs })`; modes stored in Tapestry's plugin data
+  (`@nascencestudio/tapestry/modes`), on only with Fabric installed (`config.displayModes`). Editor: "Shown in"
+  chips in the template editor (at least one mode), tabs drawn on the canvas's area labels (selecting a
+  component shows its tab; switching clears a selection in the other tab; click-to-add goes into the tab
+  shown), `select` `multiple` as chips (`ChipsField`, native `<datalist>`), drawn duplicate/trash icons on the
+  chip and the page structure rows. For companions: `listPagesForLists()`, `pageInMode()`, `pageText()`,
+  `currentPageId()` (the editor sends `tapestry-page` with renders), `<Document>` (items marked foreign; the
+  canvas strips their markers), `nodesText()`. 479 unit tests (29 new).
+- **@nascencestudio/tapestry-fabric 0.1.0** (`../tapestry-fabric`, local repo): Display Modes page (like
+  Templates; add, rename, delete; usage counts; built-ins fixed), Page list (categories with subcategories,
+  tags, template, mode, number, sort, link, plain-text trim; never its own page or its translations; nested
+  lists stripped; simple card when a page has nothing in the mode; classes on everything; an editor note with
+  what matched). No runtime dependencies; audit clean; 11 unit tests.
+- **Playground** (branch `fabric` on `menus`): Fabric registered; `fabric` suite (7 steps: the endpoint's
+  checks, Display Modes, the News item template with "Shown in", a page filled through tabs, the News page's
+  Page list as a visitor sees it, deleting modes); Fabric a11y states (Display Modes, "Shown in", the Page
+  list's settings), both themes.
+
+### Learned
+- A canvas render key that includes the tabs must be used by `scheduleRender()` too: with the old key a rename
+  went through the full render path and the chip kept the old name (the layers suite caught it).
+- Pages created through StudioCMS's API with an empty description can't be saved from the editor (the form
+  requires one; the browser blocks the submit silently).
+- The Write tool turned `\u2028`/`\u2029` escapes into real characters, which end a regex literal.
+
+### Next
+- Releases (user): Tapestry 0.5.0 → 0.6.0 → 0.7.0, then menus and Fabric (new GitHub repos, first release with
+  a one-time token), then the playground switches to npm versions, runs every suite, commits.
+- Later, if wanted: "Preview as" in the template editor; pagination in Page lists.
+
+---
+
+## 2026-10-23: Session 49: Tapestry Fabric, display modes (design)
+
+**Request:** a new companion, `@nascencestudio/tapestry-fabric`: a Display Modes dashboard page (Full and Teaser
+built in, up to 16), display modes on template components, and a list component that shows other pages filtered
+by categories, tags and template, in a display mode ("content types by proxy").
+
+### Decided with the user
+- Each page's own content comes from **content areas**: an area shown in several modes gets a **tab per mode** on
+  the page's canvas (`Content area: Main | Full | Teaser`); the area's "Shown in" is set in the template editor.
+- Lists: link each item to its page; **trim** the Full text when a teaser is empty, plain text only (like Drupal),
+  classes on everything; any selected category (subcategories included) AND any selected tag AND the template;
+  a Sort setting (newest first); a simple card for pages with nothing to show; Full and Teaser can't be renamed
+  or deleted; number of pages to show.
+- Loops: a list never shows the page it's on (or its translations), and lists inside listed pages don't render.
+
+### Done
+- Tapestry ADR 0046 (proposed, branch `display-modes` from `companion-hooks`): modes in core, inert without a
+  companion; `modes` on template nodes; per-mode area content as `key.mode` slots; `mergeTemplate(…, mode)`;
+  `pageInMode()`; foreign content on the canvas; `select` `multiple`; drawn Duplicate/Delete icons.
+- `../tapestry-fabric/docs/decisions/0001-fabric.md` (proposed): the page, the list settings, matching, rendering.
+- Checked first: template components have fixed props (hence areas for per-page content); rendering another page
+  works like `<Region>` (`StudioCMSRenderer` with a document); `select` has no multiple choice yet.
+
+### Next
+- The user reviews both ADRs; then Tapestry 0.7.0, then Fabric 0.1.0, the playground suite and a11y states.
+
+---
+
+## 2026-10-22: Session 48: StudioCMS taxonomy couldn't create tags or categories
+
+**Request:** creating a tag or category failed with "Taxonomy Tag Data └─ ["id"] └─ Expected number, actual
+undefined" (also before 0.7.0).
+
+### Done
+- Cause (Tapestry known issue #42): the create payload schema (`@withstudiocms/api-spec`) spreads the tables'
+  `Select` fields, so `id` and `meta` are required; the form drops the empty id (`parseFormDataToJson()` turns 0
+  into `undefined`) and the typed client refuses to encode it. The handler already gives id ≤ 0 a new random id,
+  but never got the request. Fixing that showed a second bug: `MetaContainer` sets its form value only after an
+  entry changes, so `meta` was missing too.
+- Fix in the playground's StudioCMS patch (`shared-client.ts`): send `id: 0` and `meta: {}` when empty. Checked
+  with an API probe (without id → 400, id 0 → created) and in the browser.
+- New suite `e2e/taxonomy.e2e.mjs` (3 steps: create a tag, a category, edit the tag), cold and warm dev server;
+  deletes only its own entries. Added to the chain (package.json, uncommitted with the `file:` dependencies).
+- Not in the patch Tapestry ships: unrelated to Tapestry (offered to the user).
+- **Then: saving a page with a tag failed** ("Failed to parse data during page update", Tapestry known issue #43).
+  The save went through (the page form's payload schema has tags/categories as `string[]`, stored
+  `["475320160"]`), but the SDK reads them with `parseIdNumberArray` (numbers only), so the page itself failed to
+  load: public 500, editor 500, and with the old SDK even logins (anything that lists pages). The handler's
+  catch-all turns the `ParseError` into that message. Fixed in our `@withstudiocms/sdk` patch: integers or
+  numeric strings. That also repaired the user's tagged page "Test1" without touching data.
+- The suite gained a step: a scratch Markdown page saved with a tag and a category through the edit form; the row,
+  the public page (200) and the reloaded form's selections are checked. Without the SDK fix the suite fails
+  (login 500 with the tagged page in the database); with it, 4 steps pass.
+
+- Upstream check (GitHub search API, read-only; `gh` isn't installed): no issue or PR for either bug; 5 open
+  issues (old chores), 1 open PR (release bot); `main` (2026-10-23 06:13 UTC) still drops the id and reads
+  numbers only.
+- **Shipped with Tapestry** (the user's decision, Tapestry ADR 0045): the taxonomy hunk in
+  `studiocms@0.6.1.patch` / `@0.7.0.patch` (the form script is identical in both), and
+  `@withstudiocms__sdk@0.4.2.patch` (#43 + #35; both StudioCMS versions use SDK 0.4.2). The SDK file is this
+  repo's, kept identical. Checked: `git apply --check` against the integrity-verified npm tarballs, and pnpm
+  installs of studiocms 0.6.1 and 0.7.0 with the README's `patchedDependencies` (both fixes applied).
+  README section rewritten; known issues #35, #42, #43 say shipped.
+
+### Next
+- Report upstream when the user asks (#41, #42, #43; #35 too).
+- Tapestry's next release carries the patches (0.5.0 branch `templates` has them).
+
+---
+
+## 2026-10-22: Session 47: StudioCMS 0.7.0, Astro 7.4.1, current dependencies
+
+**Request:** now that the release-age gate allows it, upgrade to the latest versions (session 38's checklist).
+
+### Done
+- Every repo: `studiocms` 0.7.0 (dev; plugins keep peers `^0.6.0 || ^0.7.0`), `astro` 7.4.1, biome 2.5.15,
+  vitest 5.0.5; media library kysely 0.29.7; Tapestry's docs
+  site astro 7.4.1 + starlight 0.42.6; playground `@studiocms/md` 0.5.1, `@astrojs/node` 11.1.9,
+  `@astrojs/preact` 6.1.0, `@astrojs/check` 0.9.11. Branches: Tapestry `studiocms-0.7` → merged into `templates`
+  → `companion-hooks`; media library, tapestry-seo, tapestry-menus on `studiocms-0.7`; IP Guard, webforms `main`.
+- Node 22.23.3 installed with nvm (checksums verified) and made the default: astro 7.4.1 needs ≥ 22.22 (this
+  machine had 22.21.1; `.nvmrc`, Docker and CI already said 22.23.3).
+- New advisories found by the audit, all in StudioCMS's tree: dompurify ≤3.4.16 (one critical), toml ≤5.0.0 via
+  `@effect/cli` (three high), ip-address ≤10.7.3 (moderate). dompurify 3.4.17 and ip-address 10.7.4 fit the
+  existing ranges (lockfiles refreshed); toml has no fixed 4.x, so `'@effect/cli>toml': 5.0.1` (parse() checked,
+  no dependencies or scripts, integrity verified; reason and exit condition in each `pnpm-workspace.yaml`).
+- The `source-map-js` override is gone everywhere: its dependents' ranges resolve the fixed 1.2.2 themselves.
+- Playground patches: StudioCMS and `@studiocms/md` renamed for 0.7.0 / 0.5.1 (they apply unchanged); the
+  Astro patch is removed: Astro 7.4 stops the dev CSS walk at page boundaries itself (#18060). Checked: a
+  public page in dev has 10 `<style>` tags and no dashboard CSS (was ~100 before our patch).
+- Not upgraded, on purpose: TypeScript 7 (`@astrojs/check` supports ≤ 6), effect 4 (StudioCMS needs 3),
+  `@types/node` 26 (we run Node 22), Preact 11 (`@astrojs/preact` 6.1.0 now allows it, but it's a major
+  change under every editor: a separate step).
+- **Two `@preact/signals` copies** broke the media picker ("Cycle detected"; media-tapestry and seo-page
+  suites): `@astrojs/preact` 6.1.0 wants `^2.11.3`, the media library 0.2.0 on npm pins 2.11.2, and two
+  copies hooking one Preact fight. Tapestry ADR 0044: `preact` and `@preact/signals` are ranges in the
+  packages that share the editor runtime (Tapestry, media library, seo, menus); the playground overrides
+  `@preact/signals` to 2.11.3 until media library 0.2.1 is installed. Then all four editor suites pass.
+- **Production build: "Cannot find native binding"** (Tapestry known issue #41). StudioCMS 0.7's Markdown
+  parser `satteri` loads a prebuilt binary relative to its package; bundled into `dist/server/chunks`, it
+  can't, and logins answered 403/500. `vite.ssr.external: ['satteri']` alone then failed with "Cannot find
+  package 'satteri'" (pnpm doesn't hoist StudioCMS's dependencies), so `satteri` 0.10.5 is a direct
+  dependency too (the version reviewed in ADR 0043). Tapestry's README tells sites the same. Checked the
+  binary on the Docker base: `node:22.23.3-bookworm-slim`, linux/amd64, installs `linux-x64-gnu` and loads.
+- `pnpm budget` (production build): within budget (home 1.5 KB HTML, 1.9 KB CSS, 0.2 KB JS; island 8.1 KB
+  JS). `BASE_URL` must now be `http://localhost:4600`: Astro 7.4's node request builder
+  (`createRequestFromNodeRequest`) uses the `Host` header only when it matches `security.allowedDomains`
+  and otherwise builds the URL as `localhost:<port>` (7.3.5 used the raw Host). A login from
+  `127.0.0.1` then fails the origin check ("Cross-site POST form submissions are forbidden"). CI's budget
+  step used `127.0.0.1`: changed to `localhost`.
+- The full Docker image build can't run while package.json has `file:` dependencies (outside the build
+  context); it runs once the released plugins are installed (CI does it too).
+
+### Next
+- Releases (user): media library 0.2.1 and tapestry-seo 0.2.1 (peer range + Preact ranges), Tapestry 0.5.0 /
+  0.6.0, then menus, IP Guard, webforms. Until media library 0.2.1 is out, Tapestry's dev install warns that
+  its npm 0.2.0 wants StudioCMS 0.6.
+- After the releases: npm versions here (keep the `satteri` dependency), remove the `@preact/signals`
+  override, run every suite, the budget and `docker build`, then commit package.json and the lockfile.
+- Preact 11, when wanted.
+
+---
+
+## 2026-10-22: Sessions 44–46: content types (built, then removed)
+
+**Request:** content types and lists (sessions 43–44: `@nascencestudio/tapestry-fabric` with fields, on Tapestry
+0.7 hooks: companion `data`, fields panels, dependent options, a `date` prop; session 45: rebuilt on **content
+templates** with display modes, Tapestry ADR 0045). After seeing it, the user found templates inside templates
+too confusing and asked to remove it all; another approach later.
+
+### Done
+- Removed: Tapestry's `fabric-hooks` branch (0.7.0: ADRs 0044, 0045 and all their code) and the playground's
+  `fabric` branch (Fabric suite, a11y states, dev-only list page, config); then, at the user's request, the
+  `../tapestry-fabric` folder and the backup tags too. Tapestry is back on `companion-hooks` (0.6.0, 450 unit tests); the
+  playground on `menus` without the Fabric dependency (30 suites; editor, templates, menus and webforms re-run
+  and passing).
+- The dev database: the user cleared the old pages and templates themselves (starting fresh).
+
+### Learned (kept)
+- StudioCMS names plugin pages with `_` for every non-alphanumeric character of the identifier and route
+  (research notes).
+- Astro's dev toolbar covers the bottom of short pages in e2e (CLAUDE.md).
+
+---
+
+## 2026-10-21: Session 43: Content types and lists (design)
+
+**Request:** Drupal-like content types, a "view" component (type, sort, limit) and display modes, much lighter
+than Views. Verified in StudioCMS 0.6.1: page types allow only simple, code-defined, non-sortable `fields`;
+categories (hierarchy) and tags exist on every page with a Taxonomy section; Astro content collections are
+build-time files, not editor content. The user chose: types defined by admins in the dashboard; items are
+Tapestry pages with fields; display modes in the dashboard with a code override; StudioCMS categories and tags.
+
+### Done
+- `../tapestry-content` (local): ADR 0001 (proposed) for `@nascencestudio/tapestry-content`: content types,
+  fields in the page document, schema-change rules, display modes (plain HTML + classes for CSS), the Content
+  list component (filter, sort, limit, pager, published only, page language), default templates, limits;
+  and three Tapestry 0.7 changes it needs (companion data in documents, panels that edit the document,
+  dependent select options).
+
+### Next
+- The user reviews the ADR; then Tapestry 0.7's ADR and changes, then the plugin.
+
+---
+
+## 2026-10-20: Session 42: StudioCMS mail patch (#39, #40)
+
+**Request:** patches for known issues #39 and #40, shipped with the plugins for sites to apply.
+
+### Done
+- The fix (identical code in StudioCMS 0.6.1 and 0.7.0): the `Notifications` service's three send functions
+  log any failure (`Notification "…" was not sent`) instead of failing the dashboard action; the mailer
+  handler updates saved SMTP settings (`SDKCoreJs.CONFIG.mailerConfig.update`) and creates them only the
+  first time, for both the setup (`POST`) and update (`PATCH`) endpoints.
+- Shipped in Tapestry's StudioCMS patch (`templates` → 0.5.0, merged into `companion-hooks` and
+  `studiocms-0.7`, which has the 0.7.0 file), README and known issues (#39, #40 Patched); a mail-only patch
+  for both versions in `@nascencestudio/webforms` for sites without Tapestry (pnpm takes one patch per
+  package version, so Tapestry sites use Tapestry's). Both checked with `git apply --check` against the
+  0.6.1 and 0.7.0 tarballs.
+- Playground: its own StudioCMS patch gained the hunks (reason in pnpm-workspace.yaml). The webforms mail
+  step (`E2E_MAIL_SINK=1`) no longer deletes the SMTP row: it saves settings like the dashboard (setup, then
+  update; the new port is stored) and creates a folder while SMTP points at a closed port (succeeds; the
+  failure is logged). Passing on a fresh scratch site; webforms and publishing suites pass on this machine.
+
+### Next
+- Unchanged: releases (user), StudioCMS 0.7.0 install after 2026-10-22 19:47 UTC.
+
+---
+
+## 2026-10-20: Session 41: Webforms 0.1.0
+
+**Request:** build webforms on the accepted design (ADR 0001 in `../webforms`), with IP Guard.
+
+### Done
+- `@nascencestudio/webforms` 0.1.0 (`../webforms`, local commit): see its devlog and README (Brevo setup
+  checklist). No runtime dependencies; 21 unit tests.
+- IP Guard: trusted proxies' own addresses are never judged (dev loopback had been counted as one visitor,
+  a `::/64` row); local commit.
+- Playground: `webforms()` + `webformComponents()` in studiocms.config (`file:` dependency uncommitted, like
+  the others; the suite is added to the uncommitted e2e chain, now 30 suites). `webforms` suite: 8 steps (the
+  dashboard builder, the Tapestry block, a visitor in the browser with the proof of work, every spam layer
+  answered like success, IP Guard refusing a blacklisted visitor, the Submissions page and CSV export,
+  deleting by name); with `E2E_MAIL_SINK=1` (scratch/CI only) a 9th step sends a real email through
+  StudioCMS's mailer to a tiny SMTP server, then turns mail off again. a11y: every Webforms dashboard view and
+  the public form (empty, errors, sent) through the dev-only `/e2e/webform` page, both themes. All passing on
+  a fresh scratch site and on this machine's database (webforms, ipguard, a11y).
+
+### Learned
+- StudioCMS's mailer sends quoted-printable; decode before matching.
+- SMTP settings save only once (Tapestry known issue #39); with mail on, a failed notification email makes
+  every dashboard save answer 400 (#40, found when a previous run left mail on with the sink gone). Both in
+  0.7.0 too; research notes updated.
+- axe's `target-size` caught default-size radios/checkboxes on the public form (now 20px, rows ≥ 28px).
+- Server-side field errors only appear after the 3 s minimum fill time (quicker = quiet spam), so browser
+  tests wait first.
+
+### Next
+- Releases (user): Tapestry 0.5.0/0.6.0, tapestry-menus, IP Guard, webforms (each needs its GitHub repo; first
+  releases a one-time npm token). Then the playground switches to npm versions and commits package.json.
+- StudioCMS 0.7.0 install after 2026-10-22 19:47 UTC (checklist in session 38).
+
+---
+
+## 2026-10-20: Session 40: IP Guard 0.1.0
+
+**Request:** build the accepted design, IP Guard first (webforms builds on it); the user confirmed the
+webforms defaults and chose our own proof of work. Both ADRs Accepted.
+
+### Done
+- `@nascencestudio/ipguard` 0.1.0 (`../ipguard`, local commit): see its devlog. No runtime dependencies.
+- Playground: `ipguard()` in studiocms.config (with an uncommitted `file:` dependency); dev-only
+  `/e2e/ipguard-check` (404 in production builds) to drive the guard before forms exist; `ipguard` suite
+  (9 steps: endpoint refusals, lockout guards, a ban, flag → dismiss → flag → blacklist → ban, rejected
+  attempts counting, IPv6 /64, Check an address, settings validation), all passing first time; IP Guard
+  views in the a11y audit (both themes, entries on every list). Cleanup removes only the suite's entries
+  and restores settings.
+
+### Learned
+- Astro itself refuses cross-site form POSTs (no `Origin`) before plugin code runs.
+- Admin-only plugin pages appear in StudioCMS's Admin section (fine for IP Guard).
+
+### Next
+- `@nascencestudio/webforms` (its ADR 0001).
+
+---
+
+## 2026-10-19: Session 39: Mail, webforms and IP protection (design)
+
+**Request:** contact/web forms like Drupal's Webform, mail without running a mail server, strong spam
+protection without Google. Findings: StudioCMS's mailer (`studiocms:mailer`, SMTP Configuration) is
+usable by plugins but has no Reply-To; no StudioCMS form plugin exists; Hetzner blocks outgoing 25/465
+(587 is open), and Drupal only "just works" where the host runs mail. The user chose **Brevo** (one
+agency account, each client's domain verified; free 300/day shared).
+
+The user's Drupal module `nh_form_submission_blocker` (in `tapestry/temp/`, not to be committed) was
+read in full: whitelist / flagged / blacklist / banned lists, rate limit + AbuseIPDB with a careful
+client (header key, timeouts, 24 h cache, fail open, 401/429 circuit breaker), a site-wide ban before
+routing. Its code differs from the description in two places (rate limit only flagged without
+blocking; a high score alone blacklisted rather than banned); the user decided: flag **and block** until
+reviewed; high score → blacklist, ban only with the rate limit; whitelist protects against bans; no
+self-bans; a separate plugin.
+
+### Done
+- Two new local repos with a proposed ADR each, for the user's review before any building:
+  `../webforms` (`@nascencestudio/webforms`: forms built in the dashboard, `<Webform>`, optional Tapestry
+  component, submissions stored then emailed, honeypot + timing token + our own proof of work, CSV export)
+  and `../ipguard` (`@nascencestudio/ipguard`, working name: the four lists with CIDR and IPv6 /64,
+  the decision table, the AbuseIPDB client, site-wide bans as middleware, self-lockout guard,
+  `IPGUARD_DISABLE` for recovery).
+
+### Next
+- The user reviews both ADRs (open defaults: first-version fields, editors seeing submissions, 90-day
+  retention, our own proof of work vs ALTCHA's library). Then build IP Guard first (webforms uses it).
+
+---
+
+## 2026-10-19: Session 38: StudioCMS 0.7.0, reviewed; upgrade after the release-age gate
+
+**Request:** upgrade to StudioCMS 0.7.0 and make sure the plugins, dependencies and patches work.
+0.7.0, `@studiocms/md` 0.5.1 and four `@withstudiocms/*` packages were published the same day (19:44
+UTC), so `minimumReleaseAge` blocks them until 2026-10-22 19:47 UTC. The user chose to prepare now and
+install then (no exception), and to support StudioCMS 0.6 and 0.7. Tapestry ADR 0043.
+
+### Done
+- Reviewed both tarballs (integrity-checked) without installing: 8 files differ; markdown parsing moves
+  to `satteri` (reviewed: MIT, provenance, prebuilt binaries per platform, no install scripts), a Windows
+  path fix, and a security fix (the dashboard search API listed all pages and folders, drafts included,
+  to anyone; now editors only). Nothing we patch or depend on changed.
+- All three patches (Tapestry's StudioCMS patch, the playground's StudioCMS and `@studiocms/md` patches)
+  apply to the new versions unchanged; the SDK and Astro patches are unaffected.
+- Branches `studiocms-0.7` (Tapestry: from `templates`; media library and tapestry-seo: from `main`;
+  tapestry-menus: from `main`): peer range `^0.6.0 || ^0.7.0`; Tapestry also ships
+  `patches/studiocms@0.7.0.patch` (README: copy the file for your version), known issues note the bugs
+  are still in 0.7.0.
+
+### Next (from 2026-10-22 19:47 UTC)
+1. Playground: `studiocms` 0.7.0, `@studiocms/md` 0.5.1; rename `patches/studiocms@0.6.1.patch` →
+   `@0.7.0` and `@studiocms__md@0.5.0.patch` → `@0.5.1` (and `patchedDependencies`); `pnpm audit`.
+2. Tapestry, media library, tapestry-seo, tapestry-menus: dev dependency `studiocms` 0.7.0 on their
+   `studiocms-0.7` branches; unit tests, typecheck, build.
+3. All 28 e2e suites, `pnpm budget` (production build), the Docker image, and a fresh-site run.
+4. Releases (the user): media library 0.2.1, tapestry-seo 0.2.1; Tapestry's range in its next release.
+
+---
+
+## 2026-10-19: Session 37: Template usage and safe deleting
+
+**Request:** a "Used on N pages" badge beside a template's status, opening a list of those pages as
+links; deleting a template that pages use warns and asks for its name first (like StudioCMS's page
+delete). Tapestry `templates` (merged into `companion-hooks`), ADR 0041: `pagesUsingTemplates()` (pure,
+published version or draft, 3 tests), `loadTemplateUsage()`/`templateUsage()`, the badge and dialogs
+(native `<dialog>`), the endpoint refusing an unconfirmed delete (`confirm-name`).
+
+### Done
+- `templates` suite step: the count, the list's link to the page editor, the Delete button waiting for the
+  exact name (a partial name keeps it disabled), a reopened dialog starting empty, the server refusing a
+  delete without the name. The a11y suite audits both dialogs (its template is used by the home page's
+  draft, then the page is reset before the next theme).
+
+### Learned
+- In headless Chrome 156 on dashboard pages, a `<dialog>`'s `close` event never fired (likely the
+  frame stall after a dialog closes, noted in CLAUDE.md): the typed name is cleared when a dialog opens.
+- An a11y step that changes the home page must reset it in its own cleanup: the suite runs every state
+  once per theme, and the second pass saw the first pass's template.
+
+---
+
+## 2026-10-19: Session 36: Menus page layout
+
+**Request:** a narrower menu name field with a sensible limit and Add menu below it; on a menu's page,
+the name and the Add item / Save / Delete menu buttons grouped like a template's card (darker bar, no
+line above it), and no line above Template Management's bars either. Done: names 50 characters at most
+(they show in the sidebar, the picker and Navigation settings), a 24rem field with a hint; the menu
+card with a bar holding the status and actions; Tapestry `templates` (merged into `companion-hooks`):
+no top border on template bars. `menus` suite checks the field, the button below it and the bar's
+contents; menus and a11y suites pass.
+
+---
+
+## 2026-10-19: Session 35: Template menu layout
+
+**Request:** the Template menu was cut off in a narrow editor, the header/footer pickers looked out of
+place, and the help text sat in the menu. Now (Tapestry `templates`, merged into `companion-hooks`;
+ADR 0041): the menu is right-aligned with its button (`Popover` `align="end"`); "No template" and the
+header/footer pickers form one grey, bordered group; then "Available templates" and the list (or "None
+yet"); the help is behind an "i" button in the menu's header (`Popover` `headerExtra`). Nested popovers:
+Escape closes the help first. The `templates` suite checks the alignment, the grouping, the heading and
+the nested Escape; templates and a11y suites pass.
+
+---
+
+## 2026-10-16: Session 34: "Show in navigation" hidden; a default Main navigation
+
+**Request:** StudioCMS's "Show in navigation" field confuses users next to Tapestry Menus. Source check:
+its flag is read only by `frontendNavigation()`, a flat list of Markdown pages by date for StudioCMS's
+ready-made themes (docs/research/studiocms-internals.md); nothing on our sites. The user chose a hybrid:
+hide it on the create and edit forms (all page types) and end Basic Information with a notice ("Site
+navigation is managed by Tapestry Menus", icon, link to Dashboard → Menus); and create **Main
+navigation** once on a site without menus. tapestry-menus ADR 0002.
+
+### Done
+- tapestry-menus: middleware rewriting only those two dashboard pages (one CSS rule + the notice; no
+  StudioCMS patch, a no-op on unknown markup), `ensureDefaultMenu()` (marker row, so it happens once).
+- `menus` suite step for both forms, plus a fresh-site check of the default menu; a11y audits the notice.
+- Verified the fresh-site path on a scratch site (second dev server on port 4500 with its own database
+  and credentials file, removed afterwards). On this machine's database, which already has a "Main
+  Navigation" menu, only the marker row was added.
+
+### Learned
+- `#tab-label-basic-info` is the tab's panel (`<sui-tab-item>`), not its button: click `[role="tab"]`.
+- A scratch site started with `CMS_SETUP=1` must be restarted without it after setup-site.mjs (else
+  every route 500s on `studiocms:plugins/augments`).
+
+---
+
+## 2026-10-16: Session 33: Template button without templates
+
+**Request:** on a site without templates, the purple bar showed the separator but no Template button.
+Now the button is always there; with no templates, headers or footers it's disabled and reads "No
+available templates" (with headers or footers but no templates it stays usable: it picks the page's
+own header and footer). Tapestry `templates` branch (0.5.0), merged into `companion-hooks`; ADR 0041.
+The `templates` suite checks it in its own tab, with the editor page's template list emptied in flight
+(CDP `Fetch`), so the site's real templates stay. Learned: a page whose HTML is rewritten that way
+can't open Vite's live-reload socket (errors from `@vite/client`), hence the separate tab.
+
+---
+
+## 2026-10-16: Session 32: Tapestry Menus 0.1.0 (and Tapestry 0.6.0's companion hooks)
+
+**Request:** back to menus. Decisions (2026-10-13/15): tied to Tapestry; data plus an unstyled
+default; one menu whose links follow the language; breadcrumbs, per-link options, visibility by
+login, menu blocks with depth; menus as components (pages, templates); CSS-safe classes from the
+labels; a target per item; its own **Menus** sidebar item after Template Management; admins edit,
+editors view; no drafts (saving makes it live); menu settings in the page editor in the first version.
+tapestry-menus ADR 0001, Tapestry ADR 0042.
+
+### Done
+- Tapestry 0.6.0 (branch `companion-hooks`): `select` `optionsUrl`, `resolveSiteLinks()`,
+  `pageLanguage()`, `inEditorCanvas()` (from `/page`), `@nascencestudio/tapestry/links` (browser-safe
+  `cleanLinkValue()`/`isSafeUrl()`), companion buttons from `virtual:tapestry/extensions` (replaces
+  `seo-client`), option `menus`. Docs in the README, the components guide and the site guide.
+- `@nascencestudio/tapestry-menus` 0.1.0 (`../tapestry-menus`, local commit, not on GitHub): model with
+  28 unit tests; plugin data rows with revisions (a save from an outdated copy gets 409); endpoints
+  `/_menus/menus|options|page`; `getMenu()`/`getBreadcrumbs()`; `<Menu>`, `<Breadcrumbs>`;
+  `menuComponents()`; Dashboard → Menus (tree editor: drag and drop, keyboard buttons, item settings);
+  the editor's Menu dialog. Bundles: Menus page ~22 KB gzipped, dialog ~11 KB; public pages none.
+- Playground (branch `menus`, on `templates`): Tapestry Menus in studiocms.config (+ `menuComponents()`),
+  menu styles in the layout, `menus` suite (7 steps: endpoints refused to visitors and other origins,
+  the sidebar position, building a tree with the form, the keyboard buttons and a real drag, saving,
+  an outdated save refused, editors read-only, Menu + Breadcrumbs on the home page as visitor and
+  logged in, the page dialog renaming an entry live), the a11y suite audits the Menus page, the tree
+  editor and the dialog in both themes. `file:` dependencies stay uncommitted.
+- Library icons for Menu and Breadcrumbs ship with `menuComponents()` (the library suite expects one
+  per component). All 28 suites pass (2026-10-16) with the local Tapestry 0.6.0 and Tapestry Menus builds.
+
+- Then, at the user's request, menu settings moved from a **Menu** button (purple bar) with a dialog
+  to a Drupal-style **Menu settings** section under the settings panel: "Provide a menu link", title,
+  parent item (any menu's top level or item), description, Save menu link (live at once). Tapestry's
+  companions now come in two kinds (ADR 0042): bar buttons (SEO) and sidebar panels (`CompanionPanels`,
+  loaded on first open, pages only). The `menus` suite checks there's no Menu button, the panel's
+  values, a rename that's live at once and absent from the page's draft; the a11y suite audits the panel.
+- Renamed **Navigation settings** (the user: so it isn't confused with a selected Menu component's
+  settings). The user's browser showed "this version of the plugin has no panel": it still had the old
+  editor module (Vite's `?v=` cache doesn't change for `file:` updates; a hard reload fixes it). The
+  message now says to reload without the cache.
+- A hard reload didn't help (Chrome doesn't revalidate modules loaded with `import()`; Firefox, never
+  used before, was fine). astro.config.mjs now sets `vite.optimizeDeps.force`: each dev start gets a new
+  `?v=` hash (checked: 3f781a15 → b2feacf7), so restarting after a `file:` install reaches every browser.
+
+### Learned
+- StudioCMS turns a plugin identifier into the dashboard URL with `_` for both `/` and `-`:
+  `/dashboard/nascencestudio_tapestry_menus/menus`.
+- Pragmatic DnD with `dragHandle` ignores a drag whose pointer has left a small handle by the time
+  the browser fires `dragstart` (the CDP drag moves 20 px first): no data, no drop. Rows are dragged
+  whole, like the layer tree. The tree-item hitbox measures indent from the drop target's left edge,
+  so the target is the full-width `<li>` with the indent as padding.
+- A `beforeunload` guard (unsaved changes) silently blocks navigation in headless Chrome; the suite
+  accepts `Page.javascriptDialogOpening`.
+- Dev HTML carries `data-astro-source-*` on every element; strip it before matching markup.
+- axe `label-content-name-mismatch` again: no `aria-label` on buttons with visible text; the row's level
+  is visually hidden text inside the button.
+- A Python `replace` matched inside a longer CSS selector and broke two rules (every label struck
+  through). The first match isn't always the one meant.
+- An early failed run left a test menu behind (cleanup hung on the beforeunload prompt). I deleted
+  only that menu. "Main Navigation" was there before the tests and was left alone.
+
+### Next
+- The user releases Tapestry 0.5.0, then 0.6.0. Then: create nascencestudio/tapestry-menus, switch its
+  dev dependency to 0.6.0, push, and make the first release (one-time token). The playground switches
+  to npm versions, runs every suite and commits.
+
+---
+
+## 2026-10-15: Session 31: Templates and Template Management (Tapestry 0.5.0)
+
+**Request:** menus (no StudioCMS plugin does them: checked all 33 StudioCMS packages on npm and its
+roadmap). The user designed templates built like pages; after trying a first version (headers and
+footers only) they revised it: **Template Management** under Media with **Headers and Footers** and
+**Templates**; templates are page layouts with a body of their own (layout and content components)
+that pages inherit, with named **content areas** pages fill. Decisions: inherit (not copy), several
+named areas, fixed template content locked, one-off pages start with no header/footer but can pick
+existing ones, admins edit; then (StudioCMS lists only editor-level plugin pages under Media) editors
+see Template Management read-only. Tapestry ADR 0041 (revised the same day).
+
+### Done
+- Tapestry 0.5.0 (branch `templates`): parts and templates (bodies with the built-in content area,
+  `tapestry-area`), `mergeTemplate()` (the page poured into its template's areas, template ids
+  `tpl_`), `assignAreas()` (template switches), `loadLayout()` in `getPage()` and the render endpoint,
+  `<Region>`, a page's own header/footer, the Template menu, root areas in the editor (`#root` manifest
+  entry: layer groups, drops into areas, Alt+arrows into empty areas), the template editor, Template
+  Management (dashboard page with an inner sidebar), shared save rules (`save-rules.ts`).
+- StudioCMS patch (playground and the one Tapestry ships): plugin dashboard pages named by slug.
+  Without it two plugins with dashboard pages (Media + Template Management) 404 the whole dashboard
+  (Tapestry known issue #38).
+- Playground (branch `templates`): `<Region>` header/footer in the layout; `templates` suite (9 steps:
+  Template Management under Media, a header, a template with two areas, a page inheriting it, moving
+  content between areas, draft vs publish, a one-off page with its own header, editors read-only); the
+  a11y audit covers both sub-pages, the part and template editors and the Template menu.
+
+### Learned
+- StudioCMS's generated dashboard-pages module names components `item.title + key`, but titles are
+  translation objects: every page is `[object Object]pageBodyComponent`.
+- StudioCMS puts admin-only plugin pages in the Admin section; only editor-level ones appear under Media.
+- The canvas used the first root marker in the page; with a header region first it would have edited
+  the header. `editableRoot()` picks the page body's root (or the part being edited).
+- `display: contents` wrappers ignore opacity: fades go on the components.
+- Keyboard moves (Alt+↓/↑) couldn't reach an empty slot or area; they can now.
+- Chrome 156 (updated itself today) + StudioCMS dashboard: frames stop after a dialog closes (see
+  CLAUDE.md gotchas); the suites pass, slower.
+
+- After the user's review: one active sub-page link (StudioCMS's `SidebarLink` matches paths only;
+  now plain `inner-sidebar-link`s marked on the server) and StudioCMS's spacing; red delete buttons and
+  a bottom bar per template (areas, Edit layout, Delete); the part editor's page-content placeholder
+  says it's edited on each page and doesn't look droppable; Template menu items are buttons, the
+  current one purple. A probe's cleanup deleted the user's test templates (it removed everything,
+  not only its own records); probes now must clean up only what they create.
+
+### Next
+- Release Tapestry 0.5.0; the playground switches to it. Then `@nascencestudio/tapestry-menus`.
+
 ## 2026-10-12: Session 30: Per-page SEO (tapestry-seo 0.2.0, Tapestry 0.4.0)
 
 **Request:** the SEO button in Tapestry's editor for each page's SEO tags. Decisions (the user): the

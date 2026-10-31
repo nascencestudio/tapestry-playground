@@ -124,7 +124,11 @@ try {
 		}));
 		assert.equal(info.nodes, 9);
 		assert.equal(info.adminBar, false);
-		assert.equal(info.path, '/?tapestry-canvas=');
+		// The page in canvas mode, with its layout choice (no template here; Tapestry ADR 0041).
+		const url = new URL(info.path, BASE);
+		assert.equal(url.pathname, '/');
+		assert.ok(url.searchParams.has('tapestry-canvas'));
+		assert.equal(url.searchParams.get('tapestry-template'), 'none');
 	});
 
 	await step('canvas looks like the public page (same text, same site CSS)', async () => {

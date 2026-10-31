@@ -20,6 +20,18 @@ export default defineConfig({
 	// Preact for interactive Tapestry components (islands, ADR 0030); public pages without one ship no JS.
 	integrations: [preact(), studioCMS()],
 	vite: {
+		// Dev only: rebuild Vite's dependency cache on every start. Vite serves dependency files with a
+		// `?v=` hash and a one-year immutable cache, and the hash only changes with the lockfile, which a
+		// local `file:` build of our plugins doesn't touch: browsers kept old plugin code even after a
+		// hard reload. A fresh optimize gets a new hash, so a restart (needed after each install anyway)
+		// reaches every browser. Costs a few seconds per start.
+		optimizeDeps: { force: true },
+		ssr: {
+			// StudioCMS 0.7 parses Markdown with satteri, which loads a prebuilt native binary next to its
+			// package. Bundled into a server chunk it can't find it ("Cannot find native binding") and every
+			// page that loads the Markdown module fails in production. Loaded from node_modules, it works.
+			external: ['satteri'],
+		},
 		build: {
 			// Workaround: StudioCMS's ComponentRegistryUI.astro (0.6.0 and 0.6.1)
 			// nests @keyframes inside a rule, which Vite 8's default lightningcss

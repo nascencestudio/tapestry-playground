@@ -20,13 +20,13 @@ Canvas), [docs/upstream/](docs/upstream/) (issue drafts), and the deployment gui
 
 ## Status
 
-- All from npm: Tapestry `0.4.0`, media library `0.2.0`, tapestry-seo `0.2.0`
-  (`features.robotsTXT: false` + `tapestrySeo()` in studiocms.config). Our three packages are in
-  `minimumReleaseAgeExclude`.
+- Everything from npm (2026-10-31): Tapestry `0.7.0`, media library `0.2.1`, tapestry-seo `0.2.1`,
+  tapestry-menus `0.1.0`, tapestry-fabric `0.1.0`, IP Guard `0.1.0`, webforms `0.1.0` (all in
+  `minimumReleaseAgeExclude`). Branch `fabric` (on `templates` → `menus`) carries their suites and a11y states;
+  merged into `main` by PR. All 32 suites, the budget and the Docker image pass on npm versions.
+  To test unreleased plugin code, switch one dependency to `file:../<repo>` temporarily (never commit it).
 - 0.2.0 of the media library migrated the dev media directory one way (backup in
   `backups/2026-10-09-before-folders/`, gitignored).
-- Verified 2026-10-13: all 26 e2e suites, every package from npm.
-- Not on GitHub yet: create `nascencestudio/tapestry-playground`, push, then add the rulesets.
 
 ## Rules
 
@@ -45,9 +45,9 @@ Canvas), [docs/upstream/](docs/upstream/) (issue drafts), and the deployment gui
 ## Layout
 
 ```
-astro.config.mjs, studiocms.config.mjs ← the site; registers Tapestry (+ languages) and the media library
+astro.config.mjs, studiocms.config.mjs ← the site; registers Tapestry (+ languages, menu, webform and Page list components), the media library, SEO, Menus, Fabric
 src/tapestry.config.mjs   ← example component definitions; src/components/tapestry/ the components
-src/pages/[...slug].astro ← pages via getPage() + AdminBar; src/pages/404.astro; src/layouts/ (Layout: <Seo> from tapestry-seo)
+src/pages/[...slug].astro ← pages via getPage() + AdminBar; src/pages/404.astro; src/layouts/ (Layout: <Seo> from tapestry-seo, <Region> header/footer, styles for menus)
 scripts/                  ← setup-site.mjs (fresh DB), seed-demo-page.mjs + demo-document.mjs, check-budget.mjs
 e2e/                      ← CDP harness (cdp.mjs), helpers, one *.e2e.mjs per suite (chain in package.json), fixtures/
 perf-budget.json          ← budget for `pnpm budget`
@@ -66,8 +66,8 @@ docs/                     ← devlog, research, upstream drafts, guides (develop
 | `pnpm migrate` | Apply StudioCMS DB migrations |
 | `CMS_SETUP=1 pnpm dev` + `node scripts/setup-site.mjs` | First-time setup of a fresh DB (writes `.dev-credentials`); restart without `CMS_SETUP` |
 | `pnpm seed` | (Re)create the demo Tapestry home page (running servers cache pages for 5 min) |
-| `pnpm e2e` | 26 browser suites in headless Chrome (dev server running; `HEADED=1`, `E2E_SCREENSHOTS=dir`, `E2E_CPU_THROTTLE=4` to run like a slow CI runner) |
-| `pnpm build`, then `PORT=4600 node dist/server/entry.mjs` (with `.env` loaded) + `BASE_URL=http://127.0.0.1:4600 pnpm budget` | Performance budget |
+| `pnpm e2e` | 32 browser suites in headless Chrome (dev server running; `HEADED=1`, `E2E_SCREENSHOTS=dir`, `E2E_CPU_THROTTLE=4` to run like a slow CI runner) |
+| `pnpm build`, then `PORT=4600 node dist/server/entry.mjs` (with `.env` loaded) + `BASE_URL=http://localhost:4600 pnpm budget` | Performance budget |
 | `pnpm typecheck` / `pnpm lint` / `pnpm audit` | `astro check` / Biome / vulnerabilities |
 | `docker build --build-arg SITE_URL=… -t nascence-site .` | Production image (docs/guides/deployment.md) |
 
@@ -77,18 +77,19 @@ the dev server. Don't commit a `file:` dependency once the package is on npm.
 
 Login details: `.dev-credentials` (gitignored). Secrets: `.env` (gitignored, `chmod 600`).
 
-## Site dependencies (2026-10-09)
+## Site dependencies (2026-10-22)
 
 | Package | Version | Note |
 | --- | --- | --- |
 | Node | ≥ 22.12 (dev and Docker: 22.23.3) | `.nvmrc` |
 | Caddy (Docker) | 2.11.4 | HTTPS proxy in `compose.yaml` |
-| astro / studiocms | 7.3.5 / 0.6.1 | both patched |
-| @astrojs/node | 11.1.6 | SSR adapter (StudioCMS requires on-demand rendering) |
-| @libsql/client | 0.18.0 | matches StudioCMS 0.6.1 |
-| @astrojs/preact + preact | 6.0.5 + 10.29.8 | islands demo (Tapestry ADR 0030) |
-| @studiocms/md | 0.5.0 | Markdown page type; also StudioCMS's hard-coded create-form default |
-| axe-core | 4.13.0 | accessibility checks in e2e (Tapestry ADR 0034) |
+| astro / studiocms | 7.4.1 / 0.7.0 | StudioCMS patched (Astro 7.4 fixed the dev CSS leak itself) |
+| @astrojs/node | 11.1.9 | SSR adapter (StudioCMS requires on-demand rendering) |
+| @libsql/client | 0.18.0 | matches StudioCMS 0.7.0 |
+| @astrojs/preact + preact | 6.1.0 + 10.29.8 | islands demo (Tapestry ADR 0030) |
+| @studiocms/md | 0.5.1 | Markdown page type; also StudioCMS's hard-coded create-form default |
+| satteri | 0.10.5 | StudioCMS 0.7's Markdown parser, direct + external so production finds its binary (#41) |
+| axe-core | 4.14.0 | accessibility checks in e2e (Tapestry ADR 0034) |
 | typescript | 6.0.3 | not 7 (`@astrojs/check` supports ≤ 6) |
 
 ## Gotchas
@@ -98,6 +99,12 @@ Comments in the site and e2e code that cite `docs/decisions/…`, `docs/known-is
 
 - Production builds need `vite.build.cssMinify: 'esbuild'` because of a StudioCMS
   CSS bug (Tapestry's known issues #1).
+- StudioCMS 0.7's Markdown parser `satteri` is a direct dependency and external in the server build
+  (`vite.ssr.external`), or production can't find its native binary (Tapestry known issue #41). Keep its
+  version equal to StudioCMS's. Only a production build shows this.
+- The budget's `BASE_URL` is `http://localhost:4600` (the `SITE_URL` host): since Astro 7.4 a `Host` not in
+  `security.allowedDomains` makes the request URL `localhost:<port>`, so a login sent from `127.0.0.1`
+  fails the same-origin check (403). Use the `SITE_URL` host for anything that POSTs to a production server.
 - StudioCMS rejects common usernames like `admin` during setup.
 - StudioCMS caches pages for 5 minutes, so direct DB writes may not show on a
   running server. Reset content through the editor (the e2e suite does).
@@ -114,13 +121,14 @@ Comments in the site and e2e code that cite `docs/decisions/…`, `docs/known-is
 - Editor checks in e2e must wait for the *real* editor element; "something rendered"
   passed while the HTML editor was broken.
 - Keep site CSS scoped (`.site` on `<body>`, `--site-*` variables). The dev leak that made
-  this necessary (#14) is fixed by the Astro patch, but scoping is still good practice.
-- **Four dependencies are patched** (`patches/`, reasons in `pnpm-workspace.yaml`, Tapestry ADR 0021):
+  this necessary (#14) is fixed in Astro 7.4 (our patch for it is gone), but scoping is still good practice.
+- **Three dependencies are patched** (`patches/`, reasons in `pnpm-workspace.yaml`, Tapestry ADR 0021):
   StudioCMS (middleware no longer imports a dashboard component, which put ~67 KB of dashboard
   CSS on every public page; no dev DB viewer; component scripts kept for `componentScripts`
-  renderers, #37, the same fix Tapestry ships), Astro (dev CSS collector stops at the manifest),
+  renderers, #37, and the mail fixes #39/#40, the same fixes Tapestry ships; plus, here only, taxonomy
+  create, #42),
   @studiocms/md (no global CSS; layouts inline `studiocms:md/styles-inline` on Markdown pages),
-  @withstudiocms/sdk (user deletion, #35). After
+  @withstudiocms/sdk (user deletion, #35; page tags/categories saved as strings, #43). After
   editing a patch run `pnpm install`; the Dockerfile copies `patches/` before installing.
 - Sites need their own `src/pages/404.astro` **and** `features.dashboardConfig.inject404Route: false`;
   StudioCMS's 404 renders the whole dashboard layout for visitors (#34).
@@ -183,11 +191,32 @@ Comments in the site and e2e code that cite `docs/decisions/…`, `docs/known-is
 - CI runners are much slower than a dev Mac: timing assumptions pass locally and fail there. Before
   pushing e2e changes, run `E2E_CPU_THROTTLE=4 pnpm e2e`. `openEditor()` waits for the canvas to finish
   loading (it moves the layout); click-then-check steps should confirm the result (e.g. `aria-selected`).
+- Headless Chrome 156 (2026-10-15) stops producing frames on StudioCMS dashboard pages after a modal
+  `<dialog>` closes: `requestAnimationFrame` never fires and every CDP mouse move waits 5 s for its
+  ack. Not Tapestry (the dashboard home page shows it too; a plain page doesn't; Chrome 155 didn't).
+  Tests still pass, slower (the a11y suite went from ~10 s to ~90 s per theme). Flags
+  (`E2E_CHROME_ARGS`), bringToFront and viewport changes didn't help.
 - After changing a `file:` dependency, `pnpm exec …` (including `astro dev stop`) can refuse to run
   ("a linked package is out of date") and the old dev server keeps serving old code. Run
-  `pnpm install`, restart, and confirm `astro dev status` shows a fresh uptime.
+  `pnpm install` (a second time if a `file:` package depends on another one, e.g. webforms on ipguard), restart, and confirm `astro dev status` shows a fresh uptime.
 - Vite serves dependency files (`file:` and npm packages) with `?v=<hash>` and a one-year immutable
-  cache; the hash changes only with the lockfile. Fresh browsers per run (above) avoid stale copies.
+  cache; the hash changes only with the lockfile, which `file:` rebuilds don't touch. Chrome then kept
+  old plugin code even after a hard reload (modules loaded with `import()` aren't revalidated). Hence
+  `vite.optimizeDeps.force: true` in astro.config.mjs: every dev start gets a new hash, so restart after
+  each install. e2e uses fresh browsers anyway.
+- Astro's dev toolbar (`astro-dev-toolbar`) covers the bottom of the window: hide it before clicking things that end
+  up there on short pages (`page.click` waits forever for them to be "uncovered").
 - e2e: `page.realDrag()` resolves the target after pressing; resolve both points beforehand and
   don't scroll (not even the outer page) after the first one. `waitFor` callbacks should return
   booleans, not elements (an `<option>` never came back truthy).
+- Email in e2e: only with `E2E_MAIL_SINK=1` on a scratch or CI site (it rewrites SMTP Configuration). The suite
+  turns mail off when done: with mail on and the SMTP server gone, StudioCMS fails every dashboard save
+  (Tapestry known issue #40). Mail bodies are quoted-printable.
+- Taxonomy e2e: the tag/category pages also have `<meta name="description">`, so select `input[name="description"]`;
+  wait for `customElements.get('dynamic-key-value-pair')` before filling (the first dev visit reloads the page).
+- Pages created through StudioCMS's API need a **description**: its edit form requires one, and an empty one
+  silently blocks every save from the editor (Publish then changes the field but nothing is sent).
+- Fabric e2e: Astro's dev output puts `data-astro-source-*` attributes between yours, so match markup per
+  attribute (`href="…"[^>]*aria-label=…`), or slice from the element's `<article`.
+- Dev-only test pages live in `src/pages/e2e/` and return 404 in production builds (`ipguard-check.ts`,
+  `webform.astro`).
