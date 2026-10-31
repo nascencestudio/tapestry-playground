@@ -20,10 +20,9 @@ Canvas), [docs/upstream/](docs/upstream/) (issue drafts), and the deployment gui
 
 ## Status
 
-- Everything from npm (2026-10-31): Tapestry `0.7.0`, media library `0.2.1`, tapestry-seo `0.2.1`,
+- Everything from npm (2026-10-31): Tapestry `0.7.1`, media library `0.2.1`, tapestry-seo `0.2.1`,
   tapestry-menus `0.1.0`, tapestry-fabric `0.1.0`, IP Guard `0.1.0`, webforms `0.1.0` (all in
-  `minimumReleaseAgeExclude`). Branch `fabric` (on `templates` → `menus`) carries their suites and a11y states;
-  merged into `main` by PR. All 32 suites, the budget and the Docker image pass on npm versions.
+  `minimumReleaseAgeExclude`). Their suites and a11y states are on `main` (PR #12). All 32 suites, the budget and the Docker image pass on npm versions.
   To test unreleased plugin code, switch one dependency to `file:../<repo>` temporarily (never commit it).
 - 0.2.0 of the media library migrated the dev media directory one way (backup in
   `backups/2026-10-09-before-folders/`, gitignored).

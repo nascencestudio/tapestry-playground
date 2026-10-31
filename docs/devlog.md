@@ -6,6 +6,15 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-10-31: Session 54: Tapestry 0.7.1
+
+- CI on the `fabric` PR failed in the a11y suite: on a fresh site (no categories) Tapestry 0.7.0's multi-choice
+  field left out its box. Tests now wait for the field (pass on 0.7.0 and 0.7.1); the PR merged.
+- **Tapestry 0.7.1** (released by the user): the box is always there, disabled with "Nothing to choose yet" or
+  "All chosen". The playground uses it (branch `tapestry-0.7.1`); all suites run.
+
+---
+
 ## 2026-10-31: Session 53: Releases; the playground on npm versions
 
 **Request:** push everything and publish (the user releases; order agreed in session 53's plan).
