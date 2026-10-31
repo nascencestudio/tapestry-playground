@@ -182,43 +182,43 @@ importers:
         version: 6.1.0(@babel/core@7.29.7)(@types/node@26.6.4)(esbuild@0.28.2)(preact@10.29.8)(yaml@2.9.1)
       '@effect/platform':
         specifier: 0.97.2
-        version: 0.97.2(effect@3.22.2)
+        version: 0.97.2(effect@3.22.4)
       '@effect/platform-node':
         specifier: 0.108.2
-        version: 0.108.2(@effect/cluster@0.60.2(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/workflow@0.19.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(effect@3.22.2)
+        version: 0.108.2(@effect/cluster@0.60.2(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/workflow@0.19.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(effect@3.22.4)
       '@libsql/client':
         specifier: 0.18.0
         version: 0.18.0
       '@nascencestudio/ipguard':
         specifier: 0.1.0
-        version: 0.1.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))
+        version: 0.1.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871))
       '@nascencestudio/medialibrary':
         specifier: 0.2.1
-        version: 0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))
+        version: 0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871))
       '@nascencestudio/tapestry':
         specifier: 0.7.1
-        version: 0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))
+        version: 0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871))
       '@nascencestudio/tapestry-fabric':
         specifier: 0.1.0
-        version: 0.1.0(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))
+        version: 0.1.0(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871))
       '@nascencestudio/tapestry-menus':
         specifier: 0.1.0
-        version: 0.1.0(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))
+        version: 0.1.0(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871))
       '@nascencestudio/tapestry-seo':
         specifier: 0.2.1
-        version: 0.2.1(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))
+        version: 0.2.1(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871))
       '@nascencestudio/webforms':
         specifier: 0.1.0
-        version: 0.1.0(@nascencestudio/ipguard@0.1.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))
+        version: 0.1.0(@nascencestudio/ipguard@0.1.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)))(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871))
       '@studiocms/md':
         specifier: 0.5.1
-        version: 0.5.1(patch_hash=da73ec54dbd446d69bf0c1468abb7099bb572b9b48bdf9b4048e20d9f30948f9)(@astrojs/internal-helpers@0.11.0)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+        version: 0.5.1(patch_hash=da73ec54dbd446d69bf0c1468abb7099bb572b9b48bdf9b4048e20d9f30948f9)(@astrojs/internal-helpers@0.11.0)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.4)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       astro:
         specifier: 7.4.1
         version: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
       effect:
-        specifier: 3.22.2
-        version: 3.22.2
+        specifier: 3.22.4
+        version: 3.22.4
       preact:
         specifier: 10.29.8
         version: 10.29.8(preact-render-to-string@6.8.0)
@@ -227,7 +227,7 @@ importers:
         version: 0.10.5
       studiocms:
         specifier: 0.7.0
-        version: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)
+        version: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)
     devDependencies:
       '@astrojs/check':
         specifier: 0.9.11
@@ -2019,8 +2019,8 @@ packages:
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  effect@3.22.2:
-    resolution: {integrity: sha512-fm1CQXCs7GTMwpadZxwU5rnAb2bN6mbQpknq/pXBGCzSKkosNYb9k0wsoL0TfB10rSa5xOEZJjo77u/KLXSANg==}
+  effect@3.22.4:
+    resolution: {integrity: sha512-RNshu7AXVxxDh6aS4lothhJ+QoZ4xSykbWNaaVdvDN72RMyVwhCGdALkyl1TbEydgAmRIdD1eTyJqBUGwSBGDA==}
 
   effectify@0.3.2:
     resolution: {integrity: sha512-Pj5uHwiKH7V5SUrTdBGVKyFFoq9A4YKyNOWgZv2k5JUmEa65TMU4Lra9KD2sBjK7HTWe1RWFk9xNZvrVe9blkg==}
@@ -3838,53 +3838,53 @@ snapshots:
       fast-wrap-ansi: 0.2.2
       sisteransi: 1.0.5
 
-  '@effect/cli@0.77.2(@effect/platform@0.97.2(effect@3.22.2))(@effect/printer-ansi@0.51.0(@effect/typeclass@0.41.0(effect@3.22.2))(effect@3.22.2))(@effect/printer@0.51.0(@effect/typeclass@0.41.0(effect@3.22.2))(effect@3.22.2))(effect@3.22.2)':
+  '@effect/cli@0.77.2(@effect/platform@0.97.2(effect@3.22.4))(@effect/printer-ansi@0.51.0(@effect/typeclass@0.41.0(effect@3.22.4))(effect@3.22.4))(@effect/printer@0.51.0(@effect/typeclass@0.41.0(effect@3.22.4))(effect@3.22.4))(effect@3.22.4)':
     dependencies:
-      '@effect/platform': 0.97.2(effect@3.22.2)
-      '@effect/printer': 0.51.0(@effect/typeclass@0.41.0(effect@3.22.2))(effect@3.22.2)
-      '@effect/printer-ansi': 0.51.0(@effect/typeclass@0.41.0(effect@3.22.2))(effect@3.22.2)
-      effect: 3.22.2
+      '@effect/platform': 0.97.2(effect@3.22.4)
+      '@effect/printer': 0.51.0(@effect/typeclass@0.41.0(effect@3.22.4))(effect@3.22.4)
+      '@effect/printer-ansi': 0.51.0(@effect/typeclass@0.41.0(effect@3.22.4))(effect@3.22.4)
+      effect: 3.22.4
       ini: 4.1.3
       toml: 5.0.1
       yaml: 2.9.1
 
-  '@effect/cluster@0.60.2(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/workflow@0.19.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(effect@3.22.2))(effect@3.22.2)':
+  '@effect/cluster@0.60.2(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/workflow@0.19.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(effect@3.22.4))(effect@3.22.4)':
     dependencies:
-      '@effect/platform': 0.97.2(effect@3.22.2)
-      '@effect/rpc': 0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2)
-      '@effect/sql': 0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2)
-      '@effect/workflow': 0.19.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(effect@3.22.2)
-      effect: 3.22.2
+      '@effect/platform': 0.97.2(effect@3.22.4)
+      '@effect/rpc': 0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4)
+      '@effect/sql': 0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4)
+      '@effect/workflow': 0.19.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(effect@3.22.4)
+      effect: 3.22.4
       kubernetes-types: 1.30.0
 
-  '@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2)':
+  '@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4)':
     dependencies:
-      '@effect/platform': 0.97.2(effect@3.22.2)
-      effect: 3.22.2
+      '@effect/platform': 0.97.2(effect@3.22.4)
+      effect: 3.22.4
       uuid: 11.1.1
 
-  '@effect/platform-node-shared@0.61.1(@effect/cluster@0.60.2(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/workflow@0.19.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(effect@3.22.2)':
+  '@effect/platform-node-shared@0.61.1(@effect/cluster@0.60.2(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/workflow@0.19.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(effect@3.22.4)':
     dependencies:
-      '@effect/cluster': 0.60.2(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/workflow@0.19.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(effect@3.22.2))(effect@3.22.2)
-      '@effect/platform': 0.97.2(effect@3.22.2)
-      '@effect/rpc': 0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2)
-      '@effect/sql': 0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2)
+      '@effect/cluster': 0.60.2(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/workflow@0.19.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(effect@3.22.4))(effect@3.22.4)
+      '@effect/platform': 0.97.2(effect@3.22.4)
+      '@effect/rpc': 0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4)
+      '@effect/sql': 0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4)
       '@parcel/watcher': 2.6.0
-      effect: 3.22.2
+      effect: 3.22.4
       multipasta: 0.2.8
       ws: 8.22.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@effect/platform-node@0.108.2(@effect/cluster@0.60.2(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/workflow@0.19.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(effect@3.22.2)':
+  '@effect/platform-node@0.108.2(@effect/cluster@0.60.2(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/workflow@0.19.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(effect@3.22.4)':
     dependencies:
-      '@effect/cluster': 0.60.2(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/workflow@0.19.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(effect@3.22.2))(effect@3.22.2)
-      '@effect/platform': 0.97.2(effect@3.22.2)
-      '@effect/platform-node-shared': 0.61.1(@effect/cluster@0.60.2(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/workflow@0.19.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(effect@3.22.2)
-      '@effect/rpc': 0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2)
-      '@effect/sql': 0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2)
-      effect: 3.22.2
+      '@effect/cluster': 0.60.2(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/workflow@0.19.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(effect@3.22.4))(effect@3.22.4)
+      '@effect/platform': 0.97.2(effect@3.22.4)
+      '@effect/platform-node-shared': 0.61.1(@effect/cluster@0.60.2(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/workflow@0.19.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(effect@3.22.4)
+      '@effect/rpc': 0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4)
+      '@effect/sql': 0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4)
+      effect: 3.22.4
       mime: 3.0.0
       undici: 7.30.1
       ws: 8.22.0
@@ -3892,47 +3892,47 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@effect/platform@0.97.2(effect@3.22.2)':
+  '@effect/platform@0.97.2(effect@3.22.4)':
     dependencies:
-      effect: 3.22.2
+      effect: 3.22.4
       find-my-way-ts: 0.1.6
       msgpackr: 1.12.1
       multipasta: 0.2.8
 
-  '@effect/printer-ansi@0.51.0(@effect/typeclass@0.41.0(effect@3.22.2))(effect@3.22.2)':
+  '@effect/printer-ansi@0.51.0(@effect/typeclass@0.41.0(effect@3.22.4))(effect@3.22.4)':
     dependencies:
-      '@effect/printer': 0.51.0(@effect/typeclass@0.41.0(effect@3.22.2))(effect@3.22.2)
-      '@effect/typeclass': 0.41.0(effect@3.22.2)
-      effect: 3.22.2
+      '@effect/printer': 0.51.0(@effect/typeclass@0.41.0(effect@3.22.4))(effect@3.22.4)
+      '@effect/typeclass': 0.41.0(effect@3.22.4)
+      effect: 3.22.4
 
-  '@effect/printer@0.51.0(@effect/typeclass@0.41.0(effect@3.22.2))(effect@3.22.2)':
+  '@effect/printer@0.51.0(@effect/typeclass@0.41.0(effect@3.22.4))(effect@3.22.4)':
     dependencies:
-      '@effect/typeclass': 0.41.0(effect@3.22.2)
-      effect: 3.22.2
+      '@effect/typeclass': 0.41.0(effect@3.22.4)
+      effect: 3.22.4
 
-  '@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2)':
+  '@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4)':
     dependencies:
-      '@effect/platform': 0.97.2(effect@3.22.2)
-      effect: 3.22.2
+      '@effect/platform': 0.97.2(effect@3.22.4)
+      effect: 3.22.4
       msgpackr: 1.12.1
 
-  '@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2)':
+  '@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4)':
     dependencies:
-      '@effect/experimental': 0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2)
-      '@effect/platform': 0.97.2(effect@3.22.2)
-      effect: 3.22.2
+      '@effect/experimental': 0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4)
+      '@effect/platform': 0.97.2(effect@3.22.4)
+      effect: 3.22.4
       uuid: 11.1.1
 
-  '@effect/typeclass@0.41.0(effect@3.22.2)':
+  '@effect/typeclass@0.41.0(effect@3.22.4)':
     dependencies:
-      effect: 3.22.2
+      effect: 3.22.4
 
-  '@effect/workflow@0.19.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(effect@3.22.2)':
+  '@effect/workflow@0.19.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(effect@3.22.4)':
     dependencies:
-      '@effect/experimental': 0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2)
-      '@effect/platform': 0.97.2(effect@3.22.2)
-      '@effect/rpc': 0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2)
-      effect: 3.22.2
+      '@effect/experimental': 0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4)
+      '@effect/platform': 0.97.2(effect@3.22.4)
+      '@effect/rpc': 0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4)
+      effect: 3.22.4
 
   '@emmetio/abbreviation@2.3.3':
     dependencies:
@@ -4311,51 +4311,51 @@ snapshots:
       '@tybys/wasm-util': 0.10.4
     optional: true
 
-  '@nascencestudio/ipguard@0.1.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))':
+  '@nascencestudio/ipguard@0.1.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871))':
     dependencies:
       astro: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
-      studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)
+      studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)
 
-  '@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))':
+  '@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871))':
     dependencies:
       '@preact/signals': 2.11.3(preact@10.29.8)
       astro: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
       kysely: 0.29.7
       preact: 10.29.8(preact-render-to-string@6.8.0)
       sharp: 0.35.5(@types/node@26.6.4)
-      studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)
+      studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)
       ultrahtml: 1.7.0
     transitivePeerDependencies:
       - '@types/node'
       - preact-render-to-string
 
-  '@nascencestudio/tapestry-fabric@0.1.0(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))':
+  '@nascencestudio/tapestry-fabric@0.1.0(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871))':
     dependencies:
-      '@nascencestudio/tapestry': 0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))
+      '@nascencestudio/tapestry': 0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871))
       astro: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
-      studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)
+      studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)
 
-  '@nascencestudio/tapestry-menus@0.1.0(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))':
+  '@nascencestudio/tapestry-menus@0.1.0(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871))':
     dependencies:
       '@atlaskit/pragmatic-drag-and-drop': 4.0.0
       '@atlaskit/pragmatic-drag-and-drop-hitbox': 3.0.0
-      '@nascencestudio/tapestry': 0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))
+      '@nascencestudio/tapestry': 0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871))
       astro: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
       preact: 10.29.8(preact-render-to-string@6.8.0)
-      studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)
+      studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)
     transitivePeerDependencies:
       - preact-render-to-string
 
-  '@nascencestudio/tapestry-seo@0.2.1(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))':
+  '@nascencestudio/tapestry-seo@0.2.1(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871))':
     dependencies:
-      '@nascencestudio/tapestry': 0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))
+      '@nascencestudio/tapestry': 0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871))
       astro: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
       preact: 10.29.8(preact-render-to-string@6.8.0)
-      studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)
+      studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)
     transitivePeerDependencies:
       - preact-render-to-string
 
-  '@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))':
+  '@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871))':
     dependencies:
       '@atlaskit/pragmatic-drag-and-drop': 4.0.0
       '@atlaskit/pragmatic-drag-and-drop-hitbox': 3.0.0
@@ -4370,19 +4370,19 @@ snapshots:
       prosemirror-state: 1.4.4
       prosemirror-transform: 1.12.2
       prosemirror-view: 1.42.6
-      studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)
+      studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)
     optionalDependencies:
-      '@nascencestudio/medialibrary': 0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))
+      '@nascencestudio/medialibrary': 0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871))
     transitivePeerDependencies:
       - preact-render-to-string
 
-  '@nascencestudio/webforms@0.1.0(@nascencestudio/ipguard@0.1.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))':
+  '@nascencestudio/webforms@0.1.0(@nascencestudio/ipguard@0.1.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)))(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871))':
     dependencies:
       astro: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
-      studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)
+      studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)
     optionalDependencies:
-      '@nascencestudio/ipguard': 0.1.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))
-      '@nascencestudio/tapestry': 0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))
+      '@nascencestudio/ipguard': 0.1.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871))
+      '@nascencestudio/tapestry': 0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871))
 
   '@neon-rs/load@0.0.4': {}
 
@@ -4600,10 +4600,10 @@ snapshots:
 
   '@standard-schema/spec@1.1.0': {}
 
-  '@studiocms/markdown-remark@1.6.1(@astrojs/internal-helpers@0.11.0)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
+  '@studiocms/markdown-remark@1.6.1(@astrojs/internal-helpers@0.11.0)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.4)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
     dependencies:
       '@astrojs/internal-helpers': 0.11.0
-      '@withstudiocms/internal_helpers': 0.5.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      '@withstudiocms/internal_helpers': 0.5.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.4)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       astro: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
       hast-util-from-html: 2.0.3
       hast-util-is-element: 3.0.0
@@ -4630,11 +4630,11 @@ snapshots:
       - effect
       - supports-color
 
-  '@studiocms/md@0.5.1(patch_hash=da73ec54dbd446d69bf0c1468abb7099bb572b9b48bdf9b4048e20d9f30948f9)(@astrojs/internal-helpers@0.11.0)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
+  '@studiocms/md@0.5.1(patch_hash=da73ec54dbd446d69bf0c1468abb7099bb572b9b48bdf9b4048e20d9f30948f9)(@astrojs/internal-helpers@0.11.0)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.4)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
     dependencies:
-      '@studiocms/markdown-remark': 1.6.1(@astrojs/internal-helpers@0.11.0)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
-      '@withstudiocms/internal_helpers': 0.5.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
-      effect: 3.22.2
+      '@studiocms/markdown-remark': 1.6.1(@astrojs/internal-helpers@0.11.0)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.4)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      '@withstudiocms/internal_helpers': 0.5.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.4)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      effect: 3.22.4
     transitivePeerDependencies:
       - '@astrojs/internal-helpers'
       - astro
@@ -4777,26 +4777,26 @@ snapshots:
 
   '@vscode/l10n@0.0.18': {}
 
-  '@withstudiocms/api-spec@0.4.1(70c572c023b4806b19b028e71279b4dc)':
+  '@withstudiocms/api-spec@0.4.1(e16c7f4ac0b0eb59cefe0dc39257bba0)':
     dependencies:
-      '@effect/platform': 0.97.2(effect@3.22.2)
-      '@effect/platform-node': 0.108.2(@effect/cluster@0.60.2(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/workflow@0.19.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(effect@3.22.2)
-      '@withstudiocms/sdk': 0.4.2(patch_hash=f04e81f855c68fe68f28fb76bca160e93cd3fd4e8363aa443047877bca272c4c)(@withstudiocms/effect@0.5.3(7e6023c8af63763fb6381d026c7fb21e))(@withstudiocms/kysely@0.3.1(@libsql/client@0.18.0)(effect@3.22.2))(effect@3.22.2)(effectify@0.3.2(d16dcf67d90e7f053ff0a6859501440a))(kysely@0.29.7)(zod@4.6.7)
+      '@effect/platform': 0.97.2(effect@3.22.4)
+      '@effect/platform-node': 0.108.2(@effect/cluster@0.60.2(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/workflow@0.19.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(effect@3.22.4)
+      '@withstudiocms/sdk': 0.4.2(patch_hash=f04e81f855c68fe68f28fb76bca160e93cd3fd4e8363aa443047877bca272c4c)(@withstudiocms/effect@0.5.3(f94a1ad8f65803e6c3768296f54f1c13))(@withstudiocms/kysely@0.3.1(@libsql/client@0.18.0)(effect@3.22.4))(effect@3.22.4)(effectify@0.3.2(df290dc71f2cf9542cfbe823513da2b1))(kysely@0.29.7)(zod@4.6.7)
       astro: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
-      effect: 3.22.2
-      effectify: 0.3.2(d16dcf67d90e7f053ff0a6859501440a)
+      effect: 3.22.4
+      effectify: 0.3.2(df290dc71f2cf9542cfbe823513da2b1)
     transitivePeerDependencies:
       - fast-check
       - zod
 
-  '@withstudiocms/auth-kit@0.2.2(7dbacd15bf1498ad46c0e1161ae836c6)':
+  '@withstudiocms/auth-kit@0.2.2(7804a0284c12971e2107ce85de096c46)':
     dependencies:
-      '@effect/platform': 0.97.2(effect@3.22.2)
-      '@withstudiocms/effect': 0.5.3(7e6023c8af63763fb6381d026c7fb21e)
-      '@withstudiocms/internal_helpers': 0.5.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      '@effect/platform': 0.97.2(effect@3.22.4)
+      '@withstudiocms/effect': 0.5.3(f94a1ad8f65803e6c3768296f54f1c13)
+      '@withstudiocms/internal_helpers': 0.5.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.4)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       astro: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
-      effect: 3.22.2
-      effectify: 0.3.2(d16dcf67d90e7f053ff0a6859501440a)
+      effect: 3.22.4
+      effectify: 0.3.2(df290dc71f2cf9542cfbe823513da2b1)
     transitivePeerDependencies:
       - '@effect/cli'
       - '@effect/platform-node'
@@ -4815,12 +4815,12 @@ snapshots:
       tinyexec: 1.3.1
       wrap-ansi: 10.0.2
 
-  '@withstudiocms/component-registry@0.2.2(6ef41d1277a173540524c75b5fd198a2)':
+  '@withstudiocms/component-registry@0.2.2(cceebffeb41521004c0607ed8add0748)':
     dependencies:
-      '@withstudiocms/effect': 0.5.3(7e6023c8af63763fb6381d026c7fb21e)
-      '@withstudiocms/internal_helpers': 0.5.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      '@withstudiocms/effect': 0.5.3(f94a1ad8f65803e6c3768296f54f1c13)
+      '@withstudiocms/internal_helpers': 0.5.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.4)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       astro: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
-      effect: 3.22.2
+      effect: 3.22.4
       ts-morph: 28.0.0
       ultrahtml: 1.7.0
     transitivePeerDependencies:
@@ -4831,22 +4831,22 @@ snapshots:
       - vite
       - zod
 
-  '@withstudiocms/config-utils@0.3.1(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
+  '@withstudiocms/config-utils@0.3.1(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.4)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
     dependencies:
       astro: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
-      effect: 3.22.2
+      effect: 3.22.4
       vite: 8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
 
-  '@withstudiocms/effect@0.5.3(7e6023c8af63763fb6381d026c7fb21e)':
+  '@withstudiocms/effect@0.5.3(f94a1ad8f65803e6c3768296f54f1c13)':
     dependencies:
       '@clack/prompts': 1.8.1
-      '@effect/cli': 0.77.2(@effect/platform@0.97.2(effect@3.22.2))(@effect/printer-ansi@0.51.0(@effect/typeclass@0.41.0(effect@3.22.2))(effect@3.22.2))(@effect/printer@0.51.0(@effect/typeclass@0.41.0(effect@3.22.2))(effect@3.22.2))(effect@3.22.2)
-      '@effect/platform': 0.97.2(effect@3.22.2)
-      '@effect/platform-node': 0.108.2(@effect/cluster@0.60.2(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/workflow@0.19.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(effect@3.22.2)
+      '@effect/cli': 0.77.2(@effect/platform@0.97.2(effect@3.22.4))(@effect/printer-ansi@0.51.0(@effect/typeclass@0.41.0(effect@3.22.4))(effect@3.22.4))(@effect/printer@0.51.0(@effect/typeclass@0.41.0(effect@3.22.4))(effect@3.22.4))(effect@3.22.4)
+      '@effect/platform': 0.97.2(effect@3.22.4)
+      '@effect/platform-node': 0.108.2(@effect/cluster@0.60.2(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/workflow@0.19.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(effect@3.22.4)
       astro: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
       deepmerge-ts: 8.0.2
-      effect: 3.22.2
-      effectify: 0.3.2(d16dcf67d90e7f053ff0a6859501440a)
+      effect: 3.22.4
+      effectify: 0.3.2(df290dc71f2cf9542cfbe823513da2b1)
       micromatch: 4.0.8
       nodemailer: 10.2.1
       socks: 2.8.10
@@ -4854,31 +4854,31 @@ snapshots:
       - fast-check
       - zod
 
-  '@withstudiocms/internal_helpers@0.5.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
+  '@withstudiocms/internal_helpers@0.5.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.4)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
     dependencies:
       astro: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
-      effect: 3.22.2
+      effect: 3.22.4
       mdast-util-to-string: 4.0.0
       satteri: 0.10.5
       tinyexec: 1.3.1
       unist-util-visit: 5.1.0
       vite: 8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
 
-  '@withstudiocms/kysely@0.3.1(@libsql/client@0.18.0)(effect@3.22.2)':
+  '@withstudiocms/kysely@0.3.1(@libsql/client@0.18.0)(effect@3.22.4)':
     dependencies:
-      effect: 3.22.2
+      effect: 3.22.4
       kysely: 0.29.6
     optionalDependencies:
       '@libsql/client': 0.18.0
 
-  '@withstudiocms/sdk@0.4.2(patch_hash=f04e81f855c68fe68f28fb76bca160e93cd3fd4e8363aa443047877bca272c4c)(@withstudiocms/effect@0.5.3(7e6023c8af63763fb6381d026c7fb21e))(@withstudiocms/kysely@0.3.1(@libsql/client@0.18.0)(effect@3.22.2))(effect@3.22.2)(effectify@0.3.2(d16dcf67d90e7f053ff0a6859501440a))(kysely@0.29.7)(zod@4.6.7)':
+  '@withstudiocms/sdk@0.4.2(patch_hash=f04e81f855c68fe68f28fb76bca160e93cd3fd4e8363aa443047877bca272c4c)(@withstudiocms/effect@0.5.3(f94a1ad8f65803e6c3768296f54f1c13))(@withstudiocms/kysely@0.3.1(@libsql/client@0.18.0)(effect@3.22.4))(effect@3.22.4)(effectify@0.3.2(df290dc71f2cf9542cfbe823513da2b1))(kysely@0.29.7)(zod@4.6.7)':
     dependencies:
-      '@withstudiocms/effect': 0.5.3(7e6023c8af63763fb6381d026c7fb21e)
-      '@withstudiocms/kysely': 0.3.1(@libsql/client@0.18.0)(effect@3.22.2)
+      '@withstudiocms/effect': 0.5.3(f94a1ad8f65803e6c3768296f54f1c13)
+      '@withstudiocms/kysely': 0.3.1(@libsql/client@0.18.0)(effect@3.22.4)
       diff: 8.0.4
       diff2html: 3.4.56
-      effect: 3.22.2
-      effectify: 0.3.2(d16dcf67d90e7f053ff0a6859501440a)
+      effect: 3.22.4
+      effectify: 0.3.2(df290dc71f2cf9542cfbe823513da2b1)
       kysely: 0.29.7
       zod: 4.6.7
 
@@ -5215,17 +5215,17 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  effect@3.22.2:
+  effect@3.22.4:
     dependencies:
       '@standard-schema/spec': 1.1.0
       fast-check: 3.23.2
 
-  effectify@0.3.2(d16dcf67d90e7f053ff0a6859501440a):
+  effectify@0.3.2(df290dc71f2cf9542cfbe823513da2b1):
     dependencies:
-      '@effect/platform': 0.97.2(effect@3.22.2)
-      '@effect/platform-node': 0.108.2(@effect/cluster@0.60.2(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/workflow@0.19.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(effect@3.22.2)
+      '@effect/platform': 0.97.2(effect@3.22.4)
+      '@effect/platform-node': 0.108.2(@effect/cluster@0.60.2(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/workflow@0.19.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(effect@3.22.4)
       '@traversable/zod': 0.0.57(fast-check@3.23.2)(zod@4.6.7)
-      effect: 3.22.2
+      effect: 3.22.4
     optionalDependencies:
       astro: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
       zod: 4.6.7
@@ -6441,10 +6441,10 @@ snapshots:
     dependencies:
       ansi-regex: 6.4.0
 
-  studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516):
+  studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(65fc19987357fddbc6e1aa1dc53b9871):
     dependencies:
-      '@effect/platform': 0.97.2(effect@3.22.2)
-      '@effect/platform-node': 0.108.2(@effect/cluster@0.60.2(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/workflow@0.19.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(effect@3.22.2)
+      '@effect/platform': 0.97.2(effect@3.22.4)
+      '@effect/platform-node': 0.108.2(@effect/cluster@0.60.2(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/workflow@0.19.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(@effect/platform@0.97.2(effect@3.22.4))(effect@3.22.4))(effect@3.22.4)
       '@iconify-json/circle-flags': 1.2.12
       '@iconify-json/flat-color-icons': 1.2.3
       '@iconify-json/simple-icons': 1.2.99
@@ -6452,15 +6452,15 @@ snapshots:
       '@nanostores/persistent': 1.3.5(nanostores@1.5.5)
       '@outerbase/sdk-transform': 1.0.8
       '@studiocms/ui': 1.2.2(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
-      '@withstudiocms/api-spec': 0.4.1(70c572c023b4806b19b028e71279b4dc)
-      '@withstudiocms/auth-kit': 0.2.2(7dbacd15bf1498ad46c0e1161ae836c6)
+      '@withstudiocms/api-spec': 0.4.1(e16c7f4ac0b0eb59cefe0dc39257bba0)
+      '@withstudiocms/auth-kit': 0.2.2(7804a0284c12971e2107ce85de096c46)
       '@withstudiocms/cli-kit': 0.3.2
-      '@withstudiocms/component-registry': 0.2.2(6ef41d1277a173540524c75b5fd198a2)
-      '@withstudiocms/config-utils': 0.3.1(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
-      '@withstudiocms/effect': 0.5.3(7e6023c8af63763fb6381d026c7fb21e)
-      '@withstudiocms/internal_helpers': 0.5.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
-      '@withstudiocms/kysely': 0.3.1(@libsql/client@0.18.0)(effect@3.22.2)
-      '@withstudiocms/sdk': 0.4.2(patch_hash=f04e81f855c68fe68f28fb76bca160e93cd3fd4e8363aa443047877bca272c4c)(@withstudiocms/effect@0.5.3(7e6023c8af63763fb6381d026c7fb21e))(@withstudiocms/kysely@0.3.1(@libsql/client@0.18.0)(effect@3.22.2))(effect@3.22.2)(effectify@0.3.2(d16dcf67d90e7f053ff0a6859501440a))(kysely@0.29.7)(zod@4.6.7)
+      '@withstudiocms/component-registry': 0.2.2(cceebffeb41521004c0607ed8add0748)
+      '@withstudiocms/config-utils': 0.3.1(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.4)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      '@withstudiocms/effect': 0.5.3(f94a1ad8f65803e6c3768296f54f1c13)
+      '@withstudiocms/internal_helpers': 0.5.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.4)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      '@withstudiocms/kysely': 0.3.1(@libsql/client@0.18.0)(effect@3.22.4)
+      '@withstudiocms/sdk': 0.4.2(patch_hash=f04e81f855c68fe68f28fb76bca160e93cd3fd4e8363aa443047877bca272c4c)(@withstudiocms/effect@0.5.3(f94a1ad8f65803e6c3768296f54f1c13))(@withstudiocms/kysely@0.3.1(@libsql/client@0.18.0)(effect@3.22.4))(effect@3.22.4)(effectify@0.3.2(df290dc71f2cf9542cfbe823513da2b1))(kysely@0.29.7)(zod@4.6.7)
       '@withstudiocms/template-lang': 0.2.1
       ace-builds: 1.44.0
       astro: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
@@ -6468,8 +6468,8 @@ snapshots:
       diff: 8.0.4
       dompurify: 3.4.17
       dotenv: 18.0.8
-      effect: 3.22.2
-      effectify: 0.3.2(d16dcf67d90e7f053ff0a6859501440a)
+      effect: 3.22.4
+      effectify: 0.3.2(df290dc71f2cf9542cfbe823513da2b1)
       fuse.js: 7.5.0
       jose: 6.2.12
       magicast: 0.5.5
