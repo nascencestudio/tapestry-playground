@@ -354,9 +354,12 @@ async function fabricStates(page, theme) {
 		await page.eval(() => document.activeElement?.blur());
 		await page.press('Escape');
 		const list = await add('Page list');
-		await page.waitFor((id) => Boolean(document.getElementById(`tp-field-${id}-categories`)), [list], {
-			timeout: 15_000,
-		});
+		// The Categories field (its box is disabled on a fresh site without categories, and missing before 0.7.1).
+		await page.waitFor(
+			(id) => Boolean(document.querySelector(`[data-tapestry-chips="tp-field-${id}-categories"]`)),
+			[list],
+			{ timeout: 15_000 },
+		);
 		await audit(page, '.tp-editor', `${theme}: page list settings`);
 	} finally {
 		await post('/_tapestry/templates', { action: 'delete-template', id: template.id, confirm: name });

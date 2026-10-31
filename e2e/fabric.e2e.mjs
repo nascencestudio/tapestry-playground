@@ -87,7 +87,9 @@ async function addFromLibrary(page, label) {
 /** Type into a chips field's box and press Enter (adds the matching choice). */
 async function addChip(page, fieldId, text) {
 	// The box appears once the choices have loaded (`optionsUrl`).
-	await page.waitFor((id) => Boolean(document.getElementById(id)), [fieldId], { message: `${fieldId} ready` });
+	await page.waitFor((id) => document.getElementById(id)?.disabled === false, [fieldId], {
+		message: `${fieldId} ready`,
+	});
 	await page.fill(`#${fieldId}`, text);
 	await page.press('Enter');
 	await page.waitFor(
