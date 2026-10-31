@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@astrojs/node": "11.1.9",
-    "@astrojs/preact": "6.1.0",
+    "@astrojs/preact": "6.1.1",
     "@effect/platform": "0.97.2",
     "@effect/platform-node": "0.108.2",
     "@libsql/client": "0.18.0",
@@ -41,12 +41,12 @@
     "astro": "7.4.1",
     "effect": "3.22.2",
     "preact": "10.29.8",
-    "satteri": "0.10.5",
+    "satteri": "0.11.5",
     "studiocms": "0.7.0"
   },
   "devDependencies": {
-    "@astrojs/check": "0.9.11",
-    "@biomejs/biome": "2.5.15",
+    "@astrojs/check": "0.9.12",
+    "@biomejs/biome": "2.6.3",
     "axe-core": "4.14.0",
     "typescript": "6.0.3"
   }
