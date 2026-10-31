@@ -32,7 +32,7 @@
     "@libsql/client": "0.18.0",
     "@nascencestudio/ipguard": "0.1.0",
     "@nascencestudio/medialibrary": "0.2.1",
-    "@nascencestudio/tapestry": "0.7.0",
+    "@nascencestudio/tapestry": "0.7.1",
     "@nascencestudio/tapestry-fabric": "0.1.0",
     "@nascencestudio/tapestry-menus": "0.1.0",
     "@nascencestudio/tapestry-seo": "0.2.1",
