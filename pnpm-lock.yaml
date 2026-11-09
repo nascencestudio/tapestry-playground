@@ -175,11 +175,11 @@ importers:
   .:
     dependencies:
       '@astrojs/node':
-        specifier: 11.1.9
-        version: 11.1.9(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+        specifier: 11.1.11
+        version: 11.1.11(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       '@astrojs/preact':
-        specifier: 6.1.0
-        version: 6.1.0(@babel/core@7.29.7)(@types/node@26.6.4)(esbuild@0.28.2)(preact@10.29.8)(yaml@2.9.1)
+        specifier: 6.1.2
+        version: 6.1.2(@babel/core@7.29.7)(@types/node@26.6.4)(esbuild@0.28.2)(preact@10.29.8)(yaml@2.9.1)
       '@effect/platform':
         specifier: 0.97.2
         version: 0.97.2(effect@3.22.2)
@@ -191,28 +191,28 @@ importers:
         version: 0.18.0
       '@nascencestudio/ipguard':
         specifier: 0.1.0
-        version: 0.1.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))
+        version: 0.1.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d))
       '@nascencestudio/medialibrary':
         specifier: 0.2.1
-        version: 0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))
+        version: 0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d))
       '@nascencestudio/tapestry':
         specifier: 0.7.1
-        version: 0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))
+        version: 0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d))
       '@nascencestudio/tapestry-fabric':
         specifier: 0.1.0
-        version: 0.1.0(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))
+        version: 0.1.0(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d))
       '@nascencestudio/tapestry-menus':
         specifier: 0.1.0
-        version: 0.1.0(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))
+        version: 0.1.0(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d))
       '@nascencestudio/tapestry-seo':
         specifier: 0.2.1
-        version: 0.2.1(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))
+        version: 0.2.1(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d))
       '@nascencestudio/webforms':
         specifier: 0.1.0
-        version: 0.1.0(@nascencestudio/ipguard@0.1.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))
+        version: 0.1.0(@nascencestudio/ipguard@0.1.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)))(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d))
       '@studiocms/md':
         specifier: 0.5.1
-        version: 0.5.1(patch_hash=da73ec54dbd446d69bf0c1468abb7099bb572b9b48bdf9b4048e20d9f30948f9)(@astrojs/internal-helpers@0.11.0)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+        version: 0.5.1(patch_hash=da73ec54dbd446d69bf0c1468abb7099bb572b9b48bdf9b4048e20d9f30948f9)(@astrojs/internal-helpers@0.11.0)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       astro:
         specifier: 7.4.1
         version: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
@@ -223,18 +223,18 @@ importers:
         specifier: 10.29.8
         version: 10.29.8(preact-render-to-string@6.8.0)
       satteri:
-        specifier: 0.10.5
-        version: 0.10.5
+        specifier: 0.11.6
+        version: 0.11.6
       studiocms:
         specifier: 0.7.0
-        version: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)
+        version: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)
     devDependencies:
       '@astrojs/check':
-        specifier: 0.9.11
-        version: 0.9.11(@emnapi/runtime@1.11.3)(prettier@3.9.9)(typescript@6.0.3)
+        specifier: 0.9.12
+        version: 0.9.12(@emnapi/runtime@1.11.3)(prettier@3.9.9)(typescript@6.0.3)
       '@biomejs/biome':
-        specifier: 2.5.15
-        version: 2.5.15
+        specifier: 2.6.5
+        version: 2.6.5
       axe-core:
         specifier: 4.14.0
         version: 4.14.0
@@ -248,8 +248,8 @@ packages:
     resolution: {integrity: sha512-Uj/M9zbrhu5cIZEvWAGTbQJRKSxXWJ/E59BZwt7F+chrKhbfttW+9rkS/l+1QxoJP1KU3UnpM62M7yszfAI0WA==}
     engines: {node: ^20.19.0 || >=22.12.0}
 
-  '@astrojs/check@0.9.11':
-    resolution: {integrity: sha512-TcDC2KT3t0XHFv/geBsA02/HuVXuzLwAfAzLPG2FvBW/DL3tzxu2voVaqcKSN56dN2DNlYC/3FKrmxrDs6actg==}
+  '@astrojs/check@0.9.12':
+    resolution: {integrity: sha512-hazpqxIfZWj2VhyPyR0pOEQ/IhFDM/2nIApL96zMXABdD8NrUKYDmhxTy7h+drTDl9MQG/Sd1ET/4amadVJUUA==}
     hasBin: true
     peerDependencies:
       typescript: ^5.0.0 || ^6.0.0
@@ -331,8 +331,11 @@ packages:
   '@astrojs/internal-helpers@0.13.0':
     resolution: {integrity: sha512-20jxQqnSmpskcGyad7N5l6Xf1gz0UCa6lNde44bEBdaXGpncEYfAZJ142r2ZgzBaG4dUyzGmhqZWv1INU2eiHQ==}
 
-  '@astrojs/language-server@2.17.2':
-    resolution: {integrity: sha512-WzqCBYo0RtKrkPLPMnTz2+UOQPosaFhoG/PvoSyPIgBU0BKeS6qeaYv7Rscq7P1LxJdoN0VosQF2h2TZTsIGHg==}
+  '@astrojs/internal-helpers@0.13.1':
+    resolution: {integrity: sha512-LgGLGzoC0wCT3mjDYrxz+hct/tws0enpWsLJW3bswHR3PKgusp/H9xRIT8rTdsyvLM0TcRhhvRL30J2oaZNcqA==}
+
+  '@astrojs/language-server@2.17.3':
+    resolution: {integrity: sha512-QIAFu1e/4quJMTPdmBOm+ZPXc5NDGZE4/YQjgR3EgjhGLl/tdidaWJDr5WmO2lesVc+BW1qN/xNBURmuePDG2A==}
     hasBin: true
     peerDependencies:
       prettier: ^3.0.0
@@ -346,14 +349,14 @@ packages:
   '@astrojs/markdown-satteri@0.4.4':
     resolution: {integrity: sha512-Byhe9CAiGFJrhMACKpgN/FPf4lcwapqwFQAB7E1sPELTEJINfBIpgnEYOBTXzr//fvSSNhfp/X3AqN4mUV9p+A==}
 
-  '@astrojs/node@11.1.9':
-    resolution: {integrity: sha512-fmWwCINRIf0gyFZlOlYaJGZnoeB5JJAXJvUXlHorhhemOxkftrOcMalwPIyNG2Q3KhncRvYMiJ8nGHsWrdtrpg==}
+  '@astrojs/node@11.1.11':
+    resolution: {integrity: sha512-qUq6rd4ExrUl0ghohvKaSZXciNAz1WSkcWucdfakpfb5/MkgcCdm+xGCB0LGVjnBvBSfwKTsnzPy6RJt6Fyl4A==}
     peerDependencies:
       astro: ^7.2.1
 
-  '@astrojs/preact@6.1.0':
-    resolution: {integrity: sha512-9OMi7GgwA13sTTV0n7K+DXkmaG4dCXrtTrHakX87XdFbZMSyaaJkCBlgzxAsKGH6VVJBGWcSsRmaUmS1pwqTNw==}
-    engines: {node: '>=22.22.0'}
+  '@astrojs/preact@6.1.2':
+    resolution: {integrity: sha512-36AEK0+HIPAJJ2CrdcbZ7Vx/7xIvr9/ploV4MuNq78hZkTdKkdgiFUpmYC1FTLJdrxrV07Lh6i828brgJeP3Rw==}
+    engines: {node: '>=22.23.4'}
     peerDependencies:
       preact: ^10.6.5 || ^11.0.0
 
@@ -471,65 +474,87 @@ packages:
     resolution: {integrity: sha512-Vj1jF3cPfxg7OAfoI7QnVKLoILlm2JF9pnVHrX8qx7AHMiYWT+NDAA7jChlNgRS4WTLc/fD1lXLmPixluj+3Gg==}
     engines: {node: '>=6.9.0'}
 
-  '@biomejs/biome@2.5.15':
-    resolution: {integrity: sha512-WZTW4slm/pdkh92K6t/3aEN++44JD1PQ7squ7RCMLI1flHGl43DVOIGXvCjHiZgBMO1V4uYxoFNtqrIA4qGuIQ==}
+  '@biomejs/biome@2.6.5':
+    resolution: {integrity: sha512-n0sp74QbSVEkWXlH659TKv4oJNylwAvDeZ8K8vt/PbcF1xneuNWe57z/G0Bxfh00cufhWXF6DiStLM8+jcLUpg==}
     engines: {node: '>=14.21.3'}
     hasBin: true
 
-  '@biomejs/cli-darwin-arm64@2.5.15':
-    resolution: {integrity: sha512-BZVzFhJ/mUvTLMYbc9x6el0o2Uv5zP7bACYyhFb6fSc1giroXm7PL0a5KqMJ9F+/BnkYRjagD/ROSDVOZ6eapg==}
+  '@biomejs/cli-android-arm64@2.6.5':
+    resolution: {integrity: sha512-fkLzc1WRU7wRIUNmAm7cxILb4dd6eESz/VycWvVFKVn6tXx0gFQKdUbPnwT42xys8AEvIJQpFGcK00kURwqorg==}
+    engines: {node: '>=14.21.3'}
+    cpu: [arm64]
+    os: [android]
+
+  '@biomejs/cli-android-x64@2.6.5':
+    resolution: {integrity: sha512-fkZ9dPnDAzAcaPtPCiwqtkub5C9FQK/oGCGaU9sq+DysTaq13pE9FxBIMcEZ3ydn8/FfcMdXi/DDzKDP+qyn2Q==}
+    engines: {node: '>=14.21.3'}
+    cpu: [x64]
+    os: [android]
+
+  '@biomejs/cli-darwin-arm64@2.6.5':
+    resolution: {integrity: sha512-bKd0EOREgnVjeZm4s9knQ+WdPOkWS3JHB+eWGHlx+Pq66bqQA1/KybwU0O+zuyAyXiphSCBcrLruZt3YtnJoaQ==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [darwin]
 
-  '@biomejs/cli-darwin-x64@2.5.15':
-    resolution: {integrity: sha512-V5Kw63V+fVGNFhFrizDxMbGXAzZCh8kYzJpy3GI6gTapWDg7bZK9oYC9CbVgQSEdTnupz0U5Efz8Ev+5vdBBXw==}
+  '@biomejs/cli-darwin-x64@2.6.5':
+    resolution: {integrity: sha512-UkT9BECNOXSiW6SGddjyaRACy362Sc9n3vDaTFkccL0bC2gW7JzM16i4+JKPbEaDn1Sa+oETHV8KungnI/y40Q==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [darwin]
 
-  '@biomejs/cli-linux-arm64-musl@2.5.15':
-    resolution: {integrity: sha512-tGzZUTcJCV7tj5Adh/Gn6nR4MycqA3iohq2LEcrarAgRBkU0h0OKd2UzCRkOsOYOuUGaUJb4YmqRqyy2feGGSw==}
+  '@biomejs/cli-linux-arm64-musl@2.6.5':
+    resolution: {integrity: sha512-kfc3AePW1a0/d/gUpcIz95nf3Ce8YY2/xL0Fk3fLqAhKsotqUi6PN6BaVWss4p6ijWbiuacZ9NQ4NiQtpjbYpw==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
     libc: [musl]
 
-  '@biomejs/cli-linux-arm64@2.5.15':
-    resolution: {integrity: sha512-XaG7P7eeSLYETD3K9grfB0mQmpLQZjygdbsxekWBJAg4am79fGAtRpfRyNnTvXB2fZFNnJZG3nXm7HBat0+VUw==}
+  '@biomejs/cli-linux-arm64@2.6.5':
+    resolution: {integrity: sha512-H9cVMWBqW/lkFK9NHJdt0bpM2q7PacUDEjQoff9+m0dCV09H/jmBykfTCkbDthHf8+jCuWDJWiQFJ7bDkiGOcA==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
     libc: [glibc]
 
-  '@biomejs/cli-linux-x64-musl@2.5.15':
-    resolution: {integrity: sha512-IlxUcyxilVGPsE008x13pWdkTbU3nQpP2i9b5UrbOYj6goBkKsRX1XB7yJLcV+O1H9LBchIIm4adOaVLZBX0ZQ==}
+  '@biomejs/cli-linux-x64-musl@2.6.5':
+    resolution: {integrity: sha512-0mHVpLNt7/FugfZ2VPugUIEIiooWIyHGGJUqU9StxamBln9hz+maXRFIECU50jaf5/ZB93veGIViN5VKgw2AEA==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
     libc: [musl]
 
-  '@biomejs/cli-linux-x64@2.5.15':
-    resolution: {integrity: sha512-xE4iEW/3LqlYj9GFgGrFsFSH51dEEpUbYWBfeOv0q87WkUDxK2o/HhreSb7qMJqck70RVM6Lg96hgedcAYcOkA==}
+  '@biomejs/cli-linux-x64@2.6.5':
+    resolution: {integrity: sha512-e6/WMSN/+FhH+ZOoBevps/euxFQmv6BXqYNuTn1+ITR6O4XYFjHF5PeVSNZnjkgSYmvhcDkfepSX5lXczMijGA==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
     libc: [glibc]
 
-  '@biomejs/cli-win32-arm64@2.5.15':
-    resolution: {integrity: sha512-2kPKzhNlm8C+Ru3GcO0Me2ODkCBLrVOUNuyi84RJyWDVKAA4+Kjj3jMjL938lF6BRfvltC4vB2nPY9SvN51Ovg==}
+  '@biomejs/cli-win32-arm64@2.6.5':
+    resolution: {integrity: sha512-uBbfpdR/cH5up1iRJFGAPP97xKMzrgMs685CSrY7NM+Q4Unw7chY0o3JulEvJdmU6c6hGQxwqotMq7DDH0DzxA==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [win32]
 
-  '@biomejs/cli-win32-x64@2.5.15':
-    resolution: {integrity: sha512-yAzh4UqEImV6Hcy0zjUqNfJAsUhoD64FBQCdTG8Md/Z2wQeVP/ZmJ3XRYAs1g8J9fjTFyl2fCtc5FB5til47+g==}
+  '@biomejs/cli-win32-x64@2.6.5':
+    resolution: {integrity: sha512-07LaCeN9vvmbAAMOMsUjMfL5UbsCDkvVeyMJIgwNRc0xYqhizBGkjVzx05LYEwCXl2AiHcdzqVPR4IOYAsI1QQ==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [win32]
+
+  '@bruits/satteri-android-arm64@0.11.6':
+    resolution: {integrity: sha512-9Cb6ZRDn29c0kluGA9urp/So/JnJOJJSf4J40xYLAIAj3GuqTNsCyquS4A1/yLuuHE2ngYJNnCylAQnDM3L9ow==}
+    cpu: [arm64]
+    os: [android]
 
   '@bruits/satteri-darwin-arm64@0.10.5':
     resolution: {integrity: sha512-27KTVl4TJkVahMy/ohyA7qd4938G5UNneFUz/PsScYfpIhj0IVAS23mpcJXdPF44sa6nva198lmV/cKIb2YPyA==}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@bruits/satteri-darwin-arm64@0.11.6':
+    resolution: {integrity: sha512-kcr7QOPGrckuyhMZmUKYcyoXgjQN4vJ/6tCWHE2866mztZPNrTuy5itTwSAbIs1tK0XpTW42tBQ+XPNnkg0XIg==}
     cpu: [arm64]
     os: [darwin]
 
@@ -538,8 +563,24 @@ packages:
     cpu: [x64]
     os: [darwin]
 
+  '@bruits/satteri-darwin-x64@0.11.6':
+    resolution: {integrity: sha512-nwh4Atd/Cxw2SNS6+Gs0Esf/w2i4qyHzwcECaTgoFyxse3m0dpBpu8eqkqqIPfBc1lWhfe4i9LXuk7rG+4pwQw==}
+    cpu: [x64]
+    os: [darwin]
+
+  '@bruits/satteri-freebsd-x64@0.11.6':
+    resolution: {integrity: sha512-qMkNZRYN3cLshfYawQYjfDS05A208QCOVh1adtEteYH+03MkuOoVVhYkzDRIKhWdfM3gFFEaUjXDOGfVqGjEJg==}
+    cpu: [x64]
+    os: [freebsd]
+
   '@bruits/satteri-linux-arm64-gnu@0.10.5':
     resolution: {integrity: sha512-glkYXZCJywjP13v67eAyAMSJdF+ncvEbYvgi/wOtffL9tQ27lr/zsyzUfgs+ovjJ9d8JNQKiXeiArJcX8PJL9w==}
+    cpu: [arm64]
+    os: [linux]
+    libc: [glibc]
+
+  '@bruits/satteri-linux-arm64-gnu@0.11.6':
+    resolution: {integrity: sha512-A7cHeCZQkvF3oTgQ6/5LvVriauE1dHo3u3gAME6H1X/+KMeum5Wras3Y7rYUcvPym1CxdmzjZh9WlYD62Ul1xg==}
     cpu: [arm64]
     os: [linux]
     libc: [glibc]
@@ -550,8 +591,20 @@ packages:
     os: [linux]
     libc: [musl]
 
+  '@bruits/satteri-linux-arm64-musl@0.11.6':
+    resolution: {integrity: sha512-P/YAudp6VmUr63SFaZefwPIefsw92oZ1wQ6vqrtO/GY9qB3OxLqUVjSIcnKAtqMp4kDW8xBEdSwHz4GZU7P2+g==}
+    cpu: [arm64]
+    os: [linux]
+    libc: [musl]
+
   '@bruits/satteri-linux-x64-gnu@0.10.5':
     resolution: {integrity: sha512-FVaLoPT1fBgGl0J+AYebyyXJYBachGl8Oyyrf1lye4RTqCB4S0Gwkj1uM9RJyThUOvx5VUmAT1CnNh1SFHA+kw==}
+    cpu: [x64]
+    os: [linux]
+    libc: [glibc]
+
+  '@bruits/satteri-linux-x64-gnu@0.11.6':
+    resolution: {integrity: sha512-nhj90eZFLSA+Icd6n+oYpAi/UXr/mppLGd8jdEOB/larvWAZ/ewFxpT7CLzuNCg7r75+gkdHv9JuRb5eERY1Kg==}
     cpu: [x64]
     os: [linux]
     libc: [glibc]
@@ -562,8 +615,19 @@ packages:
     os: [linux]
     libc: [musl]
 
+  '@bruits/satteri-linux-x64-musl@0.11.6':
+    resolution: {integrity: sha512-mkWxwHd5Q2dDs+OZK/P1tZFvSPrh2Bb69utWHcBNM0wyJCRWd61T4jU1tF21lGL1C5dy7P+LvaT0y6PQDJj89Q==}
+    cpu: [x64]
+    os: [linux]
+    libc: [musl]
+
   '@bruits/satteri-wasm32-wasi@0.10.5':
     resolution: {integrity: sha512-ypz8c/Zmipxp4IoeDa228Gstv6TLzVmNs3yC6wKCoNSOjx1iwpgzu87Y3hTkXFdwChVGU85qeUDuOIarGUZQLw==}
+    engines: {node: '>=14.0.0'}
+    cpu: [wasm32]
+
+  '@bruits/satteri-wasm32-wasi@0.11.6':
+    resolution: {integrity: sha512-GrjNThC6BfA0u8LZwGpOeEFVKoJZsriowLtj/rBYj18fW7/UZouyzn/0Tsxg+tMaxMUgC9HFA078EmfAsdVONg==}
     engines: {node: '>=14.0.0'}
     cpu: [wasm32]
 
@@ -572,8 +636,18 @@ packages:
     cpu: [arm64]
     os: [win32]
 
+  '@bruits/satteri-win32-arm64-msvc@0.11.6':
+    resolution: {integrity: sha512-Plesa0QYtJoa3nlObg1Ypj9oD1VOioHMldHUUtG61T/JNU11EcN0pyj0tDsT3DW2pAxKrV0Q8xrfzGtBHuSjfg==}
+    cpu: [arm64]
+    os: [win32]
+
   '@bruits/satteri-win32-x64-msvc@0.10.5':
     resolution: {integrity: sha512-C3IfPvfvMXmlzBxaMPKFS1XiuV9pu2mC7YqkPk7PSvTgPZ8gbdASIpHpztDLvTTQjqZ0z1Ol8tK5X+V6XXC0wQ==}
+    cpu: [x64]
+    os: [win32]
+
+  '@bruits/satteri-win32-x64-msvc@0.11.6':
+    resolution: {integrity: sha512-fGs5d/7jBIPkYmXkhm9unoEfDuRZ5r66NLxbr+6c8bm0f7ywgPHgW3HJ9L7fKvyqhw49ePtbT4vkWREju8/U6w==}
     cpu: [x64]
     os: [win32]
 
@@ -1181,6 +1255,13 @@ packages:
       '@emnapi/core': ^1.7.1 || ^2.0.0-alpha.4
       '@emnapi/runtime': ^1.7.1 || ^2.0.0-alpha.4
 
+  '@napi-rs/wasm-runtime@1.2.7':
+    resolution: {integrity: sha512-zJccwplOAbgfZju95IUHazLnx9RAPtPN2YGJXI6UbrgeaR9QfPjGrQL6ERkSAtnVCA4Q+83ApGyaX5zdpCaKkQ==}
+    engines: {node: ^20.19.0 || ^22.13.0 || >=23.5.0}
+    peerDependencies:
+      '@emnapi/core': ^1.7.1 || 2.0.0-beta.2 || 2.0.0-beta.3
+      '@emnapi/runtime': ^1.7.1 || 2.0.0-beta.2 || 2.0.0-beta.3
+
   '@nascencestudio/ipguard@0.1.0':
     resolution: {integrity: sha512-hoV1LOqBefRDAhggH29Z+IPiFhGvdyYdyJdbqSCYPQN4Y7d53zsQ8BF6NY1yMBZECx2uCVSmBg3kpr9i3Gc4bw==}
     engines: {node: '>=22.12.0'}
@@ -1255,6 +1336,9 @@ packages:
 
   '@oxc-project/types@0.154.0':
     resolution: {integrity: sha512-KYOUGQFlLWR+s4QMV2Q9ko38TZm7EdO87Qm7rvZLqk/webse/cDjtyxKhg/47l0byCbs/k46LT8qc4PKjAikzA==}
+
+  '@oxc-project/types@0.156.0':
+    resolution: {integrity: sha512-1Duyg48TdJNdyhEB8Xn1L36bT9Pv6GUtlKjHxOys8xkaF/rQq3XJE+bAurSK/AgIz5mGFsb77cn9Pb20+WCScw==}
 
   '@parcel/watcher-android-arm64@2.6.0':
     resolution: {integrity: sha512-trgpLSCKRC/huFjXX/Smh+0sWe4+YtKfktIToiMl59ghz7z+qkH6kMvNnUbLyRs9N11t8l4svSCs1+5B3rOAhA==}
@@ -1347,8 +1431,16 @@ packages:
   '@preact/signals-core@1.14.4':
     resolution: {integrity: sha512-HNB6HYeYKhQbJ1aKl+YRjrS4+QWHLKX6qKoUsfS/m0vqzsVaEBiZiaKbG/e+NKk2ch5ALQr/ihWaMHxiCuuWHA==}
 
+  '@preact/signals-core@1.14.5':
+    resolution: {integrity: sha512-vcRv7Ityz5JVmeiVqIluLFzT/PDS/AlhHUpw3/aUWqcVUs6bDGIPXE/6RSC4evBNWYvnniozg5Syfj33al3gkg==}
+
   '@preact/signals@2.11.3':
     resolution: {integrity: sha512-mttwFM98G/JiriTgMwU+UWygL6sfVmYEiNcPSKkUnv4PxPpZhmP2ugGC4qi360+ZIHyQ8NY05bfJT3b4RUIGlw==}
+    peerDependencies:
+      preact: '>= 10.25.0 || >=11.0.0-0'
+
+  '@preact/signals@2.11.4':
+    resolution: {integrity: sha512-Rb+5RPo9gWSaHtzJeauhHxiC8KP/IF2DEPkHPEOGOnuy2wnJzRqyeLRankUCYd6ADqtxS6GnWGv6Ie343d8aYw==}
     peerDependencies:
       preact: '>= 10.25.0 || >=11.0.0-0'
 
@@ -1381,8 +1473,20 @@ packages:
     cpu: [arm]
     os: [android]
 
+  '@rolldown/binding-android-arm-eabi@1.2.16':
+    resolution: {integrity: sha512-ia3DwAs0OsMGS7+IConptSiyk9pEXkOx/AbJ2n/lAGxH3QkWQus1t8d7gnAT38FCU2sQu8lUbeR6AiZFv4JxaA==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [arm]
+    os: [android]
+
   '@rolldown/binding-android-arm64@1.2.14':
     resolution: {integrity: sha512-QiVxHofl6A8lQU7WAtOUY4QMVZXohxwz7WJJoeh8NBEUyKfIkMRKhYyq8az/1RypNiIXzNTtiS6KwHz0erxYRQ==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [arm64]
+    os: [android]
+
+  '@rolldown/binding-android-arm64@1.2.16':
+    resolution: {integrity: sha512-kx5wBiMB6E7TEvpl2B9gjLU004BkvEm2Dr941BFjx/SontPwSzNuQUIoVKxHHoSjpFIfHMmcguyLOtyn0hObRg==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [arm64]
     os: [android]
@@ -1393,8 +1497,20 @@ packages:
     cpu: [arm64]
     os: [darwin]
 
+  '@rolldown/binding-darwin-arm64@1.2.16':
+    resolution: {integrity: sha512-qslZrXnKJU4cUpjoAmtAo/KQM9e2IRMlmpig6Zpwj+8KWxW8v+nkAf9216Bsek9lOC1jvg2yCjygCFo2f83msQ==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [arm64]
+    os: [darwin]
+
   '@rolldown/binding-darwin-x64@1.2.14':
     resolution: {integrity: sha512-hyMKEGatjmBYCs/Q4sbIcL/GqpFEqsX3wc+HYVQ/85A4rxc1o7rPm4DUI4GV4k/h0ITddwFSGpqQunI14GXjTA==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [x64]
+    os: [darwin]
+
+  '@rolldown/binding-darwin-x64@1.2.16':
+    resolution: {integrity: sha512-FdF+y48ND13eAyM2mQn+85kvAqNlvRWROy2rhgA463X/0Gv4vGtazZtfaF1mRBLscYvtOlh4QnLjOWiFzX69OQ==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [x64]
     os: [darwin]
@@ -1405,14 +1521,33 @@ packages:
     cpu: [x64]
     os: [freebsd]
 
+  '@rolldown/binding-freebsd-x64@1.2.16':
+    resolution: {integrity: sha512-ddjqFM5e95AgLbUPtKIS7V1KTVlA0RUgCVr5mn+/IEhsdy3pr+Vuj/HZ7nlMN2FyxIwUktOH1LEPIQXO1v9y1Q==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [x64]
+    os: [freebsd]
+
   '@rolldown/binding-linux-arm-gnueabihf@1.2.14':
     resolution: {integrity: sha512-BqwKsdZQf6EqVWr8fv2MrDYzAvOZ7+NYFSJESRGs87fkseEhs0TU9TXgRJTkZoRRkxTizyEg1LKUXfU3/78uqg==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [arm]
     os: [linux]
 
+  '@rolldown/binding-linux-arm-gnueabihf@1.2.16':
+    resolution: {integrity: sha512-tHdKWbFkFBI687iim3LIyIvyL7j66VvQYkDPss5Stn/qyE2tWkR1YD0dXmXPFKKqT/o5ZEJVsaRsWS2meQwGOA==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [arm]
+    os: [linux]
+
   '@rolldown/binding-linux-arm64-gnu@1.2.14':
     resolution: {integrity: sha512-SD9kY8M009x/7s57Z1dgUVlP5+uYBgKQK0Tkr1WIWngrtUJmRCW1RJFMY7QDla2khXhmg2i5Io7MUjcmZNZ/KQ==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [arm64]
+    os: [linux]
+    libc: [glibc]
+
+  '@rolldown/binding-linux-arm64-gnu@1.2.16':
+    resolution: {integrity: sha512-FJiLGAblPBMlBEdbOqw6kW6QcXDWAf/oJu7gYs9ZJZwmg+K+/zjFLxPTIY9izJUzxzc24FHvmseyA0IvJSl17w==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [arm64]
     os: [linux]
@@ -1425,8 +1560,22 @@ packages:
     os: [linux]
     libc: [musl]
 
+  '@rolldown/binding-linux-arm64-musl@1.2.16':
+    resolution: {integrity: sha512-hrJpblMsrQ58U9veWpbXzkhV5zStunds6HWLprqq1qauvgBr1E6P+24kLj6lSLI9vjRn/RYpjprhkHQPKGWpNg==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [arm64]
+    os: [linux]
+    libc: [musl]
+
   '@rolldown/binding-linux-ppc64-gnu@1.2.14':
     resolution: {integrity: sha512-4+Kl8daPV8NDHaD7mfCcc1pRM+Qg7ab8DyMm5FG5WoZgv4h2i3KFN1CybYBNbQqmuYm7ftJLvmMI1eHYJ22S/Q==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [ppc64]
+    os: [linux]
+    libc: [glibc]
+
+  '@rolldown/binding-linux-ppc64-gnu@1.2.16':
+    resolution: {integrity: sha512-qJd/dC6j6CwLG9/s/RP2nb1RZ0GIgj7Ioj7x/SYa3RzjVrlzrmH0fhIOpfvqQDeIsdP0loi+kHaMhJzY1PBIaA==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [ppc64]
     os: [linux]
@@ -1439,8 +1588,22 @@ packages:
     os: [linux]
     libc: [glibc]
 
+  '@rolldown/binding-linux-s390x-gnu@1.2.16':
+    resolution: {integrity: sha512-Vx7Xg5uUJuNcujJjI70OICaH0EYj80BtOLZTSN7uOYg8QOLlyKnaG0IW7Fn/J0IpJsaKzmDKMhOQv1JBM9m9vg==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [s390x]
+    os: [linux]
+    libc: [glibc]
+
   '@rolldown/binding-linux-x64-gnu@1.2.14':
     resolution: {integrity: sha512-WxalXzgrLVpKC93xfpaJ3gCXUWzeCr+FRCbDVD2mUAy4L6Vo3lNVz0epUEUpxPWJkLNYUwM4OSIikv36OJ9mLg==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [x64]
+    os: [linux]
+    libc: [glibc]
+
+  '@rolldown/binding-linux-x64-gnu@1.2.16':
+    resolution: {integrity: sha512-TNKhgE3uJTsTzatUSSYt0Kgo+Oa2uSlSjz4r1aEIea7HX6ULBym4fAlYUhG1i6pjNf2njfCUAfKwr6C3E9Xg1w==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [x64]
     os: [linux]
@@ -1453,8 +1616,21 @@ packages:
     os: [linux]
     libc: [musl]
 
+  '@rolldown/binding-linux-x64-musl@1.2.16':
+    resolution: {integrity: sha512-7chXdpjXZ8qG0+mIxECN3cT9kvhZ3/oZhMX6Pp876P7CDrIy8nJswva6Mq357JR7eYXfuskwZxMeV1SzoZdHrA==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [x64]
+    os: [linux]
+    libc: [musl]
+
   '@rolldown/binding-openharmony-arm64@1.2.14':
     resolution: {integrity: sha512-qyr5XiNGxm2ytx17vvtcJ9nXn6v1gENETi503bJx3OGwZ1tSonj7BosxbMa/xeAfSl5iS9X6KjEWYXLu6v1L7Q==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [arm64]
+    os: [openharmony]
+
+  '@rolldown/binding-openharmony-arm64@1.2.16':
+    resolution: {integrity: sha512-Kwjt+7uNTJK5/MDkGWGVO2KQPnj8yAV75dMpfwyHZrJSXWHrniOB0aUEWlVYf3H1hOqFLIStLdM5QXq6bnKmOQ==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [arm64]
     os: [openharmony]
@@ -1465,8 +1641,20 @@ packages:
     cpu: [arm64]
     os: [win32]
 
+  '@rolldown/binding-win32-arm64-msvc@1.2.16':
+    resolution: {integrity: sha512-/LH6WfjDRXXJz/p5xl4TmU+jpcnwcxbKEQBW/GZE0JHfN0lGIyTtsUEGaQ/q/GikkGJ2yLKe6pwm7AnEWO8pdw==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [arm64]
+    os: [win32]
+
   '@rolldown/binding-win32-x64-msvc@1.2.14':
     resolution: {integrity: sha512-9mE94bf2GZUaR/fUSXCMpBoWkctu421Mi0ORpm4zqfbkjKep7RxzPFa5etcGs5h+2KApoWBOA/hAJa/7saGgEQ==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [x64]
+    os: [win32]
+
+  '@rolldown/binding-win32-x64-msvc@1.2.16':
+    resolution: {integrity: sha512-1lv1KvX0Z871zfk7vw+dnXMMnHNyDwMzWG8Kv3HxDXMOhzCX4SHc7HK319fInP0i+0p9D8brkfzL7pJOaGl+tw==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [x64]
     os: [win32]
@@ -2726,8 +2914,17 @@ packages:
     resolution: {integrity: sha512-49cGhUbXj8Qenv0iTMxA1cFBzxXoctpC9Ujd77t1WcbJIr6nF/eI7g/8MgxrYldFRuAXvja7xQRwavoW7kgrxQ==}
     engines: {node: ^10 || ^12 || >=14}
 
+  postcss@8.5.32:
+    resolution: {integrity: sha512-LJlKCCAUFKOuZxipUdYw1NzIITEsPcgyOG9LkvRJvuKj/bRzbuRY0ARXvL0pWGpsZvn8jku+LMep2eU0seHp8g==}
+    engines: {node: ^10 || ^12 || >=14}
+
   preact-render-to-string@6.8.0:
     resolution: {integrity: sha512-2qiMrReQz+MZ5+/bT27kbVnFE7QNCC2fku/Tnc2H5bFUS3I3ASbRy0q72XLZ+2p2KyDE5xMfvSEtkmVo6TRNyA==}
+    peerDependencies:
+      preact: '>=10 || >= 11.0.0-0'
+
+  preact-render-to-string@6.8.2:
+    resolution: {integrity: sha512-Hdx7cKD3AMYgt795TdddBpUbuGEFoL/VeA6s7VrBt9Gjt0r6rCy5wMp5xkDjQ9cbKj62frHsEx1x8yV6EjoOpg==}
     peerDependencies:
       preact: '>=10 || >= 11.0.0-0'
 
@@ -2867,11 +3064,19 @@ packages:
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
 
+  rolldown@1.2.16:
+    resolution: {integrity: sha512-bWvlMpFKiTfDKfnK7FC2MPgPeWCf/Kpwsq49ApdW+FQaBZb6O6dZ4MAPbPUjp7hYQrw/RobqCzn64BRrQecGHw==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    hasBin: true
+
   rope-sequence@1.3.4:
     resolution: {integrity: sha512-UT5EDe2cu2E/6O4igUr5PSFs23nvvukicWHx6GnOPlHAiiYbzNuCRQCuiUdHJQcqKalLKlrYJnjY0ySGsXNQXQ==}
 
   satteri@0.10.5:
     resolution: {integrity: sha512-Ao1LKpAEa9Wdg0otgbVKViZHEq9ebdXe4DMrp3s9vQAU0HNIuHnFEuMuOcm0ZIXyV0Yzxj91NvhLpvXZJO/5ZQ==}
+
+  satteri@0.11.6:
+    resolution: {integrity: sha512-ddGCTqSfwL+A+odhdjj8E+ZMu1h0QEnG3VTmu7fPJL2+80GdjxDh1AeCw8mn2aa95eQSosG4e2QBYYfCc5nyiA==}
 
   sax@1.6.1:
     resolution: {integrity: sha512-42tBVwLWnaQvW5zc4HbZrTuWccECCZfBi92FDuwtqxasH+JbPB3/FOKb1m222K42R4WxuxzzMsTswfzgtSu64Q==}
@@ -3244,6 +3449,49 @@ packages:
       yaml:
         optional: true
 
+  vite@8.3.6:
+    resolution: {integrity: sha512-UI7dK29NnS54Fk+mmo7o+jI6U8Fp7hDl+X5Q1k45WH+d4dSlbLVUETGQ+hfkNgvLQGyoElPj837nZyv4MBc0VA==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    hasBin: true
+    peerDependencies:
+      '@types/node': ^20.19.0 || >=22.12.0
+      '@vitejs/devtools': ^0.7.1 || ^0.8.0
+      esbuild: ^0.27.0 || ^0.28.0
+      jiti: '>=1.21.0'
+      less: ^4.0.0
+      sass: ^1.70.0
+      sass-embedded: ^1.70.0
+      stylus: '>=0.54.8'
+      sugarss: ^5.0.0
+      terser: ^5.16.0
+      tsx: ^4.8.1
+      yaml: ^2.4.2
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      '@vitejs/devtools':
+        optional: true
+      esbuild:
+        optional: true
+      jiti:
+        optional: true
+      less:
+        optional: true
+      sass:
+        optional: true
+      sass-embedded:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
+      tsx:
+        optional: true
+      yaml:
+        optional: true
+
   vitefu@1.1.3:
     resolution: {integrity: sha512-ub4okH7Z5KLjb6hDyjqrGXqWtWvoYdU3IGm/NorpgHncKoLTCfRIbvlhBm7r0YstIaQRYlp4yEbFqDcKSzXSSg==}
     peerDependencies:
@@ -3447,9 +3695,9 @@ snapshots:
     transitivePeerDependencies:
       - '@emnapi/runtime'
 
-  '@astrojs/check@0.9.11(@emnapi/runtime@1.11.3)(prettier@3.9.9)(typescript@6.0.3)':
+  '@astrojs/check@0.9.12(@emnapi/runtime@1.11.3)(prettier@3.9.9)(typescript@6.0.3)':
     dependencies:
-      '@astrojs/language-server': 2.17.2(@emnapi/runtime@1.11.3)(prettier@3.9.9)(typescript@6.0.3)
+      '@astrojs/language-server': 2.17.3(@emnapi/runtime@1.11.3)(prettier@3.9.9)(typescript@6.0.3)
       chokidar: 5.0.0
       kleur: 4.1.5
       typescript: 6.0.3
@@ -3532,7 +3780,18 @@ snapshots:
       unified: 11.0.5
       yaml: 2.9.1
 
-  '@astrojs/language-server@2.17.2(@emnapi/runtime@1.11.3)(prettier@3.9.9)(typescript@6.0.3)':
+  '@astrojs/internal-helpers@0.13.1':
+    dependencies:
+      '@types/hast': 3.0.5
+      '@types/mdast': 4.0.4
+      picomatch: 4.0.7
+      retext-smartypants: 6.2.0
+      shiki: 4.5.0
+      smol-toml: 1.9.1
+      unified: 11.0.5
+      yaml: 2.9.1
+
+  '@astrojs/language-server@2.17.3(@emnapi/runtime@1.11.3)(prettier@3.9.9)(typescript@6.0.3)':
     dependencies:
       '@astrojs/astro2tsx': 0.1.2(@emnapi/runtime@1.11.3)
       '@astrojs/yaml2ts': 0.2.4
@@ -3564,24 +3823,24 @@ snapshots:
       github-slugger: 2.0.0
       satteri: 0.10.5
 
-  '@astrojs/node@11.1.9(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
+  '@astrojs/node@11.1.11(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
     dependencies:
-      '@astrojs/internal-helpers': 0.13.0
+      '@astrojs/internal-helpers': 0.13.1
       astro: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
       send: 1.2.1
       server-destroy: 1.0.1
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/preact@6.1.0(@babel/core@7.29.7)(@types/node@26.6.4)(esbuild@0.28.2)(preact@10.29.8)(yaml@2.9.1)':
+  '@astrojs/preact@6.1.2(@babel/core@7.29.7)(@types/node@26.6.4)(esbuild@0.28.2)(preact@10.29.8)(yaml@2.9.1)':
     dependencies:
-      '@astrojs/internal-helpers': 0.13.0
-      '@preact/preset-vite': 2.10.6(@babel/core@7.29.7)(preact@10.29.8)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
-      '@preact/signals': 2.11.3(preact@10.29.8)
+      '@astrojs/internal-helpers': 0.13.1
+      '@preact/preset-vite': 2.10.6(@babel/core@7.29.7)(preact@10.29.8)(vite@8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      '@preact/signals': 2.11.4(preact@10.29.8)
       devalue: 6.0.3
       preact: 10.29.8(preact-render-to-string@6.8.0)
-      preact-render-to-string: 6.8.0(preact@10.29.8)
-      vite: 8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
+      preact-render-to-string: 6.8.2(preact@10.29.8)
+      vite: 8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
     transitivePeerDependencies:
       - '@babel/core'
       - '@types/node'
@@ -3756,57 +4015,89 @@ snapshots:
       '@babel/helper-string-parser': 7.29.7
       '@babel/helper-validator-identifier': 7.29.7
 
-  '@biomejs/biome@2.5.15':
+  '@biomejs/biome@2.6.5':
     optionalDependencies:
-      '@biomejs/cli-darwin-arm64': 2.5.15
-      '@biomejs/cli-darwin-x64': 2.5.15
-      '@biomejs/cli-linux-arm64': 2.5.15
-      '@biomejs/cli-linux-arm64-musl': 2.5.15
-      '@biomejs/cli-linux-x64': 2.5.15
-      '@biomejs/cli-linux-x64-musl': 2.5.15
-      '@biomejs/cli-win32-arm64': 2.5.15
-      '@biomejs/cli-win32-x64': 2.5.15
+      '@biomejs/cli-android-arm64': 2.6.5
+      '@biomejs/cli-android-x64': 2.6.5
+      '@biomejs/cli-darwin-arm64': 2.6.5
+      '@biomejs/cli-darwin-x64': 2.6.5
+      '@biomejs/cli-linux-arm64': 2.6.5
+      '@biomejs/cli-linux-arm64-musl': 2.6.5
+      '@biomejs/cli-linux-x64': 2.6.5
+      '@biomejs/cli-linux-x64-musl': 2.6.5
+      '@biomejs/cli-win32-arm64': 2.6.5
+      '@biomejs/cli-win32-x64': 2.6.5
 
-  '@biomejs/cli-darwin-arm64@2.5.15':
+  '@biomejs/cli-android-arm64@2.6.5':
     optional: true
 
-  '@biomejs/cli-darwin-x64@2.5.15':
+  '@biomejs/cli-android-x64@2.6.5':
     optional: true
 
-  '@biomejs/cli-linux-arm64-musl@2.5.15':
+  '@biomejs/cli-darwin-arm64@2.6.5':
     optional: true
 
-  '@biomejs/cli-linux-arm64@2.5.15':
+  '@biomejs/cli-darwin-x64@2.6.5':
     optional: true
 
-  '@biomejs/cli-linux-x64-musl@2.5.15':
+  '@biomejs/cli-linux-arm64-musl@2.6.5':
     optional: true
 
-  '@biomejs/cli-linux-x64@2.5.15':
+  '@biomejs/cli-linux-arm64@2.6.5':
     optional: true
 
-  '@biomejs/cli-win32-arm64@2.5.15':
+  '@biomejs/cli-linux-x64-musl@2.6.5':
     optional: true
 
-  '@biomejs/cli-win32-x64@2.5.15':
+  '@biomejs/cli-linux-x64@2.6.5':
+    optional: true
+
+  '@biomejs/cli-win32-arm64@2.6.5':
+    optional: true
+
+  '@biomejs/cli-win32-x64@2.6.5':
+    optional: true
+
+  '@bruits/satteri-android-arm64@0.11.6':
     optional: true
 
   '@bruits/satteri-darwin-arm64@0.10.5':
     optional: true
 
+  '@bruits/satteri-darwin-arm64@0.11.6':
+    optional: true
+
   '@bruits/satteri-darwin-x64@0.10.5':
+    optional: true
+
+  '@bruits/satteri-darwin-x64@0.11.6':
+    optional: true
+
+  '@bruits/satteri-freebsd-x64@0.11.6':
     optional: true
 
   '@bruits/satteri-linux-arm64-gnu@0.10.5':
     optional: true
 
+  '@bruits/satteri-linux-arm64-gnu@0.11.6':
+    optional: true
+
   '@bruits/satteri-linux-arm64-musl@0.10.5':
+    optional: true
+
+  '@bruits/satteri-linux-arm64-musl@0.11.6':
     optional: true
 
   '@bruits/satteri-linux-x64-gnu@0.10.5':
     optional: true
 
+  '@bruits/satteri-linux-x64-gnu@0.11.6':
+    optional: true
+
   '@bruits/satteri-linux-x64-musl@0.10.5':
+    optional: true
+
+  '@bruits/satteri-linux-x64-musl@0.11.6':
     optional: true
 
   '@bruits/satteri-wasm32-wasi@0.10.5':
@@ -3816,10 +4107,23 @@ snapshots:
       '@napi-rs/wasm-runtime': 1.2.5(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)
     optional: true
 
+  '@bruits/satteri-wasm32-wasi@0.11.6':
+    dependencies:
+      '@emnapi/core': 1.11.1
+      '@emnapi/runtime': 1.11.1
+      '@napi-rs/wasm-runtime': 1.2.7(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)
+    optional: true
+
   '@bruits/satteri-win32-arm64-msvc@0.10.5':
     optional: true
 
+  '@bruits/satteri-win32-arm64-msvc@0.11.6':
+    optional: true
+
   '@bruits/satteri-win32-x64-msvc@0.10.5':
+    optional: true
+
+  '@bruits/satteri-win32-x64-msvc@0.11.6':
     optional: true
 
   '@capsizecss/unpack@4.0.1':
@@ -4311,51 +4615,58 @@ snapshots:
       '@tybys/wasm-util': 0.10.4
     optional: true
 
-  '@nascencestudio/ipguard@0.1.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))':
+  '@napi-rs/wasm-runtime@1.2.7(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)':
+    dependencies:
+      '@emnapi/core': 1.11.1
+      '@emnapi/runtime': 1.11.1
+      '@tybys/wasm-util': 0.10.4
+    optional: true
+
+  '@nascencestudio/ipguard@0.1.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d))':
     dependencies:
       astro: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
-      studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)
+      studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)
 
-  '@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))':
+  '@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d))':
     dependencies:
       '@preact/signals': 2.11.3(preact@10.29.8)
       astro: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
       kysely: 0.29.7
       preact: 10.29.8(preact-render-to-string@6.8.0)
       sharp: 0.35.5(@types/node@26.6.4)
-      studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)
+      studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)
       ultrahtml: 1.7.0
     transitivePeerDependencies:
       - '@types/node'
       - preact-render-to-string
 
-  '@nascencestudio/tapestry-fabric@0.1.0(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))':
+  '@nascencestudio/tapestry-fabric@0.1.0(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d))':
     dependencies:
-      '@nascencestudio/tapestry': 0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))
+      '@nascencestudio/tapestry': 0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d))
       astro: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
-      studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)
+      studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)
 
-  '@nascencestudio/tapestry-menus@0.1.0(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))':
+  '@nascencestudio/tapestry-menus@0.1.0(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d))':
     dependencies:
       '@atlaskit/pragmatic-drag-and-drop': 4.0.0
       '@atlaskit/pragmatic-drag-and-drop-hitbox': 3.0.0
-      '@nascencestudio/tapestry': 0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))
+      '@nascencestudio/tapestry': 0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d))
       astro: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
       preact: 10.29.8(preact-render-to-string@6.8.0)
-      studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)
+      studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)
     transitivePeerDependencies:
       - preact-render-to-string
 
-  '@nascencestudio/tapestry-seo@0.2.1(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))':
+  '@nascencestudio/tapestry-seo@0.2.1(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d))':
     dependencies:
-      '@nascencestudio/tapestry': 0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))
+      '@nascencestudio/tapestry': 0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d))
       astro: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
       preact: 10.29.8(preact-render-to-string@6.8.0)
-      studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)
+      studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)
     transitivePeerDependencies:
       - preact-render-to-string
 
-  '@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))':
+  '@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d))':
     dependencies:
       '@atlaskit/pragmatic-drag-and-drop': 4.0.0
       '@atlaskit/pragmatic-drag-and-drop-hitbox': 3.0.0
@@ -4370,19 +4681,19 @@ snapshots:
       prosemirror-state: 1.4.4
       prosemirror-transform: 1.12.2
       prosemirror-view: 1.42.6
-      studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)
+      studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)
     optionalDependencies:
-      '@nascencestudio/medialibrary': 0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))
+      '@nascencestudio/medialibrary': 0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d))
     transitivePeerDependencies:
       - preact-render-to-string
 
-  '@nascencestudio/webforms@0.1.0(@nascencestudio/ipguard@0.1.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))':
+  '@nascencestudio/webforms@0.1.0(@nascencestudio/ipguard@0.1.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)))(@nascencestudio/tapestry@0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d))':
     dependencies:
       astro: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
-      studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)
+      studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)
     optionalDependencies:
-      '@nascencestudio/ipguard': 0.1.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))
-      '@nascencestudio/tapestry': 0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516))
+      '@nascencestudio/ipguard': 0.1.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d))
+      '@nascencestudio/tapestry': 0.7.1(@nascencestudio/medialibrary@0.2.1(@types/node@26.6.4)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d)))(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d))
 
   '@neon-rs/load@0.0.4': {}
 
@@ -4391,6 +4702,8 @@ snapshots:
   '@outerbase/sdk-transform@1.0.8': {}
 
   '@oxc-project/types@0.154.0': {}
+
+  '@oxc-project/types@0.156.0': {}
 
   '@parcel/watcher-android-arm64@2.6.0':
     optional: true
@@ -4448,19 +4761,19 @@ snapshots:
       '@parcel/watcher-win32-arm64': 2.6.0
       '@parcel/watcher-win32-x64': 2.6.0
 
-  '@preact/preset-vite@2.10.6(@babel/core@7.29.7)(preact@10.29.8)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
+  '@preact/preset-vite@2.10.6(@babel/core@7.29.7)(preact@10.29.8)(vite@8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
     dependencies:
       '@babel/core': 7.29.7
       '@babel/plugin-transform-react-jsx': 7.29.7(@babel/core@7.29.7)
       '@babel/plugin-transform-react-jsx-development': 7.29.7(@babel/core@7.29.7)
-      '@prefresh/vite': 2.4.12(preact@10.29.8)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      '@prefresh/vite': 2.4.12(preact@10.29.8)(vite@8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       '@rollup/pluginutils': 5.4.0
       babel-plugin-transform-hook-names: 1.0.2(@babel/core@7.29.7)
       debug: 4.4.3
       magic-string: 0.30.21
       picocolors: 1.1.1
-      vite: 8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
-      vite-prerender-plugin: 0.5.14(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      vite: 8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
+      vite-prerender-plugin: 0.5.14(vite@8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       zimmerframe: 1.1.5
     transitivePeerDependencies:
       - preact
@@ -4469,9 +4782,16 @@ snapshots:
 
   '@preact/signals-core@1.14.4': {}
 
+  '@preact/signals-core@1.14.5': {}
+
   '@preact/signals@2.11.3(preact@10.29.8)':
     dependencies:
       '@preact/signals-core': 1.14.4
+      preact: 10.29.8(preact-render-to-string@6.8.0)
+
+  '@preact/signals@2.11.4(preact@10.29.8)':
+    dependencies:
+      '@preact/signals-core': 1.14.5
       preact: 10.29.8(preact-render-to-string@6.8.0)
 
   '@prefresh/babel-plugin@0.5.4(@babel/core@7.29.7)':
@@ -4484,7 +4804,7 @@ snapshots:
 
   '@prefresh/utils@1.2.1': {}
 
-  '@prefresh/vite@2.4.12(preact@10.29.8)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
+  '@prefresh/vite@2.4.12(preact@10.29.8)(vite@8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
     dependencies:
       '@babel/core': 7.29.7
       '@prefresh/babel-plugin': 0.5.4(@babel/core@7.29.7)
@@ -4492,7 +4812,7 @@ snapshots:
       '@prefresh/utils': 1.2.1
       '@rollup/pluginutils': 4.2.1
       preact: 10.29.8(preact-render-to-string@6.8.0)
-      vite: 8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
+      vite: 8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -4503,46 +4823,91 @@ snapshots:
   '@rolldown/binding-android-arm-eabi@1.2.14':
     optional: true
 
+  '@rolldown/binding-android-arm-eabi@1.2.16':
+    optional: true
+
   '@rolldown/binding-android-arm64@1.2.14':
+    optional: true
+
+  '@rolldown/binding-android-arm64@1.2.16':
     optional: true
 
   '@rolldown/binding-darwin-arm64@1.2.14':
     optional: true
 
+  '@rolldown/binding-darwin-arm64@1.2.16':
+    optional: true
+
   '@rolldown/binding-darwin-x64@1.2.14':
+    optional: true
+
+  '@rolldown/binding-darwin-x64@1.2.16':
     optional: true
 
   '@rolldown/binding-freebsd-x64@1.2.14':
     optional: true
 
+  '@rolldown/binding-freebsd-x64@1.2.16':
+    optional: true
+
   '@rolldown/binding-linux-arm-gnueabihf@1.2.14':
+    optional: true
+
+  '@rolldown/binding-linux-arm-gnueabihf@1.2.16':
     optional: true
 
   '@rolldown/binding-linux-arm64-gnu@1.2.14':
     optional: true
 
+  '@rolldown/binding-linux-arm64-gnu@1.2.16':
+    optional: true
+
   '@rolldown/binding-linux-arm64-musl@1.2.14':
+    optional: true
+
+  '@rolldown/binding-linux-arm64-musl@1.2.16':
     optional: true
 
   '@rolldown/binding-linux-ppc64-gnu@1.2.14':
     optional: true
 
+  '@rolldown/binding-linux-ppc64-gnu@1.2.16':
+    optional: true
+
   '@rolldown/binding-linux-s390x-gnu@1.2.14':
+    optional: true
+
+  '@rolldown/binding-linux-s390x-gnu@1.2.16':
     optional: true
 
   '@rolldown/binding-linux-x64-gnu@1.2.14':
     optional: true
 
+  '@rolldown/binding-linux-x64-gnu@1.2.16':
+    optional: true
+
   '@rolldown/binding-linux-x64-musl@1.2.14':
+    optional: true
+
+  '@rolldown/binding-linux-x64-musl@1.2.16':
     optional: true
 
   '@rolldown/binding-openharmony-arm64@1.2.14':
     optional: true
 
+  '@rolldown/binding-openharmony-arm64@1.2.16':
+    optional: true
+
   '@rolldown/binding-win32-arm64-msvc@1.2.14':
     optional: true
 
+  '@rolldown/binding-win32-arm64-msvc@1.2.16':
+    optional: true
+
   '@rolldown/binding-win32-x64-msvc@1.2.14':
+    optional: true
+
+  '@rolldown/binding-win32-x64-msvc@1.2.16':
     optional: true
 
   '@rolldown/pluginutils@1.0.1': {}
@@ -4600,10 +4965,10 @@ snapshots:
 
   '@standard-schema/spec@1.1.0': {}
 
-  '@studiocms/markdown-remark@1.6.1(@astrojs/internal-helpers@0.11.0)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
+  '@studiocms/markdown-remark@1.6.1(@astrojs/internal-helpers@0.11.0)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
     dependencies:
       '@astrojs/internal-helpers': 0.11.0
-      '@withstudiocms/internal_helpers': 0.5.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      '@withstudiocms/internal_helpers': 0.5.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       astro: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
       hast-util-from-html: 2.0.3
       hast-util-is-element: 3.0.0
@@ -4625,15 +4990,15 @@ snapshots:
       unified: 11.0.5
       unist-util-visit: 5.1.0
       vfile: 6.0.3
-      vite: 8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
+      vite: 8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
     transitivePeerDependencies:
       - effect
       - supports-color
 
-  '@studiocms/md@0.5.1(patch_hash=da73ec54dbd446d69bf0c1468abb7099bb572b9b48bdf9b4048e20d9f30948f9)(@astrojs/internal-helpers@0.11.0)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
+  '@studiocms/md@0.5.1(patch_hash=da73ec54dbd446d69bf0c1468abb7099bb572b9b48bdf9b4048e20d9f30948f9)(@astrojs/internal-helpers@0.11.0)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
     dependencies:
-      '@studiocms/markdown-remark': 1.6.1(@astrojs/internal-helpers@0.11.0)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
-      '@withstudiocms/internal_helpers': 0.5.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      '@studiocms/markdown-remark': 1.6.1(@astrojs/internal-helpers@0.11.0)(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      '@withstudiocms/internal_helpers': 0.5.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       effect: 3.22.2
     transitivePeerDependencies:
       - '@astrojs/internal-helpers'
@@ -4641,13 +5006,13 @@ snapshots:
       - supports-color
       - vite
 
-  '@studiocms/ui@1.2.2(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
+  '@studiocms/ui@1.2.2(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(vite@8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
     dependencies:
       '@iconify-json/heroicons': 1.2.3
       '@iconify/types': 2.0.0
       astro: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
       astro-transition-event-polyfill: 1.2.2(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
-      vite: 8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
+      vite: 8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
 
   '@traversable/json@0.0.52(@traversable/registry@0.0.49)(fast-check@3.23.2)':
     dependencies:
@@ -4789,11 +5154,11 @@ snapshots:
       - fast-check
       - zod
 
-  '@withstudiocms/auth-kit@0.2.2(7dbacd15bf1498ad46c0e1161ae836c6)':
+  '@withstudiocms/auth-kit@0.2.2(c0f885ce04bd526b8d10a1a731bf29fb)':
     dependencies:
       '@effect/platform': 0.97.2(effect@3.22.2)
       '@withstudiocms/effect': 0.5.3(7e6023c8af63763fb6381d026c7fb21e)
-      '@withstudiocms/internal_helpers': 0.5.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      '@withstudiocms/internal_helpers': 0.5.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       astro: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
       effect: 3.22.2
       effectify: 0.3.2(d16dcf67d90e7f053ff0a6859501440a)
@@ -4815,10 +5180,10 @@ snapshots:
       tinyexec: 1.3.1
       wrap-ansi: 10.0.2
 
-  '@withstudiocms/component-registry@0.2.2(6ef41d1277a173540524c75b5fd198a2)':
+  '@withstudiocms/component-registry@0.2.2(b39eec512e6e82cf51403f0fd04a0b28)':
     dependencies:
       '@withstudiocms/effect': 0.5.3(7e6023c8af63763fb6381d026c7fb21e)
-      '@withstudiocms/internal_helpers': 0.5.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      '@withstudiocms/internal_helpers': 0.5.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       astro: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
       effect: 3.22.2
       ts-morph: 28.0.0
@@ -4831,11 +5196,11 @@ snapshots:
       - vite
       - zod
 
-  '@withstudiocms/config-utils@0.3.1(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
+  '@withstudiocms/config-utils@0.3.1(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
     dependencies:
       astro: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
       effect: 3.22.2
-      vite: 8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
+      vite: 8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
 
   '@withstudiocms/effect@0.5.3(7e6023c8af63763fb6381d026c7fb21e)':
     dependencies:
@@ -4854,7 +5219,7 @@ snapshots:
       - fast-check
       - zod
 
-  '@withstudiocms/internal_helpers@0.5.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
+  '@withstudiocms/internal_helpers@0.5.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
     dependencies:
       astro: 7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
       effect: 3.22.2
@@ -4862,7 +5227,7 @@ snapshots:
       satteri: 0.10.5
       tinyexec: 1.3.1
       unist-util-visit: 5.1.0
-      vite: 8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
+      vite: 8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
 
   '@withstudiocms/kysely@0.3.1(@libsql/client@0.18.0)(effect@3.22.2)':
     dependencies:
@@ -6093,7 +6458,18 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.2
 
+  postcss@8.5.32:
+    dependencies:
+      nanoid: 3.3.20
+      picocolors: 1.1.1
+      source-map-js: 1.2.2
+
   preact-render-to-string@6.8.0(preact@10.29.8):
+    dependencies:
+      preact: 10.29.8(preact-render-to-string@6.8.0)
+    optional: true
+
+  preact-render-to-string@6.8.2(preact@10.29.8):
     dependencies:
       preact: 10.29.8(preact-render-to-string@6.8.0)
 
@@ -6296,6 +6672,27 @@ snapshots:
       '@rolldown/binding-win32-arm64-msvc': 1.2.14
       '@rolldown/binding-win32-x64-msvc': 1.2.14
 
+  rolldown@1.2.16:
+    dependencies:
+      '@oxc-project/types': 0.156.0
+      '@rolldown/pluginutils': 1.0.1
+    optionalDependencies:
+      '@rolldown/binding-android-arm-eabi': 1.2.16
+      '@rolldown/binding-android-arm64': 1.2.16
+      '@rolldown/binding-darwin-arm64': 1.2.16
+      '@rolldown/binding-darwin-x64': 1.2.16
+      '@rolldown/binding-freebsd-x64': 1.2.16
+      '@rolldown/binding-linux-arm-gnueabihf': 1.2.16
+      '@rolldown/binding-linux-arm64-gnu': 1.2.16
+      '@rolldown/binding-linux-arm64-musl': 1.2.16
+      '@rolldown/binding-linux-ppc64-gnu': 1.2.16
+      '@rolldown/binding-linux-s390x-gnu': 1.2.16
+      '@rolldown/binding-linux-x64-gnu': 1.2.16
+      '@rolldown/binding-linux-x64-musl': 1.2.16
+      '@rolldown/binding-openharmony-arm64': 1.2.16
+      '@rolldown/binding-win32-arm64-msvc': 1.2.16
+      '@rolldown/binding-win32-x64-msvc': 1.2.16
+
   rope-sequence@1.3.4: {}
 
   satteri@0.10.5:
@@ -6314,6 +6711,25 @@ snapshots:
       '@bruits/satteri-wasm32-wasi': 0.10.5
       '@bruits/satteri-win32-arm64-msvc': 0.10.5
       '@bruits/satteri-win32-x64-msvc': 0.10.5
+
+  satteri@0.11.6:
+    dependencies:
+      '@types/estree-jsx': 1.0.5
+      '@types/hast': 3.0.5
+      '@types/mdast': 4.0.4
+      '@types/unist': 3.0.3
+    optionalDependencies:
+      '@bruits/satteri-android-arm64': 0.11.6
+      '@bruits/satteri-darwin-arm64': 0.11.6
+      '@bruits/satteri-darwin-x64': 0.11.6
+      '@bruits/satteri-freebsd-x64': 0.11.6
+      '@bruits/satteri-linux-arm64-gnu': 0.11.6
+      '@bruits/satteri-linux-arm64-musl': 0.11.6
+      '@bruits/satteri-linux-x64-gnu': 0.11.6
+      '@bruits/satteri-linux-x64-musl': 0.11.6
+      '@bruits/satteri-wasm32-wasi': 0.11.6
+      '@bruits/satteri-win32-arm64-msvc': 0.11.6
+      '@bruits/satteri-win32-x64-msvc': 0.11.6
 
   sax@1.6.1: {}
 
@@ -6441,7 +6857,7 @@ snapshots:
     dependencies:
       ansi-regex: 6.4.0
 
-  studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(f8dc68b03cb8d914d5a46c2a65f32516):
+  studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(68d69b0a4a4f21c19a3695f1e3a0668d):
     dependencies:
       '@effect/platform': 0.97.2(effect@3.22.2)
       '@effect/platform-node': 0.108.2(@effect/cluster@0.60.2(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/workflow@0.19.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(@effect/rpc@0.76.2(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/sql@0.52.1(@effect/experimental@0.61.1(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(@effect/platform@0.97.2(effect@3.22.2))(effect@3.22.2))(effect@3.22.2)
@@ -6451,14 +6867,14 @@ snapshots:
       '@nanostores/i18n': 1.3.3(nanostores@1.5.5)
       '@nanostores/persistent': 1.3.5(nanostores@1.5.5)
       '@outerbase/sdk-transform': 1.0.8
-      '@studiocms/ui': 1.2.2(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      '@studiocms/ui': 1.2.2(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(vite@8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       '@withstudiocms/api-spec': 0.4.1(70c572c023b4806b19b028e71279b4dc)
-      '@withstudiocms/auth-kit': 0.2.2(7dbacd15bf1498ad46c0e1161ae836c6)
+      '@withstudiocms/auth-kit': 0.2.2(c0f885ce04bd526b8d10a1a731bf29fb)
       '@withstudiocms/cli-kit': 0.3.2
-      '@withstudiocms/component-registry': 0.2.2(6ef41d1277a173540524c75b5fd198a2)
-      '@withstudiocms/config-utils': 0.3.1(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      '@withstudiocms/component-registry': 0.2.2(b39eec512e6e82cf51403f0fd04a0b28)
+      '@withstudiocms/config-utils': 0.3.1(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       '@withstudiocms/effect': 0.5.3(7e6023c8af63763fb6381d026c7fb21e)
-      '@withstudiocms/internal_helpers': 0.5.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      '@withstudiocms/internal_helpers': 0.5.0(astro@7.4.1(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.2)(vite@8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       '@withstudiocms/kysely': 0.3.1(@libsql/client@0.18.0)(effect@3.22.2)
       '@withstudiocms/sdk': 0.4.2(patch_hash=f04e81f855c68fe68f28fb76bca160e93cd3fd4e8363aa443047877bca272c4c)(@withstudiocms/effect@0.5.3(7e6023c8af63763fb6381d026c7fb21e))(@withstudiocms/kysely@0.3.1(@libsql/client@0.18.0)(effect@3.22.2))(effect@3.22.2)(effectify@0.3.2(d16dcf67d90e7f053ff0a6859501440a))(kysely@0.29.7)(zod@4.6.7)
       '@withstudiocms/template-lang': 0.2.1
@@ -6647,7 +7063,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite-prerender-plugin@0.5.14(vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)):
+  vite-prerender-plugin@0.5.14(vite@8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)):
     dependencies:
       kolorist: 1.8.0
       magic-string: 0.30.21
@@ -6655,7 +7071,7 @@ snapshots:
       simple-code-frame: 1.3.0
       source-map: 0.7.6
       stack-trace: 1.0.0
-      vite: 8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
+      vite: 8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
 
   vite@8.3.4(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1):
     dependencies:
@@ -6663,6 +7079,19 @@ snapshots:
       picomatch: 4.0.7
       postcss: 8.5.29
       rolldown: 1.2.14
+      tinyglobby: 0.2.17
+    optionalDependencies:
+      '@types/node': 26.6.4
+      esbuild: 0.28.2
+      fsevents: 2.3.3
+      yaml: 2.9.1
+
+  vite@8.3.6(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1):
+    dependencies:
+      lightningcss: 1.33.0
+      picomatch: 4.0.7
+      postcss: 8.5.32
+      rolldown: 1.2.16
       tinyglobby: 0.2.17
     optionalDependencies:
       '@types/node': 26.6.4
