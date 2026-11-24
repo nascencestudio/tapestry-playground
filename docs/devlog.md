@@ -43,6 +43,11 @@ dependency order.
 - `astro check` crashed after the update ("this.bridge.setLastError is not a function"): pnpm filled
   `@napi-rs/wasm-runtime`'s `@emnapi/runtime` peer with the 2.0 beta from rolldown's wasm32 binding, under
   astro2tsx's `@emnapi/core` 1.11.3. Override in `pnpm-workspace.yaml` (reason, exit condition).
+- The first CI run failed the rich-text suite: "multiple versions of prosemirror-model were loaded". Tapestry
+  0.7.2 pins the newer prosemirror-model/-transform/-view exactly, but this lockfile kept the older versions
+  for the ProseMirror packages that reach them through ranges, so the editor loaded two copies. `pnpm update
+  --depth 99 prosemirror-…` brought them to one version each. Unit tests can't see this; only the browser can.
+  A site with an old lockfile that upgrades Tapestry would hit it too.
 - Biome 2.6's `useDomNodeTextContent` flags `innerText` in e2e, where rendered text is the point: off for `e2e/**`.
 - Dependabot here ignored astro as "patched", but its patch was dropped with Astro 7.4: removed. satteri, effect
   and @effect/platform(-node) now follow StudioCMS (only patch updates proposed).
