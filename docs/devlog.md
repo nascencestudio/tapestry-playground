@@ -6,6 +6,57 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-11-23/24: Session 55: Dependency and security refresh, every plugin released
+
+**Request:** check every plugin for updates, Dependabot PRs and security fixes, one repo at a time in
+dependency order.
+
+### Done
+- Released (staged, approved by the user): **media library 0.2.2**, **Tapestry 0.7.2**, **tapestry-seo 0.2.2 and
+  0.2.4**, **tapestry-menus 0.1.1**, **tapestry-fabric 0.1.1**, **webforms 0.1.1**, **IP Guard 0.1.1**. Each: dev tools
+  (astro 7.4.13, biome 2.6.8, vitest 5.1.1), `.nvmrc` 22.23.4 (astro ≥ 7.4.7 needs it: why the grouped Dependabot
+  PRs failed CI), actions/setup-node 7.1.0, Biome's new Markdown/YAML formatting off, Dependabot ignores
+  `@types/node` majors. Held everywhere: TypeScript 7, Preact 11.
+- **minimatch GHSA-g3hv-75wg-m249 fixed** everywhere: `@ts-morph/common` 0.29.1 asks for minimatch 11 (11.0.9, with
+  provenance; adds `@isaacs/nonrecursive-glob-match` 1.1.0, by isaacs, no install scripts). Ignore entries removed.
+  braces GHSA-vfj7-8cjw-p6xm is still unpatched: re-check moved to 2026-12-23/24.
+- tapestry-seo: crawler list refreshed (28 added); `update-bots.yml` now keeps one PR on an `update-bots` branch and
+  starts CI on it; `OPERATOR_OVERRIDES` names 38 operators ai.robots.txt lists as "Unclear" (from their own
+  descriptions). 0.2.3 was skipped: its release was created before the version bump merged, and the "Protect
+  release tags" ruleset won't let a tag move.
+- Playground: npm versions of all of the above; astro 7.4.13 and @astrojs/node 11.1.14 (clear GHSA-mh32-jxcr-mh9f
+  and GHSA-r3h5-4585-7x3w), @astrojs/preact 6.1.6, effect 3.22.5 / @effect/platform 0.97.4 / -node 0.108.4 (the
+  newest StudioCMS 0.7's peer ranges allow), @astrojs/check 0.9.12, axe-core 4.14.1, Dockerfile Node 22.23.4.
+  Supersedes #9 and #16 (#16 also wanted satteri 0.11, which must stay equal to StudioCMS's 0.10.5).
+
+### Learned
+- npm expires a trusted-publisher configuration that hasn't published within 48 hours of creation (since
+  2026-10-02). Menus, fabric, webforms and IP Guard (first released with tokens) had expired ones: the first
+  release failed with `ERR_PNPM_AUTH_TOKEN_EXCHANGE` 404, then 401. Recreated just before each release; a
+  publish validates it for good. "Require 2FA and disallow tokens" is on for those packages and works with it.
+- The `gh` login has no `workflow` scope, so Dependabot PRs that change workflow files can't be merged with
+  `gh`; their changes went into our own PRs.
+- astro 7.4.13 brings its own satteri 0.11.7 (`@astrojs/markdown-satteri`); StudioCMS stays on 0.10.5. Checked the
+  production build: both server chunks importing `satteri` are StudioCMS code (resolving 0.10.5 from the root,
+  `vite.ssr.external`); astro's copy isn't in the server bundle. Production pages, login, sitemap, robots.txt, 404
+  all answer.
+- `astro check` crashed after the update ("this.bridge.setLastError is not a function"): pnpm filled
+  `@napi-rs/wasm-runtime`'s `@emnapi/runtime` peer with the 2.0 beta from rolldown's wasm32 binding, under
+  astro2tsx's `@emnapi/core` 1.11.3. Override in `pnpm-workspace.yaml` (reason, exit condition).
+- The first CI run failed the rich-text suite: "multiple versions of prosemirror-model were loaded". Tapestry
+  0.7.2 pins the newer prosemirror-model/-transform/-view exactly, but this lockfile kept the older versions
+  for the ProseMirror packages that reach them through ranges, so the editor loaded two copies. `pnpm update
+  --depth 99 prosemirror-…` brought them to one version each. Unit tests can't see this; only the browser can.
+  A site with an old lockfile that upgrades Tapestry would hit it too.
+- Biome 2.6's `useDomNodeTextContent` flags `innerText` in e2e, where rendered text is the point: off for `e2e/**`.
+- Dependabot here ignored astro as "patched", but its patch was dropped with Astro 7.4: removed. satteri, effect
+  and @effect/platform(-node) now follow StudioCMS (only patch updates proposed).
+
+### Next
+- Re-check braces (2026-12-23 in Tapestry, 2026-12-24 elsewhere). TypeScript 7 and Preact 11 when the tooling allows.
+
+---
+
 ## 2026-10-31: Session 54: Tapestry 0.7.1
 
 - CI on the `fabric` PR failed in the a11y suite: on a fresh site (no categories) Tapestry 0.7.0's multi-choice

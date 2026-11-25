@@ -50,15 +50,8 @@ auditConfig:
   ignoreGhsas:
     # braces <=3.0.3 (no patch, published 2026-09-18). Exploit needs attacker-controlled
     # glob patterns; StudioCMS's middleware only expands developer-defined route
-    # patterns and tests the request path against them. Re-check 2026-11-01.
+    # patterns and tests the request path against them. Still unpatched on 2026-11-24. Re-check 2026-12-24.
     - GHSA-vfj7-8cjw-p6xm
-    # minimatch <11.0.1 (moderate, GHSA-g3hv-75wg-m249, published 2026-10-30): denial of service through glob
-    # pattern amplification. Via StudioCMS → @withstudiocms/component-registry → ts-morph → @ts-morph/common,
-    # which asks for ^10.0.1 and matches the project's own file globs at build time: no attacker-controlled
-    # patterns. The only fix is minimatch 11, a new major that adds @isaacs/nonrecursive-glob-match (first
-    # published 2026-10-26): not worth a brand-new package for this. Re-check 2026-11-15 (a 10.x fix, or
-    # ts-morph moving to 11).
-    - GHSA-g3hv-75wg-m249
 
 # Respect "engines" fields and pin exact versions when adding dependencies.
 engineStrict: true
@@ -74,6 +67,12 @@ overrides:
   # Toml.parse() and asks for ^4.3.0. 5.0.1 (2026-10-12) keeps parse() the same (checked: same exports, no
   # dependencies, no install scripts, integrity verified). Remove when @effect/cli moves to toml >=5.0.1.
   '@effect/cli>toml': 5.0.1
+  # `astro check` crashed ("this.bridge.setLastError is not a function"): @astrojs/astro2tsx 0.1.2 pins
+  # @emnapi/core 1.11.3, but its @napi-rs/wasm-runtime takes @emnapi/runtime as a peer, and pnpm filled
+  # that with 2.0.0-beta.2, which rolldown's wasm32 fallback binding brings in (core 1 and runtime 2
+  # don't fit together). 1.11.3 is the runtime that matches its core (and the latest stable). Remove when
+  # @astrojs/astro2tsx moves to @emnapi 2, or `astro check` passes without it.
+  '@napi-rs/wasm-runtime@1.2.4>@emnapi/runtime': 1.11.3
 # Patches (pnpm patch). Every entry needs a reason and an exit condition; the install
 # fails if a patch stops applying (e.g. after an upgrade), so they can't go stale silently.
 patchedDependencies:

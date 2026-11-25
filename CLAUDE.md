@@ -20,8 +20,8 @@ Canvas), [docs/upstream/](docs/upstream/) (issue drafts), and the deployment gui
 
 ## Status
 
-- Everything from npm (2026-10-31): Tapestry `0.7.1`, media library `0.2.1`, tapestry-seo `0.2.1`,
-  tapestry-menus `0.1.0`, tapestry-fabric `0.1.0`, IP Guard `0.1.0`, webforms `0.1.0` (all in
+- Everything from npm (2026-11-24): Tapestry `0.7.2`, media library `0.2.2`, tapestry-seo `0.2.4`,
+  tapestry-menus `0.1.1`, tapestry-fabric `0.1.1`, IP Guard `0.1.1`, webforms `0.1.1` (all in
   `minimumReleaseAgeExclude`). Their suites and a11y states are on `main` (PR #12). All 32 suites, the budget and the Docker image pass on npm versions.
   To test unreleased plugin code, switch one dependency to `file:../<repo>` temporarily (never commit it).
 - 0.2.0 of the media library migrated the dev media directory one way (backup in
@@ -76,19 +76,20 @@ the dev server. Don't commit a `file:` dependency once the package is on npm.
 
 Login details: `.dev-credentials` (gitignored). Secrets: `.env` (gitignored, `chmod 600`).
 
-## Site dependencies (2026-10-22)
+## Site dependencies (2026-11-24)
 
 | Package | Version | Note |
 | --- | --- | --- |
-| Node | ≥ 22.12 (dev and Docker: 22.23.3) | `.nvmrc` |
+| Node | ≥ 22.12 (dev and Docker: 22.23.4; astro ≥ 7.4.7 needs it) | `.nvmrc`, Dockerfile `NODE_VERSION` |
 | Caddy (Docker) | 2.11.4 | HTTPS proxy in `compose.yaml` |
-| astro / studiocms | 7.4.1 / 0.7.0 | StudioCMS patched (Astro 7.4 fixed the dev CSS leak itself) |
-| @astrojs/node | 11.1.9 | SSR adapter (StudioCMS requires on-demand rendering) |
+| astro / studiocms | 7.4.13 / 0.7.0 | StudioCMS patched (Astro 7.4 fixed the dev CSS leak itself) |
+| @astrojs/node | 11.1.14 | SSR adapter (StudioCMS requires on-demand rendering) |
 | @libsql/client | 0.18.0 | matches StudioCMS 0.7.0 |
-| @astrojs/preact + preact | 6.1.0 + 10.29.8 | islands demo (Tapestry ADR 0030) |
+| @astrojs/preact + preact | 6.1.6 + 10.29.8 | islands demo (Tapestry ADR 0030) |
 | @studiocms/md | 0.5.1 | Markdown page type; also StudioCMS's hard-coded create-form default |
-| satteri | 0.10.5 | StudioCMS 0.7's Markdown parser, direct + external so production finds its binary (#41) |
-| axe-core | 4.14.0 | accessibility checks in e2e (Tapestry ADR 0034) |
+| satteri | 0.10.5 | StudioCMS 0.7's Markdown parser, direct + external so production finds its binary (#41). astro 7.4.13 has its own 0.11.7 (build-time Markdown) |
+| effect / @effect/platform / -node | 3.22.5 / 0.97.4 / 0.108.4 | StudioCMS 0.7 peers (`^3.22.2`, `^0.97.2`, `^0.108.2`): not effect 4 |
+| axe-core | 4.14.1 | accessibility checks in e2e (Tapestry ADR 0034) |
 | typescript | 6.0.3 | not 7 (`@astrojs/check` supports ≤ 6) |
 
 ## Gotchas
@@ -105,6 +106,10 @@ Comments in the site and e2e code that cite `docs/decisions/…`, `docs/known-is
   `security.allowedDomains` makes the request URL `localhost:<port>`, so a login sent from `127.0.0.1`
   fails the same-origin check (403). Use the `SITE_URL` host for anything that POSTs to a production server.
 - StudioCMS rejects common usernames like `admin` during setup.
+- e2e reads `innerText` on purpose (rendered text: no `<style>` contents, line breaks per block), so Biome's
+  `useDomNodeTextContent` is off for `e2e/**`; don't apply its "fix" there.
+- `astro check` needs `@emnapi/runtime` 1.x under astro2tsx (override in `pnpm-workspace.yaml`): with the 2.0
+  beta that rolldown's wasm fallback brings in, it crashes with "this.bridge.setLastError is not a function".
 - StudioCMS caches pages for 5 minutes, so direct DB writes may not show on a
   running server. Reset content through the editor (the e2e suite does).
 - CDP `Input.setInterceptDrags` doesn't catch drags that start inside an iframe;

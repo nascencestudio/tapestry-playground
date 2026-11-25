@@ -7,7 +7,7 @@
 #
 # Data (SQLite database and uploaded media) lives in the /data volume.
 
-ARG NODE_VERSION=22.23.3
+ARG NODE_VERSION=22.23.4
 
 # ---------------------------------------------------------------------------
 FROM node:${NODE_VERSION}-bookworm-slim AS build

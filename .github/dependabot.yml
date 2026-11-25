@@ -34,11 +34,22 @@ updates:
       semver-major-days: 14
     versioning-strategy: increase
     open-pull-requests-limit: 5
-    ignore: # patched (see above and pnpm-workspace.yaml)
-      - dependency-name: astro
+    ignore:
+      # Patched (see above and pnpm-workspace.yaml).
       - dependency-name: studiocms
       - dependency-name: '@studiocms/md'
       - dependency-name: '@withstudiocms/sdk'
+      # Follow StudioCMS, not their own latest: satteri must equal StudioCMS's (CLAUDE.md), and effect /
+      # @effect/platform / @effect/platform-node are StudioCMS peers (^3.22.2, ^0.97.2, ^0.108.2; on 0.x a
+      # minor is breaking). Patch updates still come in the weekly group.
+      - dependency-name: satteri
+        update-types: ["version-update:semver-minor", "version-update:semver-major"]
+      - dependency-name: effect
+        update-types: ["version-update:semver-major"]
+      - dependency-name: '@effect/platform'
+        update-types: ["version-update:semver-minor", "version-update:semver-major"]
+      - dependency-name: '@effect/platform-node'
+        update-types: ["version-update:semver-minor", "version-update:semver-major"]
     groups:
       minor-and-patch:
         update-types: [minor, patch]
