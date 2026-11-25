@@ -40,7 +40,7 @@
     "@studiocms/md": "0.5.1",
     "astro": "7.4.13",
     "effect": "3.22.5",
-    "preact": "10.29.8",
+    "preact": "11.2.0",
     "satteri": "0.10.5",
     "studiocms": "0.7.0"
   },
