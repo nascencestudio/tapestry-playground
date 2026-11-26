@@ -153,9 +153,61 @@ export async function saveAndWait(page, pageId, saveSelector = '#edit-button') {
 		(e) => e.response.url.includes('/studiocms_api/dashboard/content/page'),
 		15_000,
 	);
+	const sent = [];
+	const errorsBefore = page.errors?.length ?? 0;
+	const stopWatching = page.cdp.on((message) => {
+		if (
+			message.method === 'Network.requestWillBeSent' &&
+			message.params.request.url.includes('/studiocms_api/dashboard/content/page')
+		) {
+			sent.push(`${message.params.request.method} ${message.params.request.url.replace(/^https?:\/\/[^/]+/, '')}`);
+		}
+	});
 	await page.click(saveSelector);
+	// Headless Chrome 156 stalls requestAnimationFrame on dashboard pages after a modal <dialog> closes (CLAUDE.md).
+	// A stalled frame (the layer tree focusing a moved row, which scrolls the page) can then run during this
+	// click, and the click goes nowhere: no request, no error. If nothing was sent, the click didn't happen, so
+	// clicking again can't save twice.
+	for (const end = Date.now() + 5_000; sent.length === 0 && Date.now() < end; ) {
+		await new Promise((r) => setTimeout(r, 100));
+	}
+	if (sent.length === 0) {
+		console.log(`    (no save request 5 s after clicking ${saveSelector}; clicking again)`);
+		await page.click(saveSelector);
+	}
 	const expected = await field(page);
-	const { response, requestId } = await saved;
+	const { response, requestId } = await saved.catch(async (error) => {
+		// No save request at all: say why StudioCMS's form didn't send one (an invalid field blocks it silently,
+		// known issue #36; a description is required; something may cover the button).
+		const why = await page
+			.eval((selector) => {
+				const button = document.querySelector(selector);
+				const form = button?.closest('form') ?? document.querySelector('form#edit-page-form, form');
+				const invalid = form
+					? [...form.elements]
+							.filter((el) => el.willValidate && !el.checkValidity())
+							.map(
+								(el) =>
+									`${el.tagName.toLowerCase()}[name=${el.name || '?'}][id=${el.id || '?'}]: ${el.validationMessage}`,
+							)
+					: [];
+				const r = button?.getBoundingClientRect();
+				const top = r ? document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2) : null;
+				return JSON.stringify({
+					button: button ? { disabled: button.disabled, type: button.type, form: button.form?.id ?? null } : null,
+					covering: top && top !== button && !button?.contains(top) ? top.outerHTML.slice(0, 160) : null,
+					invalid,
+					openDialogs: [...document.querySelectorAll('dialog[open]')].map((d) => d.outerHTML.slice(0, 120)),
+					toasts: [...document.querySelectorAll('[class*="toast"]')].map((t) => t.textContent.trim().slice(0, 120)),
+				});
+			}, saveSelector)
+			.catch((e) => `(couldn't inspect the page: ${e.message})`);
+		const errors = (page.errors ?? []).slice(errorsBefore).map((e) => e.slice(0, 400));
+		throw new Error(
+			`${error.message} after clicking ${saveSelector}: ${why}\n  requests sent: ${JSON.stringify(sent)}\n  page errors since the click: ${JSON.stringify(errors)}`,
+		);
+	});
+	stopWatching();
 	if (response.status !== 200) {
 		// StudioCMS's reason (e.g. a locked database, known issue #23), so a failure explains itself.
 		await new Promise((r) => setTimeout(r, 300)); // the body arrives after the headers

@@ -30,6 +30,11 @@ TypeScript 7 waits for Astro.
 - TypeScript 7: Tapestry typechecks (0.4 s) and builds with it, output differing only in quote style and union/import
   order. Blocked here: `@astrojs/check` 0.9.12 accepts TypeScript ≤ 6 and `astro check` refuses 7; Astro's
   replacement (`@astrojs/ts-content-mapper`) needs TypeScript 7.1 (beta). Repos stay aligned on 6.
+- After the Preact 11 merge, CI failed the templates suite 4 of 5 times: the Save click sent nothing (no request, no
+  error; form valid, button uncovered). The layer tree focuses a moved row in a `requestAnimationFrame` callback, which
+  scrolls the page; headless Chrome 156 stalls frames on dashboard pages after a modal dialog, so that focus ran during
+  the click. `saveAndWait()` now clicks again when no save request started within 5 s (PR #20; seen working on CI).
+  Waiting for a "steady" target in `page.click()` was tried and dropped: the stalled frames made every click slow.
 
 ### Next
 - TypeScript 7 when Astro supports it. Drop Preact 10 from the ranges in a later release. Re-check braces in December.
