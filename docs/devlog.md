@@ -6,6 +6,36 @@ and known issues instead of repeating them.
 
 ---
 
+## 2026-11-25/26: Session 56: ProseMirror ranges, Preact 11
+
+**Request:** switch Tapestry's ProseMirror pins to ranges (make sure everything still works); move to Preact 11;
+TypeScript 7 waits for Astro.
+
+### Done
+- **Tapestry 0.7.3** (Tapestry ADR 0047): the `prosemirror-*` packages are ranges from the oldest versions a release
+  was tested with (0.7.1's). Scratch-project check: upgrading 0.7.1 → 0.7.2 (exact pins) left two copies of model,
+  transform and view (session 55's rich-text failure); 0.7.1 → 0.7.3 keeps one; a fresh install gets one, the newest.
+  A first try with the newest versions as lower bounds (`^1.25.13`) still duplicated on upgrade.
+- **Preact 11** (Tapestry ADR 0048): media library 0.2.3, Tapestry 0.7.4, tapestry-seo 0.2.5, tapestry-menus 0.1.2
+  declare `preact: ^10.29.8 || ^11.2.0` and lock 11.2.0; released in dependency order so each lockfile has one Preact.
+  Code: two Tapestry editor types (`JSX.CSSProperties` gone, `useRef` needs an initial value), written to compile on
+  10 and 11. The media library also got the minimatch fix it had missed (0.2.2 came before it).
+- Playground: npm versions of the above, `preact` 11.2.0 (supersedes Dependabot #18). Before any release, all 32 e2e
+  suites and the budget passed with the four packages as `file:` builds on one Preact 11.2.0 (island page 8.3 KB JS).
+- Devlogs: webforms' and tapestry-menus' 2026-11-24 entries moved to the top (newest first there).
+
+### Learned
+- Version ranges only prevent duplicate copies if their lower bound is no newer than what a site already has: pnpm
+  reuses a locked version that satisfies a range and adds a second copy when it doesn't.
+- TypeScript 7: Tapestry typechecks (0.4 s) and builds with it, output differing only in quote style and union/import
+  order. Blocked here: `@astrojs/check` 0.9.12 accepts TypeScript ≤ 6 and `astro check` refuses 7; Astro's
+  replacement (`@astrojs/ts-content-mapper`) needs TypeScript 7.1 (beta). Repos stay aligned on 6.
+
+### Next
+- TypeScript 7 when Astro supports it. Drop Preact 10 from the ranges in a later release. Re-check braces in December.
+
+---
+
 ## 2026-11-23/24: Session 55: Dependency and security refresh, every plugin released
 
 **Request:** check every plugin for updates, Dependabot PRs and security fixes, one repo at a time in
@@ -17,7 +47,7 @@ dependency order.
   (astro 7.4.13, biome 2.6.8, vitest 5.1.1), `.nvmrc` 22.23.4 (astro ≥ 7.4.7 needs it: why the grouped Dependabot
   PRs failed CI), actions/setup-node 7.1.0, Biome's new Markdown/YAML formatting off, Dependabot ignores
   `@types/node` majors. Held everywhere: TypeScript 7, Preact 11.
-- **minimatch GHSA-g3hv-75wg-m249 fixed** everywhere: `@ts-morph/common` 0.29.1 asks for minimatch 11 (11.0.9, with
+- **minimatch GHSA-g3hv-75wg-m249 fixed** everywhere (the media library only in 0.2.3, session 56: its 0.2.2 came first): `@ts-morph/common` 0.29.1 asks for minimatch 11 (11.0.9, with
   provenance; adds `@isaacs/nonrecursive-glob-match` 1.1.0, by isaacs, no install scripts). Ignore entries removed.
   braces GHSA-vfj7-8cjw-p6xm is still unpatched: re-check moved to 2026-12-23/24.
 - tapestry-seo: crawler list refreshed (28 added); `update-bots.yml` now keeps one PR on an `update-bots` branch and
