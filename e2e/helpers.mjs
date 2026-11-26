@@ -163,6 +163,34 @@ export async function saveAndWait(page, pageId, saveSelector = '#edit-button') {
 			sent.push(`${message.params.request.method} ${message.params.request.url.replace(/^https?:\/\/[^/]+/, '')}`);
 		}
 	});
+	await page.eval((selector) => {
+		const describe = (el) =>
+			el?.nodeType === 1
+				? `${el.tagName.toLowerCase()}${el.id ? `#${el.id}` : ''}${el.className && typeof el.className === 'string' ? `.${el.className.trim().split(/\s+/).slice(0, 2).join('.')}` : ''}`
+				: String(el);
+		const rect = () => {
+			const r = document.querySelector(selector)?.getBoundingClientRect();
+			return r ? [Math.round(r.left), Math.round(r.top), Math.round(r.width), Math.round(r.height)] : null;
+		};
+		const log = { before: rect(), events: [] };
+		window.__saveClickLog = log;
+		for (const type of ['mousedown', 'mouseup', 'click', 'submit']) {
+			window.addEventListener(
+				type,
+				(e) =>
+					log.events.push(
+						`${type} ${describe(e.target)} at ${Math.round(e.clientX ?? -1)},${Math.round(e.clientY ?? -1)}`,
+					),
+				true,
+			);
+		}
+		window.addEventListener('submit', (e) =>
+			log.events.push(`submit reached window, defaultPrevented=${e.defaultPrevented}`),
+		);
+		setTimeout(() => {
+			log.after = rect();
+		}, 500);
+	}, saveSelector);
 	await page.click(saveSelector);
 	const expected = await field(page);
 	const { response, requestId } = await saved.catch(async (error) => {
@@ -192,8 +220,9 @@ export async function saveAndWait(page, pageId, saveSelector = '#edit-button') {
 			}, saveSelector)
 			.catch((e) => `(couldn't inspect the page: ${e.message})`);
 		const errors = (page.errors ?? []).slice(errorsBefore).map((e) => e.slice(0, 400));
+		const clicks = await page.eval(() => JSON.stringify(window.__saveClickLog ?? null)).catch(() => '?');
 		throw new Error(
-			`${error.message} after clicking ${saveSelector}: ${why}\n  requests sent: ${JSON.stringify(sent)}\n  page errors since the click: ${JSON.stringify(errors)}`,
+			`${error.message} after clicking ${saveSelector}: ${why}\n  requests sent: ${JSON.stringify(sent)}\n  page errors since the click: ${JSON.stringify(errors)}\n  click: ${clicks}`,
 		);
 	});
 	stopWatching();
