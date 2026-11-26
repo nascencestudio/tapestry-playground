@@ -153,6 +153,16 @@ export async function saveAndWait(page, pageId, saveSelector = '#edit-button') {
 		(e) => e.response.url.includes('/studiocms_api/dashboard/content/page'),
 		15_000,
 	);
+	const sent = [];
+	const errorsBefore = page.errors?.length ?? 0;
+	const stopWatching = page.cdp.on((message) => {
+		if (
+			message.method === 'Network.requestWillBeSent' &&
+			message.params.request.url.includes('/studiocms_api/dashboard/content/page')
+		) {
+			sent.push(`${message.params.request.method} ${message.params.request.url.replace(/^https?:\/\/[^/]+/, '')}`);
+		}
+	});
 	await page.click(saveSelector);
 	const expected = await field(page);
 	const { response, requestId } = await saved.catch(async (error) => {
@@ -181,8 +191,12 @@ export async function saveAndWait(page, pageId, saveSelector = '#edit-button') {
 				});
 			}, saveSelector)
 			.catch((e) => `(couldn't inspect the page: ${e.message})`);
-		throw new Error(`${error.message} after clicking ${saveSelector}: ${why}`);
+		const errors = (page.errors ?? []).slice(errorsBefore).map((e) => e.slice(0, 400));
+		throw new Error(
+			`${error.message} after clicking ${saveSelector}: ${why}\n  requests sent: ${JSON.stringify(sent)}\n  page errors since the click: ${JSON.stringify(errors)}`,
+		);
 	});
+	stopWatching();
 	if (response.status !== 200) {
 		// StudioCMS's reason (e.g. a locked database, known issue #23), so a failure explains itself.
 		await new Promise((r) => setTimeout(r, 300)); // the body arrives after the headers
