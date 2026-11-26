@@ -180,7 +180,7 @@ importers:
         version: 11.1.14(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       '@astrojs/preact':
         specifier: 6.1.6
-        version: 6.1.6(@babel/core@7.29.7)(preact@10.29.8)(vite@8.3.8(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+        version: 6.1.6(@babel/core@7.29.7)(preact@11.2.0)(vite@8.3.8(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       '@effect/platform':
         specifier: 0.97.4
         version: 0.97.4(effect@3.22.5)
@@ -194,23 +194,23 @@ importers:
         specifier: 0.1.1
         version: 0.1.1(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))
       '@nascencestudio/medialibrary':
-        specifier: 0.2.2
-        version: 0.2.2(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))
+        specifier: 0.2.3
+        version: 0.2.3(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))
       '@nascencestudio/tapestry':
-        specifier: 0.7.2
-        version: 0.7.2(@nascencestudio/medialibrary@0.2.2(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))
+        specifier: 0.7.4
+        version: 0.7.4(@nascencestudio/medialibrary@0.2.3(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))
       '@nascencestudio/tapestry-fabric':
         specifier: 0.1.1
-        version: 0.1.1(@nascencestudio/tapestry@0.7.2(@nascencestudio/medialibrary@0.2.2(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))
+        version: 0.1.1(@nascencestudio/tapestry@0.7.4(@nascencestudio/medialibrary@0.2.3(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))
       '@nascencestudio/tapestry-menus':
-        specifier: 0.1.1
-        version: 0.1.1(@nascencestudio/tapestry@0.7.2(@nascencestudio/medialibrary@0.2.2(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))
+        specifier: 0.1.2
+        version: 0.1.2(@nascencestudio/tapestry@0.7.4(@nascencestudio/medialibrary@0.2.3(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))
       '@nascencestudio/tapestry-seo':
-        specifier: 0.2.4
-        version: 0.2.4(@nascencestudio/tapestry@0.7.2(@nascencestudio/medialibrary@0.2.2(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))
+        specifier: 0.2.5
+        version: 0.2.5(@nascencestudio/tapestry@0.7.4(@nascencestudio/medialibrary@0.2.3(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))
       '@nascencestudio/webforms':
         specifier: 0.1.1
-        version: 0.1.1(@nascencestudio/ipguard@0.1.1(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(@nascencestudio/tapestry@0.7.2(@nascencestudio/medialibrary@0.2.2(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))
+        version: 0.1.1(@nascencestudio/ipguard@0.1.1(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(@nascencestudio/tapestry@0.7.4(@nascencestudio/medialibrary@0.2.3(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))
       '@studiocms/md':
         specifier: 0.5.1
         version: 0.5.1(patch_hash=da73ec54dbd446d69bf0c1468abb7099bb572b9b48bdf9b4048e20d9f30948f9)(@astrojs/internal-helpers@0.11.0)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(effect@3.22.5)(vite@8.3.8(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
@@ -221,8 +221,8 @@ importers:
         specifier: 3.22.5
         version: 3.22.5
       preact:
-        specifier: 10.29.8
-        version: 10.29.8(preact-render-to-string@6.8.0)
+        specifier: 11.2.0
+        version: 11.2.0(preact-render-to-string@6.8.0)
       satteri:
         specifier: 0.10.5
         version: 0.10.5
@@ -1378,8 +1378,8 @@ packages:
       astro: ^7.0.0
       studiocms: ^0.6.0 || ^0.7.0
 
-  '@nascencestudio/medialibrary@0.2.2':
-    resolution: {integrity: sha512-lAr7OhKUnVEQOimgyRff/XNT+xSxsdfyUuCYbpOo8ireCc3cAUnSNA1w7MleYAWVng1exqFk5Ynvw/V40VUEog==}
+  '@nascencestudio/medialibrary@0.2.3':
+    resolution: {integrity: sha512-HOheBJJ/vgPcBEW1PCyjW9wlm5/QGJiAxy1N+Y0gE5zZj/e/1CYNdv8ATsgSJIJZUkAIrvilCLYjJ+42ZtCFkg==}
     engines: {node: '>=22.12.0'}
     peerDependencies:
       astro: ^7.0.0
@@ -1393,24 +1393,24 @@ packages:
       astro: ^7.0.0
       studiocms: ^0.6.0 || ^0.7.0
 
-  '@nascencestudio/tapestry-menus@0.1.1':
-    resolution: {integrity: sha512-SgZljS9Ygxlumrh0vE09BLBqr93vhqrYunk4TRK/IwGYUZTdzyIxg2LkQiFpMUBwFYwVhGn4JpYnbud7TiblUQ==}
+  '@nascencestudio/tapestry-menus@0.1.2':
+    resolution: {integrity: sha512-D8IykhR+nEJxDJh0OflNXqVTEg3nnhlyDVBstDmUxer/VMaXgmxJD3KoksRNP2xMCCLMqiKO9q3NHjpkhj0zAA==}
     engines: {node: '>=22.12.0'}
     peerDependencies:
       '@nascencestudio/tapestry': ^0.7.0
       astro: ^7.0.0
       studiocms: ^0.6.0 || ^0.7.0
 
-  '@nascencestudio/tapestry-seo@0.2.4':
-    resolution: {integrity: sha512-ujiKY+DCbjPm8rHP48p3wo67hMnfWZQFO3hVJUMIK3t0GVY7jpJbPZJUBAP3uVMzlNmco4TSFWbb4y31jcJr7w==}
+  '@nascencestudio/tapestry-seo@0.2.5':
+    resolution: {integrity: sha512-MEDqdbiodjK9tJh8VuWAHdmSrliz3Wwhn+XiTDWFCkTD46rnM0sHwBMDDfr5XHsv16lWrxekCj4eEVfgfItS9g==}
     engines: {node: '>=22.12.0'}
     peerDependencies:
       '@nascencestudio/tapestry': ^0.4.0 || ^0.7.0
       astro: ^7.0.0
       studiocms: ^0.6.0 || ^0.7.0
 
-  '@nascencestudio/tapestry@0.7.2':
-    resolution: {integrity: sha512-VD63g/+HB6euiQAQN5puRFKU0flmbiM6BEOy0IhpV35L19KgLourPZkxHzhPGkHPgDCp5pLGp3GhLi+m9pC2NA==}
+  '@nascencestudio/tapestry@0.7.4':
+    resolution: {integrity: sha512-4GQRd64qy5XQwxyXvYYbbDsa6qhOe9zGrUerbJ+J3b4RVUYtHwI4Z3tbU7gwVWV50MIL6phN8+/c87oNtGD5yA==}
     engines: {node: '>=22.12.0'}
     peerDependencies:
       '@nascencestudio/medialibrary': ^0.1.0 || ^0.2.0
@@ -3042,10 +3042,10 @@ packages:
     peerDependencies:
       preact: '>=10 || >= 11.0.0-0'
 
-  preact@10.29.8:
-    resolution: {integrity: sha512-ej2aVZ+vZ8WO7tvlQWRM9N63A0KzF9q4mWJfDUHgYaIofWY9hu74QdnQrjoPMmZi2/nZ5gN0bJCQF49xQqx09Q==}
+  preact@11.2.0:
+    resolution: {integrity: sha512-/HfHI/7N84e6GrWBJ3J280z3mLaRJiDcSvj/A+y/4AbLnND/1UlGHe1sR6oYuTGwId0nP7dqDU9OnLxMPZ7xBg==}
     peerDependencies:
-      preact-render-to-string: '>=5'
+      preact-render-to-string: '>=6.7.0'
     peerDependenciesMeta:
       preact-render-to-string:
         optional: true
@@ -3947,20 +3947,20 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/preact-renderer@0.1.3(preact@10.29.8)':
+  '@astrojs/preact-renderer@0.1.3(preact@11.2.0)':
     dependencies:
       '@astrojs/internal-helpers': 0.13.2
       '@astrojs/runtime': 0.1.2
-      '@preact/signals': 2.11.4(preact@10.29.8)
-      preact: 10.29.8(preact-render-to-string@6.8.0)
-      preact-render-to-string: 6.8.3(preact@10.29.8)
+      '@preact/signals': 2.11.4(preact@11.2.0)
+      preact: 11.2.0(preact-render-to-string@6.8.0)
+      preact-render-to-string: 6.8.3(preact@11.2.0)
 
-  '@astrojs/preact@6.1.6(@babel/core@7.29.7)(preact@10.29.8)(vite@8.3.8(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
+  '@astrojs/preact@6.1.6(@babel/core@7.29.7)(preact@11.2.0)(vite@8.3.8(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
     dependencies:
       '@astrojs/internal-helpers': 0.13.2
-      '@astrojs/preact-renderer': 0.1.3(preact@10.29.8)
-      '@preact/preset-vite': 2.10.6(@babel/core@7.29.7)(preact@10.29.8)(vite@8.3.8(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
-      preact: 10.29.8(preact-render-to-string@6.8.0)
+      '@astrojs/preact-renderer': 0.1.3(preact@11.2.0)
+      '@preact/preset-vite': 2.10.6(@babel/core@7.29.7)(preact@11.2.0)(vite@8.3.8(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      preact: 11.2.0(preact-render-to-string@6.8.0)
     transitivePeerDependencies:
       - '@babel/core'
       - rollup
@@ -4799,12 +4799,12 @@ snapshots:
       astro: 7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
       studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)
 
-  '@nascencestudio/medialibrary@0.2.2(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))':
+  '@nascencestudio/medialibrary@0.2.3(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))':
     dependencies:
-      '@preact/signals': 2.11.4(preact@10.29.8)
+      '@preact/signals': 2.11.4(preact@11.2.0)
       astro: 7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
       kysely: 0.29.9
-      preact: 10.29.8(preact-render-to-string@6.8.0)
+      preact: 11.2.0(preact-render-to-string@6.8.0)
       sharp: 0.35.5(@types/node@26.6.4)
       studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)
       ultrahtml: 1.7.0
@@ -4812,39 +4812,39 @@ snapshots:
       - '@types/node'
       - preact-render-to-string
 
-  '@nascencestudio/tapestry-fabric@0.1.1(@nascencestudio/tapestry@0.7.2(@nascencestudio/medialibrary@0.2.2(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))':
+  '@nascencestudio/tapestry-fabric@0.1.1(@nascencestudio/tapestry@0.7.4(@nascencestudio/medialibrary@0.2.3(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))':
     dependencies:
-      '@nascencestudio/tapestry': 0.7.2(@nascencestudio/medialibrary@0.2.2(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))
+      '@nascencestudio/tapestry': 0.7.4(@nascencestudio/medialibrary@0.2.3(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))
       astro: 7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
       studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)
 
-  '@nascencestudio/tapestry-menus@0.1.1(@nascencestudio/tapestry@0.7.2(@nascencestudio/medialibrary@0.2.2(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))':
+  '@nascencestudio/tapestry-menus@0.1.2(@nascencestudio/tapestry@0.7.4(@nascencestudio/medialibrary@0.2.3(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))':
     dependencies:
       '@atlaskit/pragmatic-drag-and-drop': 4.0.0
       '@atlaskit/pragmatic-drag-and-drop-hitbox': 3.0.0
-      '@nascencestudio/tapestry': 0.7.2(@nascencestudio/medialibrary@0.2.2(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))
+      '@nascencestudio/tapestry': 0.7.4(@nascencestudio/medialibrary@0.2.3(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))
       astro: 7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
-      preact: 10.29.8(preact-render-to-string@6.8.0)
+      preact: 11.2.0(preact-render-to-string@6.8.0)
       studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)
     transitivePeerDependencies:
       - preact-render-to-string
 
-  '@nascencestudio/tapestry-seo@0.2.4(@nascencestudio/tapestry@0.7.2(@nascencestudio/medialibrary@0.2.2(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))':
+  '@nascencestudio/tapestry-seo@0.2.5(@nascencestudio/tapestry@0.7.4(@nascencestudio/medialibrary@0.2.3(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))':
     dependencies:
-      '@nascencestudio/tapestry': 0.7.2(@nascencestudio/medialibrary@0.2.2(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))
+      '@nascencestudio/tapestry': 0.7.4(@nascencestudio/medialibrary@0.2.3(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))
       astro: 7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
-      preact: 10.29.8(preact-render-to-string@6.8.0)
+      preact: 11.2.0(preact-render-to-string@6.8.0)
       studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)
     transitivePeerDependencies:
       - preact-render-to-string
 
-  '@nascencestudio/tapestry@0.7.2(@nascencestudio/medialibrary@0.2.2(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))':
+  '@nascencestudio/tapestry@0.7.4(@nascencestudio/medialibrary@0.2.3(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))':
     dependencies:
       '@atlaskit/pragmatic-drag-and-drop': 4.0.0
       '@atlaskit/pragmatic-drag-and-drop-hitbox': 3.0.0
-      '@preact/signals': 2.11.4(preact@10.29.8)
+      '@preact/signals': 2.11.4(preact@11.2.0)
       astro: 7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
-      preact: 10.29.8(preact-render-to-string@6.8.0)
+      preact: 11.2.0(preact-render-to-string@6.8.0)
       prosemirror-commands: 1.7.2
       prosemirror-history: 1.5.2
       prosemirror-keymap: 1.2.3
@@ -4855,17 +4855,17 @@ snapshots:
       prosemirror-view: 1.43.0
       studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)
     optionalDependencies:
-      '@nascencestudio/medialibrary': 0.2.2(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))
+      '@nascencestudio/medialibrary': 0.2.3(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))
     transitivePeerDependencies:
       - preact-render-to-string
 
-  '@nascencestudio/webforms@0.1.1(@nascencestudio/ipguard@0.1.1(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(@nascencestudio/tapestry@0.7.2(@nascencestudio/medialibrary@0.2.2(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))':
+  '@nascencestudio/webforms@0.1.1(@nascencestudio/ipguard@0.1.1(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(@nascencestudio/tapestry@0.7.4(@nascencestudio/medialibrary@0.2.3(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))':
     dependencies:
       astro: 7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
       studiocms: 0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)
     optionalDependencies:
       '@nascencestudio/ipguard': 0.1.1(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))
-      '@nascencestudio/tapestry': 0.7.2(@nascencestudio/medialibrary@0.2.2(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))
+      '@nascencestudio/tapestry': 0.7.4(@nascencestudio/medialibrary@0.2.3(@types/node@26.6.4)(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565)))(astro@7.4.13(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))(preact-render-to-string@6.8.0)(studiocms@0.7.0(patch_hash=e3e97955f4f9de91f9b87b42e7cd9697d6d2e9de6212d7b29ad3e9bbcabc8e84)(42a3e174810e68105eaabf723d000565))
 
   '@neon-rs/load@0.0.4': {}
 
@@ -4933,12 +4933,12 @@ snapshots:
       '@parcel/watcher-win32-arm64': 2.6.0
       '@parcel/watcher-win32-x64': 2.6.0
 
-  '@preact/preset-vite@2.10.6(@babel/core@7.29.7)(preact@10.29.8)(vite@8.3.8(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
+  '@preact/preset-vite@2.10.6(@babel/core@7.29.7)(preact@11.2.0)(vite@8.3.8(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
     dependencies:
       '@babel/core': 7.29.7
       '@babel/plugin-transform-react-jsx': 7.29.7(@babel/core@7.29.7)
       '@babel/plugin-transform-react-jsx-development': 7.29.7(@babel/core@7.29.7)
-      '@prefresh/vite': 2.4.12(preact@10.29.8)(vite@8.3.8(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
+      '@prefresh/vite': 2.4.12(preact@11.2.0)(vite@8.3.8(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))
       '@rollup/pluginutils': 5.4.0
       babel-plugin-transform-hook-names: 1.0.2(@babel/core@7.29.7)
       debug: 4.4.3
@@ -4954,29 +4954,29 @@ snapshots:
 
   '@preact/signals-core@1.14.5': {}
 
-  '@preact/signals@2.11.4(preact@10.29.8)':
+  '@preact/signals@2.11.4(preact@11.2.0)':
     dependencies:
       '@preact/signals-core': 1.14.5
-      preact: 10.29.8(preact-render-to-string@6.8.0)
+      preact: 11.2.0(preact-render-to-string@6.8.0)
 
   '@prefresh/babel-plugin@0.5.4(@babel/core@7.29.7)':
     dependencies:
       '@babel/core': 7.29.7
 
-  '@prefresh/core@1.5.11(preact@10.29.8)':
+  '@prefresh/core@1.5.11(preact@11.2.0)':
     dependencies:
-      preact: 10.29.8(preact-render-to-string@6.8.0)
+      preact: 11.2.0(preact-render-to-string@6.8.0)
 
   '@prefresh/utils@1.2.1': {}
 
-  '@prefresh/vite@2.4.12(preact@10.29.8)(vite@8.3.8(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
+  '@prefresh/vite@2.4.12(preact@11.2.0)(vite@8.3.8(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1))':
     dependencies:
       '@babel/core': 7.29.7
       '@prefresh/babel-plugin': 0.5.4(@babel/core@7.29.7)
-      '@prefresh/core': 1.5.11(preact@10.29.8)
+      '@prefresh/core': 1.5.11(preact@11.2.0)
       '@prefresh/utils': 1.2.1
       '@rollup/pluginutils': 4.2.1
-      preact: 10.29.8(preact-render-to-string@6.8.0)
+      preact: 11.2.0(preact-render-to-string@6.8.0)
       vite: 8.3.8(@types/node@26.6.4)(esbuild@0.28.2)(yaml@2.9.1)
     transitivePeerDependencies:
       - supports-color
@@ -6653,18 +6653,18 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.2
 
-  preact-render-to-string@6.8.0(preact@10.29.8):
+  preact-render-to-string@6.8.0(preact@11.2.0):
     dependencies:
-      preact: 10.29.8(preact-render-to-string@6.8.0)
+      preact: 11.2.0(preact-render-to-string@6.8.0)
     optional: true
 
-  preact-render-to-string@6.8.3(preact@10.29.8):
+  preact-render-to-string@6.8.3(preact@11.2.0):
     dependencies:
-      preact: 10.29.8(preact-render-to-string@6.8.0)
+      preact: 11.2.0(preact-render-to-string@6.8.0)
 
-  preact@10.29.8(preact-render-to-string@6.8.0):
+  preact@11.2.0(preact-render-to-string@6.8.0):
     optionalDependencies:
-      preact-render-to-string: 6.8.0(preact@10.29.8)
+      preact-render-to-string: 6.8.0(preact@11.2.0)
 
   prettier@3.9.9: {}
 

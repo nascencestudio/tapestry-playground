@@ -20,8 +20,8 @@ Canvas), [docs/upstream/](docs/upstream/) (issue drafts), and the deployment gui
 
 ## Status
 
-- Everything from npm (2026-11-24): Tapestry `0.7.2`, media library `0.2.2`, tapestry-seo `0.2.4`,
-  tapestry-menus `0.1.1`, tapestry-fabric `0.1.1`, IP Guard `0.1.1`, webforms `0.1.1` (all in
+- Everything from npm (2026-11-26): Tapestry `0.7.4`, media library `0.2.3`, tapestry-seo `0.2.5`,
+  tapestry-menus `0.1.2`, tapestry-fabric `0.1.1`, IP Guard `0.1.1`, webforms `0.1.1`, on Preact 11 (all in
   `minimumReleaseAgeExclude`). Their suites and a11y states are on `main` (PR #12). All 32 suites, the budget and the Docker image pass on npm versions.
   To test unreleased plugin code, switch one dependency to `file:../<repo>` temporarily (never commit it).
 - 0.2.0 of the media library migrated the dev media directory one way (backup in
@@ -76,7 +76,7 @@ the dev server. Don't commit a `file:` dependency once the package is on npm.
 
 Login details: `.dev-credentials` (gitignored). Secrets: `.env` (gitignored, `chmod 600`).
 
-## Site dependencies (2026-11-24)
+## Site dependencies (2026-11-26)
 
 | Package | Version | Note |
 | --- | --- | --- |
@@ -85,7 +85,7 @@ Login details: `.dev-credentials` (gitignored). Secrets: `.env` (gitignored, `ch
 | astro / studiocms | 7.4.13 / 0.7.0 | StudioCMS patched (Astro 7.4 fixed the dev CSS leak itself) |
 | @astrojs/node | 11.1.14 | SSR adapter (StudioCMS requires on-demand rendering) |
 | @libsql/client | 0.18.0 | matches StudioCMS 0.7.0 |
-| @astrojs/preact + preact | 6.1.6 + 10.29.8 | islands demo (Tapestry ADR 0030) |
+| @astrojs/preact + preact | 6.1.6 + 11.2.0 | islands demo (Tapestry ADR 0030); one Preact for the site and the editor packages (Tapestry ADRs 0044, 0048) |
 | @studiocms/md | 0.5.1 | Markdown page type; also StudioCMS's hard-coded create-form default |
 | satteri | 0.10.5 | StudioCMS 0.7's Markdown parser, direct + external so production finds its binary (#41). astro 7.4.13 has its own 0.11.7 (build-time Markdown) |
 | effect / @effect/platform / -node | 3.22.5 / 0.97.4 / 0.108.4 | StudioCMS 0.7 peers (`^3.22.2`, `^0.97.2`, `^0.108.2`): not effect 4 |
